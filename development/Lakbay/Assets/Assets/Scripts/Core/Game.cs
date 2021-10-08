@@ -72,7 +72,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     DontDestroyOnLoad(gameObject);
                     Initialize();
                 } else {
-                    printLog("Moving to the Start Scene...");
+                    printLog("Moving to the Initialization Scene...");
                     _initialSceneIndex = sceneBuildIndex;
                     LoadScene();
                 }
@@ -89,7 +89,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
                 if(allSet) {
                     _initialized = allSet;
-                    printLog("All Set! Moving to the Initial Scene...");
+                    printLog("All set! Moving to the Initial Scene...");
                     LoadScene(
                         _initialSceneIndex,
                         onProgress: (o) => {

@@ -17,6 +17,8 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public abstract class Base : MonoBehaviour {
+        public float timeScale = 1.0f;
+
         public virtual void Awake() {}
 
         public virtual void Start() {}
@@ -43,13 +45,15 @@ namespace Ph.CoDe_A.Lakbay.Core {
         
         public virtual void OnCollisionStart() {}
 
+        public virtual void OnInspectorUpdate() {}
+
         public virtual void print(params object[] objs) {
             MonoBehaviour.print(objs.Join(", "));
         }
 
         public virtual void printLog(params object[] objs) {
             if(objs.Length != 0) {
-                objs[0] = $"[{name}]: " + objs[0].ToString();
+                objs[0] = $"[{name}.{GetType().Name}]: " + objs[0].ToString();
                 print(objs);
             }
         }
