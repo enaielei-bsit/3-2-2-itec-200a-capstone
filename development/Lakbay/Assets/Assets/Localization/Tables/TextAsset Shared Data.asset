@@ -15,33 +15,29 @@ MonoBehaviour:
   m_TableCollectionName: TextAsset
   m_TableCollectionNameGuidString: e490718cef5024b4fb4666f4b05202de
   m_Entries:
-  - m_Id: 1912922112
+  - m_Id: 101272078573568
     m_Key: Assets/Assets/Documents/Test
-    m_Metadata:
-      m_Items: []
-  - m_Id: 100609860886528
-    m_Key: New Entry
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items:
-    - rid: 6603626342756909090
+    - rid: 6603626349209583651
   m_KeyGenerator:
-    rid: 6603626342756909089
+    rid: 6603626349209583652
   references:
     version: 2
     RefIds:
-    - rid: 6603626342756909089
-      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
-      data:
-        m_CustomEpoch: 1633678635254
-    - rid: 6603626342756909090
+    - rid: 6603626349209583651
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
-        - m_KeyId: 1912922112
+        - m_KeyId: 101272078573568
           m_TableCodes:
           - en
           - fil
         m_TypeString: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+    - rid: 6603626349209583652
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1633678635254

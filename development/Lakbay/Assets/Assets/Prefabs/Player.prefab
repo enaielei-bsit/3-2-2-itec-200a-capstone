@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7bb13335264a48a66d2bd55ec2cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
   slide:
-    _speed: 0
+    _speed: 30
+    _distance: 4
     _step:
-      _min: 0
+      _min: -1
       _value: 0
-      _max: 0
+      _max: 1
 --- !u!1001 &4787153263166008861
 PrefabInstance:
   m_ObjectHideFlags: 0
