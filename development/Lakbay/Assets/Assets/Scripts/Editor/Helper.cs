@@ -179,11 +179,12 @@ namespace Ph.CoDe_A.Lakbay {
             var assetType = type;
             var atc = LocalizationEditorSettings.GetAssetTableCollection(assetType.Name);
             if(atc){
-                AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(atc));
+                ClearAll(atc);
+            } else {
+                atc = LocalizationEditorSettings.CreateAssetTableCollection(
+                    assetType.Name, LocalizationAssetsPath + "/Tables"
+                );
             }
-            atc = LocalizationEditorSettings.CreateAssetTableCollection(
-                assetType.Name, LocalizationAssetsPath + "/Tables"
-            );
             var assetPaths = GetAssetPaths(type, excludedExtensions);
 
             foreach(var path in assetPaths) {
@@ -224,6 +225,29 @@ namespace Ph.CoDe_A.Lakbay {
         public static void AddressAndLocalizeAssets() {
             MarkAssetsAsAddressables();
             LocalizeAssets();
+        }
+
+        // Source: https://forum.unity.com/threads/how-to-clear-all-the-entries-from-an-assettablecollection-using-the-api.1180174/#post-7556974
+        public static void ClearAll(AssetTableCollection assetTableCollection) {
+            var collection = assetTableCollection;
+            var tables = collection.AssetTables.ToArray();
+            foreach(var table in tables) {
+                var tableEntries = table.Values.ToArray();
+                foreach(var tableEntry in tableEntries) {
+                    // Remove the asset from Addressables
+                    if (!string.IsNullOrEmpty(tableEntry.Guid)) {
+                        collection.RemoveAssetFromTable(table, tableEntry.KeyId);
+                    }
+                }
+        
+                // Clear all entries
+                table.Clear();
+                EditorUtility.SetDirty(table);
+            }
+        
+            // Clear all keys
+            collection.SharedData.Entries.Clear();
+            EditorUtility.SetDirty(collection.SharedData);
         }
     }
 }
