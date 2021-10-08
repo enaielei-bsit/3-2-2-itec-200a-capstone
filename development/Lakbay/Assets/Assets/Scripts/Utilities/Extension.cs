@@ -104,5 +104,36 @@ namespace Utilities {
             if(array.Length == 0) return default;
             return array[UnityEngine.Random.Range(0, array.Length)];
         }
+
+        // GameObject
+        public static bool EnsureComponent(
+            this GameObject gameObject, System.Type type, out Component component) {
+            component = gameObject.GetComponent(type);
+            if(!component) {
+                component = gameObject.AddComponent(type);
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool EnsureComponent(
+            this GameObject gameObject, System.Type type) {
+            return gameObject.EnsureComponent(type, out var comp);
+        }
+
+        public static bool EnsureComponent<T>(
+            this GameObject gameObject, out T component
+        ) where T : Component {
+            bool ensured = gameObject.EnsureComponent(typeof(T), out var comp);
+            component = (T) comp;
+            return ensured;
+        }
+
+        public static bool EnsureComponent<T>(
+            this GameObject gameObject
+        ) where T : Component {
+            return gameObject.EnsureComponent<T>(out var comp);
+        }
     }
 }

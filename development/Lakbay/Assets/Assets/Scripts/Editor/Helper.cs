@@ -173,32 +173,30 @@ namespace Ph.CoDe_A.Lakbay {
         }
 
         private static void _LocalizeAssets(System.Type type, params string[] excludedExtensions) {
+            var localeCodes = LocalizationEditorSettings.GetLocales().ToCodes();
+            var codes = localeCodes.Select(
+                (c) => c.ToLower());
             var assetType = type;
             var atc = LocalizationEditorSettings.GetAssetTableCollection(assetType.Name);
+            if(atc){
+                AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(atc));
+            }
+            atc = LocalizationEditorSettings.CreateAssetTableCollection(
+                assetType.Name, LocalizationAssetsPath + "/Tables"
+            );
             var assetPaths = GetAssetPaths(type, excludedExtensions);
 
             foreach(var path in assetPaths) {
                 var asset = AssetDatabase.LoadAssetAtPath(path, assetType);
                 var paths = path.Split('/').ToList();
                 paths.Pop(paths.Count - 1);
-                var localeCodes = LocalizationEditorSettings.GetLocales().ToCodes();
 
                 string code = asset.name.Humanize().Split(" ").Last();
                 string name = asset.name.TrimEnd(code);
                 name = name.TrimEnd(' ', '-', '_');
-                bool inCodes = localeCodes.Select(
-                    (c) => c.ToLower()).Contains(code.ToLower());
-
-                Debug.Log(code);
-                foreach(var c in localeCodes) Debug.Log(c);
-                Debug.Log(inCodes);
+                bool inCodes = codes.Contains(code.ToLower());
 
                 if(asset && inCodes) {
-                    if(!atc)
-                        atc = LocalizationEditorSettings.CreateAssetTableCollection(
-                            assetType.Name, LocalizationAssetsPath + "/Tables"
-                        );
-
                     EditorUtility.DisplayProgressBar(
                         "Localize Assets",
                         $"Localizing Assets ({assetType.Name})...",
@@ -208,7 +206,7 @@ namespace Ph.CoDe_A.Lakbay {
                     paths.Add(name);
                     string key = paths.Join("/");
                     atc.AddAssetToTable(
-                        atc.GetTable(new LocaleIdentifier(code)) as AssetTable,
+                        atc.GetTable(new LocaleIdentifier(code.ToLower())) as AssetTable,
                         key,
                         asset);
                 }
@@ -220,6 +218,12 @@ namespace Ph.CoDe_A.Lakbay {
 
         private static void _LocalizeAssets<T>(params string[] excludedExtensions) where T : UnityEngine.Object {
             _LocalizeAssets(typeof(T), excludedExtensions);
+        }
+
+        [MenuItem("Game/Address and Localize Assets")]
+        public static void AddressAndLocalizeAssets() {
+            MarkAssetsAsAddressables();
+            LocalizeAssets();
         }
     }
 }
