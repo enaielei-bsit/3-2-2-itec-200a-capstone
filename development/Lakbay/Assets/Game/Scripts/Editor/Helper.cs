@@ -71,7 +71,9 @@ namespace Ph.CoDe_A.Lakbay {
         public static void MarkAssetsAsAddressables() {
             foreach(var type in AssetTypes)
                 _MarkAssetsAsAddressables(type,
-                    ExcludedAssetExtensions[type.Name]);
+                    ExcludedAssetExtensions.ContainsKey(type.Name)
+                    ? ExcludedAssetExtensions[type.Name]
+                    : new string[] {});
         }
 
         private static void _MarkAssetsAsAddressables(Type type,
@@ -120,7 +122,9 @@ namespace Ph.CoDe_A.Lakbay {
         public static void LocalizeAssets() {
             foreach(var type in AssetTypes)
                 _LocalizeAssets(type,
-                    ExcludedAssetExtensions[type.Name]);
+                    ExcludedAssetExtensions.ContainsKey(type.Name)
+                    ? ExcludedAssetExtensions[type.Name]
+                    : new string[] {});
         }
 
         [MenuItem("Game/Build/Release")]
