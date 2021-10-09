@@ -17,6 +17,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     using Core;
+    using Pixelplacement;
 
     [System.Serializable]
     public struct Slide {
@@ -79,6 +80,29 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 ? -1 : (Input.GetKeyUp(KeyCode.RightArrow) ? 1 : 0);
             if(slideStep == -1) SlideLeft();
             if(slideStep == 1) SlideRight();
+        }
+        protected float initialLength;
+
+        public override void Start() {
+            base.Awake();
+            var spline = GameObject.FindObjectOfType<Utilities.Spline>();
+            initialLength = spline.gameObject.GetLastChild().transform.position.z;
+            spline.splineFollowers[0].percentage = 0.0f;
+        }
+        public override void FixedUpdate() {
+            base.FixedUpdate();
+            var spline = GameObject.FindObjectOfType<Utilities.Spline>();
+            if(spline.splineFollowers[0].percentage < 1.0f) {
+                spline.splineFollowers[0].percentage += (slide.speed / spline.Length) * Time.fixedDeltaTime;
+            } else {
+                float prevLength = spline.Length;
+                var last = spline.gameObject.GetLastChild();
+                var newLast = Instantiate(last, last.transform.parent);
+                newLast.name = last.name;
+                newLast.transform.Translate(Vector3.forward * initialLength);
+                spline.CalculateLength();
+                spline.splineFollowers[0].percentage = prevLength / spline.Length;
+            }
         }
     }
 }

@@ -135,5 +135,27 @@ namespace Utilities {
         ) where T : Component {
             return gameObject.EnsureComponent<T>(out var comp);
         }
+
+        public static GameObject[] GetChildren(this GameObject gameObject) {
+            var children = new List<GameObject>();
+            for(int i = 0; i < gameObject.transform.childCount; i++) {
+                children.Add(gameObject.transform.GetChild(i).gameObject);
+            }
+            return children.ToArray();
+        }
+
+        public static GameObject GetFirstChild(this GameObject gameObject) {
+            return gameObject.transform.GetChild(0).gameObject;
+        }
+
+        public static GameObject GetLastChild(this GameObject gameObject) {
+            return gameObject.transform.GetChild(
+                gameObject.transform.childCount - 1
+            ).gameObject;
+        }
+
+        public static bool IsEmpty(this GameObject gameObject) {
+            return gameObject.transform.childCount == 0;
+        }
     }
 }
