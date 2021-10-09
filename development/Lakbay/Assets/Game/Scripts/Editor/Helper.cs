@@ -28,7 +28,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay {
     public static class Helper {
-        public const string GameAssetsPath = "Assets/Game/Assets";
+        public const string GameAssetsPath = "Assets/Game";
         public const string LocalizationAssetsPath = GameAssetsPath + "/Localization";
         public const string BuildPath = "Build";
         public static readonly Dictionary<string, string[]> ExcludedAssetExtensions
