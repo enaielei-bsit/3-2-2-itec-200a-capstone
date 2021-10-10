@@ -17,18 +17,12 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
-    public class Base : MonoBehaviour {
+    public abstract class Base : MonoBehaviour {
         public float timeScale = 1.0f;
 
-        public virtual void Start() {
-            this.Run(
-                20.0f,
-                onProgress: (d, e) => {
-                    printLog(e, e / d);
-                    return Time.deltaTime * timeScale;
-                }
-            );
-        }
+        public virtual void Awake() {}
+
+        public virtual void Start() {}
 
         public virtual void Update() {}
 

@@ -102,7 +102,7 @@ namespace Utilities {
         }
 
         // MonoBehaviour
-        public static void Run(
+        public static Coroutine Run(
             this MonoBehaviour mono,
             ConditionalRunCondition condition=default,
             ConditionalRunOnStart onStart=default,
@@ -110,12 +110,12 @@ namespace Utilities {
             ConditionalRunOnFinish onFinish=default,
             bool fixedUpdate=false
         ) {
-            mono.StartCoroutine(Helper.Run(
+            return mono.StartCoroutine(Helper.Run(
                 condition, onStart, onProgress, onFinish, fixedUpdate
             ));
         }
 
-        public static void Run(
+        public static Coroutine Run(
             this MonoBehaviour mono,
             float duration,
             TimedRunOnStart onStart=default,
@@ -123,18 +123,18 @@ namespace Utilities {
             TimedRunOnFinish onFinish=default,
             bool fixedUpdate=false
         ) {
-            mono.StartCoroutine(Helper.Run(
+            return mono.StartCoroutine(Helper.Run(
                 duration, onStart, onProgress, onFinish, fixedUpdate
             ));
         }
 
-        public static void Run(
+        public static Coroutine Run(
             this MonoBehaviour mono,
             ConditionalRunOnStart onStart=default,
             ConditionalRunOnProgress onProgress=default,
             bool fixedUpdate=false
         ) {
-            mono.StartCoroutine(Helper.Run(
+            return mono.StartCoroutine(Helper.Run(
                 onStart,
                 onProgress,
                 fixedUpdate
