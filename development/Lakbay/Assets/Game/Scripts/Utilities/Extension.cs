@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.UI;
+using static Utilities.Helper;
 
 namespace Utilities {
     public static class Extension {
@@ -98,6 +99,46 @@ namespace Utilities {
             if(gameObject.IsEmpty()) return null;
             return gameObject.transform.GetChild(
                 gameObject.transform.childCount - 1).gameObject;
+        }
+
+        // MonoBehaviour
+        public static void Run(
+            this MonoBehaviour mono,
+            ConditionalRunCondition condition=default,
+            ConditionalRunOnStart onStart=default,
+            ConditionalRunOnProgress onProgress=default,
+            ConditionalRunOnFinish onFinish=default,
+            bool fixedUpdate=false
+        ) {
+            mono.StartCoroutine(Helper.Run(
+                condition, onStart, onProgress, onFinish, fixedUpdate
+            ));
+        }
+
+        public static void Run(
+            this MonoBehaviour mono,
+            float duration,
+            TimedRunOnStart onStart=default,
+            TimedRunOnProgress onProgress=default,
+            TimedRunOnFinish onFinish=default,
+            bool fixedUpdate=false
+        ) {
+            mono.StartCoroutine(Helper.Run(
+                duration, onStart, onProgress, onFinish, fixedUpdate
+            ));
+        }
+
+        public static void Run(
+            this MonoBehaviour mono,
+            ConditionalRunOnStart onStart=default,
+            ConditionalRunOnProgress onProgress=default,
+            bool fixedUpdate=false
+        ) {
+            mono.StartCoroutine(Helper.Run(
+                onStart,
+                onProgress,
+                fixedUpdate
+            ));
         }
     }
 }
