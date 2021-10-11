@@ -101,6 +101,22 @@ namespace Utilities {
                 gameObject.transform.childCount - 1).gameObject;
         }
 
+        public static void DestroyChildren(
+            this GameObject gameObject, float time=0.0f) {
+            var children = gameObject.Children();
+            foreach(var child in children) {
+                GameObject.Destroy(child, time);
+            }
+        }
+
+        public static void DestroyChildrenImmediately(
+            this GameObject gameObject, bool allowDestroyingAssets=false) {
+            var children = gameObject.Children();
+            foreach(var child in children) {
+                GameObject.DestroyImmediate(child, allowDestroyingAssets);
+            }
+        }
+
         // MonoBehaviour
         public static Coroutine Run(
             this MonoBehaviour mono,

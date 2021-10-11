@@ -17,4 +17,42 @@ using UnityEngine.UI;
 namespace Utilities {
     public enum Axis {X, Y, Z}
     public enum AxisDirection {Negative=-1, Zero=0, Positive=1}
+
+    [Serializable]
+    public struct AxesDirection3 {
+        public static AxesDirection3 positive => new AxesDirection3(
+            AxisDirection.Positive,
+            AxisDirection.Positive,
+            AxisDirection.Positive
+        );
+
+        public AxisDirection x;
+        public AxisDirection y;
+        public AxisDirection z;
+
+        public AxesDirection3(AxisDirection x, AxisDirection y, AxisDirection z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        public AxesDirection3(AxisDirection x, AxisDirection y)
+            : this(x, y, AxisDirection.Zero) {}
+    }
+
+    [Serializable]
+    public struct AxesDirection2 {
+        public static AxesDirection2 positive => new AxesDirection2(
+            AxisDirection.Positive,
+            AxisDirection.Positive
+        );
+
+        public AxisDirection x;
+        public AxisDirection y;
+
+        public AxesDirection2(AxisDirection x, AxisDirection y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 }

@@ -48,6 +48,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void OnTriggerExit() {}
 
+        public virtual void OnValidate() {}
+
         public static void print(params object[] objs) {
             MonoBehaviour.print(objs.Join(", "));
         }
