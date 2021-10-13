@@ -40,13 +40,13 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void OnBecameVisible() {}
 
-        public virtual void OnCollisionEnter() {}
+        public virtual void OnCollisionEnter(Collision collision) {}
 
-        public virtual void OnCollisionExit() {}
+        public virtual void OnCollisionExit(Collision collision) {}
 
-        public virtual void OnTriggerEnter() {}
+        public virtual void OnTriggerEnter(Collider collider) {}
 
-        public virtual void OnTriggerExit() {}
+        public virtual void OnTriggerExit(Collider collider) {}
 
         public virtual void OnValidate() {}
 

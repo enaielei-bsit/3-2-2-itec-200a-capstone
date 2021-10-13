@@ -37,10 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Game\Scripts\Core\Entity.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawner.cs" />
      <Compile Include="Assets\URP\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Helper.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Slide.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Matrix.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\MatrixCellHandler.cs" />
      <Compile Include="Assets\URP\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawn.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Axis.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\RangedInt.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Player.cs" />
@@ -49,10 +53,10 @@
      <Compile Include="Assets\Game\Scripts\Core\Widget.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Travel.cs" />
      <Compile Include="Assets\Game\Scripts\Core\Base.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Matrix.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\MatrixCellHandler.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawn.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawner.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\SkillSpawn.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\MissileSpawn.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\StopwatchSpawn.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\ShieldSpawn.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -290,10 +294,10 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Humanizer">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Assets\Packages\Humanizer.Core.2.11.10\lib\netstandard2.0\Humanizer.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Assets\Packages\Humanizer.Core.2.11.10\lib\netstandard2.0\Humanizer.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -641,103 +645,103 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.20f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.CacheServer">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Addressables">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Localization">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ResourceManager">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Localization.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Addressables.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+        <HintPath>C:\Users\nommel-isanar\Documents\GitHub\3-2-2-itec-200a-capstone\development\Lakbay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

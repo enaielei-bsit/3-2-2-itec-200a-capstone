@@ -14,13 +14,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using Utilities;
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Spawner : MatrixCellHandler {
         public List<Spawn> spawns = new List<Spawn>();
 
-        public override void OnPopulate(GameObject cell, Vector2 index) {
+        public override void OnPopulate(
+            Matrix matrix,
+            GameObject cell, Vector2Int index, float chance) {
+            var spawns = this.spawns.Shuffle();
+            // printLog(index, chance);
             foreach(var spawn in spawns) {
-                if(spawn.OnSpawn(cell, index)) {
+                if(spawn.OnSpawn(matrix, cell, index, chance)) {
                     var newSpawn = Instantiate(spawn, cell.transform);
                 }
             }

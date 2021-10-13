@@ -18,11 +18,12 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Matrix : Core.Entity {
+        public bool randomPopulation = true;
         public GameObject root;
         public Axis orientation = Axis.Y;
         public AxesDirection2 direction = AxesDirection2.positive;
         public Vector2 anchor = new Vector2(0.5f, 0.5f);
-        public Vector2 count = new Vector2(3, 3);
+        public Vector2Int count = new Vector2Int(3, 3);
         public Vector2 cellSize = new Vector2(1, 1);
         public List<MatrixCellHandler> cellHandlers = new List<MatrixCellHandler>();
 
@@ -37,22 +38,51 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 if(Application.isPlaying) root.DestroyChildren();
                 else root.DestroyChildrenImmediately();
 
-                for(int rowIndex = 0; rowIndex < count.y; rowIndex++) {
-                    var row = new GameObject($"Row_{rowIndex}");
+                var _rowIndices = Enumerable.Range(0, count.y);
+                var _cellIndices = Enumerable.Range(0, count.x);
+                GameObject row, cell;
+
+                // Pre-create the rows and columns.
+                foreach(int rowIndex in _rowIndices) {
+                    row = new GameObject($"Row_{rowIndex}");
                     row.transform.SetParent(root.transform);
                     row.transform.position = GetPosition(
                         new Vector2(-1, rowIndex)
                     );
 
-                    for(int cellIndex = 0; cellIndex < count.x; cellIndex++) {
-                        var cell = new GameObject($"Cell_{cellIndex}");
+                    foreach(int cellIndex in _cellIndices) {
+                        cell = new GameObject($"Cell_{cellIndex}");
                         cell.transform.SetParent(row.transform);
                         cell.transform.localPosition = GetPosition(
                             new Vector2(cellIndex, -1)
                         );
+                    }
+                }
+
+                // Call cellHandlers.
+                var rows = root.Children().ToList();
+                var rowIndices = _rowIndices.ToList();
+                while(rowIndices.Count > 0) {
+                    int rowIndex = 0;
+                    if(randomPopulation) rowIndex = rowIndices.PopRandomly();
+                    else rowIndex = rowIndices.Pop();
+
+                    var cellIndices = _cellIndices.ToList();
+                    while(cellIndices.Count > 0) {
+                        int cellIndex = 0;
+                        if(randomPopulation) cellIndex = cellIndices.PopRandomly();
+                        else cellIndex = cellIndices.Pop();
+
+                        float chance = UnityEngine.Random.value;
                         foreach(var cellHandler in cellHandlers) {
+                            var cell_ = root.transform
+                                .GetChild(rowIndex).GetChild(cellIndex).gameObject;
+                                
                             cellHandler.OnPopulate(
-                                cell, new Vector2(cellIndex, rowIndex));
+                                this, cell_,
+                                new Vector2Int(cellIndex, rowIndex),
+                                chance
+                            );
                         }
                     }
                 }
