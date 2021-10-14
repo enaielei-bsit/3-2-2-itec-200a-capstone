@@ -1,6 +1,6 @@
 /*
  * Date Created: Sunday, October 10, 2021 5:26 AM
- * Author: nommel-isanar <nommel.isanar.lavapie.amolat@gmail.com>
+ * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
  * 
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
@@ -115,6 +115,17 @@ namespace Utilities {
             foreach(var child in children) {
                 GameObject.DestroyImmediate(child, allowDestroyingAssets);
             }
+        }
+
+        public static Component EnsureComponent(this GameObject gameObject, Type type) {
+            var component = gameObject.GetComponent(type);
+            if(!component) component = gameObject.AddComponent(type);
+            return component;
+        }
+
+        public static T EnsureComponent<T>(this GameObject gameObject)
+            where T : Component {
+            return (T) gameObject.EnsureComponent(typeof(T));
         }
 
         // MonoBehaviour

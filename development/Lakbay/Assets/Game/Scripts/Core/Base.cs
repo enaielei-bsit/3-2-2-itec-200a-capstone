@@ -1,6 +1,6 @@
 /*
  * Date Created: Sunday, October 10, 2021 6:34 AM
- * Author: nommel-isanar <nommel.isanar.lavapie.amolat@gmail.com>
+ * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
  * 
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
@@ -18,7 +18,12 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public abstract class Base : MonoBehaviour {
-        public float timeScale = 1.0f;
+        [SerializeField]
+        protected float _timeScale = 1.0f;
+        public virtual float timeScale {
+            get => _timeScale;
+            set => _timeScale = value;
+        }
 
         public virtual void Awake() {}
 
@@ -56,7 +61,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public void printLog(params object[] objs) {
             if(objs.Length == 0) return;
-            objs[0] = $"[{name}.{GetType().Name}]: " + objs[0].ToString();
+            objs[0] = $"[{name}.{GetType().Name}]: " + objs[0] != null ? objs[0].ToString() : "";
             print(objs);
         }
     }
