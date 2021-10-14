@@ -40,19 +40,26 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                     newBuff?.OnLinger(this, duration, e);
                     return Time.deltaTime * timeScale;
                 },
-                onFinish: (e) => Remove(newBuff?.GetType())
+                onFinish: (e) => Remove(newBuff)
             );
         }
 
         public virtual void Remove(Type type) {
             var buffs = _buffs.Keys.Where((b) => b.GetType() == type).ToArray();
             foreach(var buff in buffs) {
-                var coroutine = _buffs[buff];
-                StopCoroutine(coroutine);
-                _buffs.Remove(buff);
-                buff.OnRemove(this);
-                Destroy(buff.gameObject);
+                Remove(buff);
             }
+        }
+
+        public virtual void Remove<T>() where T : Buff  => Remove(typeof(T));
+
+        public virtual void Remove(Buff buff) {
+            if(!_buffs.ContainsKey(buff)) return;
+            var coroutine = _buffs[buff];
+            StopCoroutine(coroutine);
+            _buffs.Remove(buff);
+            buff.OnRemove(this);
+            Destroy(buff.gameObject);
         }
 
         public override void Update() {
