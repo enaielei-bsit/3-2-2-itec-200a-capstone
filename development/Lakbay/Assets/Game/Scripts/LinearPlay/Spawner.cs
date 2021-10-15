@@ -15,6 +15,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 using Utilities;
+
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Spawner : MatrixCellHandler {
         public List<Spawn> spawns = new List<Spawn>();

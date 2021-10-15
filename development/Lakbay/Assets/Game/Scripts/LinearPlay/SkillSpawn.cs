@@ -24,14 +24,14 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
             var can = base.OnSpawn(matrix, cell, index, chance);
             if(can) {
-                var skillSpawn = cell.GetComponentInChildren<SkillSpawn>();
-                can = skillSpawn == null;
+                var spawn = cell.GetComponentInChildren<Spawn>();
+                can = spawn == null;
 
-                if(can) {
-                    var sp = cell.transform.parent
-                        .GetComponentInChildren(GetType());
-                    can = sp == null;
-                }
+                // if(can) {
+                //     var sp = cell.transform.parent
+                //         .GetComponentInChildren(GetType());
+                //     can = sp == null;
+                // }
             }
             return can;
         }
@@ -40,7 +40,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             base.OnTriggerEnter(collider);
             var player = collider.GetComponentInParent<Player>();
             
-            if(player) {
+            if(player && !player.GetComponentInParent<Buff>()) {
                 if(!triggered) {
                     triggered = true;
                     OnTrigger(player);

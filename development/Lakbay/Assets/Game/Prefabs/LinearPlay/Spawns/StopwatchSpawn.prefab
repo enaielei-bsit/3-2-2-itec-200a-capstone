@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6a9d5a7e8fd9e41899ec57ebe375d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1
+  _timeScale: 1
   chance: 1
   row:
-    indexInterval: 5
+    indexInterval: 15
     maxCount: -1
     maxCountType: 2
   column:
     indexInterval: 1
     maxCount: 0
     maxCountType: 0
+  triggered: 0
 --- !u!1001 &3874308608153229309
 PrefabInstance:
   m_ObjectHideFlags: 0

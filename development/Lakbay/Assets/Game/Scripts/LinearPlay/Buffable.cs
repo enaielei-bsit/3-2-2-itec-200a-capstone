@@ -20,8 +20,9 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Buffable : Core.Entity {
         protected readonly Dictionary<Buff, Coroutine> _buffs =
             new Dictionary<Buff, Coroutine>();
-        public Buff[] buffs => _buffs.Keys.ToArray();
+        public virtual Buff[] buffs => _buffs.Keys.ToArray();
         public GameObject root;
+        public List<MaterialReference> mainMaterials = new List<MaterialReference>();
 
         public override void Awake() {
             base.Awake();

@@ -39,8 +39,10 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\UserInterface.cs" />
      <Compile Include="Assets\Game\Scripts\Core\TextWidget.cs" />
      <Compile Include="Assets\Game\Scripts\Core\ImageWidget.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\StopwatchBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\ShieldBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\ObstacleSpawn.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\QuestionSpawn.cs" />
      <Compile Include="Assets\Game\Scripts\Core\Entity.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawner.cs" />
      <Compile Include="Assets\URP\Scripts\SimpleCameraController.cs" />
@@ -53,9 +55,12 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\MatrixCellHandler.cs" />
      <Compile Include="Assets\URP\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawn.cs" />
+     <Compile Include="Assets\Game\Scripts\Utilities\MaterialReference.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Axis.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\MissileSpawn.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\RangedInt.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Missile.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\MissileBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Player.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Extension.cs" />
@@ -65,9 +70,7 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\Widgets\SkillWidget.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Travel.cs" />
      <Compile Include="Assets\Game\Scripts\Core\Base.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\MissileBuff.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\StopwatchBuff.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Missile.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Skill.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
