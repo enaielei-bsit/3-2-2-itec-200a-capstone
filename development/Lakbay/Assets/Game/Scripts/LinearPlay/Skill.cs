@@ -15,11 +15,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
-    [CreateAssetMenu(
-        fileName="Skill",
-        menuName="Game/ScriptableObjects/Skill"
-    )]
-    public class Skill : ScriptableObject {
+    [Serializable]
+    public class Skill {
         public Sprite image;
         public string label = "";
         public string description = "";

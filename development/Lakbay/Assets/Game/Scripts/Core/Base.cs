@@ -61,7 +61,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public void printLog(params object[] objs) {
             if(objs.Length == 0) return;
-            objs[0] = $"[{name}.{GetType().Name}]: " + objs[0] != null ? objs[0].ToString() : "";
+            objs[0] = $"[{name}.{GetType().Name}]: " + (objs[0] != null ? objs[0].ToString() : "");
+            // objs[0] = null;
             print(objs);
         }
     }

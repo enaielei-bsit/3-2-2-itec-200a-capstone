@@ -27,11 +27,14 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 var spawn = cell.GetComponentInChildren<Spawn>();
                 can = spawn == null;
 
-                // if(can) {
-                //     var sp = cell.transform.parent
-                //         .GetComponentInChildren(GetType());
-                //     can = sp == null;
-                // }
+                if(can) {
+                    var sp = cell.transform.parent
+                        .GetComponentInChildren(GetType());
+                    bool empty = cell.transform.parent.gameObject.Children()
+                        .Where((g) => g.transform.childCount == 0).Count() > 1;
+                    
+                    can = (sp == null) && empty;
+                }
             }
             return can;
         }
