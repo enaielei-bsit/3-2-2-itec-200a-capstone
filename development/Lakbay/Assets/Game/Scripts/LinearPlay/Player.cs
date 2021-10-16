@@ -20,19 +20,20 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Player : Core.Entity {
-        public List<Skill> skills = new List<Skill>();
         public override float timeScale {
             get => base.timeScale;
             set {
                 if(travel) travel.timeScale = value;
                 if(slide) slide.timeScale = value;
                 if(buffable) buffable.timeScale = value;
+                if(caster) caster.timeScale = value;
                 base.timeScale = value;
             }
         }
         public virtual Travel travel => GetComponentInChildren<Travel>();
         public virtual Slide slide => GetComponentInChildren<Slide>();
         public virtual Buffable buffable => GetComponentInChildren<Buffable>();
+        public virtual Caster caster => GetComponentInChildren<Caster>();
 
         public virtual void StartTravel() => travel.Perform(true);
 
@@ -51,14 +52,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         public virtual void SlideLeft() => slide?.Perform(-1);
 
         public virtual void SlideRight() => slide?.Perform(1);
-
-        public virtual Skill GetSkillWithBuff(Type type) {
-            var skill = skills.Find((s) => s.buff?.GetType() == type);
-            return skill;
-        }
-
-        public virtual Skill GetSkillWithBuff<T>() where T : Buff
-            => GetSkillWithBuff(typeof(T));
 
         public override void Update() {
             base.Update();

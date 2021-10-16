@@ -18,16 +18,12 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class StopwatchBuff : Buff {
-        protected Volume _effect;
 
         public float speedFactor = 0.5f;
-        public Volume effect;
 
         public override void OnAdd(Buffable buffable, float duration) {
             var player = buffable.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale *= speedFactor;
-            var ui = FindObjectOfType<UserInterface>();
-            if(ui && effect) _effect = Instantiate(effect, ui.transform);
         }
 
         public override void OnLinger(
@@ -38,7 +34,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         public override void OnRemove(Buffable buffable) {
             var player = buffable.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale /= speedFactor;
-            if(_effect) Destroy(_effect.gameObject);
         }
     }
 }

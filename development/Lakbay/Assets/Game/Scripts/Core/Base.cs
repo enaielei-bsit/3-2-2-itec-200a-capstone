@@ -18,9 +18,8 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public abstract class Base : MonoBehaviour {
-        [SerializeField]
         protected float _timeScale = 1.0f;
-        
+
         public virtual float timeScale {
             get => _timeScale;
             set => _timeScale = value;

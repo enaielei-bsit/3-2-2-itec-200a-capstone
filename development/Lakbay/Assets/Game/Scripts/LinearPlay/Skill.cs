@@ -15,8 +15,11 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
-    [Serializable]
-    public class Skill {
+    [CreateAssetMenu(
+        fileName="Skill",
+        menuName="Game/LinearPlay/Skill"
+    )]
+    public class Skill : ScriptableObject {
         public Sprite image;
         public string label = "";
         public string description = "";
@@ -66,7 +69,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         public Skill(string label, string description, Buff buff)
             : this(label, description, -1, buff) {}
 
-        public void Cast(Buffable buffable) {
+        public virtual void Cast(Buffable buffable) {
             if(instanced && instances <= 0) return;
             instances--;
             buffable.Add(buff, duration, !stackable);

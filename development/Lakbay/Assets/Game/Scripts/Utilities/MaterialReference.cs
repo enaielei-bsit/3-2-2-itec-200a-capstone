@@ -16,13 +16,17 @@ using UnityEngine.UI;
 
 namespace Utilities {
     [Serializable]
-    public struct MaterialReference {
+    public class MaterialReference {
         public int index;
         public Renderer renderer;
 
         public Material material {
             get => materials[index];
-            set => materials[index] = value;
+            set {
+                var materials = this.materials;
+                materials[index] = value;
+                this.materials = materials;
+            }
         }
         public Material[] materials {
             get => renderer.materials;

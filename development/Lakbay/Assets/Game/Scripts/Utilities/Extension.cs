@@ -69,6 +69,24 @@ namespace Utilities {
             return obj.Either(out var value, values);
         }
 
+        public static Tuple<bool, T1, T1> Setter<T0, T1>(
+            this T0 obj, ref T1 old, T1 @new=default, Action<T0, T1, T1> @event=null) {
+            Tuple<bool, T1, T1> rv = new Tuple<bool, T1, T1>(
+                !old.Equals(@new), old, @new);
+            if(rv.Item1) @event?.Invoke(obj, @old, @new);
+            return rv;
+        }
+
+        public static Tuple<bool, T1, T1> Setter<T0, T1>(
+            this T0 obj, ref T1 old, T1 @new=default, Action<T1, T1> @event=null) {
+            return obj.Setter(ref old, @new, (t, o, n) => @event?.Invoke(o, n));
+        }
+
+        public static Tuple<bool, T1, T1> Setter<T0, T1>(
+            this T0 obj, ref T1 old, T1 @new=default, UnityEvent<T1> @event=null) {
+            return obj.Setter(ref old, @new, (t, o, n) => @event?.Invoke(n));
+        }
+
         // IEnumerable
         public static T PickRandomly<T>(this IEnumerable<T> enumerable) {
             var array = enumerable.ToArray();

@@ -60,7 +60,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
         public override void OnTrigger(Player player) {
             base.OnTrigger(player);
-            var skill = player.GetSkillWithBuff(buffType);
+            var skill = player.caster.GetSkillWithBuff(buffType);
             if(skill != null && skill.buff) {
                 if(skill.instanced) {
                     skill.instances += 1;

@@ -18,7 +18,9 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class ShieldBuff : Buff {
-        protected readonly List<Color> _materialColors = new List<Color>();
+        protected readonly List<Material> _materials = new List<Material>();
+
+        public Material effect;
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -30,10 +32,11 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         }
 
         public override void OnAdd(Buffable buffable, float duration) {
-            _materialColors.Clear();
-            foreach(var material in buffable.mainMaterials) {
-                _materialColors.Add(material.material.color);
-                // material.material.color = Color.red;
+            _materials.Clear();
+            for(int i = 0; i < buffable.mainMaterials.Count; i++) {
+                var material = buffable.mainMaterials[i];
+                _materials.Add(material.material);
+                material.material = effect;
             }
         }
 
@@ -42,8 +45,10 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         }
 
         public override void OnRemove(Buffable buffable) {
-            foreach(var material in buffable.mainMaterials) {
-                material.material.color = _materialColors.Pop(0);
+            for(int i = 0; i < buffable.mainMaterials.Count; i++) {
+                if(_materials.Count == 0) break;
+                var material = buffable.mainMaterials[i];
+                material.material = _materials.Pop(0);
             }
         }
     }

@@ -17,24 +17,42 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
+    [ExecuteInEditMode]
     public class SkillWidget : Core.Widget {
+        protected Skill _skill;
+
         public Image image;
         public TextMeshProUGUI label;
         public TextMeshProUGUI description;
+        public TextMeshProUGUI instances;
         public virtual Button button => GetComponentInChildren<Button>();
 
-        public virtual void Set(
-            Sprite image, string label, string description
-        ) {
-            if(this.image) this.image.sprite = image;
-            this.label?.SetText(label);
-            this.description?.SetText(description);
+        public override void Update() {
+            base.Update();
+            if(_skill != null) {
+                if(image && image.sprite != _skill.image)
+                    image.sprite = _skill.image; 
+
+                if(label && label.text != _skill.label)
+                    label.SetText(_skill.label); 
+
+                if(description && description.text != _skill.description)
+                    description.SetText(_skill.description); 
+
+                if(_skill.instances >= 0) {
+                    string inst = Mathf.Clamp(_skill.instances, 0, 99).ToString();
+                    if(instances && instances.text != inst)
+                        instances.SetText(inst);
+                } 
+            }
         }
 
         public virtual void Set(Buffable buffable, Skill skill) {
-            Set(skill.image, skill.label, skill.description);
-            button?.onClick.RemoveAllListeners();
-            button?.onClick.AddListener(() => skill.Cast(buffable));
+            _skill = skill;
+            if(Application.isPlaying) {
+                button?.onClick.RemoveAllListeners();
+                button?.onClick.AddListener(() => skill.Cast(buffable));
+            }
         }
     }
 }

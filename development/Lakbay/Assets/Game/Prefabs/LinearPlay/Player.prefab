@@ -92,28 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeScale: 1
-  skills:
-  - image: {fileID: 0}
-    label: Shield
-    description: 
-    stackable: 0
-    instances: 0
-    duration: 3
-    buff: {fileID: -4531518117709843922, guid: 12b0a7ddbcdb73f42a07dcf3d173410f, type: 3}
-  - image: {fileID: 0}
-    label: Stopwatch
-    description: 
-    stackable: 0
-    instances: 0
-    duration: 3
-    buff: {fileID: 17054322598958412, guid: 5df8995cad144b941be61a32f028e331, type: 3}
-  - image: {fileID: 0}
-    label: Missile
-    description: 
-    stackable: 1
-    instances: 0
-    duration: 5
-    buff: {fileID: 4502410517476018491, guid: 8f4431c7bc6cdc24d9b545046a40fd44, type: 3}
 --- !u!114 &1914214709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +147,23 @@ MonoBehaviour:
   mainMaterials:
   - index: 0
     renderer: {fileID: 4624696086099569916}
+--- !u!114 &3400678984298620729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306587091937095692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22978abcf518b14782ab345e964fedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeScale: 1
+  _skills:
+  - {fileID: 11400000, guid: 7ee27515d23ff4549a25f143b0d7e6ae, type: 2}
+  - {fileID: 11400000, guid: 0bf4280b74317b64fb811401bd894c14, type: 2}
+  - {fileID: 11400000, guid: b33db7b280c95b147a1f9510554a9508, type: 2}
 --- !u!54 &1604448212
 Rigidbody:
   m_ObjectHideFlags: 0
