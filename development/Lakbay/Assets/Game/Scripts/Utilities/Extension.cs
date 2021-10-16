@@ -18,6 +18,25 @@ using static Utilities.Helper;
 
 namespace Utilities {
     public static class Extension {
+        // float
+        public static bool Within(this float value, float min, float max) {
+            return value >= min && value <= max;
+        }
+
+        public static bool Between(this float value, float min, float max) {
+            return value > min && value < max;
+        }
+
+        // int
+        public static bool Within(this int value, int min, int max) {
+            return ((float) value).Within(min, max);
+        }
+
+        public static bool Between(this int value, int min, int max) {
+            return ((float) value).Between(min, max);
+        }
+
+
         // string
         public static string TrimEnd(this string str, string substring) {
             if(str.EndsWith(substring)) return str.Substring(
@@ -29,6 +48,25 @@ namespace Utilities {
         public static string CopyToClipboard(this string str) {
             GUIUtility.systemCopyBuffer = str;
             return str;
+        }
+
+        // T
+        public static bool Either<T>(
+            this T obj, out T value, params T[] values) {
+            value = default;
+            foreach(var value_ in values) {
+                if(obj.Equals(value_)) {
+                    value = value_;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool Either<T>(
+            this T obj, params T[] values) {
+            return obj.Either(out var value, values);
         }
 
         // IEnumerable

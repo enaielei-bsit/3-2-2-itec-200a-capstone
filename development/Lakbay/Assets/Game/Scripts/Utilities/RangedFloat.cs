@@ -44,6 +44,9 @@ namespace Utilities {
                 this.value = this.value;        
             }
         }
+        public bool isMin => value == min;
+        public bool isMax => value == max;
+        public bool set => isMin || isMax;
 
         public RangedFloat(float value, float min, float max) {
             _value = value;

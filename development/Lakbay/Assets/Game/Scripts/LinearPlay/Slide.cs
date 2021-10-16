@@ -27,6 +27,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         public float distance = 4.0f;
         public Axis axis = Axis.X;
         public RangedInt step = new RangedInt(0, -1, 1);
+        public Animator animator;
         public virtual bool performing => _performing;
 
         public override void Start() {
@@ -39,11 +40,22 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
             int axisIndex = (int) axis;
             int direction = step < 0 ? -1 : 1;
+
+            if((direction == -1 && this.step.isMin)
+                || (direction == 1 && this.step.isMax)) return;
+                
             var offset = axis == Axis.X ? Vector3.right
                 : (axis == Axis.Y ? Vector3.up : Vector3.forward);
             this.step.value += step;
-            float targetPos = origin + (
-                distance * this.step.value);
+            float targetDistance = distance * this.step.value;
+            float targetPos = origin + targetDistance;
+
+            if(animator) {
+                animator.SetFloat(
+                    "timeScale",
+                    (Mathf.Abs(targetPos - transform.position[axisIndex]) * 0.5f) * timeScale);
+                animator.SetTrigger(direction == -1 ? "left" : "right");
+            }
 
             this.Run(
                 (e) => transform.position[axisIndex] != targetPos,
