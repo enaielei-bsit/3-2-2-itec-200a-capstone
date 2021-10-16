@@ -20,6 +20,15 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class ShieldBuff : Buff {
         protected readonly List<Color> _materialColors = new List<Color>();
 
+        public override void OnTriggerEnter(Collider collider) {
+            base.OnTriggerEnter(collider);
+            var obstacle = collider.GetComponentInParent<Spawns.ObstacleSpawn>();
+            if(obstacle) {
+                obstacle.collided = true;
+                obstacle.Break();
+            }
+        }
+
         public override void OnAdd(Buffable buffable, float duration) {
             _materialColors.Clear();
             foreach(var material in buffable.mainMaterials) {
@@ -35,15 +44,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         public override void OnRemove(Buffable buffable) {
             foreach(var material in buffable.mainMaterials) {
                 material.material.color = _materialColors.Pop(0);
-            }
-        }
-
-        public override void OnTriggerEnter(Collider collider) {
-            base.OnTriggerEnter(collider);
-            var obstacle = collider.GetComponentInParent<Spawns.ObstacleSpawn>();
-            if(obstacle) {
-                obstacle.collided = true;
-                obstacle.Break();
             }
         }
     }

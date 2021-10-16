@@ -16,10 +16,10 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class StopwatchBuff : Buff {
-        public GameObject overlay;
-        public float speedFactor = 0.5f;
-
         protected GameObject _overlay;
+
+        public float speedFactor = 0.5f;
+        public GameObject overlay;
 
         public override void OnAdd(Buffable buffable, float duration) {
             var player = buffable.GetComponent<Player>();

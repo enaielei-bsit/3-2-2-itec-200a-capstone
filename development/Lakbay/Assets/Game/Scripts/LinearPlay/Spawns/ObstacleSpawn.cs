@@ -18,9 +18,20 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class ObstacleSpawn : Spawn {
-        public ParticleSystem destruction;
         public bool collided = false;
         public int safeRowCount = 5;
+        public ParticleSystem destruction;
+
+        public override void OnCollisionEnter(Collision collision) {
+            base.OnCollisionEnter(collision);
+            if(!collided) {
+                var player = collision.gameObject.GetComponentInParent<Player>();
+                if(player && !collision.gameObject.GetComponentInParent<Buff>()) {
+                    collided = true;
+                    OnCollision(player);
+                }
+            }
+        }
 
         public override bool OnSpawn(
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
@@ -33,17 +44,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
             can = can && index.y >= safeRowCount;
 
             return can;
-        }
-
-        public override void OnCollisionEnter(Collision collision) {
-            base.OnCollisionEnter(collision);
-            if(!collided) {
-                var player = collision.gameObject.GetComponentInParent<Player>();
-                if(player && !collision.gameObject.GetComponentInParent<Buff>()) {
-                    collided = true;
-                    OnCollision(player);
-                }
-            }
         }
 
         public virtual void OnCollision(Player player) {

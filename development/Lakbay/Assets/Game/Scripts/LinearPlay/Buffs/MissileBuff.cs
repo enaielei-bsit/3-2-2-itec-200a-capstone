@@ -16,9 +16,10 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class MissileBuff : Buff {
-        public Missile missile;
-        public float travelDistance = 200.0f;
         protected Missile _missile;
+
+        public float travelDistance = 200.0f;
+        public Missile missile;
 
         public override void OnAdd(Buffable buffable, float duration) {
             if(!missile) return;

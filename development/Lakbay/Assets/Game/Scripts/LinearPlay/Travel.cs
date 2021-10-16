@@ -18,13 +18,13 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Travel : Core.Entity {
+        protected Coroutine _coroutine;
+
         // Meter per Second
         public float speed = 30.0f;
         public Axis axis = Axis.Z;
         public AxisDirection axisDirection = AxisDirection.Positive;
-
         public virtual bool performing => _coroutine != null;
-        protected Coroutine _coroutine;
 
         public virtual void Perform(bool toggle) {
             if(toggle && !performing) {

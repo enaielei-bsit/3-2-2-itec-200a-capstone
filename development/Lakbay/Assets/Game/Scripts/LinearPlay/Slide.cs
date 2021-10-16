@@ -18,6 +18,8 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Slide : Core.Entity {
+        protected bool _performing;
+
         public float origin = 0.0f;
         // Meter per Second
         public float speed = 30.0f;
@@ -25,8 +27,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         public float distance = 4.0f;
         public Axis axis = Axis.X;
         public RangedInt step = new RangedInt(0, -1, 1);
-
-        protected bool _performing;
         public virtual bool performing => _performing;
 
         public override void Start() {

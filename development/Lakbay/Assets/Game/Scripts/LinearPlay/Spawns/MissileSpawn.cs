@@ -16,7 +16,6 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class MissileSpawn : SkillSpawn<Buffs.MissileBuff> {
-
         public override void OnTrigger(Player player) {
             base.OnTrigger(player);
         }

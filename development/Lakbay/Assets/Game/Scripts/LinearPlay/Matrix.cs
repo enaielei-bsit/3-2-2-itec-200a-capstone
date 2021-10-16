@@ -18,6 +18,10 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Matrix : Core.Entity {
+        protected virtual Vector2 size => new Vector2(
+            cellSize.x * count.x, cellSize.y * count.y
+        );
+
         public bool randomPopulation = true;
         public GameObject root;
         public Axis orientation = Axis.Y;
@@ -25,11 +29,9 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         public Vector2 anchor = new Vector2(0.5f, 0.5f);
         public Vector2Int count = new Vector2Int(3, 3);
         public Vector2 cellSize = new Vector2(1, 1);
-        public List<MatrixCellHandler> cellHandlers = new List<MatrixCellHandler>();
+        public List<MatrixCellHandler> cellHandlers =
+            new List<MatrixCellHandler>();
 
-        protected virtual Vector2 size => new Vector2(
-            cellSize.x * count.x, cellSize.y * count.y
-        );
         protected virtual Tuple<Axis, Axis> axes => GetAxes(orientation);
 
         [ContextMenu("Populate")]
@@ -70,13 +72,15 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                     var cellIndices = _cellIndices.ToList();
                     while(cellIndices.Count > 0) {
                         int cellIndex = 0;
-                        if(randomPopulation) cellIndex = cellIndices.PopRandomly();
+                        if(randomPopulation)
+                            cellIndex = cellIndices.PopRandomly();
                         else cellIndex = cellIndices.Pop();
 
                         float chance = UnityEngine.Random.value;
                         foreach(var cellHandler in cellHandlers) {
                             var cell_ = root.transform
-                                .GetChild(rowIndex).GetChild(cellIndex).gameObject;
+                                .GetChild(rowIndex)
+                                .GetChild(cellIndex).gameObject;
                                 
                             cellHandler.OnPopulate(
                                 this, cell_,

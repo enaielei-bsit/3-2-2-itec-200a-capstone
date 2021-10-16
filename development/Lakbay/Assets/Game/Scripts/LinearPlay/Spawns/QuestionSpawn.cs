@@ -20,6 +20,18 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class QuestionSpawn : Spawn {
         public bool triggered = false;
 
+        public override void OnTriggerEnter(Collider collider) {
+            base.OnTriggerEnter(collider);
+            var player = collider.GetComponentInParent<Player>();
+            
+            if(player && !player.GetComponentInParent<Buff>()) {
+                if(!triggered) {
+                    triggered = true;
+                    OnTrigger(player);
+                }
+            }
+        }
+
         public override bool OnSpawn(
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
             bool can = base.OnSpawn(matrix, cell, index, chance);
@@ -37,18 +49,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
             }
 
             return can;
-        }
-
-        public override void OnTriggerEnter(Collider collider) {
-            base.OnTriggerEnter(collider);
-            var player = collider.GetComponentInParent<Player>();
-            
-            if(player && !player.GetComponentInParent<Buff>()) {
-                if(!triggered) {
-                    triggered = true;
-                    OnTrigger(player);
-                }
-            }
         }
 
         public virtual void OnTrigger(Player player) {

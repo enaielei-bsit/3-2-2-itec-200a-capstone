@@ -86,7 +86,8 @@ namespace Utilities {
 
         public static GameObject[] Children(this GameObject gameObject) {
             if(gameObject.IsEmpty()) return new GameObject[] {};
-            return (from i in Enumerable.Range(0, gameObject.transform.childCount)
+            return (from i in Enumerable.Range(
+                0, gameObject.transform.childCount)
                 select gameObject.transform.GetChild(i).gameObject).ToArray();
         }
 
@@ -117,7 +118,8 @@ namespace Utilities {
             }
         }
 
-        public static Component EnsureComponent(this GameObject gameObject, Type type) {
+        public static Component EnsureComponent(
+            this GameObject gameObject, Type type) {
             var component = gameObject.GetComponent(type);
             if(!component) component = gameObject.AddComponent(type);
             return component;

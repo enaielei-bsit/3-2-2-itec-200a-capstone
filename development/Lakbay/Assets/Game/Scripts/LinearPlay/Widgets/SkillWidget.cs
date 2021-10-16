@@ -21,7 +21,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
         public Image image;
         public TextMeshProUGUI label;
         public TextMeshProUGUI description;
-
         public virtual Button button => GetComponentInChildren<Button>();
 
         public virtual void Set(

@@ -17,7 +17,8 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public abstract class Buff : Core.Entity {
         public abstract void OnAdd(Buffable buffable, float duration);
-        public abstract void OnLinger(Buffable buffable, float duration, float elapsedTime);
+        public abstract void OnLinger(
+            Buffable buffable, float duration, float elapsedTime);
         public abstract void OnRemove(Buffable buffable);
     }
 }

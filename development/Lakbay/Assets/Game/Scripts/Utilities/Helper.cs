@@ -24,7 +24,8 @@ namespace Utilities {
         public delegate void ConditionalRunOnFinish(float elapsedTime);
 
         public delegate void TimedRunOnStart(float duration, float elapsedTime);
-        public delegate float TimedRunOnProgress(float duration, float elapsedTime);
+        public delegate float TimedRunOnProgress(
+            float duration, float elapsedTime);
         public delegate void TimedRunOnFinish(float duration, float elapsedTime);
 
         public static Locale[] GetLocales() {
@@ -63,7 +64,8 @@ namespace Utilities {
             return Run(
                 (e) => e < duration,
                 (e) => onStart?.Invoke(duration, e),
-                (e) => onProgress != null ? onProgress(duration, e) : Time.deltaTime,
+                (e) => onProgress != null
+                    ? onProgress(duration, e) : Time.deltaTime,
                 (e) => onFinish?.Invoke(duration, e),
                 fixedUpdate
             );

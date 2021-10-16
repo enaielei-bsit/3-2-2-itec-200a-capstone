@@ -70,7 +70,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             if(instanced && instances <= 0) return;
             instances--;
             buffable.Add(buff, duration, !stackable);
-            buffable.printLog($"Casted: {buff.GetType().Name}, Instances remaining: {instances}.");
+            buffable.printLog(@$"Casted: {buff.GetType().Name}, Instances remaining: {instances}.");
         }
     }
 }

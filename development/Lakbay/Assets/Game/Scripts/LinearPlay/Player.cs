@@ -20,6 +20,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Player : Core.Entity {
+        public List<Skill> skills = new List<Skill>();
         public override float timeScale {
             get => base.timeScale;
             set {
@@ -29,9 +30,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 base.timeScale = value;
             }
         }
-
-        public List<Skill> skills = new List<Skill>();
-
         public virtual Travel travel => GetComponentInChildren<Travel>();
         public virtual Slide slide => GetComponentInChildren<Slide>();
         public virtual Buffable buffable => GetComponentInChildren<Buffable>();

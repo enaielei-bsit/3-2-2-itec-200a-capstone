@@ -17,8 +17,8 @@ using UnityEngine.UI;
 namespace Utilities {
     [Serializable]
     public struct MaterialReference {
-        public Renderer renderer;
         public int index;
+        public Renderer renderer;
 
         public Material material {
             get => materials[index];
