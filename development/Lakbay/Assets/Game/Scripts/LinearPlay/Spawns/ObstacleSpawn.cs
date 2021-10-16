@@ -18,7 +18,9 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class ObstacleSpawn : Spawn {
+        public ParticleSystem destruction;
         public bool collided = false;
+        public int safeRowCount = 5;
 
         public override bool OnSpawn(
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
@@ -27,6 +29,8 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
                 var spawn = cell.GetComponentInChildren<Spawn>();
                 can = spawn == null;
             }
+
+            can = can && index.y >= safeRowCount;
 
             return can;
         }
@@ -51,6 +55,15 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
             foreach(var collider in GetComponentsInChildren<Collider>()) {
                 var rb = collider.gameObject.EnsureComponent<Rigidbody>();
             };
+        }
+
+        public virtual void Destroy() {
+            if(destruction) {
+                var par = Instantiate(destruction);
+                par.transform.position = transform.position;
+                Destroy(par.gameObject, par.main.duration);
+            }
+            Destroy(gameObject);
         }
     }
 }

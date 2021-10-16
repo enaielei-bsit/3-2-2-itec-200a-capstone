@@ -24,6 +24,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             if(obstacle) {
                 obstacle.collided = true;
                 obstacle.Break();
+                obstacle.Destroy();
             }
         }
     }
