@@ -33,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
             _materialColors.Clear();
             foreach(var material in buffable.mainMaterials) {
                 _materialColors.Add(material.material.color);
-                material.material.color = Color.red;
+                // material.material.color = Color.red;
             }
         }
 

@@ -12,20 +12,22 @@ using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class StopwatchBuff : Buff {
-        protected GameObject _overlay;
+        protected Volume _effect;
 
         public float speedFactor = 0.5f;
-        public GameObject overlay;
+        public Volume effect;
 
         public override void OnAdd(Buffable buffable, float duration) {
             var player = buffable.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale *= speedFactor;
             var ui = FindObjectOfType<UserInterface>();
-            if(ui && overlay) _overlay = Instantiate(overlay, ui.transform); 
+            if(ui && effect) _effect = Instantiate(effect, ui.transform);
         }
 
         public override void OnLinger(
@@ -36,7 +38,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         public override void OnRemove(Buffable buffable) {
             var player = buffable.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale /= speedFactor;
-            if(_overlay) Destroy(_overlay.gameObject);
+            if(_effect) Destroy(_effect.gameObject);
         }
     }
 }
