@@ -43,13 +43,18 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\StopwatchBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\ShieldBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\ObstacleSpawn.cs" />
+     <Compile Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\QuestionSpawn.cs" />
      <Compile Include="Assets\Game\Scripts\Core\Entity.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawner.cs" />
      <Compile Include="Assets\URP\Scripts\SimpleCameraController.cs" />
+     <Compile Include="Assets\Game\Scripts\LinearPlay\Caster.cs" />
+     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\ShieldSpawn.cs" />
+     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Helper.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\SkillSpawn.cs" />
+     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buffable.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Slide.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Matrix.cs" />
@@ -64,6 +69,8 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buffs\MissileBuff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Buff.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Player.cs" />
+     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
+     <Compile Include="Assets\Game\Scripts\Utilities\Event.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\Extension.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Spawns\StopwatchSpawn.cs" />
      <Compile Include="Assets\Game\Scripts\Utilities\RangedFloat.cs" />
@@ -71,13 +78,6 @@
      <Compile Include="Assets\Game\Scripts\LinearPlay\Widgets\SkillWidget.cs" />
      <Compile Include="Assets\Game\Scripts\LinearPlay\Travel.cs" />
      <Compile Include="Assets\Game\Scripts\Core\Base.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
-     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
-     <Compile Include="Assets\Game\Scripts\Utilities\Event.cs" />
-     <Compile Include="Assets\Game\Scripts\LinearPlay\Caster.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
@@ -786,13 +786,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
-      <Project>{64ced800-7bc8-b6e5-a920-709197887428}</Project>
-      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Editor.csproj">
       <Project>{76dd4d05-cda0-6e79-0b74-c8d9b7ca3e89}</Project>
       <Name>Boxophobic.Utils.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
+      <Project>{64ced800-7bc8-b6e5-a920-709197887428}</Project>
+      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Scripts.csproj">
       <Project>{7baccf25-5ebb-0f6f-6d95-f0c2bef0f099}</Project>

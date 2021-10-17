@@ -22,6 +22,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
         protected Skill _skill;
 
         public Image image;
+        public Image cooldown;
         public TextMeshProUGUI label;
         public TextMeshProUGUI description;
         public TextMeshProUGUI instances;
@@ -30,8 +31,13 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
         public override void Update() {
             base.Update();
             if(_skill != null) {
-                if(image && image.sprite != _skill.image)
-                    image.sprite = _skill.image; 
+                if(image && image.sprite != _skill.image) {
+                    image.sprite = _skill.image;
+                }
+
+                if(cooldown && cooldown.sprite != _skill.image) {
+                    cooldown.sprite = _skill.image;
+                }
 
                 if(label && label.text != _skill.label)
                     label.SetText(_skill.label); 
@@ -43,7 +49,23 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
                     string inst = Mathf.Clamp(_skill.instances, 0, 99).ToString();
                     if(instances && instances.text != inst)
                         instances.SetText(inst);
-                } 
+                }
+
+                if(_skill.cooldownProgress > 0.0f) {
+                    if(cooldown) {
+                        if(!cooldown.gameObject.activeSelf)
+                            cooldown.gameObject.SetActive(true);
+
+                        cooldown.fillAmount = 1 - _skill.cooldownProgress;
+                    }
+                } else {
+                    if(cooldown) {
+                        if(cooldown.gameObject.activeSelf)
+                            cooldown.gameObject.SetActive(false);
+
+                        cooldown.fillAmount = 1.0f;
+                    }
+                }
             }
         }
 
@@ -51,7 +73,9 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
             _skill = skill;
             if(Application.isPlaying) {
                 button?.onClick.RemoveAllListeners();
-                button?.onClick.AddListener(() => skill.Cast(buffable));
+                button?.onClick.AddListener(() => {
+                    skill.Cast(buffable);
+                });
             }
         }
     }
