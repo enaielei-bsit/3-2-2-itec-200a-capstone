@@ -31,13 +31,21 @@ namespace Ph.CoDe_A.Lakbay {
         public const string GameAssetsPath = "Assets/Game";
         public const string LocalizationAssetsPath = GameAssetsPath + "/Localization";
         public const string BuildPath = "Build";
-        public static readonly Dictionary<string, string[]> ExcludedAssetExtensions
-            = new Dictionary<string, string[]>() {
-                {"TextAsset", new string[] {".cs", ".dll"}}
+        public static readonly Dictionary<string, Tuple<string, string[]>> AssetMappings
+            = new Dictionary<string, Tuple<string, string[]>>() {
+                {"TextAsset", new Tuple<string, string[]>(
+                    "Document",
+                    new string[] {".cs", ".dll"})},
+                {"Sprite", new Tuple<string, string[]>(
+                    "Image",
+                    new string[] {})},
+                {"AudioClip", new Tuple<string, string[]>(
+                    "Audio",
+                    new string[] {})}
             };
         public static readonly Type[] AssetTypes = new Type[] {
             typeof(TextAsset),
-            typeof(Texture),
+            // typeof(Texture),
             typeof(Sprite),
             typeof(AudioClip),
         };
@@ -71,8 +79,8 @@ namespace Ph.CoDe_A.Lakbay {
         public static void MarkAssetsAsAddressables() {
             foreach(var type in AssetTypes)
                 _MarkAssetsAsAddressables(type,
-                    ExcludedAssetExtensions.ContainsKey(type.Name)
-                    ? ExcludedAssetExtensions[type.Name]
+                    AssetMappings.ContainsKey(type.Name)
+                    ? AssetMappings[type.Name].Item2
                     : new string[] {});
         }
 
@@ -82,17 +90,19 @@ namespace Ph.CoDe_A.Lakbay {
             var settings = AddressableAssetSettingsDefaultObject.Settings;
             if(!settings) return;
             var assetPaths = GetAssetPaths(assetType, excludedExtensions);
-
-            var group = settings.FindGroup(assetType.Name);
+            
+            string groupName = AssetMappings.ContainsKey(assetType.Name)
+                ? AssetMappings[assetType.Name].Item1 : assetType.Name;
+            var group = settings.FindGroup(groupName);
+            if(!group)
+                group = settings.CreateGroup(
+                    groupName, false, false, true, null,
+                    new Type[] {typeof(ContentUpdateGroupSchema)}
+                );
 
             var entries = new List<AddressableAssetEntry>();
             foreach(var path in assetPaths) {
                 var asset = AssetDatabase.LoadAssetAtPath(path, assetType);
-                if(!group)
-                    group = settings.CreateGroup(
-                        assetType.Name, false, false, true, null,
-                        new Type[] {typeof(ContentUpdateGroupSchema)}
-                    );
 
                 EditorUtility.DisplayProgressBar(
                     "Mark Assets as Addressables",
@@ -103,10 +113,12 @@ namespace Ph.CoDe_A.Lakbay {
                     AssetDatabase.AssetPathToGUID(path), group);
                 entries.Add(entry);
 
-                if(!settings.GetLabels().Contains(assetType.Name))
-                    settings.AddLabel(assetType.Name);
+                string label = AssetMappings.ContainsKey(assetType.Name)
+                    ? AssetMappings[assetType.Name].Item1 : assetType.Name;
+                if(!settings.GetLabels().Contains(label))
+                    settings.AddLabel(label);
 
-                entry.labels.Add(assetType.Name);
+                entry.labels.Add(label);
             }
 
             NormalizeAddressableAddresses();
@@ -122,8 +134,8 @@ namespace Ph.CoDe_A.Lakbay {
         public static void LocalizeAssets() {
             foreach(var type in AssetTypes)
                 _LocalizeAssets(type,
-                    ExcludedAssetExtensions.ContainsKey(type.Name)
-                    ? ExcludedAssetExtensions[type.Name]
+                    AssetMappings.ContainsKey(type.Name)
+                    ? AssetMappings[type.Name].Item2
                     : new string[] {});
         }
 
@@ -167,12 +179,16 @@ namespace Ph.CoDe_A.Lakbay {
         private static void _LocalizeAssets(Type type,
             params string[] excludedExtensions) {
             var assetType = type;
-            var atc = LocalizationEditorSettings.GetAssetTableCollection(assetType.Name);
+            
+            string tableName = AssetMappings.ContainsKey(assetType.Name)
+                ? AssetMappings[assetType.Name].Item1 : assetType.Name;
+
+            var atc = LocalizationEditorSettings.GetAssetTableCollection(tableName);
             if(!atc)
                 atc = LocalizationEditorSettings.CreateAssetTableCollection(
-                    assetType.Name, LocalizationAssetsPath + "/Tables"
+                    tableName, LocalizationAssetsPath + "/Tables"
                 );
-            else Clear(atc);
+            // else Clear(atc);
             var assetPaths = GetAssetPaths(type, excludedExtensions);
 
             var locales = LocalizationEditorSettings.GetLocales().ToArray();
@@ -183,7 +199,11 @@ namespace Ph.CoDe_A.Lakbay {
                 var paths = path.Split('/').ToList();
                 paths.Pop(paths.Count - 1);
 
-                string code = codes.Humanize().Split(' ').Last();
+                string code = asset.name.Humanize().Split(' ').Last();
+                // Debug.Log(codes.Join(", "));
+                if(Array.Find(codes, (c) => c.ToLower() == code.ToLower()) == null) {
+                    continue;
+                }
                 string name = asset.name.TrimEnd(code);
 
                 if(asset) {
@@ -195,8 +215,10 @@ namespace Ph.CoDe_A.Lakbay {
 
                     paths.Add(name);
                     string key = paths.Join("/");
+                    
+                    // Debug.Log(key + " " + code.ToLower());
                     atc.AddAssetToTable(
-                        new LocaleIdentifier(code),
+                        new LocaleIdentifier(code.ToLower()),
                         key,
                         asset);
                 }
