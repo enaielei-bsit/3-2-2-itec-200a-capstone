@@ -21,7 +21,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         protected Coroutine _coroutine;
 
         // Meter per Second
-        public float speed = 30.0f;
+        public float speed = 20.0f;
         public Axis axis = Axis.Z;
         public AxisDirection axisDirection = AxisDirection.Positive;
         public virtual bool performing => _coroutine != null;

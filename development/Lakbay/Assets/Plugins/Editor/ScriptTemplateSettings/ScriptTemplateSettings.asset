@@ -4,45 +4,48 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 662435634, guid: bc296e1e6a372a0409fcd8738f841977, type: 3}
   m_Name: ScriptTemplateSettings
   m_EditorClassIdentifier: 
+  version: 1.11.2
   allKeywords:
   - {fileID: 114006841538007530}
-  - {fileID: 114613935506991482}
-  - {fileID: 114380126654612652}
-  - {fileID: 114364570387524256}
   - {fileID: 114141027725322898}
+  - {fileID: 114364570387524256}
+  - {fileID: 114380126654612652}
+  - {fileID: 114613935506991482}
+  - {fileID: 11400000, guid: 794ab398add57a947bac2a2afaaacdf8, type: 2}
+  - {fileID: 11400000, guid: d45d88d9cb7ec004297cad1ee585f695, type: 2}
   processedFiles:
   - .cs
   - .js
   - .boo
   - .shader
   - .compute
-  _renameNamespaceOnScriptMove: 0
-  _renameTypeOnScriptRenamed: 0
-  _namespaceRenamer: {fileID: 0}
 --- !u!114 &114006841538007530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1532399481, guid: bc296e1e6a372a0409fcd8738f841977, type: 3}
   m_Name: DATE
   m_EditorClassIdentifier: 
-  dateFormat: dd/MM/yyyy HH:mm
+  dateFormat: f
 --- !u!114 &114141027725322898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -53,7 +56,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -75,7 +79,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -86,7 +91,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
