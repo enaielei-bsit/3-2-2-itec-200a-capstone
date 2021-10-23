@@ -31,23 +31,27 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
             }
         }
 
-        public override void OnAdd(Buffable buffable, float duration) {
+        public override void OnAdd(
+            Caster caster, Buffable target, Skill skill,
+            float duration) {
             _materials.Clear();
-            for(int i = 0; i < buffable.mainMaterials.Count; i++) {
-                var material = buffable.mainMaterials[i];
+            for(int i = 0; i < target.mainMaterials.Count; i++) {
+                var material = target.mainMaterials[i];
                 _materials.Add(material.material);
                 material.material = effect;
             }
         }
 
         public override void OnLinger(
-            Buffable buffable, float duration, float elapsedTime) {
+            Caster caster, Buffable target, Skill skill,
+            float duration, float elapsedTime) {
         }
 
-        public override void OnRemove(Buffable buffable) {
-            for(int i = 0; i < buffable.mainMaterials.Count; i++) {
+        public override void OnRemove(
+            Caster caster, Buffable target, Skill skill) {
+            for(int i = 0; i < target.mainMaterials.Count; i++) {
                 if(_materials.Count == 0) break;
-                var material = buffable.mainMaterials[i];
+                var material = target.mainMaterials[i];
                 material.material = _materials.Pop(0);
             }
         }

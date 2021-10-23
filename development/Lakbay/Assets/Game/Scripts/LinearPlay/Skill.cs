@@ -39,7 +39,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         }
         public virtual float cooldownProgress => _cooldownProgress;
 
-        public Skill(
+        public void Initialize(
             Sprite image,
             string label,
             string description,
@@ -58,42 +58,45 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             this.buff = buff;
         }
 
-        public Skill(
+        public void Initialize(
             Sprite image, string label, string description,
-            float duration, float cooldown, Buff buff)
-            : this(
-                image,
-                label,
-                description,
-                false,
-                -1,
-                duration,
-                cooldown,
-                buff
-            ) {}
+            float duration, float cooldown, Buff buff) {
+                Initialize(
+                    image,
+                    label,
+                    description,
+                    false,
+                    -1,
+                    duration,
+                    cooldown,
+                    buff
+                );
+            }
 
-        public Skill(string label, string description,
-            float duration, float cooldown, Buff buff)
-            : this(default, label, description, duration, cooldown, buff) {}
+        public void Initialize(string label, string description,
+            float duration, float cooldown, Buff buff) {
+            Initialize(default, label, description, duration, cooldown, buff);
+        }
 
-        public Skill(string label, string description, Buff buff)
-            : this(label, description, -1, 0.0f, buff) {}
+        public void Initialize(string label, string description, Buff buff) {
+            Initialize(label, description, -1, 0.0f, buff);
+        }
 
-        public virtual void Cast(Buffable buffable) {
+        public virtual void Cast(Caster caster, Buffable target) {
             if((instanced && instances <= 0) || cooldownProgress != 0.0f) return;
             instances--;
-            buffable.Add(buff, duration, !stackable);
+            target.Add(caster, this, buff, duration, !stackable);
             if(cooldown > 0) {
-                buffable.Run(
+                target.Run(
                     cooldown,
                     onProgress: (d, e) => {
                         _cooldownProgress = e / d;
-                        return Time.deltaTime * buffable.timeScale;
+                        return Time.deltaTime * target.timeScale;
                     },
                     onFinish: (d, e) => _cooldownProgress = 0.0f
                 );
             }
-            buffable.printLog(@$"Casted: {buff.GetType().Name}, Instances remaining: {instances}.");
+            target.printLog(@$"Casted: {buff.GetType().Name}, Instances remaining: {instances}.");
         }
     }
 }

@@ -23,7 +23,9 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
         public override void Awake() {
             base.Awake();
-            _skills = _skills.Select((s) => Instantiate(s)).ToList();
+            var newSkills = _skills.Select((s) => Instantiate(s)).ToList();
+            _skills.Clear();
+            _skills.AddRange(newSkills);
         }
 
         public virtual Skill Add(Skill skill) {

@@ -19,7 +19,6 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class ObstacleSpawn : DynamicSpawn {
         public bool collided = false;
-        public int safeRowCount = 5;
         public ParticleSystem destruction;
 
         public override void OnCollisionEnter(Collision collision) {
@@ -41,7 +40,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
                 can = spawn == null;
             }
 
-            can = can && index.y >= safeRowCount;
+            // can = can && index.y >= startAtRowIndex;
 
             return can;
         }

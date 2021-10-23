@@ -17,12 +17,13 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
     public class MissileBuff : Buff {
         protected Missile _missile;
-
-        public float travelDistance = 200.0f;
         public Missile missile;
 
-        public override void OnAdd(Buffable buffable, float duration) {
+        public override void OnAdd(
+            Caster caster, Buffable target, Skill skill,
+            float duration) {
             if(!missile) return;
+            float travelDistance = (skill as MissileSkill).travelDistance;
             _missile = Instantiate(missile);
             _missile.transform.position = transform.position;
             _missile.travel.speed = travelDistance / Mathf.Max(duration, 0.001f);
@@ -30,10 +31,12 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         }
 
         public override void OnLinger(
-            Buffable buffable, float duration, float elapsedTime) {
+            Caster caster, Buffable target, Skill skill,
+            float duration, float elapsedTime) {
         }
 
-        public override void OnRemove(Buffable buffable) {
+        public override void OnRemove(
+            Caster caster, Buffable target, Skill skill) {
             if(_missile) {
                 _missile.travel.Perform(false);
                 Destroy(_missile.gameObject);

@@ -21,18 +21,22 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
 
         public float speedFactor = 0.5f;
 
-        public override void OnAdd(Buffable buffable, float duration) {
-            var player = buffable.GetComponent<Player>();
+        public override void OnAdd(
+            Caster caster, Buffable target, Skill skill,
+            float duration) {
+            var player = target.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale *= speedFactor;
         }
 
         public override void OnLinger(
-            Buffable buffable, float duration, float elapsedTime) {
+            Caster caster, Buffable target, Skill skill,
+            float duration, float elapsedTime) {
                 
         }
 
-        public override void OnRemove(Buffable buffable) {
-            var player = buffable.GetComponent<Player>();
+        public override void OnRemove(
+            Caster caster, Buffable target, Skill skill) {
+            var player = target.GetComponent<Player>();
             if(player && player.travel) player.travel.timeScale /= speedFactor;
         }
     }

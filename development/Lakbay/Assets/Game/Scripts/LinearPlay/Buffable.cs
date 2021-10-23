@@ -31,37 +31,39 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         }
 
         public virtual void Add(
-            Buff buff, float duration=-1, bool removePrevious=true) {
+            Caster caster, Skill skill, Buff buff,
+            float duration=-1, bool removePrevious=true) {
             if(!root) return;
-            if(removePrevious) Remove(buff.GetType());
+            if(removePrevious) Remove(caster, skill, buff.GetType());
             var newBuff = Instantiate(buff, root.transform);
 
-            newBuff.OnAdd(this, duration);
+            newBuff.OnAdd(caster, this, skill, duration);
             _buffs[newBuff] = this.Run(
                 (e) => duration < 0 || e < duration,
                 onProgress: (e) => {
-                    newBuff?.OnLinger(this, duration, e);
+                    newBuff?.OnLinger(caster, this, skill, duration, e);
                     return Time.deltaTime * timeScale;
                 },
-                onFinish: (e) => Remove(newBuff)
+                onFinish: (e) => Remove(caster, skill, newBuff)
             );
         }
 
-        public virtual void Remove(Type type) {
+        public virtual void Remove(Caster caster, Skill skill, Type type) {
             var buffs = _buffs.Keys.Where((b) => b.GetType() == type).ToArray();
             foreach(var buff in buffs) {
-                Remove(buff);
+                Remove(caster, skill, buff);
             }
         }
 
-        public virtual void Remove<T>() where T : Buff  => Remove(typeof(T));
+        public virtual void Remove<T>(Caster caster, Skill skill)
+            where T : Buff  => Remove(caster, skill, typeof(T));
 
-        public virtual void Remove(Buff buff) {
+        public virtual void Remove(Caster caster, Skill skill, Buff buff) {
             if(!_buffs.ContainsKey(buff)) return;
             var coroutine = _buffs[buff];
             StopCoroutine(coroutine);
             _buffs.Remove(buff);
-            buff.OnRemove(this);
+            buff.OnRemove(caster, this, skill);
             Destroy(buff.gameObject);
         }
 

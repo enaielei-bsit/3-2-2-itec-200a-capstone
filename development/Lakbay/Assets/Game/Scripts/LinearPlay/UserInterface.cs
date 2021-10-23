@@ -48,7 +48,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             else skillsRoot.DestroyChildrenImmediately();
             foreach(var skill in player.caster.skills) {
                 var skillWidget = Instantiate(_skill, skillsRoot.transform);
-                skillWidget.Set(player.buffable, skill);
+                skillWidget.Set(player.caster, player.buffable, skill);
             }
         }
     }

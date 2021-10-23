@@ -23,7 +23,12 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
         );
 
         public bool randomPopulation = true;
-        public GameObject root;
+        [SerializeField]
+        protected GameObject _root;
+        public GameObject root {
+            get => _root ?? gameObject;
+            set => _root = value;
+        }
         public Axis orientation = Axis.Y;
         public AxesDirection2 direction = AxesDirection2.positive;
         public Vector2 anchor = new Vector2(0.5f, 0.5f);
@@ -126,7 +131,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
         public override void Awake() {
             base.Awake();
-            if(!root) root = gameObject;
         }
     }
 }

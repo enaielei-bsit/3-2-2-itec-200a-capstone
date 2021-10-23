@@ -69,12 +69,12 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
             }
         }
 
-        public virtual void Set(Buffable buffable, Skill skill) {
+        public virtual void Set(Caster caster, Buffable target, Skill skill) {
             _skill = skill;
             if(Application.isPlaying) {
                 button?.onClick.RemoveAllListeners();
                 button?.onClick.AddListener(() => {
-                    skill.Cast(buffable);
+                    skill.Cast(caster, target);
                 });
             }
         }
