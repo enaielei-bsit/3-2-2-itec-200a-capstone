@@ -17,6 +17,10 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
+    [CreateAssetMenu(
+        fileName="Spawner",
+        menuName="Game/LinearPlay/Spawner"
+    )]
     public class Spawner : MatrixCellHandler {
         public List<Spawn> spawns = new List<Spawn>();
 

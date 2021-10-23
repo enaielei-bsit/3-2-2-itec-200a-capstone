@@ -17,14 +17,14 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
-    public abstract class SkillSpawn : Spawn {
+    public abstract class SkillSpawn : DynamicSpawn {
         public bool triggered = false;
         
         public override bool OnSpawn(
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
             var can = base.OnSpawn(matrix, cell, index, chance);
             if(can) {
-                var spawn = cell.GetComponentInChildren<Spawn>();
+                var spawn = cell.GetComponentInChildren<DynamicSpawn>();
                 can = spawn == null;
 
                 if(can) {

@@ -17,7 +17,7 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
-    public class ObstacleSpawn : Spawn {
+    public class ObstacleSpawn : DynamicSpawn {
         public bool collided = false;
         public int safeRowCount = 5;
         public ParticleSystem destruction;
@@ -37,7 +37,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
             bool can = base.OnSpawn(matrix, cell, index, chance);
             if(can) {
-                var spawn = cell.GetComponentInChildren<Spawn>();
+                var spawn = cell.GetComponentInChildren<DynamicSpawn>();
                 can = spawn == null;
             }
 

@@ -17,7 +17,7 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
-    public abstract class MatrixCellHandler : Core.Entity {
+    public abstract class MatrixCellHandler : ScriptableObject {
         public abstract void OnPopulate(
             Matrix matrix,
             GameObject cell, Vector2Int index, float chance);
