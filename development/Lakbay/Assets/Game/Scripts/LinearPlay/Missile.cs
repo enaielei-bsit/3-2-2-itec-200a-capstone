@@ -16,15 +16,21 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Missile : Core.Entity {
+        public ParticleSystem destruction;
         public virtual Travel travel => GetComponentInChildren<Travel>();
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
             var obstacle = collider.GetComponentInParent<Spawns.ObstacleSpawn>();
             if(obstacle) {
+                if(destruction) {
+                    var par = Instantiate(destruction);
+                    par.transform.position = obstacle.transform.position;
+                    Destroy(par.gameObject, par.main.duration);
+                }
+
                 obstacle.collided = true;
-                obstacle.Break();
-                obstacle.Destroy();
+                Destroy(obstacle.gameObject);
             }
         }
     }

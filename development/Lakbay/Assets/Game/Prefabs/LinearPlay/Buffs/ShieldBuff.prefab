@@ -62,6 +62,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7211834728790334137, guid: 81c12e09bb2e63f4088e073a073daed1, type: 3}
   m_PrefabInstance: {fileID: 602455674132751099}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &3086711206019991390
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802995736295405634}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8239444130192148105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802995736295405634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 5, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2618040006651196176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,4 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4634101b5af92da438000b6b04681477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 0}
+  effect: {fileID: 2100000, guid: bb83bff5d45cedd42918f40f7ab8c7af, type: 2}
