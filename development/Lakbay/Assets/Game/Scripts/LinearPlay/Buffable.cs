@@ -30,10 +30,10 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             if(!root) root = gameObject;
         }
 
-        public virtual void Add(
+        public virtual Buff Add(
             Caster caster, Skill skill, Buff buff,
             float duration=-1, bool removePrevious=true) {
-            if(!root) return;
+            if(!root) return null;
             if(removePrevious) Remove(caster, skill, buff.GetType());
             var newBuff = Instantiate(buff, root.transform);
 
@@ -46,6 +46,8 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 },
                 onFinish: (e) => Remove(caster, skill, newBuff)
             );
+
+            return newBuff;
         }
 
         public virtual void Remove(Caster caster, Skill skill, Type type) {

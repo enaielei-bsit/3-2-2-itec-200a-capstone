@@ -16,12 +16,17 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public abstract class Buff : Core.Entity {
+        protected float _progress = 0.0f;
+        public virtual float progress => _progress;
+
         public abstract void OnAdd(
             Caster caster, Buffable target, Skill skill,
             float duration);
-        public abstract void OnLinger(
+        public virtual void OnLinger(
             Caster caster, Buffable target, Skill skill,
-            float duration, float elapsedTime);
+            float duration, float elapsedTime) {
+            _progress = duration > 0.0f ? elapsedTime / duration : 0.0f;
+        }
         public abstract void OnRemove(
             Caster caster, Buffable target, Skill skill);
     }

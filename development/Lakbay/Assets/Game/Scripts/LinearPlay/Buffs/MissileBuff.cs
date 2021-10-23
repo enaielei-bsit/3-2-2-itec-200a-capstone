@@ -33,6 +33,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Buffs {
         public override void OnLinger(
             Caster caster, Buffable target, Skill skill,
             float duration, float elapsedTime) {
+            base.OnLinger(caster, target, skill, duration, elapsedTime);
         }
 
         public override void OnRemove(

@@ -20,12 +20,15 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
     [ExecuteInEditMode]
     public class SkillWidget : Core.Widget {
         protected Skill _skill;
+        protected Buff _buff;
 
         public Image image;
         public Image cooldown;
+        public Slider buffProgress;
         public TextMeshProUGUI label;
         public TextMeshProUGUI description;
         public TextMeshProUGUI instances;
+        public Animator instancesChangeEffect;
         public virtual Button button => GetComponentInChildren<Button>();
 
         public override void Update() {
@@ -47,8 +50,14 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
 
                 if(_skill.instances >= 0) {
                     string inst = Mathf.Clamp(_skill.instances, 0, 99).ToString();
-                    if(instances && instances.text != inst)
+                    if(instances && instances.text != inst) {
+                        if(instancesChangeEffect
+                            && _skill.instances > int.Parse(instances.text)) {
+                            instancesChangeEffect.SetFloat("timeScale", 2.25f);
+                            instancesChangeEffect.SetTrigger("changed");
+                        }
                         instances.SetText(inst);
+                    }
                 }
 
                 if(_skill.cooldownProgress > 0.0f) {
@@ -66,6 +75,25 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
                         cooldown.fillAmount = 1.0f;
                     }
                 }
+
+                if(buffProgress) {
+                    // var pimg = buffProgress.fillRect?.GetComponent<Image>();
+                    // if(pimg) pimg.color = _skill.color;
+                    if(_buff) {
+                        if(_buff.progress > 0.0f) {
+                            if(!buffProgress.gameObject.activeSelf)
+                                buffProgress.gameObject.SetActive(true);
+                            buffProgress.value = 1.0f - _buff.progress;
+                        } else {
+                            if(buffProgress.gameObject.activeSelf)
+                                buffProgress.gameObject.SetActive(false);
+                        }
+                    } else {
+                        if(buffProgress.gameObject.activeSelf)
+                            buffProgress.gameObject.SetActive(false);
+                        buffProgress.value = 0.0f;
+                    }
+                }
             }
         }
 
@@ -74,7 +102,8 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Widgets {
             if(Application.isPlaying) {
                 button?.onClick.RemoveAllListeners();
                 button?.onClick.AddListener(() => {
-                    skill.Cast(caster, target);
+                    var buff = skill.Cast(caster, target);
+                    if(buff) _buff = buff;
                 });
             }
         }

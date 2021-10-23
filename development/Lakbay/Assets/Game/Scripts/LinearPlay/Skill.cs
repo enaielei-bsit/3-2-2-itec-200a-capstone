@@ -24,6 +24,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Skill : ScriptableObject {
         protected float _cooldownProgress = 0.0f;
 
+        public Color color;
         public Sprite image;
         public string label = "";
         public string description = "";
@@ -82,10 +83,11 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
             Initialize(label, description, -1, 0.0f, buff);
         }
 
-        public virtual void Cast(Caster caster, Buffable target) {
-            if((instanced && instances <= 0) || cooldownProgress != 0.0f) return;
+        public virtual Buff Cast(Caster caster, Buffable target) {
+            if((instanced && instances <= 0) || cooldownProgress != 0.0f)
+                return null;
             instances--;
-            target.Add(caster, this, buff, duration, !stackable);
+            var newBuff = target.Add(caster, this, buff, duration, !stackable);
             if(cooldown > 0) {
                 target.Run(
                     cooldown,
@@ -97,6 +99,8 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 );
             }
             target.printLog(@$"Casted: {buff.GetType().Name}, Instances remaining: {instances}.");
+
+            return newBuff;
         }
     }
 }
