@@ -113,8 +113,9 @@ namespace Ph.CoDe_A.Lakbay {
                     AssetDatabase.AssetPathToGUID(path), group);
                 entries.Add(entry);
 
-                string label = AssetMappings.ContainsKey(assetType.Name)
-                    ? AssetMappings[assetType.Name].Item1 : assetType.Name;
+                // string label = AssetMappings.ContainsKey(assetType.Name)
+                //     ? AssetMappings[assetType.Name].Item1 : assetType.Name;
+                string label = assetType.Name;
                 if(!settings.GetLabels().Contains(label))
                     settings.AddLabel(label);
 
