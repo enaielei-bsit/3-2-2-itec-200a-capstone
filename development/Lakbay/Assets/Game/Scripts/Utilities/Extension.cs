@@ -50,6 +50,10 @@ namespace Utilities {
             return str;
         }
 
+        public static T DeserializeAsYaml<T>(this string str) {
+            return Helper.YamlDeserializer.Deserialize<T>(str);
+        }
+
         // T
         public static bool Either<T>(
             this T obj, out T value, params T[] values) {
@@ -85,6 +89,10 @@ namespace Utilities {
         public static Tuple<bool, T1, T1> Setter<T0, T1>(
             this T0 obj, ref T1 old, T1 @new=default, UnityEvent<T1> @event=null) {
             return obj.Setter(ref old, @new, (t, o, n) => @event?.Invoke(n));
+        }
+
+        public static string SerializeAsYaml<T>(this T obj) {
+            return Helper.YamlSerializer.Serialize(obj);
         }
 
         // IEnumerable

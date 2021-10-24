@@ -16,8 +16,15 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
+using YamlDotNet.Serialization;
+
 namespace Utilities {
-    public class Helper : MonoBehaviour {
+    public static class Helper {
+        public static ISerializer YamlSerializer = new SerializerBuilder()
+            .Build();
+        public static IDeserializer YamlDeserializer = new DeserializerBuilder()
+            .Build();
+
         public delegate bool ConditionalRunCondition(float elapsedTime);
         public delegate void ConditionalRunOnStart(float elapsedTime);
         public delegate float ConditionalRunOnProgress(float elapsedTime);

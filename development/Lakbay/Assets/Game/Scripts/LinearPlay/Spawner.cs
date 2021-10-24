@@ -24,7 +24,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public class Spawner : MatrixCellHandler {
         public List<Spawn> spawns = new List<Spawn>();
 
-        public override void OnPopulate(
+        public override void OnBuild(
             Matrix matrix,
             GameObject cell, Vector2Int index, float chance) {
             var spawns = this.spawns.Shuffle();

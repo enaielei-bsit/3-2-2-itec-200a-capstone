@@ -34,15 +34,15 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
         public override void Start() {
             base.Start();
-            Populate();
+            Build();
         }
 
-        [ContextMenu("Populate")]
-        public virtual void Populate() {
-            PopulateSkills();
+        [ContextMenu("Build")]
+        public virtual void Build() {
+            BuildSkills();
         }
 
-        public virtual void PopulateSkills() {
+        public virtual void BuildSkills() {
             if(!skillsRoot || !player) return;
             if(Application.isPlaying) skillsRoot.DestroyChildren();
             else skillsRoot.DestroyChildrenImmediately();

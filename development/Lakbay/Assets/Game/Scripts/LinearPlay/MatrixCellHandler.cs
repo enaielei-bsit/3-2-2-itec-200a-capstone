@@ -18,7 +18,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.LinearPlay {
     public abstract class MatrixCellHandler : ScriptableObject {
-        public abstract void OnPopulate(
+        public abstract void OnBuild(
             Matrix matrix,
             GameObject cell, Vector2Int index, float chance);
     }

@@ -39,8 +39,8 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
 
         protected virtual Tuple<Axis, Axis> axes => GetAxes(orientation);
 
-        [ContextMenu("Populate")]
-        public virtual void Populate() {
+        [ContextMenu("Build")]
+        public virtual void Build() {
             if(root) {
                 if(Application.isPlaying) root.DestroyChildren();
                 else root.DestroyChildrenImmediately();
@@ -87,7 +87,7 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                                 .GetChild(rowIndex)
                                 .GetChild(cellIndex).gameObject;
                                 
-                            cellHandler.OnPopulate(
+                            cellHandler.OnBuild(
                                 this, cell_,
                                 new Vector2Int(cellIndex, rowIndex),
                                 chance

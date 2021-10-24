@@ -19,7 +19,6 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
     public class ObstacleSpawn : DynamicSpawn {
         public bool collided = false;
-        public ParticleSystem destruction;
 
         public override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
@@ -54,15 +53,6 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay.Spawns {
             foreach(var collider in GetComponentsInChildren<Collider>()) {
                 var rb = collider.gameObject.EnsureComponent<Rigidbody>();
             };
-        }
-
-        public virtual void Destroy() {
-            if(destruction) {
-                var par = Instantiate(destruction);
-                par.transform.position = transform.position;
-                Destroy(par.gameObject, par.main.duration);
-            }
-            Destroy(gameObject);
         }
     }
 }
