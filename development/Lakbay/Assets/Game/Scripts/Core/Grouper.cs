@@ -20,29 +20,19 @@ namespace Ph.CoDe_A.Lakbay.Core {
         menuName="Game/Core/Grouper"
     )]
     public class Grouper : ContentEntryHandler {
-        public GameObject textEntryGroup;
-        public TextWidget textWidget;
-        public GameObject imageEntryGroup;
-        public ImageWidget imageWidget;
+        public TextGroup textGroup;
 
         public override void OnBuild(ContentBuilder contentBuilder, Entry entry) {
-            var cb = contentBuilder;
             var type = entry.type;
             var root = contentBuilder.root;
             string value = entry.value;
             switch(type) {
                 case(Entry.Type.Text):
-                    if(!textWidget) break;
-                    if(textEntryGroup) {
-                        var widgets = cb.GetComponentsInChildren<TextWidget>();
-                        if(widgets.Length > 0)
-                            root = widgets.Last().transform.parent.gameObject;
-                        if(root == contentBuilder.root)
-                            root = Instantiate(textEntryGroup, root.transform);
+                    if(textGroup && textGroup.widget) {
+                        var group = GetRecentGroup(root, textGroup);
+                        var widget = Instantiate(group.widget, root.transform);
+                        widget.component?.SetText(value);
                     }
-
-                    var widget = Instantiate(textWidget, root.transform);
-                    widget.component?.SetText(value);
                     break;
                 case(Entry.Type.Document):
                     // TODO: Load Document...
@@ -50,6 +40,18 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     goto case Entry.Type.Text;
                 default: break;
             }
+        }
+
+        public virtual T GetRecentGroup<T>(GameObject root, T group)
+            where T : Group {
+            var children = root.GetComponentsInChildren<T>();
+            T grp = default;
+            if(children != null && children.Length > 0) {
+                grp = children.Last();
+            } else grp = Instantiate(
+                group, root.transform);
+
+            return grp;
         }
     }
 }

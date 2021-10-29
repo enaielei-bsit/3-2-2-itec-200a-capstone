@@ -56,6 +56,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
     public class Content : ScriptableObject {
         [SerializeField]
         protected TextAsset _file;
+        public virtual TextAsset file => _file;
 
         public List<Entry> entries = new List<Entry>();
 
@@ -68,7 +69,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
             }
         }
 
-        public virtual void Load(TextAsset file) => Load(file?.ToString());
+        public virtual void Load(TextAsset file) {
+            if(file) Load(file.ToString());
+        }
 
         [ContextMenu("Load")]
         public virtual void Load() => Load(_file);

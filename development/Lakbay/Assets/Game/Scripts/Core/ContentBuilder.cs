@@ -17,7 +17,6 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
-    [ExecuteInEditMode]
     public class ContentBuilder : Widget {
         protected string _recentContent;
 
@@ -28,22 +27,27 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public override void Update() {
             base.Update();
-            string scontent = content.ToString();
-            if(_recentContent != scontent) {
-                Build();
-                _recentContent = scontent;
-            }
+            Build();
         }
 
         [ContextMenu("Build")]
-        public virtual void Build() {
-            if(Application.isPlaying) gameObject.DestroyChildren();
-            else gameObject.DestroyChildrenImmediately();
+        public virtual void Build() => Build(content);
+
+        public virtual void Build(Content content) {
+            string scontent = content?.ToString();
+            if(_recentContent == scontent) return;
+
+            if(!root || !content) return;
+            if(content && content.entries.Count == 0) return;
+            if(Application.isPlaying) root.DestroyChildren();
+            else root.DestroyChildrenImmediately();
             foreach(var entry in content.entries) {
                 foreach(var handler in entryHandlers) {
                     handler.OnBuild(this, entry);
                 }
             }
+
+            _recentContent = scontent;
         }
 
         public override void Awake() {
