@@ -19,5 +19,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
     public class Group<T> : Group where T : Widget {
         public T widget;
+
+        public virtual T Add() {
+            T widget_ = null;
+            if(widget) widget_ = Instantiate(widget, transform);
+            return widget_;
+        }
     }
 }

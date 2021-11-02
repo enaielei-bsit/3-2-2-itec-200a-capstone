@@ -14,6 +14,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using YamlDotNet.Serialization;
+
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
@@ -25,6 +27,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public Type type;
         public string value = "";
+        [YamlIgnore]
         public virtual string raw => $"{type}:{value}";
 
         public Entry() {}
@@ -47,36 +50,64 @@ namespace Ph.CoDe_A.Lakbay.Core {
             }
             value = parts.Join(":");
         }
+
+        public static implicit operator string(Entry entry) {
+            return entry.raw;
+        }
+
+        public static implicit operator Entry(string str) {
+            return new Entry(str);
+        }
     }
 
-    [CreateAssetMenu(
-        fileName="ContentData",
-        menuName="Game/Core/ContentData"
-    )]
-    public class Content : ScriptableObject {
+    [Serializable]
+    public class Content : IList<Entry> {
         [SerializeField]
-        protected TextAsset _file;
-        public virtual TextAsset file => _file;
+        protected List<Entry> _entries = new List<Entry>();
 
-        public List<Entry> entries = new List<Entry>();
-
-        public virtual void Load(string str) {
-            if(str == null || str.Length == 0) return;
-            this.entries.Clear();
-            var entries = str.DeserializeAsYaml<List<string>>();
-            foreach(var entry in entries) {
-                this.entries.Add(new Entry(entry));
-            }
+        public Entry this[int index] {
+            get => _entries[index];
+            set => _entries[index] = value;
         }
 
-        public virtual void Load(TextAsset file) {
-            if(file) Load(file.ToString());
+        public int Count => _entries.Count;
+
+        public bool IsReadOnly => false;
+
+        public Content(params Entry[] entries) {
+            _entries.AddRange(entries);
         }
 
-        [ContextMenu("Load")]
-        public virtual void Load() => Load(_file);
+        public void Add(Entry item) => _entries.Add(item);
 
-        public override string ToString() =>
-            entries.Select((e) => e.raw).Join("\n");
+        public void Clear() => _entries.Clear();
+
+        public bool Contains(Entry item) => _entries.Contains(item);
+
+        public void CopyTo(Entry[] array, int arrayIndex) =>
+            _entries.CopyTo(array, arrayIndex);
+
+        public IEnumerator<Entry> GetEnumerator() {
+            return _entries.GetEnumerator();
+        }
+
+        public int IndexOf(Entry item) {
+            return _entries.IndexOf(item);
+        }
+
+        public void Insert(int index, Entry item) =>
+            _entries.Insert(index, item);
+
+        public bool Remove(Entry item) => _entries.Remove(item);
+
+        public void RemoveAt(int index) => _entries.RemoveAt(index);
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return (_entries as IEnumerable).GetEnumerator();
+        }
+
+        public static implicit operator bool(Content content) {
+            return content._entries != null;
+        }
     }
 }

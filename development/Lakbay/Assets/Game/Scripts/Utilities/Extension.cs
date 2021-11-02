@@ -170,7 +170,8 @@ namespace Utilities {
             this GameObject gameObject, float time=0.0f) {
             var children = gameObject.Children();
             foreach(var child in children) {
-                GameObject.Destroy(child, time);
+                if(time > 0.0f) GameObject.Destroy(child, time);
+                else GameObject.Destroy(child);
             }
         }
 

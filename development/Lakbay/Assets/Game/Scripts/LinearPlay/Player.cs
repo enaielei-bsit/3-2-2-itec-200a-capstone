@@ -67,5 +67,10 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 else if(dir == 1) SlideRight();
             }
         }
+
+        public override void Awake() {
+            base.Awake();
+            printLog(new Core.Content("hehehe", new Core.Entry("hehehe")).SerializeAsYaml());
+        }
     }
 }

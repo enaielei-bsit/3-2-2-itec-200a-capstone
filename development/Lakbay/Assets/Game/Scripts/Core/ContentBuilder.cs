@@ -18,8 +18,6 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class ContentBuilder : Widget {
-        protected string _recentContent;
-
         public GameObject root;
         public Content content;
         public List<ContentEntryHandler> entryHandlers =
@@ -27,32 +25,25 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public override void Update() {
             base.Update();
-            Build();
         }
 
         [ContextMenu("Build")]
         public virtual void Build() => Build(content);
 
         public virtual void Build(Content content) {
-            string scontent = content?.ToString();
-            if(_recentContent == scontent) return;
-
-            if(!root || !content) return;
-            if(content && content.entries.Count == 0) return;
-            if(Application.isPlaying) root.DestroyChildren();
-            else root.DestroyChildrenImmediately();
-            foreach(var entry in content.entries) {
+            if(!content || !root) return;
+            root.DestroyChildrenImmediately();
+            foreach(var entry in content) {
                 foreach(var handler in entryHandlers) {
                     handler.OnBuild(this, entry);
                 }
             }
-
-            _recentContent = scontent;
         }
 
         public override void Awake() {
             base.Awake();
             if(!root) root = gameObject;
+            // Build();
         }
 
         public override void OnValidate() {
