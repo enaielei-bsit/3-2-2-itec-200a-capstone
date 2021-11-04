@@ -16,10 +16,10 @@ using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.MatrixCellHandlers {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [CreateAssetMenu(
         fileName="Spawner",
-        menuName="Game/LinearPlay/Spawner"
+        menuName="Game/QuestionRunner/Spawner"
     )]
     public class Spawner : MatrixCellHandler {
         public List<Spawn> spawns = new List<Spawn>();

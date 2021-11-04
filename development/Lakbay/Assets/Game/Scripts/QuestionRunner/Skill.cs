@@ -19,7 +19,7 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [CreateAssetMenu(
         fileName="Skill",
-        menuName="Game/LinearPlay/Skill"
+        menuName="Game/QuestionRunner/Skill"
     )]
     public class Skill : ScriptableObject {
         protected float _cooldownProgress = 0.0f;
