@@ -35,5 +35,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
             }
         }
+
+        public override void OnPreBuild(Matrix matrix) {
+        }
     }
 }

@@ -211,8 +211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a024a40be9974946bda6e2904cc958f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _file: {fileID: 0}
   root: {fileID: 1756187044609084314}
-  content: {fileID: 11400000, guid: baab763ea082063478f60efc2ef57783, type: 2}
+  content:
+    _entries: []
   entryHandlers:
   - {fileID: 11400000, guid: 32cc6ece62553cb49948315c331e1fb2, type: 2}
 --- !u!1001 &8881146286834670137
@@ -340,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7142446988626104739, guid: 08e85dc7c69b5dd429fbf0cbc617a229, type: 3}
       propertyPath: m_Name
-      value: ContentBuilder
+      value: Content
       objectReference: {fileID: 0}
     - target: {fileID: 9120604161014239409, guid: 08e85dc7c69b5dd429fbf0cbc617a229, type: 3}
       propertyPath: m_AnchorMax.y
@@ -442,11 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4509684056102833545, guid: ff8068c92fce34645a6236d31e8f52df, type: 3}
       propertyPath: m_Size
-      value: 0.5873714
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4509684056102833545, guid: ff8068c92fce34645a6236d31e8f52df, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6787367882715865811, guid: ff8068c92fce34645a6236d31e8f52df, type: 3}
       propertyPath: m_Pivot.x

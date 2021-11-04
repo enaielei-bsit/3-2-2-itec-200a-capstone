@@ -18,6 +18,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : Spawn {
+        public Question question;
         public bool triggered = false;
 
         public override void OnTriggerEnter(Collider collider) {
@@ -53,6 +54,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
         public virtual void OnTrigger(Player player) {
             player.timeScale = 0.0f;
+            if(question != null) {
+                // TODO: Display question using the UI.
+            }
+
             gameObject.SetActive(false);
         }
     }

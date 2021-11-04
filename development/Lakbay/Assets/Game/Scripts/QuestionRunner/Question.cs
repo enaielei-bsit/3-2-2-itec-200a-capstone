@@ -25,7 +25,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
     [Serializable]
     public class Choice {
-        public bool correct;
+        public bool correct = false;
         public Content content = new Content();
 
         public Choice() {}
@@ -34,10 +34,21 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             this.content = content;
             this.correct = correct;
         }
+
+        public override string ToString() {
+            return content.ToString();
+        }
     }
 
     [Serializable]
     public class Question {
+        protected float _elapsedTime = 0.0f;
+        public virtual float elapsedTime {
+            get => _elapsedTime;
+            set => _elapsedTime = Mathf.Clamp(value, 0.0f, time);
+        }
+        [YamlIgnore]
+        public virtual float time => Helper.GetExpectedReadTime(ToString());
         public Content content = new Content();
         public List<Choice> choices = new List<Choice>();
         protected List<Choice> _answers = new List<Choice>();
@@ -122,6 +133,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             foreach(var choice in choices) {
                 while(_answers.Contains(choice)) _answers.Remove(choice);
             }
+        }
+
+        public override string ToString() {
+            return new string[] {content.ToString(), choices.Join("\n")}
+                .Join("\n");
         }
     }
 }

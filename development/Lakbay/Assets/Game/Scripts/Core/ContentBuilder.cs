@@ -35,6 +35,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Build(Content content) {
             if(!content || !root) return;
+            this.content = content;
             root.DestroyChildrenImmediately();
             foreach(var entry in content) {
                 foreach(var handler in entryHandlers) {

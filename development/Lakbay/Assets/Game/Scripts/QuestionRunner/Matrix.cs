@@ -42,22 +42,28 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [ContextMenu("Build")]
         public virtual void Build() {
             if(root) {
-                if(Application.isPlaying) root.DestroyChildren();
-                else root.DestroyChildrenImmediately();
+                // if(Application.isPlaying) root.DestroyChildren();
+                // else root.DestroyChildrenImmediately();
+                root.DestroyChildrenImmediately();
+                
+                // PreBuild
+                foreach(var cellHandler in cellHandlers) {
+                    cellHandler.OnPreBuild(this);
+                }
 
-                var _rowIndices = Enumerable.Range(0, count.y);
-                var _cellIndices = Enumerable.Range(0, count.x);
+                var rowIndices_ = Enumerable.Range(0, count.y);
+                var cellIndices_ = Enumerable.Range(0, count.x);
                 GameObject row, cell;
 
                 // Pre-create the rows and columns.
-                foreach(int rowIndex in _rowIndices) {
+                foreach(int rowIndex in rowIndices_) {
                     row = new GameObject($"Row_{rowIndex}");
                     row.transform.SetParent(root.transform);
                     row.transform.position = GetPosition(
                         new Vector2(-1, rowIndex)
                     );
 
-                    foreach(int cellIndex in _cellIndices) {
+                    foreach(int cellIndex in cellIndices_) {
                         cell = new GameObject($"Cell_{cellIndex}");
                         cell.transform.SetParent(row.transform);
                         cell.transform.localPosition = GetPosition(
@@ -68,13 +74,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                 // Call cellHandlers.
                 var rows = root.Children().ToList();
-                var rowIndices = _rowIndices.ToList();
+                var rowIndices = rowIndices_.ToList();
                 while(rowIndices.Count > 0) {
                     int rowIndex = 0;
                     if(randomPopulation) rowIndex = rowIndices.PopRandomly();
                     else rowIndex = rowIndices.Pop();
 
-                    var cellIndices = _cellIndices.ToList();
+                    var cellIndices = cellIndices_.ToList();
                     while(cellIndices.Count > 0) {
                         int cellIndex = 0;
                         if(randomPopulation)

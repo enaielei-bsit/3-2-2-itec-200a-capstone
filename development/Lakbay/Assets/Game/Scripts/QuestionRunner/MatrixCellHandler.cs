@@ -21,5 +21,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public abstract void OnBuild(
             Matrix matrix,
             GameObject cell, Vector2Int index, float chance);
+
+        public abstract void OnPreBuild(
+            Matrix matrix);
     }
 }
