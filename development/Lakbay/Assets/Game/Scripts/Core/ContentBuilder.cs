@@ -18,6 +18,9 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class ContentBuilder : Widget {
+        [SerializeField]
+        [ContextMenuItem("Build from File", "BuildFromFile")]
+        protected TextAsset _file;
         public GameObject root;
         public Content content;
         public List<ContentEntryHandler> entryHandlers =
@@ -39,6 +42,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 }
             }
         }
+
+        public virtual void Build(TextAsset content) {
+            if(_file && _file.text.Length > 0)
+                Build(_file.text.DeserializeAsYaml<Content>());
+        }
+
+        [ContextMenu("Build from File")]
+        protected virtual void BuildFromFile() => Build(_file);
 
         public override void Awake() {
             base.Awake();

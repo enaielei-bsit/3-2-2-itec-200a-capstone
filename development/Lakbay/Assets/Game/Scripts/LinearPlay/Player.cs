@@ -12,9 +12,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+            
 using Cinemachine;
 using static Cinemachine.CinemachinePath;
+using CommandLine;
 
 using Utilities;
 
@@ -67,10 +68,9 @@ namespace Ph.CoDe_A.Lakbay.LinearPlay {
                 else if(dir == 1) SlideRight();
             }
         }
-
+        
         public override void Awake() {
             base.Awake();
-            printLog(new Core.Content("hehehe", new Core.Entry("hehehe")).SerializeAsYaml());
         }
     }
 }

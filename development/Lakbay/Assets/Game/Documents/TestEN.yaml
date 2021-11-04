@@ -48,7 +48,14 @@
                 - 'Red'
 -
     content:
-        - "Image:Assets/Game/Assets/Images/school_children_crossing.png"
+        - --type Image "Assets/Game/Images/school_children_crossing.png"
+        - -t Image "Assets/Game/Images/school_children_crossing.png"
+        - --type "Image" "Assets/Game/Images/school_children_crossing.png"
+        - -t "Image" "Assets/Game/Images/school_children_crossing.png"
+        - |-
+            "Assets/Game/Images/school_children_crossing.png" --type "Image" 
+        - |-
+            "Assets/Game/Images/school_children_crossing.png" -t "Image" 
         - 'What does this traffic sign means?'
     choices:
         -

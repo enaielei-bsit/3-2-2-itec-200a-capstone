@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using CommandLine;
 using YamlDotNet.Serialization;
 
 using Utilities;
@@ -21,34 +22,40 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.Core {
     [Serializable]
     public class Entry {
+
         public enum Type {
             Text, Document, Image, Audio, Video
         }
 
-        public Type type;
-        public string value = "";
+        [SerializeField]
+        protected Type _type;
+        [Option('t', "type")]
+        public virtual Type type {
+            get => _type;
+            set => _type = value;
+        }
+        [SerializeField]
+        protected string _value = "";
+        [Value(0)]
+        public virtual string value {
+            get => _value;
+            set => _value = value;
+        }
         [YamlIgnore]
-        public virtual string raw => $"{type}:{value}";
+        public virtual string raw =>
+            Parser.Default.FormatCommandLine(this);
 
         public Entry() {}
-
-        public Entry(string str) {
-            Parse(str);
-        }
-
         public Entry(Type type, string value) {
             this.type = type;
             this.value = value;
         }
 
-        public virtual void Parse(string str) {
-            var parts = str.Split(':').ToList();
-            if(parts.Count > 1) {
-                if(Enum.TryParse(parts[0], out type)) {
-                    parts.Pop();
-                }
-            }
-            value = parts.Join(":");
+        public static Entry Parse(string str) {
+            Entry entry = default;
+            Parser.Default.ParseArguments<Entry>(str.ToCommandLine())
+                .WithParsed((e) => entry = e);
+            return entry;
         }
 
         public static implicit operator string(Entry entry) {
@@ -56,7 +63,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public static implicit operator Entry(string str) {
-            return new Entry(str);
+            return Parse(str);
+        }
+
+        public override string ToString() {
+            return raw;
         }
     }
 
@@ -73,6 +84,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public int Count => _entries.Count;
 
         public bool IsReadOnly => false;
+
+        public Content() {}
 
         public Content(params Entry[] entries) {
             _entries.AddRange(entries);
@@ -108,6 +121,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public static implicit operator bool(Content content) {
             return content._entries != null;
+        }
+
+        public static implicit operator Content(string str) {
+            return new Content(str.Split('\n').Select(
+                (s) => (Entry) s
+            ).ToArray());
+        }
+
+        public static implicit operator Content(string[] entries) {
+            return new Content(entries.Select((s) => {
+                return (Entry) s;
+            }).ToArray());
+        }
+
+        public override string ToString() {
+            if(_entries == null || _entries.Count == 0) return string.Empty;
+            return _entries.Select((e) => e != null ? e.ToString() : "").Join("\n");
         }
     }
 }

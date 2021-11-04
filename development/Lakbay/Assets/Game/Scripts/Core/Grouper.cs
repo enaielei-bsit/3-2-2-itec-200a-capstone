@@ -64,7 +64,6 @@ namespace Ph.CoDe_A.Lakbay.Core {
             T grp = null;
             if(last != null) {
                 grp = last.GetComponent<T>();
-                Debug.Log(grp ? grp.name : "");
             }
 
             if(!grp) grp = Instantiate(group, root.transform);
