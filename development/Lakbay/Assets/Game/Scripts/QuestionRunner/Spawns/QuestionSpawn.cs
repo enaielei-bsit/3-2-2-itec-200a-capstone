@@ -56,13 +56,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             if(question != null) {
                 var qw = FindObjectOfType<Widgets.QuestionWidget>(true);
                 if(qw) {
+                    qw.gameObject.SetActive(true);
                     qw.Build(question);
+                    
                     _Save(player);
                     _Pause(player);
                     qw.onAnswer?.RemoveAllListeners();
                     qw.onAnswer?.AddListener((qw, c) => _Restore(player));
 
-                    qw.gameObject.SetActive(true);
                     qw.Run();
                 }
             }

@@ -32,12 +32,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
         [ContextMenu("Build")]
         public virtual void Build() => Build(content);
 
-        public virtual void Build(Content content) {
-            if(!content || !root) return;
+        public virtual IEnumerator BuildEnumerator(Content content) {
+            if(!content || !root) yield break;
             this.content = content;
             
             if(Application.isPlaying) root.DestroyChildren();
             else root.DestroyChildrenImmediately();
+
+            yield return new WaitForEndOfFrame();
             
             foreach(var entry in content) {
                 foreach(var handler in entryHandlers) {
@@ -45,6 +47,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 }
             }
         }
+
+        public virtual void Build(Content content) =>
+            StartCoroutine(BuildEnumerator(content));
 
         public virtual void Build(TextAsset content) {
             if(_file && _file.text.Length > 0)

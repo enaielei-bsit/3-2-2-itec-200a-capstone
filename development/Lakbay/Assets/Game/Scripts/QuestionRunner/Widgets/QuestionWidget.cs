@@ -22,11 +22,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
     using Core;
 
     public class QuestionWidget : ContentBuilder {
+        [Serializable]
+        public struct TimeTextColor {
+            public float progress;
+            public Color color;
+        }
+
         public TextMeshProUGUI time;
         public GameObject choices;
         public ChoiceWidget choice;
-        public Color timeStarting = Color.white;
-        public Color timeEnding = Color.red;
+        public List<TimeTextColor> timeTextColors = new List<TimeTextColor>();
         public bool shuffledChoices = true;
         public UnityEvent<QuestionWidget, IEnumerable<Choice>> onAnswer =
             new UnityEvent<QuestionWidget, IEnumerable<Choice>>();
@@ -91,8 +96,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                 );
 
                 float progress = question.elapsedTime / question.time;
-                if(progress <= 0.65f) time.color = timeStarting;
-                else time.color = timeEnding;
+                // if(progress <= 0.65f) time.color = timeStarting;
+                // else time.color = timeEnding;
+                if(timeTextColors != null && timeTextColors.Count > 0) {
+                    var ttc = timeTextColors.Find(
+                        (ttc) => progress <= ttc.progress);
+                    time.color = ttc.color;
+                }
 
                 if(progress == 1.0f) {
                     // No answer...
