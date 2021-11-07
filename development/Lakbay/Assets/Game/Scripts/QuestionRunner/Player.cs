@@ -72,5 +72,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public override void Awake() {
             base.Awake();
         }
+
+        public override void Start() {
+            base.Start();
+        }
+
+        protected virtual void Reset() {
+            timeScale = 1.0f;
+        }
     }
 }

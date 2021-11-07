@@ -28,6 +28,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
         public Color timeStarting = Color.white;
         public Color timeEnding = Color.red;
         public bool shuffledChoices = true;
+        public UnityEvent<QuestionWidget, IEnumerable<Choice>> onAnswer =
+            new UnityEvent<QuestionWidget, IEnumerable<Choice>>();
         public Question question;
         protected Coroutine _timer;
 
@@ -46,7 +48,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                 this.question = question;
                 Build(question.content);
                 if(!choice || !this.choices) return;
-                this.choices.DestroyChildrenImmediately();
+                if(Application.isPlaying) this.choices.DestroyChildren();
+                else this.choices.DestroyChildrenImmediately();
 
                 List<Choice> choices = question.choices.ToList();
                 if(shuffledChoices) choices = choices.Shuffle().ToList();
@@ -64,14 +67,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             if(question == null) return;
             question.Answer(choices);
             if(_timer != null) StopCoroutine(_timer);
+            onAnswer?.Invoke(this, choices);
             gameObject.SetActive(false);
         }
 
         public virtual void Answer(params int[] indices) {
-            if(question == null) return;
-            question.Answer(indices);
-            if(_timer != null) StopCoroutine(_timer);
-            gameObject.SetActive(false);
+            Answer(indices.Select((i) => 
+                i > 0 && i < indices.Length ? question.choices[i]
+                : null).ToArray());
         }
 
         public override void Update() {
@@ -81,15 +84,20 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                     time.gameObject.SetActive(true);
                 
                 time.SetText(
-                    Mathf.Max(
+                    Mathf.Min(
                         question.time - question.elapsedTime,
                         99.99f
                     ).ToString("N2")
                 );
 
                 float progress = question.elapsedTime / question.time;
-                if(progress <= 0.75f) time.color = timeStarting;
+                if(progress <= 0.65f) time.color = timeStarting;
                 else time.color = timeEnding;
+
+                if(progress == 1.0f) {
+                    // No answer...
+                    Answer(-1);
+                }
             } else {
                 if(time.gameObject.activeSelf) time.gameObject.SetActive(false);
             }
@@ -105,7 +113,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                         onProgress: (d, e) => {
                             question.elapsedTime = e;
                             return Time.deltaTime * timeScale;
-                        }
+                        },
+                        onFinish: (d, e) => question.elapsedTime = d
                     );
                 }
             }

@@ -19,7 +19,6 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.Core {
     public class ContentBuilder : Widget {
         [SerializeField]
-        [ContextMenuItem("Build from File", "BuildFromFile")]
         protected TextAsset _file;
         public GameObject root;
         public Content content;
@@ -36,7 +35,10 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void Build(Content content) {
             if(!content || !root) return;
             this.content = content;
-            root.DestroyChildrenImmediately();
+            
+            if(Application.isPlaying) root.DestroyChildren();
+            else root.DestroyChildrenImmediately();
+            
             foreach(var entry in content) {
                 foreach(var handler in entryHandlers) {
                     handler.OnBuild(this, entry);

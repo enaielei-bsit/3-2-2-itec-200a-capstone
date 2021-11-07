@@ -1,170 +1,163 @@
 -
     content:
-        - 'At this junction there is a stop sign with a solid white line on the road surface. Why is there a stop sign there?'
+        - '"At this junction there is a stop sign with a solid white line on the road surface. Why is there a stop sign there?"'
     choices:
         -
             correct: false
             content:
-                - 'Speed on the major road is derestricted'
+                - '"Speed on the major road is derestricted"'
         -
             correct: false
             content:
-                - 'It is a busy junction'
+                - '"It is a busy junction"'
         -
             correct: true
             content:
-                - 'Visibility along the major road is restricted'
+                - '"Visibility along the major road is restricted"'
 -
     content:
-        - 'You are allowed to stop on an expressway when you?'
+        - '"You are allowed to stop on an expressway when you?"'
     choices:
         -
             correct: false
             content:
-                - 'Need to convey a passenger'
+                - '"Need to convey a passenger"'
         -
             correct: false
             content:
-                - 'Need to unload a passenger'
+                - '"Need to unload a passenger"'
         -
             correct: true
             content:
-                - 'Are told to do so by a traffic enforcer'
+                - '"Are told to do so by a traffic enforcer"'
 -
     content:
-        - 'What flag color is required to be attached on projecting loads of a vehicle?'
+        - '"What flag color is required to be attached on projecting loads of a vehicle?"'
     choices:
         -
             correct: false
             content:
-                - 'Yellow'
+                - '"Yellow"'
         -
             correct: false
             content:
-                - 'Green'
+                - '"Green"'
         -
             correct: true
             content:
-                - 'Red'
+                - '"Red"'
 -
     content:
-        - --type Image "Assets/Game/Images/school_children_crossing.png"
-        - -t Image "Assets/Game/Images/school_children_crossing.png"
-        - --type "Image" "Assets/Game/Images/school_children_crossing.png"
-        - -t "Image" "Assets/Game/Images/school_children_crossing.png"
+        - '-t Image "Assets/Game/Images/school_children_crossing.png"'
+        - '"What does this traffic sign means?"'
+    choices:
+        -
+            correct: false
+            content:
+                - '"Railroad Crosssing"'
+        -
+            correct: true
+            content:
+                - '"School Zone"'
+        -
+            correct: false
+            content:
+                - '"Animal Crossing"'
+-
+    content:
+        - '"While driving, how should you look at your side and rear view mirror?"'
+    choices:
+        -
+            correct: false
+            content:
+                - '"Stare longer at your mirrors"'
+        -
+            correct: false
+            content:
+                - '"A quick glance"'
+        -
+            correct: true
+            content:
+                - '"NOT less than once per one minute"'
+-
+    content:
+        - '"What can make you lose your concentration while driving?"'
+    choices:
+        -
+            correct: false
+            content:
+                - '"Using the wiper wash"'
+        -
+            correct: true
+            content:
+                - '"Listening to loud music"'
+        -
+            correct: false
+            content:
+                - '"Glancing at the side mirror"'
+-
+    content:
+        - '"If you see a stopped vehicle on the side of the road, what should you do?"'
+    choices:
+        -
+            correct: false
+            content:
+                - '"Blow the horn"'
+        -
+            correct: false
+            content:
+                - '"Stop and provoke the driver"'
+        -
+            correct: true
+            content:
+                - '"Slow down and use caution when passing"'
+-
+    content:
         - |-
-            "Assets/Game/Images/school_children_crossing.png" --type "Image" 
-        - |-
-            "Assets/Game/Images/school_children_crossing.png" -t "Image" 
-        - 'What does this traffic sign means?'
+            "Is it true that a person may apply for a Student-driver's Permit even with a tuberculosis or sexually transmitted disease?"
     choices:
-        -
-            correct: false
-            content:
-                - 'Railroad Crosssing'
         -
             correct: true
             content:
-                - 'School Zone'
+                - '"True"'
         -
             correct: false
             content:
-                - 'Animal Crossing'
+                - '"False"'
+        -
+            correct: false
+            content:
+                - '"Maybe"'
 -
     content:
-        - 'While driving, how should you look at your side and rear view mirror?'
+        - '"What should you do when your doctor prescribes you a medicine which is likely to affect your driving?"'
     choices:
         -
             correct: false
             content:
-                - 'Stare longer at your mirrors'
+                - '"Avoid driving on expressways"'
         -
             correct: false
             content:
-                - 'A quick glance'
+                - '"Drive only if someone is with you"'
         -
             correct: true
             content:
-                - 'NOT less than once per one minute'
+                - '"Do NOT Drive"'
 -
     content:
-        - 'What can make you lose your concentration while driving?'
+        - '-t Image "Assets/Game/Assets/Images/no_entry_for_cars.png"'
+        - '"What does this traffic sign means?"'
     choices:
         -
             correct: false
             content:
-                - 'Using the wiper wash'
+                - '"No Overtaking"'
         -
             correct: true
             content:
-                - 'Listening to loud music'
+                - '"Clearway(no stopping)"'
         -
             correct: false
             content:
-                - 'Glancing at the side mirror'
--
-    content:
-        - 'If you see a stopped vehicle on the side of the road, what should you do?'
-    choices:
-        -
-            correct: false
-            content:
-                - 'Blow the horn'
-        -
-            correct: false
-            content:
-                - 'Stop and provoke the driver'
-        -
-            correct: true
-            content:
-                - 'Slow down and use caution when passing'
--
-    content:
-        - "Is it true that a person may apply for a Student-driver's Permit even with a tuberculosis or sexually transmitted disease?"
-    choices:
-        -
-            correct: true
-            content:
-                - 'True'
-        -
-            correct: false
-            content:
-                - 'False'
-        -
-            correct: false
-            content:
-                - 'Maybe'
--
-    content:
-        - 'What should you do when your doctor prescribes you a medicine which is likely to affect your driving?'
-    choices:
-        -
-            correct: false
-            content:
-                - 'Avoid driving on expressways'
-        -
-            correct: false
-            content:
-                - 'Drive only if someone is with you'
-        -
-            correct: true
-            content:
-                - 'Do NOT Drive'
--
-    content:
-        - "Assets/Game/Assets/Images/no_entry_for_cars.png"
-        - 'What does this traffic sign means?'
-    choices:
-        -
-            correct: false
-            content:
-                - 'No Overtaking'
-        -
-            correct: true
-            content:
-                - 'Clearway(no stopping)'
-        -
-            correct: false
-            content:
-                - 'No Motor vehicles'
--
+                - '"No Motor vehicles"'

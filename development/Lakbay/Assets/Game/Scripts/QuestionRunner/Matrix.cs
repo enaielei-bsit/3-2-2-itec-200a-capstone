@@ -42,9 +42,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [ContextMenu("Build")]
         public virtual void Build() {
             if(root) {
-                // if(Application.isPlaying) root.DestroyChildren();
-                // else root.DestroyChildrenImmediately();
-                root.DestroyChildrenImmediately();
+                if(Application.isPlaying) root.DestroyChildren();
+                else root.DestroyChildrenImmediately();
                 
                 // PreBuild
                 foreach(var cellHandler in cellHandlers) {

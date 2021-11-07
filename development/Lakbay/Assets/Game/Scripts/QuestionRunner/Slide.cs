@@ -19,6 +19,9 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Slide : Core.Entity {
         protected bool _performing;
+        protected int _direction, _axisIndex;
+        protected float _targetPosition;
+        protected Vector3 _offset;
 
         public float origin = 0.0f;
         // Meter per Second
@@ -37,44 +40,49 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void Perform(int step) {
             if(performing) return;
+            _axisIndex = (int) axis;
+            _direction = step < 0 ? -1 : 1;
 
-            int axisIndex = (int) axis;
-            int direction = step < 0 ? -1 : 1;
-
-            if((direction == -1 && this.step.isMin)
-                || (direction == 1 && this.step.isMax)) return;
+            if((_direction == -1 && this.step.isMin)
+                || (_direction == 1 && this.step.isMax)) return;
                 
-            var offset = axis == Axis.X ? Vector3.right
+            _offset = axis == Axis.X ? Vector3.right
                 : (axis == Axis.Y ? Vector3.up : Vector3.forward);
             this.step.value += step;
             float targetDistance = distance * this.step.value;
-            float targetPos = origin + targetDistance;
+            _targetPosition = origin + targetDistance;
 
             if(animator) {
                 animator.SetFloat(
                     "timeScale",
-                    (Mathf.Abs(targetPos - transform.position[axisIndex]) * 0.5f) * timeScale);
-                animator.SetTrigger(direction == -1 ? "left" : "right");
+                    Mathf.Abs(
+                        _targetPosition - transform.position[_axisIndex])
+                        * 0.5f * timeScale);
+                animator.SetTrigger(_direction == -1 ? "left" : "right");
             }
 
-            this.Run(
-                (e) => transform.position[axisIndex] != targetPos,
-                onProgress: (e) => {
-                    _performing = true;
-                    var trans = offset * speed * direction * timeScale
-                        * Time.deltaTime * Time.timeScale;
-                    transform.Translate(trans);
-                    
-                    var pos = transform.position;
-                    pos[axisIndex] = direction == -1
-                        ? Mathf.Max(pos[axisIndex], targetPos)
-                        : Mathf.Min(pos[axisIndex], targetPos);
-                    transform.position = pos;
-                    return Time.deltaTime * timeScale;
-                },
-                onFinish: (e) => _performing = false,
-                fixedUpdate: true
-            );
+            _performing = true;
+        }
+
+        protected virtual void _Perform(
+            int direction, int axisIndex, float targetPosition, Vector3 offset) {
+            _performing = transform.position[_axisIndex] != targetPosition;
+
+            var trans = offset * speed * direction * timeScale
+                * Time.deltaTime;
+            transform.Translate(trans);
+            
+            var pos = transform.position;
+            pos[axisIndex] = direction == -1
+                ? Mathf.Max(pos[axisIndex], targetPosition)
+                : Mathf.Min(pos[axisIndex], targetPosition);
+            transform.position = pos;
+        }
+
+        public override void FixedUpdate() {
+            base.FixedUpdate();
+            if(performing) _Perform(
+                _direction, _axisIndex, _targetPosition, _offset);
         }
     }
 }

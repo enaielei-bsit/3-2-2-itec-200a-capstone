@@ -20,6 +20,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : Spawn {
         public Question question;
         public bool triggered = false;
+        protected readonly List<float> _timeScales = new List<float>();
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -37,7 +38,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             Matrix matrix, GameObject cell, Vector2Int index, float chance) {
             bool can = base.OnSpawn(matrix, cell, index, chance);
             if(can) {
-                printLog("heheh");
                 var spawns = cell.GetComponentsInChildren<Spawn>();
                 if(Application.isPlaying) cell.DestroyChildren();
                 else cell.DestroyChildrenImmediately();
@@ -53,12 +53,48 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void OnTrigger(Player player) {
-            player.timeScale = 0.0f;
             if(question != null) {
-                // TODO: Display question using the UI.
+                var qw = FindObjectOfType<Widgets.QuestionWidget>(true);
+                if(qw) {
+                    qw.Build(question);
+                    _Save(player);
+                    _Pause(player);
+                    qw.onAnswer?.RemoveAllListeners();
+                    qw.onAnswer?.AddListener((qw, c) => _Restore(player));
+
+                    qw.gameObject.SetActive(true);
+                    qw.Run();
+                }
             }
 
             gameObject.SetActive(false);
+        }
+
+        protected virtual void _Save(Player player) {
+            _timeScales.Clear();
+            _timeScales.AddRange(new float[] {
+                player.buffable.timeScale,
+                player.travel.timeScale,
+                player.slide.timeScale
+            });
+        }
+
+        protected virtual void _Pause(Player player) {
+            player.buffable.timeScale = 0.0f;
+            player.travel.timeScale = 0.0f;
+            player.slide.timeScale = 0.0f;
+        }
+
+        protected virtual void _Restore(Player player) {
+            try {
+                player.buffable.timeScale = _timeScales.Pop();
+                player.travel.timeScale = _timeScales.Pop();
+                player.slide.timeScale = _timeScales.Pop();
+            } catch {
+                player.buffable.timeScale = 1.0f;
+                player.travel.timeScale = 1.0f;
+                player.slide.timeScale = 1.0f;
+            }
         }
     }
 }

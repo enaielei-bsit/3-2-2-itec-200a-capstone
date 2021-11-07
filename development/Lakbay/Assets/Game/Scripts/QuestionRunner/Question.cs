@@ -48,7 +48,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             set => _elapsedTime = Mathf.Clamp(value, 0.0f, time);
         }
         [YamlIgnore]
-        public virtual float time => Helper.GetExpectedReadTime(ToString());
+        public virtual float time => Helper.GetExpectedReadTime(ToString())
+            + 5.0f;
         public Content content = new Content();
         public List<Choice> choices = new List<Choice>();
         protected List<Choice> _answers = new List<Choice>();
