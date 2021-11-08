@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using Pixelplacement;
 using TMPro;
 
 using Utilities;
@@ -102,6 +103,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                     var ttc = timeTextColors.Find(
                         (ttc) => progress <= ttc.progress);
                     time.color = ttc.color;
+                    // Tween.Color(time, ttc.color, 0.25f, 0.0f);
                 }
 
                 if(progress == 1.0f) {

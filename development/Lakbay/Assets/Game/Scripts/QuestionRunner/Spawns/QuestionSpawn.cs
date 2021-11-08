@@ -9,10 +9,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
+using Pixelplacement;
 
 using Utilities;
 
@@ -58,11 +59,21 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 if(qw) {
                     qw.gameObject.SetActive(true);
                     qw.Build(question);
+                    Tween.LocalScale(
+                        qw.transform, Vector3.zero, Vector3.one,
+                        0.25f, 0.0f
+                    );
                     
                     _Save(player);
                     _Pause(player);
                     qw.onAnswer?.RemoveAllListeners();
-                    qw.onAnswer?.AddListener((qw, c) => _Restore(player));
+                    qw.onAnswer?.AddListener((qw, c) => {
+                        Tween.LocalScale(
+                            qw.transform, Vector3.zero,
+                            0.25f, 0.0f
+                        );
+                        _Restore(player);
+                    });
 
                     qw.Run();
                 }
