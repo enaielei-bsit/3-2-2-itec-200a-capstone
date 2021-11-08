@@ -27,7 +27,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             if(!sprite || !component) return;
             gameObject.SetActive(true);
             component.sprite = sprite;
-            if(caption != null || caption.Length > 0) {
+            if(caption != null && caption.Length > 0) {
                 this.caption?.gameObject.SetActive(true);
                 this.caption?.component?.SetText(caption);
             } else this.caption?.gameObject.SetActive(false);

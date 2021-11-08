@@ -75,6 +75,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             if(_timer != null) StopCoroutine(_timer);
             onAnswer?.Invoke(this, choices);
             gameObject.SetActive(false);
+            FindObjectOfType<ImageViewer>()?.Hide();
         }
 
         public virtual void Answer(params int[] indices) {

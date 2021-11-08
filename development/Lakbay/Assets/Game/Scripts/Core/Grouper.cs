@@ -44,8 +44,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
                         var component = widget?.component;
                         if(component
                             && entry.value != null && entry.value.Length > 0) {
-                            // TODO: Load Image...
-                            component.sprite = default;
+                            var repo = FindObjectOfType<Repository>(true);
+                            component.sprite = repo?.Get<Sprite>(entry.value);
                         }
                     }
                     break;

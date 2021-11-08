@@ -54,32 +54,36 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void OnTrigger(Player player) {
-            if(question != null) {
-                var qw = FindObjectOfType<Widgets.QuestionWidget>(true);
-                if(qw) {
-                    qw.gameObject.SetActive(true);
-                    qw.Build(question);
+            if(question != null) Handle(player);
+            gameObject.SetActive(false);
+        }
+
+        public virtual void Handle(Widgets.QuestionWidget widget, Player player) {
+            if(widget) {
+                widget.gameObject.SetActive(true);
+                widget.Build(question);
+                Tween.LocalScale(
+                    widget.transform, Vector3.zero, Vector3.one,
+                    0.25f, 0.0f
+                );
+                
+                _Save(player);
+                _Pause(player);
+                widget.onAnswer?.RemoveAllListeners();
+                widget.onAnswer?.AddListener((qw, c) => {
                     Tween.LocalScale(
-                        qw.transform, Vector3.zero, Vector3.one,
+                        qw.transform, Vector3.zero,
                         0.25f, 0.0f
                     );
-                    
-                    _Save(player);
-                    _Pause(player);
-                    qw.onAnswer?.RemoveAllListeners();
-                    qw.onAnswer?.AddListener((qw, c) => {
-                        Tween.LocalScale(
-                            qw.transform, Vector3.zero,
-                            0.25f, 0.0f
-                        );
-                        _Restore(player);
-                    });
+                    _Restore(player);
+                });
 
-                    qw.Run();
-                }
+                widget.Run();
             }
+        }
 
-            gameObject.SetActive(false);
+        public virtual void Handle(Player player) {
+            Handle(FindObjectOfType<Widgets.QuestionWidget>(true), player);
         }
 
         protected virtual void _Save(Player player) {

@@ -31,6 +31,6 @@ namespace Ph.CoDe_A.Lakbay.Core {
             viewer.Show(component.sprite, caption);
         }
 
-        public virtual void View() => View(FindObjectOfType<ImageViewer>());
+        public virtual void View() => View(FindObjectOfType<ImageViewer>(true));
     }
 }
