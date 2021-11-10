@@ -20,14 +20,16 @@ using YamlDotNet.Serialization;
 
 namespace Utilities {
     public static class Helper {
-        public static readonly ISerializer YamlSerializer = new SerializerBuilder()
+        public static readonly ISerializer YamlSerializer =
+            new SerializerBuilder()
             .Build();
-        public static readonly IDeserializer YamlDeserializer = new DeserializerBuilder()
+        public static readonly IDeserializer YamlDeserializer =
+            new DeserializerBuilder()
             .Build();
 
         // source: https://scholarwithin.com/average-reading-speed
         // Word per Minute
-        public const float AverageReadSpeed = 350.0f;
+        public const float AverageReadSpeed = 220.0f;
 
         public delegate bool ConditionalRunCondition(float elapsedTime);
         public delegate void ConditionalRunOnStart(float elapsedTime);

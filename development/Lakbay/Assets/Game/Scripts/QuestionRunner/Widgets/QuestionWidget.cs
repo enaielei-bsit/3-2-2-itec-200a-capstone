@@ -38,6 +38,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             new UnityEvent<QuestionWidget, IEnumerable<Choice>>();
         public Question question;
         protected Coroutine _timer;
+        public string timeFormat = "00.00";
 
         [ContextMenu("Build Question")]
         public override void Build() {
@@ -94,7 +95,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                     Mathf.Min(
                         question.time - question.elapsedTime,
                         99.99f
-                    ).ToString("N2")
+                    ).ToString(timeFormat)
                 );
 
                 float progress = question.elapsedTime / question.time;
