@@ -16,6 +16,14 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Missile : Core.Entity {
+        public override float timeScale {
+            get => base.timeScale;
+            set {
+                if(travel) travel.timeScale = value;
+                base.timeScale = value;
+            }
+        }
+
         public ParticleSystem destruction;
         public virtual Travel travel => GetComponentInChildren<Travel>();
 

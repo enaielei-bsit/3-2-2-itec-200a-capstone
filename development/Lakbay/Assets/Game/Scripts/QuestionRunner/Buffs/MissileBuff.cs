@@ -34,6 +34,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
             Caster caster, Buffable target, Skill skill,
             float duration, float elapsedTime) {
             base.OnLinger(caster, target, skill, duration, elapsedTime);
+            if(_missile) _missile.timeScale = target.timeScale;
         }
 
         public override void OnRemove(
