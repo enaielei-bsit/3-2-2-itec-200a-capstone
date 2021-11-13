@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 10, z: -15}
+  m_FollowOffset: {x: 0, y: 2.54, z: -8.22}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -104,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4997858451610466411}
   - component: {fileID: 3393430143968295479}
+  - component: {fileID: 6891791937216858260}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -149,7 +150,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 5
-    NearClipPlane: 0.1
+    NearClipPlane: 0.001
     FarClipPlane: 5000
     Dutch: 0
     LensShift: {x: 0, y: 0}
@@ -161,3 +162,33 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 6723293535799206597}
+--- !u!114 &6891791937216858260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352816283981061588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41799e19bf3b0746b4976bf35b41c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xPosition:
+    locked: 1
+    value: 0
+  yPosition:
+    locked: 0
+    value: 0
+  zPosition:
+    locked: 0
+    value: 0
+  xRotation:
+    locked: 0
+    value: 0
+  yRotation:
+    locked: 1
+    value: 0
+  zRotation:
+    locked: 0
+    value: 0

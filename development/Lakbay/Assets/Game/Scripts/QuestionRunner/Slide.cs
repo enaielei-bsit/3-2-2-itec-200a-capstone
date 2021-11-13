@@ -58,7 +58,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     Mathf.Abs(
                         _targetPosition - transform.position[_axisIndex])
                         * 0.5f * timeScale);
-                animator.SetTrigger(_direction == -1 ? "left" : "right");
+                // animator.SetTrigger(_direction == -1 ? "left" : "right");
+                animator.Play(_direction == -1 ? "SlideLeft" : "SlideRight");
             }
 
             _performing = true;

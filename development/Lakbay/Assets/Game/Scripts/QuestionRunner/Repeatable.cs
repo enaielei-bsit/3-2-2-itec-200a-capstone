@@ -15,6 +15,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class Repeatable : MonoBehaviour {
+    public class Repeatable : Core.Entity {
     }
 }
