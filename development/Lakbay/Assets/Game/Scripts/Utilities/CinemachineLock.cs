@@ -47,20 +47,20 @@ namespace Utilities {
             ref CameraState state, float deltaTime) {
             if(stage == CinemachineCore.Stage.Body) {
                 var vec = state.RawPosition;
-                vec.x = _GetLockValue(xPosition, vec.x);
-                vec.y = _GetLockValue(yPosition, vec.y);
-                vec.z = _GetLockValue(zPosition, vec.z);
+                vec.x = _GetAxisValue(xPosition, vec.x);
+                vec.y = _GetAxisValue(yPosition, vec.y);
+                vec.z = _GetAxisValue(zPosition, vec.z);
                 state.RawPosition = vec;
             } else if(stage == CinemachineCore.Stage.Aim) {
                 var vec = state.RawOrientation.eulerAngles;
-                vec.x = _GetLockValue(xRotation, vec.x);
-                vec.y = _GetLockValue(yRotation, vec.y);
-                vec.z = _GetLockValue(zRotation, vec.z);
+                vec.x = _GetAxisValue(xRotation, vec.x);
+                vec.y = _GetAxisValue(yRotation, vec.y);
+                vec.z = _GetAxisValue(zRotation, vec.z);
                 state.RawOrientation = Quaternion.Euler(vec);
             }
         }
 
-        protected virtual float _GetLockValue(Axis axis, float defaultValue=0.0f) {
+        protected virtual float _GetAxisValue(Axis axis, float defaultValue=0.0f) {
             return axis.locked ? axis.value : defaultValue;
         }
     }

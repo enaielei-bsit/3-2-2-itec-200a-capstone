@@ -16,5 +16,20 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Repeater : Core.Entity {
+        public GameObject root;
+
+        [SerializeField]
+        protected List<Repeatable> _repeatables = new List<Repeatable>();
+        public virtual Repeatable[] repeatables {
+            get => GetComponentsInChildren<Repeatable>();
+        }
+
+        // [ContextMenu("Build")]
+        public virtual void Build(int count) {}
+
+        public override void Awake() {
+            base.Awake();
+            if(!root) root = gameObject;
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             cellSize.x * count.x, cellSize.y * count.y
         );
 
-        public bool randomPopulation = true;
+        public bool randomizedPopulation = true;
         [SerializeField]
         protected GameObject _root;
         public GameObject root {
@@ -32,6 +32,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Axis orientation = Axis.Y;
         public AxesDirection2 direction = AxesDirection2.positive;
         public Vector2 anchor = new Vector2(0.5f, 0.5f);
+        public Vector2Int indexOffset = new Vector2Int(0, 0);
         public Vector2Int count = new Vector2Int(3, 3);
         public Vector2 cellSize = new Vector2(1, 1);
         public List<MatrixCellHandler> cellHandlers =
@@ -76,13 +77,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 var rowIndices = rowIndices_.ToList();
                 while(rowIndices.Count > 0) {
                     int rowIndex = 0;
-                    if(randomPopulation) rowIndex = rowIndices.PopRandomly();
+                    if(randomizedPopulation) rowIndex = rowIndices.PopRandomly();
                     else rowIndex = rowIndices.Pop();
 
                     var cellIndices = cellIndices_.ToList();
                     while(cellIndices.Count > 0) {
                         int cellIndex = 0;
-                        if(randomPopulation)
+                        if(randomizedPopulation)
                             cellIndex = cellIndices.PopRandomly();
                         else cellIndex = cellIndices.Pop();
 
@@ -94,7 +95,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                                 
                             cellHandler.OnBuild(
                                 this, cell_,
-                                new Vector2Int(cellIndex, rowIndex),
+                                new Vector2Int(cellIndex, rowIndex)
+                                    + indexOffset,
                                 chance
                             );
                         }
