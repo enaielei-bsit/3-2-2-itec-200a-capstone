@@ -19,7 +19,7 @@ using TMPro;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
-    public class Content : Entity {
+    public class Content : Controller {
         [Serializable]
         public struct Group<T0, T1>
             where T0 : Component {
@@ -72,9 +72,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
             var root = this.root;
             LayoutGroup layout = default;
 
-            if(_layouts.ContainsKey(entry.type)) {
-                layout = _layouts[entry.type];
-            } else if(group.layout) layout = group.layout;
+            if(_layouts.ContainsKey(entry.type)) layout = _layouts[entry.type];
+            else if(group.layout) layout = group.layout;
             _layouts[entry.type] = layout;
 
             if(layout) {

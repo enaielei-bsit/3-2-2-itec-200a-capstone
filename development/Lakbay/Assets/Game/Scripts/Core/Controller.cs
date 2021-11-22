@@ -15,7 +15,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
-    public abstract class Entity : MonoBehaviour {
+    public abstract class Controller : MonoBehaviour {
         public virtual void Awake() {}
 
         public virtual void Start() {}

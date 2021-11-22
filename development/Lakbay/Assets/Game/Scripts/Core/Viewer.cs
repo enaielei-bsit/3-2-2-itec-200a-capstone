@@ -15,7 +15,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
-    public abstract class Viewer<T0, T1> : Entity where T0 : Component {
+    public abstract class Viewer<T0, T1> : Controller where T0 : Component {
         public T0 component;
 
         public virtual void Show(T1 value) {
