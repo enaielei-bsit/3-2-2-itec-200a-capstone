@@ -17,7 +17,7 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
-    public class ObstacleSpawn : Spawn {
+    public class ObstacleSpawn : QRSpawn {
         public bool collided = false;
 
         public override void OnCollisionEnter(Collision collision) {

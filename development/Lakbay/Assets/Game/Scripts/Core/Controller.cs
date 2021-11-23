@@ -42,6 +42,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void OnTriggerEnter(Collider collider) {}
 
+        public virtual void OnTriggerStay(Collider collider) {}
+
         public virtual void OnTriggerExit(Collider collider) {}
 
         public virtual void OnValidate() {}

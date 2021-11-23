@@ -18,7 +18,7 @@ using Pixelplacement;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
-    public class QuestionSpawn : Spawn {
+    public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
         protected readonly List<float> _timeScales = new List<float>();

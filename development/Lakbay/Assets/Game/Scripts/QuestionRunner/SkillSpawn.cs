@@ -17,7 +17,8 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public abstract class SkillSpawn : Spawn {
+    [RequireComponent(typeof(Collider))]
+    public abstract class SkillSpawn : QRSpawn {
         public bool triggered = false;
 
         public override bool OnSpawn(

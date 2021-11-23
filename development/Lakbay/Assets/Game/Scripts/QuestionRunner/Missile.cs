@@ -15,6 +15,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+    [RequireComponent(typeof(Collider))]
     public class Missile : Core.Controller {
         public ParticleSystem destruction;
         public virtual Travel travel => GetComponentInChildren<Travel>();

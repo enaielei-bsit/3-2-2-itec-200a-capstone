@@ -15,6 +15,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class Spawn : Core.Spawn {
+    public class QRSpawn : Core.Spawn {
     }
 }

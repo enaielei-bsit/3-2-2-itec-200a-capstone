@@ -15,7 +15,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class Spawner : Core.Spawner {
+    public class QRSpawner : Core.Spawner {
         [SerializeField]
         protected List<float> _spawnChances = new List<float>();
         public virtual float[] spawnChances => GetChances(
