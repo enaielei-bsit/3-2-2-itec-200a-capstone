@@ -16,6 +16,14 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Travel : Core.DirectionalMovement {
+        public float speed {
+            set {
+                xAxis.speed = value;
+                yAxis.speed = value;
+                zAxis.speed = value;
+            }
+        }
+
         public override void Update() {
             base.Update();
             bool spaced = Input.GetKeyUp(KeyCode.Space);

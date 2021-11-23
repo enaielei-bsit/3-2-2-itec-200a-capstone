@@ -43,12 +43,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             float target = initial + offset;
 
             duration = Mathf.Max(0.001f, duration);
-            x.speed = offset / duration;
+            xAxis.speed = offset / duration;
             
-            if((x.direction == -1 && index == minIndex)
-                || x.direction == 1 && index == maxIndex) return;
+            if((xAxis.direction == -1 && index == minIndex)
+                || xAxis.direction == 1 && index == maxIndex) return;
 
-            _index += x.direction;
+            _index += xAxis.direction;
 
             Perform(true);
             this.Run(

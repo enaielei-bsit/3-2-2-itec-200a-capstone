@@ -34,14 +34,20 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public LayoutGroup root;
         public Group<TextMeshProUGUI, string> textGroup;
         public Group<Image, Sprite> imageGroup;
+        public List<Entry> content = new List<Entry>();
 
         public override void Awake() {
             base.Awake();
         }
 
+        public virtual void Build() => Build(content.ToArray());
+
+        public virtual void Build(IEnumerable<Entry> content) =>
+            Build(content.ToArray());
+
         public virtual void Build(params Entry[] content) {
             if(root) {
-                this.root.gameObject.DestroyChildren();
+                this.root.transform.DestroyChildren();
                 var root = this.root;
 
                 foreach(var entry in content) {

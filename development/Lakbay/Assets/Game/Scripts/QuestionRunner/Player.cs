@@ -20,6 +20,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Player : Core.Controller {
         public Travel travel => GetComponentInChildren<Travel>();
         public Slide slide => GetComponentInChildren<Slide>();
+        public Buffable buffable => GetComponentInChildren<Buffable>();
+        public Caster caster => GetComponentInChildren<Caster>();
 
         public override void Update() {
             base.Update();

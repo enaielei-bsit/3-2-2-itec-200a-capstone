@@ -181,45 +181,6 @@ namespace Utilities {
         }
 
         // GameObject
-        public static bool IsEmpty(this GameObject gameObject) {
-            return gameObject.transform.childCount == 0;
-        }
-
-        public static GameObject[] Children(this GameObject gameObject) {
-            if(gameObject.IsEmpty()) return new GameObject[] {};
-            return (from i in Enumerable.Range(
-                0, gameObject.transform.childCount)
-                select gameObject.transform.GetChild(i).gameObject).ToArray();
-        }
-
-        public static GameObject FirstChild(this GameObject gameObject) {
-            if(gameObject.IsEmpty()) return null;
-            return gameObject.transform.GetChild(0).gameObject;
-        }
-
-        public static GameObject LastChild(this GameObject gameObject) {
-            if(gameObject.IsEmpty()) return null;
-            return gameObject.transform.GetChild(
-                gameObject.transform.childCount - 1).gameObject;
-        }
-
-        public static void DestroyChildren(
-            this GameObject gameObject, float time=0.0f) {
-            var children = gameObject.Children();
-            foreach(var child in children) {
-                if(time > 0.0f) GameObject.Destroy(child, time);
-                else GameObject.Destroy(child);
-            }
-        }
-
-        public static void DestroyChildrenImmediately(
-            this GameObject gameObject, bool allowDestroyingAssets=false) {
-            var children = gameObject.Children();
-            foreach(var child in children) {
-                GameObject.DestroyImmediate(child, allowDestroyingAssets);
-            }
-        }
-
         public static Component EnsureComponent(
             this GameObject gameObject, Type type) {
             var component = gameObject.GetComponent(type);
@@ -230,6 +191,46 @@ namespace Utilities {
         public static T EnsureComponent<T>(this GameObject gameObject)
             where T : Component {
             return (T) gameObject.EnsureComponent(typeof(T));
+        }
+
+        // Transform
+        public static bool IsEmpty(this Transform transform) {
+            return transform.childCount == 0;
+        }
+
+        public static Transform[] GetChildren(this Transform transform) {
+            if(transform.IsEmpty()) return new Transform[] {};
+            return (from i in Enumerable.Range(
+                0, transform.childCount)
+                select transform.GetChild(i)).ToArray();
+        }
+
+        public static Transform FirstChild(this Transform transform) {
+            if(transform.IsEmpty()) return null;
+            return transform.GetChild(0);
+        }
+
+        public static Transform LastChild(this Transform transofrm) {
+            if(transofrm.IsEmpty()) return null;
+            return transofrm.GetChild(
+                transofrm.childCount - 1);
+        }
+
+        public static void DestroyChildren(
+            this Transform transform, float time=0.0f) {
+            var children = transform.GetChildren();
+            foreach(var child in children) {
+                if(time > 0.0f) GameObject.Destroy(child, time);
+                else GameObject.Destroy(child);
+            }
+        }
+
+        public static void DestroyChildrenImmediately(
+            this Transform transform, bool allowDestroyingAssets=false) {
+            var children = transform.GetChildren();
+            foreach(var child in children) {
+                GameObject.DestroyImmediate(child, allowDestroyingAssets);
+            }
         }
 
         // MonoBehaviour

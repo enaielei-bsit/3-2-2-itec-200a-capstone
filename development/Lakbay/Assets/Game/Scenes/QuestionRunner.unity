@@ -184,18 +184,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _performing: 0
   timeScale: 1
-  x:
-    active: 1
-    speed: 0
-    direction: 0
-  y:
+  xAxis:
     active: 0
     speed: 0
-    direction: 0
-  z:
+  yAxis:
     active: 0
     speed: 0
-    direction: 0
+  zAxis:
+    active: 0
+    speed: 0
   minIndex: -1
   maxIndex: 1
   offset: 4
@@ -214,18 +211,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _performing: 0
   timeScale: 1
-  x:
+  xAxis:
     active: 0
     speed: 0
-    direction: 0
-  y:
+  yAxis:
     active: 0
     speed: 0
-    direction: -1
-  z:
-    active: 1
-    speed: 20
-    direction: 1
+  zAxis:
+    active: 0
+    speed: 0
 --- !u!1 &172102198
 GameObject:
   m_ObjectHideFlags: 0

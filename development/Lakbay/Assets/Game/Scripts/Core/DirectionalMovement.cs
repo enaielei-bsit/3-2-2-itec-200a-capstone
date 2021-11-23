@@ -29,9 +29,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual bool performing => _performing;
 
         public float timeScale = 1.0f;
-        public Axis x;
-        public Axis y;
-        public Axis z;
+        public Axis xAxis;
+        public Axis yAxis;
+        public Axis zAxis;
 
         public override void Update() {
             base.Update();
@@ -40,9 +40,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public override void FixedUpdate() {
             base.FixedUpdate();
             if(performing) {
-                if(x.active) _Perform(0, x.direction, x.speed);
-                if(y.active) _Perform(1, y.direction, y.speed);
-                if(z.active) _Perform(2, z.direction, z.speed);
+                if(xAxis.active) _Perform(0, xAxis.direction, xAxis.speed);
+                if(yAxis.active) _Perform(1, yAxis.direction, yAxis.speed);
+                if(zAxis.active) _Perform(2, zAxis.direction, zAxis.speed);
             }
         }
 
