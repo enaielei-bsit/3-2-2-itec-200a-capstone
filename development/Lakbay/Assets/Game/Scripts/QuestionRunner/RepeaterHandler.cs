@@ -76,7 +76,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
 
                 var first = repeaters.Pop(0);
-                var last = repeaters.Last();
+                Repeater last;
+                if(repeaters.Count == 1) last = first; 
+                else last = repeaters.Last();
                 repeaters.Add(first);
                 first.transform.position = last.transform.position;
                 first.transform.Translate(offset);

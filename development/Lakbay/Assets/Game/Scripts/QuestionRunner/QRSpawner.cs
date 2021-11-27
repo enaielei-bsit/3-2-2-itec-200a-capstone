@@ -25,12 +25,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.Build(spawns);
         }
 
-        public override void Spawn(
+        public override Core.Spawn Spawn(
             Transform[] locations, Transform location,
             Core.Spawn[] spawns, Core.Spawn spawn) {
             var chance = UnityEngine.Random.value;
-            if(chance >= spawnChances[Array.IndexOf(spawns, spawn)]) return;
-            base.Spawn(locations, location, spawns, spawn);
+            if(chance >= spawnChances[Array.IndexOf(spawns, spawn)]) return default;
+            var newSpawn = base.Spawn(locations, location, spawns, spawn);
+            return newSpawn;
         }
 
         public static float[] GetChances(int count, params float[] chances) {

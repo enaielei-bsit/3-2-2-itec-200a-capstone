@@ -55,13 +55,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
             }
         }
 
-        public virtual void Spawn(
+        public virtual Spawn Spawn(
             Transform[] locations, Transform location, Spawn[] spawns, Spawn spawn) {
             var currentSpawns = location.GetComponentsInChildren<Spawn>();
-            if(currentSpawns.Length >= maxSpawnPerLocation) return;
+            if(currentSpawns.Length >= maxSpawnPerLocation) return default;
             if(spawn.OnSpawn(this, locations, location)) {
-                Instantiate(spawn, location);
+                return Instantiate(spawn, location);
             }
+            return default;
         }
     }
 }
