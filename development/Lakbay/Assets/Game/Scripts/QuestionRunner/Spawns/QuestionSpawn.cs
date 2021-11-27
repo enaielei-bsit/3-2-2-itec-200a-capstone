@@ -16,6 +16,7 @@ using UnityEngine.UI;
 using Pixelplacement;
 
 using Utilities;
+using Ph.CoDe_A.Lakbay.Core;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : QRSpawn {
@@ -93,6 +94,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 player.travel.timeScale = 1.0f;
                 player.slide.timeScale = 1.0f;
             }
+        }
+
+        public override bool OnSpawn(
+            Spawner spawner, Transform[] locations, Transform location) {
+            return base.OnSpawn(spawner, locations, location);
         }
     }
 }

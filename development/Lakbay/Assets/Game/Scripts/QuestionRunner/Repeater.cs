@@ -21,8 +21,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual bool triggered => _triggered;
         protected bool _occupied = false;
         public virtual bool occupied => _occupied;
-
         public RepeaterHandler handler;
+        [SerializeField]
+        protected UnityEvent _onRepeat = new UnityEvent();
 
         public override void Awake() {
             base.Awake();
@@ -53,6 +54,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     handler?.Repeat();
                 }
             }
+        }
+
+        public virtual void OnRepeat() {
+            _onRepeat?.Invoke();
         }
 
         public static RepeaterTrigger GetTrigger(Collider collider) {

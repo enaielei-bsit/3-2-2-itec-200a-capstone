@@ -22,22 +22,16 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public bool randomizedSpawn = true;
         [Min(0)]
         public int maxSpawnPerLocation = 1;
-        public Transform root;
         public List<Transform> locations = new List<Transform>();
         public List<Spawn> spawns = new List<Spawn>();
 
         public override void Awake() {
             base.Awake();
-            if(!root) root = transform;
         }
 
         public virtual void Build() => Build(spawns.ToArray());
 
         public virtual void Build(params Spawn[] spawns) {
-            if(!root) return;
-            if(Application.isPlaying) root.DestroyChildren();
-            else root.DestroyChildrenImmediately();
-
             var locations = this.locations.ToArray();
             var originalLocations = locations;
             if(randomizedLocation) locations = locations.Shuffle().ToArray();
@@ -50,7 +44,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 else location.DestroyChildrenImmediately();
 
                 foreach(var spawn in spawns) {
-                    Spawn(originalLocations, location, spawns, spawn);
+                    Spawn(originalLocations, location, originalSpawns, spawn);
                 }
             }
         }

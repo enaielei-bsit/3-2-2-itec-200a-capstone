@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
+  m_Name: NonProLevel3FIL
+  m_EditorClassIdentifier: 
+  time: 0
+  _questionsFile: {fileID: 4900000, guid: 1d6ddc3528bbd2645bb3bb9fa2379331, type: 3}
+  questions:
+  - content:
+    - _type: 0
+      _value: At this junction there is a stop sign with a solid white line on the
+        road surface. Why is there a stop sign there?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Speed on the major road is derestricted
+    - correct: 0
+      content:
+      - _type: 0
+        _value: It is a busy junction
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Visibility along the major road is restricted
+  - content:
+    - _type: 0
+      _value: You are allowed to stop on an expressway when you?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Need to convey a passenger
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Need to unload a passenger
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Are told to do so by a traffic enforcer
+  - content:
+    - _type: 0
+      _value: What flag color is required to be attached on projecting loads of a
+        vehicle?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Yellow
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Green
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Red
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/SchoolChildrenCrossing.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Railroad Crosssing
+    - correct: 1
+      content:
+      - _type: 0
+        _value: School Zone
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Animal Crossing
+  - content:
+    - _type: 0
+      _value: While driving, how should you look at your side and rear view mirror?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Stare longer at your mirrors
+    - correct: 0
+      content:
+      - _type: 0
+        _value: A quick glance
+    - correct: 1
+      content:
+      - _type: 0
+        _value: NOT less than once per one minute
+  - content:
+    - _type: 0
+      _value: What can make you lose your concentration while driving?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Using the wiper wash
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Listening to loud music
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Glancing at the side mirror
+  - content:
+    - _type: 0
+      _value: If you see a stopped vehicle on the side of the road, what should you
+        do?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Blow the horn
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Stop and provoke the driver
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Slow down and use caution when passing
+  - content:
+    - _type: 0
+      _value: Is it true that a person may apply for a Student-driver's Permit even
+        with a tuberculosis or sexually transmitted disease?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: True
+    - correct: 0
+      content:
+      - _type: 0
+        _value: False
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Maybe
+  - content:
+    - _type: 0
+      _value: What should you do when your doctor prescribes you a medicine which
+        is likely to affect your driving?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Avoid driving on expressways
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Drive only if someone is with you
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Do NOT Drive
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForCars.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No Overtaking
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Clearway(no stopping)
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No Motor vehicles
+  - content: []
+    choices: []

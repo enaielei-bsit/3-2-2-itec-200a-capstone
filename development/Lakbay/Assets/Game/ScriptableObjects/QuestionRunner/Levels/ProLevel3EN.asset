@@ -1,0 +1,445 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
+  m_Name: ProLevel3EN
+  m_EditorClassIdentifier: 
+  time: 0
+  _questionsFile: {fileID: 4900000, guid: 0185fda5da3324148b4226871920bb41, type: 3}
+  questions:
+  - content:
+    - _type: 0
+      _value: It is an authority granted by LTO in order to operate a private or
+        for hire/public utility vehicle
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Certificate of public convenience
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Certificate of registration
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Driver's
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoParkingAnytime.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: You can park on the days shown
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No parking anytime
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No parking at all from Monday to Friday
+  - content:
+    - _type: 0
+      _value: What is the first step for decoupling trailers?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Lower the trailer legs and stow the handle
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Drive the tractor slowly and smoothly
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Secure the trailer brake
+  - content:
+    - _type: 0
+      _value: What is the rule when the traffic light is steady green & steady left/right
+        arrow?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Vehicles can go straight or vehicles on the right/left can make right/left
+          turn
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Vehicles on the other side can go straight ahead
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Pedestrian can cross anytime
+  - content:
+    - _type: 0
+      _value: You are driving a vehicle fitted with anti-lock brake system. What
+        should you do when braking in an emergency?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Pump the brake pedal harshly
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Apply firm continuous pressure to the brake pedal
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Apply minimum force to the brake pedal
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NextExit.png
+    - _type: 0
+      _value: You see these signs overhead on the expressway. They mean?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Stop, all lanes ahead closed
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Next exit is 15 kilometer ahead
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Sharp bend to the left ahead
+  - content:
+    - _type: 0
+      _value: What should be your gear position when dropping off school children?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: First gear
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Reverse gear
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Neutral
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: There is a crossroad ahead
+    - correct: 1
+      content:
+      - _type: 0
+        _value: There is a railroad crossing ahead
+    - correct: 0
+      content:
+      - _type: 0
+        _value: There is a river crossing ahead
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/SpeedLimitDerestriction.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: New speed limit 50 kph
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Minimum speed limit 60 kph
+    - correct: 1
+      content:
+      - _type: 0
+        _value: End of 60 kph zone
+  - content:
+    - _type: 0
+      _value: What is the validity period of a Temporary Operators Permit(TOP)?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: 3 days from the date of apprehension
+    - correct: 1
+      content:
+      - _type: 0
+        _value: 72 hours from the time of apprehension
+    - correct: 0
+      content:
+      - _type: 0
+        _value: 15 days from the date of apprehension
+  - content:
+    - _type: 0
+      _value: What situation that a trailer may swing?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Whenever the trailer is fully loaded
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Whenever the trailer is not properly fixed
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Whenever the trailer is empty
+  - content:
+    - _type: 0
+      _value: Which gauge displays the fuel level of the vehicle?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Voltmeter
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Temperature gauge
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Fuel gauge
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoStoppingAnytime.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Crossroad/intersection
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No stopping anytime
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Roundabout
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoLeftTurn.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No left turn
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No right turn
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No overtaking
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/Flood.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Road ahead ends
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Road get flooded
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Uneven road surface
+  - content:
+    - _type: 0
+      _value: 'Road crash can be avoided and minimized if the driver:'
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Is a Dancer
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Knows and obeys traffic signals, rules and regulations
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Knows how to cook
+  - content:
+    - _type: 0
+      _value: When loading cardboards, cartons, and boxes on a vehicle, where should
+        the heaviest items be placed?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: At the bottom of the load
+    - correct: 0
+      content:
+      - _type: 0
+        _value: In the middle of the load
+    - correct: 0
+      content:
+      - _type: 0
+        _value: At the top of the load
+  - content:
+    - _type: 0
+      _value: What does it means when the headlights are getting brighter when pressing
+        accelerator pedal & goes dimmer when it is released?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Battery overcharging
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Battery undercharging
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Battery dying
+  - content:
+    - _type: 0
+      _value: Some foreigners are complaining about taxi drivers overcharging fare.
+        What is the best thing to do?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: As much as possible do not pick up foreigners
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Avoid negotiating the fare and follow the taxi meter
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Negotiate the fare if the foreigners agreed
+  - content:
+    - _type: 0
+      _value: What is advisable to do when parking on places with many pedestrians?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: The driver must see to it that side mirrors are folded
+    - correct: 0
+      content:
+      - _type: 0
+        _value: The driver must park at the intersection away from pedestrian lane
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Be sure to park at pedestrian lane
+  - content:
+    - _type: 0
+      _value: What is the meaning of a pavement marking with a double solid line?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No overtaking and crossing on both directions
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No overtaking and crossing from one direction
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Crossing is allowed on both directions
+  - content:
+    - _type: 0
+      _value: Why should you be especially aware of parked cars when driving at night?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: The drivers may be drunk
+    - correct: 0
+      content:
+      - _type: 0
+        _value: There are more of them
+    - correct: 1
+      content:
+      - _type: 0
+        _value: They are more likely to move off
+  - content:
+    - _type: 0
+      _value: What is the effect of following controlled hours?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: May have lower income than those without controlled hours
+    - correct: 1
+      content:
+      - _type: 0
+        _value: May have higher income than those without controlled hours when computed
+          in a month
+    - correct: 0
+      content:
+      - _type: 0
+        _value: May have equal income than those without controlled hours
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForAll.png
+    - _type: 0
+      _value: What does this sign mean?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No entry
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No parking
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No through road
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForJeepneys.png
+    - _type: 0
+      _value: What
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No Entry for Jeepneys
+    - correct: 1
+      content:
+      - _type: 0
+        _value: No Entry for Big Trucks
+    - correct: 0
+      content:
+      - _type: 0
+        _value: No Entry for Busses
+  - content: []
+    choices: []

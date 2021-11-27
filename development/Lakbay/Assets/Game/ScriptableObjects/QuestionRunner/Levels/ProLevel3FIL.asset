@@ -1,0 +1,446 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
+  m_Name: ProLevel3FIL
+  m_EditorClassIdentifier: 
+  time: 0
+  _questionsFile: {fileID: 4900000, guid: 1772d4b350f304c408c878f5d43d6c8a, type: 3}
+  questions:
+  - content:
+    - _type: 0
+      _value: Ito ay awtorisadong ibinigay ng LTO sa isang tao sa legal na pagmamaneho
+        ng pampribado at pampublikong sasakyan
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Certificate of public convenience
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Certificate of registration
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Driver's
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoParkingAnytime.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng road sign na ito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Maaaring pumarada ng Lunes hanggang Biyernes
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Hindi pwedeng pumarada
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Hindi pwedeng pumarada mula Lunes hanggang Biyernes
+  - content:
+    - _type: 0
+      _value: Ano ang unang hakbang sa pagtanggal ng trailer?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Ibaba ang trailer legs at i-stow ang hawakan
+    - correct: 0
+      content:
+      - _type: 0
+        _value: I-maneho ang tractor ng dahan-dahan at maayos
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Unahing i-secure ang the trailer brake
+  - content:
+    - _type: 0
+      _value: Ano ang patakaran kapag ang traffic light ay steady green at steady
+        left/right arrow?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Ang mga sasakyan ay pwedeng dumiretso o ang mga nasa kanan/kaliwa
+          ay maaaring lumiko pakanan/pakaliwa
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Ang mga sasakyan sa kabila ay maaaring dumerecho
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Maaaring dumaan ang mga pedestrian
+  - content:
+    - _type: 0
+      _value: Kung ikaw ay nagmamaneho na may anti-lock brake system, ano ang gagawin
+        mo sa pag-brake sa oras ng emergency?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: I-pump ang brake pedal ng maigi
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Mag-apply ng firm at tuloy-tuloy na pressure sa brake pedal
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Mag-apply ng minimum na pwersa sa brake pedal
+  - content:
+    - _type: 2
+      _value: '"Assets/Game/Images/NextExit.png'
+    - _type: 0
+      _value: Ano ang ibig sabihin ng mga signs na ito pag nakita mo sa expressway?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Hinto, lahat ng lanes sa unahan ay sarado
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Ang susunod na labasan ay 15 kilometrp pa ang layo
+    - correct: 0
+      content:
+      - _type: 0
+        _value: May sharp bend na naghihintay sa unahan
+  - content:
+    - _type: 0
+      _value: Ano ang dapat mong gamiting gear sa pagbababa ng mga bata sa eskwelahan?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: First gear
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Reverse gear
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Neutral
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng road sign na ito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: May intersekyon na madadaanan sa unahan
+    - correct: 1
+      content:
+      - _type: 0
+        _value: May railroad crossing na madadaanan sa unahan
+    - correct: 0
+      content:
+      - _type: 0
+        _value: May river crossing na madadaanan sa unahan
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/SpeedLimitDerestriction.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng road sign na ito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bagong speed limit na 50 kph
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Minimum na speed limit 60 kph
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Huling 60 kph zone
+  - content:
+    - _type: 0
+      _value: Hanggang kailan ang vaildity period ng Temporary Operators Permit (TOP)?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: 3 araw mula sa araw ng aprehensiyon
+    - correct: 1
+      content:
+      - _type: 0
+        _value: 72 hours mula sa oras ng aprehensiyon
+    - correct: 0
+      content:
+      - _type: 0
+        _value: 15 days mula sa petsa ng aprehensiyon
+  - content:
+    - _type: 0
+      _value: Sa anong sitwasyon maaaring mag-swing ang isang trailer?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Kapag ang trailer ay sobrang puno
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Kapag ang trailer ay hindi maayos
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Kapag ang trailer ay walang laman
+  - content:
+    - _type: 0
+      _value: Sa aling panukat nakikita ang fuel level ng sasakyan?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Voltmeter
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Temperature gauge
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Fuel gauge
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoStoppingAnytime.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng traffic sign na ito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Crossroad/interseksiyon
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal huminto anumang oras
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Rotonda
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoLeftTurn.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng traffic sign na ito?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal lumiko pakaliwa
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bawal lumiko pakanan
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bawal ang overtaking
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/Flood.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng sign na ito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Road ahead ends
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Road get flooded
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Uneven road surface
+  - content:
+    - _type: 0
+      _value: 'Maiiwasan at mababawasan ang road crashes kung ang drayber ay:'
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Kaskasero
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Marunong sumunod sa traffic signals at batas-trapiko
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Magaling magluto
+  - content:
+    - _type: 0
+      _value: Saan dapat inilalagay ang mga mabibigat na bagahe kapag nagloload sa
+        sasakyan?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Sa ilalim
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Sa gitna
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Sa itaas
+  - content:
+    - _type: 0
+      _value: Ano ang ibig sabihin kapag ang headlights ay lumilinaw at dumidilim
+        kapag dinidiinan ang accelerator pedal?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Battery overcharging
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Battery undercharging
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Battery dying
+  - content:
+    - _type: 0
+      _value: May mga dayuhan na nagrereklamo sa overcharge na singil sa pamasahe.
+        Ano ang maaaring gawin dito?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Huwag tumanggap ng dayuhang pasahero
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Umiwas sa pagkakasunduang pamasahe at sundin ang taxi meter
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Makipagkasundo sa singil ng pamasahe
+  - content:
+    - _type: 0
+      _value: Ano ang maipapayong gawin kapag magpaparada sa matataong lugar?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Dapat na tingnan ng drayber kung naka-fold ang side mirrors
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Magparada sa intersection palayo sa pedestrian lane
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Magparada sa pedestrian lane
+  - content:
+    - _type: 0
+      _value: Ano ang ibig sabihin ng pavement marking na may dobleng solid line?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal mag-overtake at tumawid sa dalawang direksyon
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bawal mag-overtake at tumawid sa isang direksyon
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Pwede ang pagtawid sa dalawang direksyon
+  - content:
+    - _type: 0
+      _value: Bakit dapat na mas lalong maging alisto sa mga nakaparadang sasakyan
+        sa gabi?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Maaaring lasing ang mga driver
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Maaaring masyadong marami ang nakaparada na sasakyan
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Maaari silang paandarin ng may-ari ano mang oras
+  - content:
+    - _type: 0
+      _value: Ano ang epekto ng pagsunod sa controlled hours?
+    choices:
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Pagkakaroon ng mababang kita kaysa sa mga walang controlled hours
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Pagkakaroon ng mas mataas na kita kaysa sa mga walang controlled
+          hours
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Pagkakaroon ng parehas kita kaysa sa mga walang controlled hours
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForAll.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng road sign na ito?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal pumasok
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bawal pumarada
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Walang maayos na daanan
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForJeepneys.png
+    - _type: 0
+      _value: Ano ang ibig sabihin ng road sign na ito?
+    choices:
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal pumasok ang mga dyip
+    - correct: 1
+      content:
+      - _type: 0
+        _value: Bawal pumasok ang malalaking sasakyan
+    - correct: 0
+      content:
+      - _type: 0
+        _value: Bawal pumasok ang mga bus
+  - content: []
+    choices: []

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: QRLevel Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: QRLevel
+  m_TableCollectionNameGuidString: b7e1ea6969d0dd04289bde128cb48d47
+  m_Entries:
+  - m_Id: 8251150336
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/NonProLevel1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13808603136
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/NonProLevel2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13821186048
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/NonProLevel3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13825380352
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/ProLevel1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13837963264
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/ProLevel2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13842157568
+    m_Key: Assets/Game/ScriptableObjects/QuestionRunner/Levels/ProLevel3
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 6892828022668001365
+  m_KeyGenerator:
+    rid: 6892828022668001364
+  references:
+    version: 2
+    RefIds:
+    - rid: 6892828022668001364
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1638038339564
+    - rid: 6892828022668001365
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 8251150336
+          m_TableCodes:
+          - en
+          - fil
+        - m_KeyId: 13808603136
+          m_TableCodes:
+          - en
+          - fil
+        - m_KeyId: 13821186048
+          m_TableCodes:
+          - en
+          - fil
+        - m_KeyId: 13825380352
+          m_TableCodes:
+          - en
+          - fil
+        - m_KeyId: 13837963264
+          m_TableCodes:
+          - en
+          - fil
+        - m_KeyId: 13842157568
+          m_TableCodes:
+          - en
+          - fil
+        m_TypeString: Ph.CoDe_A.Lakbay.QuestionRunner.QRLevel, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

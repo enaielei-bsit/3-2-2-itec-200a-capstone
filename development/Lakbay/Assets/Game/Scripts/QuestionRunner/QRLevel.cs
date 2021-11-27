@@ -19,7 +19,7 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [CreateAssetMenu(
         fileName="QRLevel",
-        menuName="Game/QuestionRunner/Level"
+        menuName="Game/Question Runner/Level"
     )]
     public class QRLevel : ScriptableObject {
         public TimeOfDay time;

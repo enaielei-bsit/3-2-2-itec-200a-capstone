@@ -44,6 +44,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf5c511d406f77b4296e6ff1cd176a61, type: 2}
   - {fileID: 11400000, guid: ffb1c00ee8c569c47b86ec2bf5c0eac8, type: 2}
   - {fileID: 11400000, guid: 67ecee737e97e0645bdee64adb7e3c36, type: 2}
+  - {fileID: 11400000, guid: a10be736cc09c7d4090fde475434c9e1, type: 2}
+  - {fileID: 11400000, guid: 9f232cf475dfc164d836f06428e46436, type: 2}
+  - {fileID: 11400000, guid: cb4d628907569b2499afe13c7ae16f22, type: 2}
+  - {fileID: 11400000, guid: f2f2d47f6f03939438eacee227c6e566, type: 2}
+  - {fileID: 11400000, guid: e33fc6f5bc799974794798226951a016, type: 2}
+  - {fileID: 11400000, guid: eb9502b7a354d6d4da49ecdb00c3e5d0, type: 2}
+  - {fileID: 11400000, guid: daf26f2402cee114ca6daad94b1b638f, type: 2}
+  - {fileID: 11400000, guid: 3ce3bb3fd5f917c49b4f6634f5ba2d6d, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -86,6 +94,15 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Locale
+    - QRLevel
+    - Locale-en
+    - Preload
+    - Locale-fil
+    - ScriptableObject
+    - Image
+    - Sprite
+    - Document
+    - TextAsset
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: bf4ed890eed817f48bcf4f63333b70ae, type: 2}
@@ -112,3 +129,5 @@ MonoBehaviour:
       value: 192.168.242.1
     - key: PrivateIpAddress_2
       value: 192.168.75.1
+    - key: PrivateIpAddress_3
+      value: 192.168.254.102

@@ -17,7 +17,7 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [CreateAssetMenu(
         fileName="MissileSkill",
-        menuName="Game/QuestionRunner/MissileSkill"
+        menuName="Game/Question Runner/MissileSkill"
     )]
     public class MissileSkill : Skill {
         public float travelDistance = 200.0f;

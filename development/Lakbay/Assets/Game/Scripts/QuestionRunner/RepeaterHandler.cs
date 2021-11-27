@@ -82,6 +82,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 repeaters.Add(first);
                 first.transform.position = last.transform.position;
                 first.transform.Translate(offset);
+                first.OnRepeat();
             }
         }
     }
