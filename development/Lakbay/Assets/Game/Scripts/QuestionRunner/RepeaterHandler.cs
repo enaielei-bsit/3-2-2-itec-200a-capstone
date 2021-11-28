@@ -31,6 +31,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             if(!root) root = transform;
         }
 
+        public override void OnValidate() {
+            base.OnValidate();
+            while(repeaters.Contains(null)) repeaters.Remove(null);
+        }
+
         [ContextMenu("Build")]
         public virtual void Build() {
             if(repeaters.Count > 0 && root) {

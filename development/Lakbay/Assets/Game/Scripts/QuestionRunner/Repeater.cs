@@ -15,6 +15,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+    using Core;
+
     [RequireComponent(typeof(Collider))]
     public class Repeater : Core.Controller {
         protected bool _triggered = false;
@@ -31,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
-            var trigger = GetTrigger(collider);
+            var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger && !_triggered) {
                 _triggered = true;
             }
@@ -39,13 +41,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void OnTriggerStay(Collider collider) {
             base.OnTriggerStay(collider);
-            var trigger = GetTrigger(collider);
+            var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger) _occupied = true;
         }
 
         public override void OnTriggerExit(Collider collider) {
             base.OnTriggerExit(collider);
-            var trigger = GetTrigger(collider);
+            var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger) {
                 _occupied = false;
 
@@ -58,14 +60,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void OnRepeat() {
             _onRepeat?.Invoke();
-        }
-
-        public static RepeaterTrigger GetTrigger(Collider collider) {
-            var trigger = collider.GetComponentInParent<RepeaterTrigger>();
-            if(trigger && !trigger.includeChildren
-                && collider.transform != trigger.transform) return null;
-
-            return trigger;
         }
     }
 }

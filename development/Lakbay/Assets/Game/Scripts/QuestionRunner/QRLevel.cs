@@ -24,6 +24,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class QRLevel : ScriptableObject {
         public TimeOfDay time;
 
+        public RepeaterHandler repeaterHandler;
+
         [SerializeField]
         [ContextMenuItem("Load", "LoadQuestionsFile")]
         protected TextAsset _questionsFile;

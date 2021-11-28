@@ -1,5 +1,5 @@
 /*
- * Date Created: Tuesday, November 23, 2021 11:21 AM
+ * Date Created: Sunday, November 28, 2021 4:44 PM
  * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
  * 
  * Copyright © 2021 CoDe_A. All Rights Reserved.
@@ -15,6 +15,9 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class RepeaterTrigger : Core.Trigger {
+    using Core;
+
+    public class SpawnTrigger : Trigger {
+        
     }
 }

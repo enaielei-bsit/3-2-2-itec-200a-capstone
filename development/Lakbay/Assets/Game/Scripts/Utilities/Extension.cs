@@ -220,8 +220,8 @@ namespace Utilities {
             this Transform transform, float time=0.0f) {
             var children = transform.GetChildren();
             foreach(var child in children) {
-                if(time > 0.0f) GameObject.Destroy(child, time);
-                else GameObject.Destroy(child);
+                if(time > 0.0f) GameObject.Destroy(child.gameObject, time);
+                else GameObject.Destroy(child.gameObject);
             }
         }
 
@@ -229,7 +229,7 @@ namespace Utilities {
             this Transform transform, bool allowDestroyingAssets=false) {
             var children = transform.GetChildren();
             foreach(var child in children) {
-                GameObject.DestroyImmediate(child, allowDestroyingAssets);
+                GameObject.DestroyImmediate(child.gameObject, allowDestroyingAssets);
             }
         }
 

@@ -19,6 +19,8 @@ using Utilities;
 using Ph.CoDe_A.Lakbay.Core;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
+    using Core;
+
     public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
@@ -28,7 +30,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             base.OnTriggerEnter(collider);
             var player = collider.GetComponentInParent<Player>();
             
-            if(player && !player.GetComponentInParent<Buff>()) {
+            if(player && collider.GetTrigger<SpawnTrigger>()) { 
                 if(!triggered) {
                     triggered = true;
                     OnTrigger(player);

@@ -58,7 +58,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                 if(shuffledChoices) choices = choices.Shuffle().ToList();
 
                 foreach(var choice in choices) {
-                    if(choices.Count == 0) break;
                     var choiceWidget = Instantiate(
                         this.choice, this.choices.transform);
                     choiceWidget.Build(this, choice);

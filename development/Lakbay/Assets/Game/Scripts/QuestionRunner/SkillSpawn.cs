@@ -17,6 +17,8 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+    using Core;
+
     [RequireComponent(typeof(Collider))]
     public abstract class SkillSpawn : QRSpawn {
         public bool triggered = false;
@@ -31,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.OnTriggerEnter(collider);
             var player = collider.GetComponentInParent<Player>();
             
-            if(player && !player.GetComponentInParent<Buff>()) {
+            if(player && collider.GetTrigger<SpawnTrigger>()) { 
                 if(!triggered) {
                     triggered = true;
                     OnTrigger(player);

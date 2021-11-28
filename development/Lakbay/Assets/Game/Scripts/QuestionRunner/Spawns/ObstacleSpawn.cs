@@ -17,6 +17,8 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
+    using Core;
+
     public class ObstacleSpawn : QRSpawn {
         public bool collided = false;
 
@@ -24,7 +26,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             base.OnCollisionEnter(collision);
             if(!collided) {
                 var player = collision.gameObject.GetComponentInParent<Player>();
-                if(player && !collision.gameObject.GetComponentInParent<Buff>()) {
+
+                if(player && collision.collider.GetTrigger<SpawnTrigger>()) {
                     collided = true;
                     OnCollision(player);
                 }
