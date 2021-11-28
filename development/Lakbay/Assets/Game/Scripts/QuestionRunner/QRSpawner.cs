@@ -16,28 +16,5 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class QRSpawner : Core.Spawner {
-        [SerializeField]
-        protected List<float> _spawnChances = new List<float>();
-        public virtual float[] spawnChances => GetChances(
-            spawns.Count, _spawnChances.ToArray());
-
-        public override void Build(params Core.Spawn[] spawns) {
-            base.Build(spawns);
-        }
-
-        public override Core.Spawn Spawn(
-            Transform[] locations, Transform location,
-            Core.Spawn[] spawns, Core.Spawn spawn) {
-            var chance = UnityEngine.Random.value;
-            if(chance >= spawnChances[Array.IndexOf(spawns, spawn)]) return default;
-            var newSpawn = base.Spawn(locations, location, spawns, spawn);
-            return newSpawn;
-        }
-
-        public static float[] GetChances(int count, params float[] chances) {
-            var lchances = chances.ToList();
-            while(lchances.Count < count) lchances.Add(1.0f);
-            return lchances.ToArray();
-        }
     }
 }

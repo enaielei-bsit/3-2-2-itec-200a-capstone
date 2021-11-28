@@ -26,7 +26,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public override bool OnSpawn(
             Core.Spawner spawner, Transform[] locations, Transform location) {
             bool can = base.OnSpawn(spawner, locations, location);
-            return can;
+            if(can) {
+                var existing =
+                    Array.Find(locations, (l) => l.GetComponentInChildren<SkillSpawn>());
+                if(existing) return false;
+                return true;
+            }
+
+            return false;
         }
 
         public override void OnTriggerEnter(Collider collider) {

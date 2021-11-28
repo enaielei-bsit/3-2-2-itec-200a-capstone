@@ -24,6 +24,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public int maxSpawnPerLocation = 1;
         public List<Transform> locations = new List<Transform>();
         public List<Spawn> spawns = new List<Spawn>();
+        public List<float> chances = new List<float>();
 
         public override void Awake() {
             base.Awake();
@@ -51,6 +52,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual Spawn Spawn(
             Transform[] locations, Transform location, Spawn[] spawns, Spawn spawn) {
+            float chance = UnityEngine.Random.value;
+            float spawnChance = chances.Count >= spawns.Length
+                ? chances[Array.IndexOf(spawns, spawn)] : 1.0f;
+            if(chance > spawnChance) return default;
+
             var currentSpawns = location.GetComponentsInChildren<Spawn>();
             if(currentSpawns.Length >= maxSpawnPerLocation) return default;
             if(spawn.OnSpawn(this, locations, location)) {
