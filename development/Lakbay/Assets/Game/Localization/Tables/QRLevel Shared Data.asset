@@ -41,18 +41,13 @@ MonoBehaviour:
       m_Items: []
   m_Metadata:
     m_Items:
-    - rid: 6892828022668001365
+    - rid: 6892828090692010458
   m_KeyGenerator:
-    rid: 6892828022668001364
+    rid: 6892828090692010459
   references:
     version: 2
     RefIds:
-    - rid: 6892828022668001364
-      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
-        asm: Unity.Localization}
-      data:
-        m_CustomEpoch: 1638038339564
-    - rid: 6892828022668001365
+    - rid: 6892828090692010458
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
@@ -82,3 +77,8 @@ MonoBehaviour:
           - fil
         m_TypeString: Ph.CoDe_A.Lakbay.QuestionRunner.QRLevel, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+    - rid: 6892828090692010459
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1638038339564
