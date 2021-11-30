@@ -27,7 +27,12 @@ namespace Ph.CoDe_A.Lakbay.Core {
             where T0 : Component {
             public LayoutGroup layout;
             public T0 component;
-            public Viewer<T0, T1> viewer;
+            [SerializeField]
+            private Viewer<T0, T1> _viewer;
+            public Viewer<T0, T1> viewer {
+                get => _viewer ?? FindObjectOfType<Viewer<T0, T1>>();
+                set => _viewer = value;
+            }
         }
 
         protected Layout _previousLayout;
@@ -40,6 +45,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public override void Awake() {
             base.Awake();
         }
+
+        [ContextMenu("Clear")]
+        public virtual void Clear() {
+            if(!root) return;
+            if(Application.isPlaying) this.root.transform.DestroyChildren();
+            else this.root.transform.DestroyChildrenImmediately();
+            _previousLayout = null;
+        }
         
         [ContextMenu("Build")]
         public virtual void Build() => Build(content.ToArray());
@@ -49,9 +62,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Build(params Entry[] content) {
             if(root) {
-                this.root.transform.DestroyChildren();
-                _previousLayout = null;
-
+                Clear();
                 var root = this.root;
 
                 foreach(var entry in content) {
