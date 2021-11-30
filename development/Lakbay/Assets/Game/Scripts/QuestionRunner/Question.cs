@@ -27,17 +27,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [Serializable]
     public class Choice {
         public bool correct = false;
-        public Content content = new Content();
+        public string text = "";
 
         public Choice() {}
 
-        public Choice(Content content, bool correct=false) {
-            this.content = content;
+        public Choice(string text, bool correct=false) {
+            this.text = text;
             this.correct = correct;
         }
 
         public override string ToString() {
-            return content.ToString();
+            return text.ToString();
         }
     }
 
