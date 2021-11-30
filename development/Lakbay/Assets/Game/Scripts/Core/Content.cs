@@ -19,6 +19,8 @@ using TMPro;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
+    using Layout = Tuple<Entry.Type, LayoutGroup>;
+
     public class Content : Controller {
         [Serializable]
         public struct Group<T0, T1>
@@ -28,8 +30,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             public Viewer<T0, T1> viewer;
         }
 
-        protected readonly Dictionary<Entry.Type, LayoutGroup> _layouts
-            = new Dictionary<Entry.Type, LayoutGroup>();
+        protected Layout _previousLayout;
 
         public LayoutGroup root;
         public Group<TextMeshProUGUI, string> textGroup;
@@ -39,7 +40,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public override void Awake() {
             base.Awake();
         }
-
+        
+        [ContextMenu("Build")]
         public virtual void Build() => Build(content.ToArray());
 
         public virtual void Build(IEnumerable<Entry> content) =>
@@ -48,6 +50,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void Build(params Entry[] content) {
             if(root) {
                 this.root.transform.DestroyChildren();
+                _previousLayout = null;
+
                 var root = this.root;
 
                 foreach(var entry in content) {
@@ -76,14 +80,13 @@ namespace Ph.CoDe_A.Lakbay.Core {
             where T0 : Component {
             T0 component = default;
             var root = this.root;
-            LayoutGroup layout = default;
 
-            if(_layouts.ContainsKey(entry.type)) layout = _layouts[entry.type];
-            else if(group.layout) layout = group.layout;
-            _layouts[entry.type] = layout;
-
-            if(layout) {
-                root = Instantiate(layout, root.transform);
+            if(_previousLayout == null || _previousLayout.Item1 != entry.type) {
+                root = group.layout ? Instantiate(group.layout, root.transform)
+                    : root;
+                _previousLayout = new Layout(entry.type, root);
+            } else if(_previousLayout != null && _previousLayout.Item1 == entry.type) {
+                root = _previousLayout.Item2;
             }
 
             if(group.component) {
