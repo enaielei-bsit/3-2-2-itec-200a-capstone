@@ -17,11 +17,14 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+    using Core;
+
     [CreateAssetMenu(
         fileName="QRLevel",
         menuName="Game/Question Runner/Level"
     )]
     public class QRLevel : ScriptableObject {
+        public GameMode category = GameMode.NonPro;
         public TimeOfDay time;
 
         public RepeaterHandler repeaterHandler;

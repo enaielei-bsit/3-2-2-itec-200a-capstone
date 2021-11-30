@@ -19,6 +19,8 @@ namespace Ph.CoDe_A.Lakbay {
     using QuestionRunner;
 
     public static class Session {
+        public static Database database;
+
         public static GameMode mode = GameMode.NonPro;
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
         private static int _qrLevelIndex = 0;
