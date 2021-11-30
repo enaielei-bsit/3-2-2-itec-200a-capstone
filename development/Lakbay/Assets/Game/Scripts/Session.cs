@@ -15,9 +15,18 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay {
+    using Core;
     using QuestionRunner;
 
     public static class Session {
+        public static GameMode mode = GameMode.NonPro;
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
+        private static int _qrLevelIndex = 0;
+        public static int qrLevelIndex {
+            get => _qrLevelIndex;
+            set => _qrLevelIndex = Mathf.Clamp(value, 0, qrLevels.Count - 1);
+        }
+        public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count - 1
+            ? qrLevels[qrLevelIndex] : default;
     }
 }

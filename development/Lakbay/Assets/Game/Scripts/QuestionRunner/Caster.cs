@@ -16,6 +16,8 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Caster : Core.Controller {
+        public float timeScale = 1.0f;
+
         [SerializeField]
         protected List<Skill> _skills = new List<Skill>();
 

@@ -66,6 +66,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [YamlIgnore]
         public virtual Choice[] solution =>
             choices.Where((c) => c.correct).ToArray();
+        [YamlIgnore]
+        public virtual bool answered => _answers.Count != 0;
 
         public Question() {}
 

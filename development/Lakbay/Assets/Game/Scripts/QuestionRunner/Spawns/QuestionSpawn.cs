@@ -24,7 +24,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
-        protected readonly List<float> _timeScales = new List<float>();
+        public virtual QRController controller =>
+            FindObjectOfType<QRController>(true);
+        public virtual Widgets.QuestionWidget questionWidget =>
+            FindObjectOfType<Widgets.QuestionWidget>(true);
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -52,15 +55,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     0.25f, 0.0f
                 );
                 
-                _Save(player);
-                _Pause(player);
+                controller?.Pause(player);
                 widget.onAnswer?.RemoveAllListeners();
                 widget.onAnswer?.AddListener((qw, c) => {
                     Tween.LocalScale(
                         qw.transform, Vector3.zero,
                         0.25f, 0.0f
                     );
-                    _Restore(player);
+                    controller?.Resume(player);
                 });
 
                 widget.Run();
@@ -68,34 +70,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void Handle(Player player) {
-            Handle(FindObjectOfType<Widgets.QuestionWidget>(true), player);
-        }
-
-        protected virtual void _Save(Player player) {
-            _timeScales.Clear();
-            _timeScales.AddRange(new float[] {
-                player.buffable.timeScale,
-                player.travel.timeScale,
-                player.slide.timeScale
-            });
-        }
-
-        protected virtual void _Pause(Player player) {
-            player.buffable.timeScale = 0.0f;
-            player.travel.timeScale = 0.0f;
-            player.slide.timeScale = 0.0f;
-        }
-
-        protected virtual void _Restore(Player player) {
-            try {
-                player.buffable.timeScale = _timeScales.Pop();
-                player.travel.timeScale = _timeScales.Pop();
-                player.slide.timeScale = _timeScales.Pop();
-            } catch {
-                player.buffable.timeScale = 1.0f;
-                player.travel.timeScale = 1.0f;
-                player.slide.timeScale = 1.0f;
-            }
+            Handle(questionWidget, player);
         }
 
         public override bool OnSpawn(
