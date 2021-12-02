@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
   m_Name: ProLevel3FIL
   m_EditorClassIdentifier: 
+  category: 1
+  level: 3
   time: 0
+  repeaterHandler: {fileID: 0}
   _questionsFile: {fileID: 4900000, guid: 1772d4b350f304c408c878f5d43d6c8a, type: 3}
   questions:
   - content:
@@ -21,17 +24,11 @@ MonoBehaviour:
         ng pampribado at pampublikong sasakyan
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Certificate of public convenience
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Certificate of registration
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Driver's
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoParkingAnytime.png
@@ -39,68 +36,43 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng road sign na ito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Maaaring pumarada ng Lunes hanggang Biyernes
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Hindi pwedeng pumarada
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Hindi pwedeng pumarada mula Lunes hanggang Biyernes
+      text: 
   - content:
     - _type: 0
       _value: Ano ang unang hakbang sa pagtanggal ng trailer?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Ibaba ang trailer legs at i-stow ang hawakan
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: I-maneho ang tractor ng dahan-dahan at maayos
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Unahing i-secure ang the trailer brake
+      text: 
   - content:
     - _type: 0
       _value: Ano ang patakaran kapag ang traffic light ay steady green at steady
         left/right arrow?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Ang mga sasakyan ay pwedeng dumiretso o ang mga nasa kanan/kaliwa
-          ay maaaring lumiko pakanan/pakaliwa
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Ang mga sasakyan sa kabila ay maaaring dumerecho
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Maaaring dumaan ang mga pedestrian
+      text: 
   - content:
     - _type: 0
       _value: Kung ikaw ay nagmamaneho na may anti-lock brake system, ano ang gagawin
         mo sa pag-brake sa oras ng emergency?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: I-pump ang brake pedal ng maigi
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Mag-apply ng firm at tuloy-tuloy na pressure sa brake pedal
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Mag-apply ng minimum na pwersa sa brake pedal
+      text: 
   - content:
     - _type: 2
       _value: '"Assets/Game/Images/NextExit.png'
@@ -108,33 +80,21 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng mga signs na ito pag nakita mo sa expressway?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Hinto, lahat ng lanes sa unahan ay sarado
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Ang susunod na labasan ay 15 kilometrp pa ang layo
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: May sharp bend na naghihintay sa unahan
+      text: 
   - content:
     - _type: 0
       _value: Ano ang dapat mong gamiting gear sa pagbababa ng mga bata sa eskwelahan?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: First gear
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Reverse gear
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Neutral
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
@@ -142,17 +102,11 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng road sign na ito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: May intersekyon na madadaanan sa unahan
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: May railroad crossing na madadaanan sa unahan
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: May river crossing na madadaanan sa unahan
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/SpeedLimitDerestriction.png
@@ -160,65 +114,41 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng road sign na ito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bagong speed limit na 50 kph
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Minimum na speed limit 60 kph
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Huling 60 kph zone
+      text: 
   - content:
     - _type: 0
       _value: Hanggang kailan ang vaildity period ng Temporary Operators Permit (TOP)?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: 3 araw mula sa araw ng aprehensiyon
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: 72 hours mula sa oras ng aprehensiyon
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: 15 days mula sa petsa ng aprehensiyon
+      text: 
   - content:
     - _type: 0
       _value: Sa anong sitwasyon maaaring mag-swing ang isang trailer?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Kapag ang trailer ay sobrang puno
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Kapag ang trailer ay hindi maayos
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Kapag ang trailer ay walang laman
+      text: 
   - content:
     - _type: 0
       _value: Sa aling panukat nakikita ang fuel level ng sasakyan?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Voltmeter
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Temperature gauge
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Fuel gauge
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoStoppingAnytime.png
@@ -226,17 +156,11 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng traffic sign na ito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Crossroad/interseksiyon
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal huminto anumang oras
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Rotonda
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoLeftTurn.png
@@ -244,17 +168,11 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng traffic sign na ito?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal lumiko pakaliwa
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bawal lumiko pakanan
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bawal ang overtaking
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/Flood.png
@@ -262,150 +180,95 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng sign na ito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Road ahead ends
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Road get flooded
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Uneven road surface
+      text: 
   - content:
     - _type: 0
       _value: 'Maiiwasan at mababawasan ang road crashes kung ang drayber ay:'
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Kaskasero
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Marunong sumunod sa traffic signals at batas-trapiko
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Magaling magluto
+      text: 
   - content:
     - _type: 0
       _value: Saan dapat inilalagay ang mga mabibigat na bagahe kapag nagloload sa
         sasakyan?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Sa ilalim
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Sa gitna
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Sa itaas
+      text: 
   - content:
     - _type: 0
       _value: Ano ang ibig sabihin kapag ang headlights ay lumilinaw at dumidilim
         kapag dinidiinan ang accelerator pedal?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Battery overcharging
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Battery undercharging
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Battery dying
+      text: 
   - content:
     - _type: 0
       _value: May mga dayuhan na nagrereklamo sa overcharge na singil sa pamasahe.
         Ano ang maaaring gawin dito?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Huwag tumanggap ng dayuhang pasahero
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Umiwas sa pagkakasunduang pamasahe at sundin ang taxi meter
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Makipagkasundo sa singil ng pamasahe
+      text: 
   - content:
     - _type: 0
       _value: Ano ang maipapayong gawin kapag magpaparada sa matataong lugar?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Dapat na tingnan ng drayber kung naka-fold ang side mirrors
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Magparada sa intersection palayo sa pedestrian lane
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Magparada sa pedestrian lane
+      text: 
   - content:
     - _type: 0
       _value: Ano ang ibig sabihin ng pavement marking na may dobleng solid line?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal mag-overtake at tumawid sa dalawang direksyon
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bawal mag-overtake at tumawid sa isang direksyon
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Pwede ang pagtawid sa dalawang direksyon
+      text: 
   - content:
     - _type: 0
       _value: Bakit dapat na mas lalong maging alisto sa mga nakaparadang sasakyan
         sa gabi?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Maaaring lasing ang mga driver
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Maaaring masyadong marami ang nakaparada na sasakyan
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Maaari silang paandarin ng may-ari ano mang oras
+      text: 
   - content:
     - _type: 0
       _value: Ano ang epekto ng pagsunod sa controlled hours?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Pagkakaroon ng mababang kita kaysa sa mga walang controlled hours
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Pagkakaroon ng mas mataas na kita kaysa sa mga walang controlled
-          hours
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Pagkakaroon ng parehas kita kaysa sa mga walang controlled hours
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoEntryForAll.png
@@ -413,17 +276,11 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng road sign na ito?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal pumasok
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bawal pumarada
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Walang maayos na daanan
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoEntryForJeepneys.png
@@ -431,16 +288,10 @@ MonoBehaviour:
       _value: Ano ang ibig sabihin ng road sign na ito?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal pumasok ang mga dyip
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Bawal pumasok ang malalaking sasakyan
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Bawal pumasok ang mga bus
+      text: 
   - content: []
     choices: []

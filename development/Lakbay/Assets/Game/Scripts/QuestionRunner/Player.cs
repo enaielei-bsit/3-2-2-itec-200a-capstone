@@ -23,6 +23,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Buffable buffable => GetComponentInChildren<Buffable>();
         public Caster caster => GetComponentInChildren<Caster>();
 
+        public override void Awake() {
+            base.Awake();
+            printLog("first");
+        }
+
         public override void Update() {
             base.Update();
         }

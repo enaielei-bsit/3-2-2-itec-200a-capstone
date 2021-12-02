@@ -37,11 +37,38 @@ namespace Ph.CoDe_A.Lakbay {
         //     window?.Show();
         // }
         [Serializable]
-        public struct Asset {
-            public string type;
+        public struct MarkingAsset {
+            public Query query;
             public string group;
-            public string labels;
-            public string ignoredExtensions;
+            [SerializeField]
+            private string _labels;
+            public string[] labels {
+                get => ToParts(_labels);
+                set => string.Join("; ", _labels, value.Join("; "));
+            }
+        }
+
+        [Serializable]
+        public struct Query {
+            public string filter;
+            [SerializeField]
+            private string _ignoredExtensions;
+            public string[] ignoredExtensions {
+                get => ToParts(_ignoredExtensions);
+                set => string.Join("; ", _ignoredExtensions, value.Join("; "));
+            }
+
+            public Query(string filter, params string[] ignoredExtensions) {
+                this.filter = filter;
+                _ignoredExtensions = ignoredExtensions.Join("; ");
+            }
+
+            public string[] GetPaths(params string[] folders) {
+                var paths = EditorHelper.GetAssetPaths(
+                    filter, folders,
+                    ignoredExtensions);
+                return paths.ToArray();
+            }
         }
 
         [Header("Paths")]
@@ -68,19 +95,25 @@ namespace Ph.CoDe_A.Lakbay {
         public string BuildReleasePath => string.Join(
             "/", new string[] {BuildPath, _BuildReleasePath});
 
-        [Header("Marking Addressables")]
-        public List<Asset> assets = new List<Asset>() {
-            new Asset() {
-                type = "Sprite", group = "Images", labels = "Image; Sprite"
+        public List<MarkingAsset> markingAssets = new List<MarkingAsset>() {
+            new MarkingAsset() {
+                query = new Query("t:Sprite"),
+                group = "Images",
+                labels = new string[] {"Image", "Sprite"}
             },
-            new Asset() {
-                type = "TextAsset", group = "Documents", labels = "Document; TextAsset",
-                ignoredExtensions = "cs; dll"
+            new MarkingAsset() {
+                query = new Query("t:TextAsset", "cs", "dll"),
+                group = "Documents",
+                labels = new string[] {"Document", "TextAsset"}
             },
-            new Asset() {
-                type = "AudioClip", group = "Audios", labels = "Audio; AudioClip"
+            new MarkingAsset() {
+                query = new Query("t:AudioClip"),
+                group = "Audios",
+                labels = new string[] {"Audio", "AudioClip"}
             }
         };
+
+        public List<Query> localizingAssets = new List<Query>();
 
         public virtual void OnGUI() {
             // HelperSettings.instance = (HelperSettings) EditorGUILayout.ObjectField(
@@ -102,29 +135,18 @@ namespace Ph.CoDe_A.Lakbay {
             
             try {
                 var settings = EditorHelper.addressableAssetSettings;
-                foreach(var asset in this.assets) {
-                    if(!string.IsNullOrEmpty(asset.type)) {
-                        var exts = new string[] {};
-                        if(!string.IsNullOrEmpty(asset.ignoredExtensions))
-                            exts = asset.ignoredExtensions.Split(";")
-                                .Select((e) => e.Trim()).ToArray();
-
-                        var labels = new string[] {};
-                        if(!string.IsNullOrEmpty(asset.labels))
-                            labels = asset.labels.Split(";")
-                                .Select((e) => e.Trim()).ToArray();
-
-                        var paths = EditorHelper.GetAssetPaths(
-                            $"t:{asset.type}", new string[] {this.GameAssetsPath},
-                            exts);
+                var assets = this.markingAssets;
+                foreach(var asset in assets) {
+                    if(!string.IsNullOrEmpty(asset.query.filter)) {
+                        var paths = asset.query.GetPaths(this.GameAssetsPath);
 
                         foreach(var path in paths) {
                             EditorUtility.DisplayProgressBar(
                                 "Mark Assets as Addressables",
                                 $"Asset: {path}",
-                                (this.assets.IndexOf(asset) + 1) / this.assets.Count);
+                                (assets.IndexOf(asset) + 1) / assets.Count);
 
-                            settings.AddEntry(path, asset.group, labels);
+                            settings.AddEntry(path, asset.group, asset.labels);
                         }
                     }
                 }
@@ -139,25 +161,21 @@ namespace Ph.CoDe_A.Lakbay {
             
             try {
                 var settings = EditorHelper.addressableAssetSettings;
-                var groups = settings.groups.ToList();
+                var queries = this.localizingAssets;
+                foreach(var query in queries) {
+                    if(!string.IsNullOrEmpty(query.filter)) {
+                        var paths = query.GetPaths(this.GameAssetsPath);
 
-                foreach(var group in groups) {
-                    if(group.ReadOnly) continue;
+                        foreach(var path in paths) {
+                            EditorUtility.DisplayProgressBar(
+                                "Mark Assets as Addressables",
+                                $"Asset: {path}",
+                                (queries.IndexOf(query) + 1) / queries.Count);
 
-                    var entries = group.entries.ToArray();
-                    foreach(var entry in entries) {
-                        if(entry == null) continue;
-
-                        EditorUtility.DisplayProgressBar(
-                            "Localize Addressable Assets",
-                            $"Group: {group.Name}\nAsset: {entry.AssetPath}",
-                            (Array.IndexOf(entries, entry) + 1) / entries.Length);
-
-                        var asset = AssetDatabase.LoadAssetAtPath(
-                            entry.AssetPath, entry.MainAssetType);
-                        asset?.Localize(
-                            entry.MainAssetType.Name,
-                            this.LocalizationAssetsTablesPath);
+                            var rasset =
+                                AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                            rasset?.Localize(rasset.GetType().Name, this.LocalizationAssetsTablesPath);
+                        }
                     }
                 }
             } catch {}
@@ -228,6 +246,14 @@ namespace Ph.CoDe_A.Lakbay {
             } else if (summary.result == BuildResult.Failed) {
                 Debug.Log($"Build failed!");
             }
+        }
+
+        public static string[] ToParts(string str, string separator=";") {
+            var parts = new string[] {};
+            if(!string.IsNullOrEmpty(str))
+                parts = str.Split(";")
+                    .Select((e) => e.Trim()).ToArray();
+            return parts;
         }
     }
 }

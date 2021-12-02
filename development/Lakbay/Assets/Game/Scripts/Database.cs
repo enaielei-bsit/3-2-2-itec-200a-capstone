@@ -142,6 +142,27 @@ namespace Ph.CoDe_A.Lakbay {
             return asset;
         }
 
+        public virtual Dictionary<string, object> Get(Type type) {
+            var dict = new Dictionary<string, object>();
+            foreach(var asset in _assets) {
+                if(asset.Value != null && asset.Value.GetType() == type) {
+                    dict.Add(asset.Key, asset.Value);
+                }
+            }
+
+            return dict;
+        }
+
+        public virtual Dictionary<string, T> Get<T>() {
+            var dict = new Dictionary<string, T>();
+            var rdict = Get(typeof(T));
+            foreach(var p in rdict) {
+                dict.Add(p.Key, (T) p.Value);
+            }
+            
+            return dict;
+        }
+
         public override void Awake() {
             base.Awake();
         }

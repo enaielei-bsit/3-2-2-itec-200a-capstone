@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
   m_Name: ProLevel1FIL
   m_EditorClassIdentifier: 
+  category: 1
   time: 0
+  repeaterHandler: {fileID: 0}
   _questionsFile: {fileID: 4900000, guid: f8fb1deae434048458de376069a21308, type: 3}
   questions:
   - content:
@@ -21,50 +23,32 @@ MonoBehaviour:
         road surface. Why is there a stop sign there?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Speed on the major road is derestricted
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: It is a busy junction
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Visibility along the major road is restricted
+      text: 
   - content:
     - _type: 0
       _value: You are allowed to stop on an expressway when you?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Need to convey a passenger
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Need to unload a passenger
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Are told to do so by a traffic enforcer
+      text: 
   - content:
     - _type: 0
       _value: What flag color is required to be attached on projecting loads of a
         vehicle?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Yellow
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Green
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Red
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/SchoolChildrenCrossing.png
@@ -72,100 +56,64 @@ MonoBehaviour:
       _value: What does this traffic sign means?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Railroad Crosssing
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: School Zone
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Animal Crossing
+      text: 
   - content:
     - _type: 0
       _value: While driving, how should you look at your side and rear view mirror?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Stare longer at your mirrors
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: A quick glance
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: NOT less than once per one minute
+      text: 
   - content:
     - _type: 0
       _value: What can make you lose your concentration while driving?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Using the wiper wash
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Listening to loud music
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Glancing at the side mirror
+      text: 
   - content:
     - _type: 0
       _value: If you see a stopped vehicle on the side of the road, what should you
         do?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Blow the horn
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Stop and provoke the driver
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Slow down and use caution when passing
+      text: 
   - content:
     - _type: 0
       _value: Is it true that a person may apply for a Student-driver's Permit even
         with a tuberculosis or sexually transmitted disease?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: True
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: False
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Maybe
+      text: 
   - content:
     - _type: 0
       _value: What should you do when your doctor prescribes you a medicine which
         is likely to affect your driving?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Avoid driving on expressways
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Drive only if someone is with you
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Do NOT Drive
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoEntryForCars.png
@@ -173,16 +121,10 @@ MonoBehaviour:
       _value: What does this traffic sign means?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: No Overtaking
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Clearway(no stopping)
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No Motor vehicles
+      text: 
   - content: []
     choices: []

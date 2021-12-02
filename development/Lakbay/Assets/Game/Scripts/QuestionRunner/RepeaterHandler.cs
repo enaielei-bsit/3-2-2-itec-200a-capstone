@@ -18,6 +18,9 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class RepeaterHandler : Core.Controller {
+        protected bool _built = false;
+        public virtual bool built => _built;
+
         public int count = 5;
         [HideInInspector]
         public int repeated = 0;
@@ -61,6 +64,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     Position(
                         root, i == 0 ? null : repeaters[i - 1], repeater, offset);
                 }
+
+                _built = true;
             }
         }
 
@@ -74,6 +79,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void Repeat() {
+            if(!built) return;
             if(repeaters.Count > 0) {
                 if(maxRepeat > 0) {
                     if(repeated < maxRepeat) repeated++;

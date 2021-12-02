@@ -17,6 +17,7 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay {
     using Core;
     using QuestionRunner;
+    using UnityEngine.Localization;
 
     public static class Session {
         public static Database database;

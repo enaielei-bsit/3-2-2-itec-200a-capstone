@@ -18,6 +18,9 @@ namespace Ph.CoDe_A.Lakbay {
     using Core;
     using QuestionRunner;
     using SteppedApplication;
+    using UnityEngine.Localization;
+    using UnityEngine.Localization.Components;
+    using UnityEngine.Localization.Settings;
 
     public class Initialization : Controller {
         protected static bool _finished = false;
@@ -31,6 +34,8 @@ namespace Ph.CoDe_A.Lakbay {
         public new virtual IEnumerator Start() {
             if(finished) yield break;
 
+            yield return LocalizationSettings.InitializationOperation;
+
             Session.database = FindObjectOfType<Database>();
             if(Session.database) {
                 Session.database.Load<Sprite>();
@@ -41,10 +46,15 @@ namespace Ph.CoDe_A.Lakbay {
             }
 
             _finished = true;
+            printLog("finished");
         }
 
         public override void Update() {
             base.Update();
+        }
+
+        protected static Action<QRLevel> OnQRLevelChange(int index) {
+            return (l) =>  Session.qrLevels[index] = l;
         }
     }
 }

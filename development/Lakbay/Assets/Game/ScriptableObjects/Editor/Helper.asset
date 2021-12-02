@@ -18,20 +18,22 @@ MonoBehaviour:
   _BuildPath: Build
   _BuildDebugPath: Debug
   _BuildReleasePath: Release
-  assets:
-  - type: Sprite
+  markingAssets:
+  - query:
+      filter: t:Sprite
+      _ignoredExtensions: 
     group: Images
-    labels: Image; Sprite
-    ignoredExtensions: 
-  - type: TextAsset
+    _labels: 
+  - query:
+      filter: t:TextAsset
+      _ignoredExtensions: cs; dll
     group: Documents
-    labels: Document; TextAsset
-    ignoredExtensions: cs; dll
-  - type: AudioClip
+    _labels: 
+  - query:
+      filter: t:AudioClip
+      _ignoredExtensions: 
     group: Audios
-    labels: Audio; AudioClip
-    ignoredExtensions: 
-  - type: QRLevel
-    group: QRLevels
-    labels: QRLevel; ScriptableObject
-    ignoredExtensions: 
+    _labels: 
+  localizingAssets:
+  - filter: t:QRLevel
+    _ignoredExtensions: 

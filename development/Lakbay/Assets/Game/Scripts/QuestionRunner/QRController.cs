@@ -18,6 +18,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Utilities;
 
     public class QRController : Core.Controller {
+        public QRLevel level;
         public Transform repeaterHandlerLocation;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -34,9 +35,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void Build() {
             if(repeaterHandlerLocation) {
-                if(Session.qrLevel) {
+                if(level) {
                     repeaterHandler = Instantiate(
-                       Session.qrLevel.repeaterHandler, repeaterHandlerLocation);
+                       level.repeaterHandler, repeaterHandlerLocation);
 
                     repeaterHandler.Build();
                 }

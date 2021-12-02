@@ -26,6 +26,8 @@ namespace Utilities {
         public static readonly IDeserializer YamlDeserializer =
             new DeserializerBuilder()
             .Build();
+        public static Locale[] locales =>
+            LocalizationSettings.AvailableLocales.Locales.ToArray();
 
         // source: https://scholarwithin.com/average-reading-speed
         // Word per Minute
@@ -40,14 +42,6 @@ namespace Utilities {
         public delegate float TimedRunOnProgress(
             float duration, float elapsedTime);
         public delegate void TimedRunOnFinish(float duration, float elapsedTime);
-
-        public static Locale[] GetLocales() {
-            Locale[] locales;
-            locales = LocalizationSettings.AvailableLocales.Locales.ToArray();
-
-            return locales;
-        }
-
         public static IEnumerator Run(
             ConditionalRunCondition condition=default,
             ConditionalRunOnStart onStart=default,

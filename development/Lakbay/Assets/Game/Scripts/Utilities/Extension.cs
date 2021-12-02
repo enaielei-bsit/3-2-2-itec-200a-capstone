@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using Humanizer;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -90,6 +90,20 @@ namespace Utilities {
                 .Select(arg => arg.Trim().TrimMatchingQuotes('\"'))
                 .Where(arg => !string.IsNullOrEmpty(arg));
         }
+
+        public static Locale GetLocale(this string str, Locale[] locales, out string name) {
+            var names = str.Humanize().Split(' ').ToList();
+            var code = names.Pop(names.Count - 1);
+            name = names.Join(" ").Dehumanize();
+            return Array.Find(
+                locales, (l) => l.Identifier.Code.ToLower() == code.ToLower());
+        }
+
+        public static Locale GetLocale(this string str, out string name) {
+            return str.GetLocale(Helper.locales, out name);
+        }
+
+        public static Locale GetLocale(this string str) => str.GetLocale(out string name);
 
         // T
         public static bool Either<T>(

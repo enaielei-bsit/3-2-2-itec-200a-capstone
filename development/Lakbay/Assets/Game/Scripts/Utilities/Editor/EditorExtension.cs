@@ -23,6 +23,7 @@ using UnityEngine.Localization;
 using UnityEngine.UI;
 
 using Humanizer;
+using UnityEngine.Localization.Settings;
 
 namespace Utilities {
     public static class EditorExtension {
@@ -70,23 +71,15 @@ namespace Utilities {
             return settings.AddEntry(path, null);
         }
 
-        public static Locale GetLocale(this string str, out string name) {
-            var names = str.Humanize().Split(' ').ToList();
-            var code = names.Pop(names.Count - 1);
-            name = names.Join(" ").Dehumanize();
-            return Array.Find(
-                EditorHelper.locales, (l) => l.Identifier.Code.ToLower() == code.ToLower());
-        }
-
-        public static Locale GetLocale(this string str) => str.GetLocale(out string name);
-
         public static void Localize(
             this UnityEngine.Object asset, string table, string path) {
-            var loc = asset.name.GetLocale(out string newName);
+            var loc = asset.name.GetLocale(EditorHelper.locales, out string newName);
             string code = loc ? code = loc.Identifier.Code : null;
-            if(string.IsNullOrEmpty(code)) return;
+            if(string.IsNullOrEmpty(code))
+                // return;
+                code = LocalizationSettings.ProjectLocale.Identifier.Code;
 
-            path = path == null || path.Length == 0 ? "Asset" : path;
+            path = path == null || path.Length == 0 ? "Assets" : path;
 
             var atc = EditorHelper.EnsureAssetTableCollection(table, path);
             string assetPath = AssetDatabase.GetAssetPath(asset);

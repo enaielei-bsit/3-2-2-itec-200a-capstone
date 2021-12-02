@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
   m_Name: ProLevel3EN
   m_EditorClassIdentifier: 
+  category: 1
+  level: 3
   time: 0
+  repeaterHandler: {fileID: 0}
   _questionsFile: {fileID: 4900000, guid: 0185fda5da3324148b4226871920bb41, type: 3}
   questions:
   - content:
@@ -21,17 +24,11 @@ MonoBehaviour:
         for hire/public utility vehicle
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Certificate of public convenience
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Certificate of registration
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Driver's
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoParkingAnytime.png
@@ -39,68 +36,43 @@ MonoBehaviour:
       _value: What does this traffic sign means?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: You can park on the days shown
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No parking anytime
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: No parking at all from Monday to Friday
+      text: 
   - content:
     - _type: 0
       _value: What is the first step for decoupling trailers?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Lower the trailer legs and stow the handle
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Drive the tractor slowly and smoothly
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Secure the trailer brake
+      text: 
   - content:
     - _type: 0
       _value: What is the rule when the traffic light is steady green & steady left/right
         arrow?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: Vehicles can go straight or vehicles on the right/left can make right/left
-          turn
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Vehicles on the other side can go straight ahead
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Pedestrian can cross anytime
+      text: 
   - content:
     - _type: 0
       _value: You are driving a vehicle fitted with anti-lock brake system. What
         should you do when braking in an emergency?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Pump the brake pedal harshly
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Apply firm continuous pressure to the brake pedal
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Apply minimum force to the brake pedal
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NextExit.png
@@ -108,33 +80,21 @@ MonoBehaviour:
       _value: You see these signs overhead on the expressway. They mean?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Stop, all lanes ahead closed
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Next exit is 15 kilometer ahead
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Sharp bend to the left ahead
+      text: 
   - content:
     - _type: 0
       _value: What should be your gear position when dropping off school children?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: First gear
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Reverse gear
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Neutral
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
@@ -142,17 +102,11 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: There is a crossroad ahead
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: There is a railroad crossing ahead
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: There is a river crossing ahead
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/SpeedLimitDerestriction.png
@@ -160,65 +114,41 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: New speed limit 50 kph
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Minimum speed limit 60 kph
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: End of 60 kph zone
+      text: 
   - content:
     - _type: 0
       _value: What is the validity period of a Temporary Operators Permit(TOP)?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: 3 days from the date of apprehension
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: 72 hours from the time of apprehension
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: 15 days from the date of apprehension
+      text: 
   - content:
     - _type: 0
       _value: What situation that a trailer may swing?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Whenever the trailer is fully loaded
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Whenever the trailer is not properly fixed
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Whenever the trailer is empty
+      text: 
   - content:
     - _type: 0
       _value: Which gauge displays the fuel level of the vehicle?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Voltmeter
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Temperature gauge
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Fuel gauge
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoStoppingAnytime.png
@@ -226,17 +156,11 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Crossroad/intersection
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: No stopping anytime
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Roundabout
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoLeftTurn.png
@@ -244,17 +168,11 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: No left turn
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No right turn
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No overtaking
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/Flood.png
@@ -262,149 +180,94 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Road ahead ends
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Road get flooded
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Uneven road surface
+      text: 
   - content:
     - _type: 0
       _value: 'Road crash can be avoided and minimized if the driver:'
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Is a Dancer
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Knows and obeys traffic signals, rules and regulations
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Knows how to cook
+      text: 
   - content:
     - _type: 0
       _value: When loading cardboards, cartons, and boxes on a vehicle, where should
         the heaviest items be placed?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: At the bottom of the load
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: In the middle of the load
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: At the top of the load
+      text: 
   - content:
     - _type: 0
       _value: What does it means when the headlights are getting brighter when pressing
         accelerator pedal & goes dimmer when it is released?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: Battery overcharging
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Battery undercharging
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Battery dying
+      text: 
   - content:
     - _type: 0
       _value: Some foreigners are complaining about taxi drivers overcharging fare.
         What is the best thing to do?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: As much as possible do not pick up foreigners
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: Avoid negotiating the fare and follow the taxi meter
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Negotiate the fare if the foreigners agreed
+      text: 
   - content:
     - _type: 0
       _value: What is advisable to do when parking on places with many pedestrians?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: The driver must see to it that side mirrors are folded
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: The driver must park at the intersection away from pedestrian lane
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Be sure to park at pedestrian lane
+      text: 
   - content:
     - _type: 0
       _value: What is the meaning of a pavement marking with a double solid line?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: No overtaking and crossing on both directions
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No overtaking and crossing from one direction
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: Crossing is allowed on both directions
+      text: 
   - content:
     - _type: 0
       _value: Why should you be especially aware of parked cars when driving at night?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: The drivers may be drunk
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: There are more of them
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: They are more likely to move off
+      text: 
   - content:
     - _type: 0
       _value: What is the effect of following controlled hours?
     choices:
     - correct: 0
-      content:
-      - _type: 0
-        _value: May have lower income than those without controlled hours
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: May have higher income than those without controlled hours when computed
-          in a month
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: May have equal income than those without controlled hours
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoEntryForAll.png
@@ -412,17 +275,11 @@ MonoBehaviour:
       _value: What does this sign mean?
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: No entry
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No parking
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No through road
+      text: 
   - content:
     - _type: 2
       _value: Assets/Game/Images/NoEntryForJeepneys.png
@@ -430,16 +287,10 @@ MonoBehaviour:
       _value: What
     choices:
     - correct: 1
-      content:
-      - _type: 0
-        _value: No Entry for Jeepneys
+      text: 
     - correct: 1
-      content:
-      - _type: 0
-        _value: No Entry for Big Trucks
+      text: 
     - correct: 0
-      content:
-      - _type: 0
-        _value: No Entry for Busses
+      text: 
   - content: []
     choices: []
