@@ -23,17 +23,22 @@ MonoBehaviour:
       filter: t:Sprite
       _ignoredExtensions: 
     group: Images
-    _labels: 
+    _labels: Image; Sprite
   - query:
       filter: t:TextAsset
       _ignoredExtensions: cs; dll
     group: Documents
-    _labels: 
+    _labels: Document; TextAsset
   - query:
       filter: t:AudioClip
       _ignoredExtensions: 
     group: Audios
-    _labels: 
+    _labels: Audio; AudioClip
+  - query:
+      filter: t:QRLevel
+      _ignoredExtensions: 
+    group: QRLevels
+    _labels: QRLevel; ScriptableObject
   localizingAssets:
-  - filter: t:QRLevel
-    _ignoredExtensions: 
+  - filter: t:TextAsset
+    _ignoredExtensions: cs; dll

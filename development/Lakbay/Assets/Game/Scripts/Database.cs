@@ -54,10 +54,9 @@ namespace Ph.CoDe_A.Lakbay {
                 return 0.0f;
             }
         }
-        public virtual bool loading {
-            get => loadingProgress != 1.0f && currentLocations != null
-                && currentLocations.Length > 0;
-        }
+        protected bool _loading = false;
+        public virtual bool loading => _loading;
+        public bool debug = false;
 
         public virtual IEnumerator LoadEnumerator<T>(
             object key,
@@ -65,6 +64,7 @@ namespace Ph.CoDe_A.Lakbay {
             LoadOnProgress<T> onProgress=default,
             LoadOnPreAndPost onFinish=default,
             bool ignoreExisting=true) {
+            _loading = true;
             var locationsHandle = Addressables.LoadResourceLocationsAsync(
                 key, typeof(T));
             yield return locationsHandle;
@@ -89,6 +89,7 @@ namespace Ph.CoDe_A.Lakbay {
                     Addressables.Release(_assets[location.PrimaryKey]);
                 }
                 _assets[location.PrimaryKey] = handle.Result;
+                if(debug) printLog($"Loading: {location.PrimaryKey}");
             }
             _currentLocations = default;
             _currentLocation = default;
@@ -96,6 +97,8 @@ namespace Ph.CoDe_A.Lakbay {
             onFinish?.Invoke(locations);
             
             Addressables.Release(locationsHandle);
+            _loading = false;
+            if(debug) printLog($"Done loading {locations.Length} Asset(s).");
         }
 
         public virtual IEnumerator LoadEnumerator<T>(
@@ -145,7 +148,9 @@ namespace Ph.CoDe_A.Lakbay {
         public virtual Dictionary<string, object> Get(Type type) {
             var dict = new Dictionary<string, object>();
             foreach(var asset in _assets) {
-                if(asset.Value != null && asset.Value.GetType() == type) {
+                if(asset.Value != null
+                    && (asset.Value.GetType() == type
+                        || asset.Value.GetType().IsSubclassOf(type))) {
                     dict.Add(asset.Key, asset.Value);
                 }
             }

@@ -15,12 +15,14 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay {
+    using Utilities;
     using Core;
     using QuestionRunner;
     using SteppedApplication;
     using UnityEngine.Localization;
     using UnityEngine.Localization.Components;
     using UnityEngine.Localization.Settings;
+    using UnityEngine.SceneManagement;
 
     public class Initialization : Controller {
         protected static bool _finished = false;
@@ -28,7 +30,6 @@ namespace Ph.CoDe_A.Lakbay {
 
         public override void Awake() {
             base.Awake();
-            if(finished) return;
         }
 
         public new virtual IEnumerator Start() {
@@ -39,14 +40,21 @@ namespace Ph.CoDe_A.Lakbay {
             Session.database = FindObjectOfType<Database>();
             if(Session.database) {
                 Session.database.Load<Sprite>();
-                yield return new WaitUntil(() => Session.database.loading);
+                yield return new WaitWhile(() => Session.database.loading);
 
                 Session.database.Load<QRLevel>();
-                yield return new WaitUntil(() => Session.database.loading);
+                yield return new WaitWhile(() => Session.database.loading);
+            }
+
+            Session.localizer = FindObjectOfType<Localizer>();
+            if(Session.localizer) {
+                var levels = Session.database.Get<QRLevel>();
+                foreach(var level in levels) {
+                    level.Value.Subscribe(Session.localizer);
+                }
             }
 
             _finished = true;
-            printLog("finished");
         }
 
         public override void Update() {

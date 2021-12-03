@@ -22,6 +22,10 @@ namespace Ph.CoDe_A.Lakbay.Core {
     using Layout = Tuple<Entry.Type, LayoutGroup>;
 
     public class Content : Controller {
+        protected IEnumerable<int> _oldHashes;
+        protected virtual IEnumerable<int> _hashes =>
+            content.Select((e) => e.raw.GetHashCode());
+
         [Serializable]
         public struct Group<T0, T1>
             where T0 : Component {
@@ -37,6 +41,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         protected Layout _previousLayout;
 
+        public bool automatic = true;
         public LayoutGroup root;
         public Group<TextMeshProUGUI, string> textGroup;
         public Group<Image, Sprite> imageGroup;
@@ -44,6 +49,17 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public override void Awake() {
             base.Awake();
+        }
+
+        public override void Update() {
+            base.Update();
+            if(automatic) {
+                var hashes = _hashes.ToArray();
+                if(_oldHashes == null || _oldHashes.Count() == 0
+                    || _oldHashes.Enumerate().Any((h) => hashes[h.Key] != h.Value)) {
+                    Build(content);
+                }
+            }
         }
 
         [ContextMenu("Clear")]
@@ -55,7 +71,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
         
         [ContextMenu("Build")]
-        public virtual void Build() => Build(content.ToArray());
+        public virtual void Build() => Build(content);
 
         public virtual void Build(IEnumerable<Entry> content) =>
             Build(content.ToArray());

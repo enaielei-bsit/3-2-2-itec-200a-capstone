@@ -13,6 +13,7 @@ using Humanizer;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Utilities.Helper;
 
@@ -182,6 +183,11 @@ namespace Utilities {
             return string.Join(separator, enumerable);
         }
 
+        public static IEnumerable<KeyValuePair<int, T>> Enumerate<T>(
+            this IEnumerable<T> enumerable) {
+            return enumerable.Select((c, i) => new KeyValuePair<int, T>(i, c));
+        }
+
         // IList
         public static T Pop<T>(this IList<T> list, int index=0) {
             var item = list[index];
@@ -205,6 +211,10 @@ namespace Utilities {
         public static T EnsureComponent<T>(this GameObject gameObject)
             where T : Component {
             return (T) gameObject.EnsureComponent(typeof(T));
+        }
+
+        public static bool IsPersistent(this GameObject gameObject) {
+            return gameObject.scene.IsDontDestroyOnLoad();
         }
 
         // Transform
@@ -285,6 +295,10 @@ namespace Utilities {
                 onProgress,
                 fixedUpdate
             ));
+        }
+
+        public static bool IsDontDestroyOnLoad(this Scene scene) {
+            return scene.name == "DontDestroyOnLoad";
         }
     }
 }

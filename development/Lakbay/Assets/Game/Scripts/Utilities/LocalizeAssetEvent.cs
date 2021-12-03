@@ -11,7 +11,7 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
 namespace Utilities {
-    public abstract class LocalizeAssetEvent<T> :
+    public class LocalizeAssetEvent<T> :
         LocalizedAssetEvent<
         T, LocalizedAsset<T>, UnityEvent<T>> where T : UnityEngine.Object {
     }

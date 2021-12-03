@@ -21,12 +21,25 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
     [RequireComponent(typeof(Button))]
     public class ChoiceWidget : Controller {
+        protected int _oldHash;
+        protected int _hash => choice.text.GetHashCode();
+
+        public bool automatic = true;
         public virtual Button button => GetComponentInChildren<Button>();
         public virtual TextMeshProUGUI text =>
             GetComponentInChildren<TextMeshProUGUI>();
+        public Choice choice;
+
+        public override void Update() {
+            base.Update();
+            if(automatic) {
+                if(_oldHash != _hash) Build(choice.text);
+            }
+        }
 
         public virtual void Build(QuestionWidget questionWidget, Choice choice) {
             if(choice == null) return;
+            this.choice = choice;
             Build(choice.text);
             if(button) {
                 button.onClick.RemoveAllListeners();
