@@ -225,15 +225,19 @@ namespace Utilities {
             return gameObject.scene.IsValid();
         }
 
-        public static GameObject CreateFirstInstance(this GameObject gameObject) {
-            if(gameObject.IsExisting()) return gameObject;
-            return GameObject.Instantiate(gameObject);
+        public static GameObject CreateFirstInstance(
+            this GameObject gameObject, string name=null) {
+            var go = gameObject.IsExisting()
+                ? gameObject : GameObject.Instantiate(gameObject);
+            if(name == null) go.name = gameObject.name;
+            else go.name = name;
+            return go;
         }
 
         // Component
-        public static T CreateFirstInstance<T>(this T component)
+        public static T CreateFirstInstance<T>(this T component, string name=null)
             where T : Component {
-            var go = component.gameObject.CreateFirstInstance();
+            var go = component.gameObject.CreateFirstInstance(name);
             return go.GetComponent<T>();
         }
 

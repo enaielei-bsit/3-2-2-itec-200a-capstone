@@ -69,7 +69,6 @@ namespace Ph.CoDe_A.Lakbay {
             if(Session.localizer) {
                 Session.localizer.gameObject.MakePersistent();
                 var localizables = Session.database.Get<ILocalizable>();
-                printLog(localizables.Count);
                 foreach(var localizable in localizables) {
                     localizable.Value.Localize(Session.localizer);
                 }
