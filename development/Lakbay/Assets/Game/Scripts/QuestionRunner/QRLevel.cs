@@ -24,7 +24,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         fileName="QRLevel",
         menuName="Game/Question Runner/Level"
     )]
-    public class QRLevel : ScriptableObject {
+    public class QRLevel : Asset, ILocalizable {
         protected LocalizeTextAssetEvent _questionsFileEvent;
 
         public GameMode category = GameMode.NonPro;
@@ -67,7 +67,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Subscribe(Localizer localizer) {
+        public virtual void Localize(Localizer localizer) {
             localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
                 questionsFile, LoadQuestions);
         }

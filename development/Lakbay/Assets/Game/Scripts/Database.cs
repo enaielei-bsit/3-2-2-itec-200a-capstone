@@ -150,7 +150,9 @@ namespace Ph.CoDe_A.Lakbay {
             foreach(var asset in _assets) {
                 if(asset.Value != null
                     && (asset.Value.GetType() == type
-                        || asset.Value.GetType().IsSubclassOf(type))) {
+                        || asset.Value.GetType().IsSubclassOf(type))
+                        || asset.Value.GetType().GetInterfaces().Contains(type)
+                        || asset.Value.GetType().IsInstanceOfType(type)) {
                     dict.Add(asset.Key, asset.Value);
                 }
             }

@@ -25,7 +25,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void Awake() {
             base.Awake();
-            printLog("first");
         }
 
         public override void Update() {

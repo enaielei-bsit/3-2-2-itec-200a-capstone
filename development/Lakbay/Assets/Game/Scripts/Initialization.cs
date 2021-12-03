@@ -48,9 +48,10 @@ namespace Ph.CoDe_A.Lakbay {
 
             Session.localizer = FindObjectOfType<Localizer>();
             if(Session.localizer) {
-                var levels = Session.database.Get<QRLevel>();
-                foreach(var level in levels) {
-                    level.Value.Subscribe(Session.localizer);
+                var localizables = Session.database.Get<ILocalizable>();
+                printLog(localizables.Count);
+                foreach(var localizable in localizables) {
+                    localizable.Value.Localize(Session.localizer);
                 }
             }
 
