@@ -98,6 +98,14 @@ namespace Utilities {
 
         public static float GetExpectedReadTime(string str, float readSpeed) {
             return 60 * (str.Split(' ').Length / readSpeed);
-        } 
+        }
+
+        public static void TriggerLocaleChange() {
+            var value = LocalizationSettings.SelectedLocale;
+            LocalizationSettings.SelectedLocale = 
+                LocalizationSettings.AvailableLocales.Locales.Find(
+                    (l) => l != value);
+            LocalizationSettings.SelectedLocale = value;
+        }
     }
 }

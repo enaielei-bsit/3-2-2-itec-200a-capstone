@@ -942,7 +942,7 @@ namespace Pixelplacement
                 if (activeTweens[i].targetInstanceID == id)
                 {
                     activeTweens[i].Finish();
-                    activeTweens.RemoveAt(i);
+                    //activeTweens.RemoveAt(i); needs validation
                 }
             }
         }
@@ -954,7 +954,7 @@ namespace Pixelplacement
                 if (activeTweens[i].targetInstanceID == id)
                 {
                     activeTweens[i].Cancel();
-                    activeTweens.RemoveAt(i);
+                    //activeTweens.RemoveAt(i); needs validation
                 }
             }
         }

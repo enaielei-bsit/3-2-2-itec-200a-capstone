@@ -23,6 +23,7 @@ namespace Ph.CoDe_A.Lakbay {
     public static class Session {
         public static Database database;
         public static Localizer localizer;
+        public static LoadingScreen loadingScreen;
 
         public static GameMode mode = GameMode.NonPro;
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();

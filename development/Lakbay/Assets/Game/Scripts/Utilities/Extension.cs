@@ -217,6 +217,26 @@ namespace Utilities {
             return gameObject.scene.IsDontDestroyOnLoad();
         }
 
+        public static void MakePersistent(this GameObject gameObject) {
+            if(!gameObject.IsPersistent()) UnityEngine.Object.DontDestroyOnLoad(gameObject);
+        }
+
+        public static bool IsExisting(this GameObject gameObject) {
+            return gameObject.scene.IsValid();
+        }
+
+        public static GameObject CreateFirstInstance(this GameObject gameObject) {
+            if(gameObject.IsExisting()) return gameObject;
+            return GameObject.Instantiate(gameObject);
+        }
+
+        // Component
+        public static T CreateFirstInstance<T>(this T component)
+            where T : Component {
+            var go = component.gameObject.CreateFirstInstance();
+            return go.GetComponent<T>();
+        }
+
         // Transform
         public static bool IsEmpty(this Transform transform) {
             return transform.childCount == 0;
