@@ -54,7 +54,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public void printLog(params object[] objs) {
             if(objs.Length == 0) return;
-            objs[0] = $"[{name}.{GetType().Name}]: "
+            string label = name == GetType().Name ? name
+                : $"{name}.{GetType().Name}";
+            objs[0] = $"[{label}]: "
                 + (objs[0] != null ? objs[0].ToString() : "");
             print(objs);
         }
