@@ -14,13 +14,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay {
+namespace Ph.CoDe_A.Lakbay.Core {
     using QuestionRunner;
     using UnityEngine.AddressableAssets;
     using UnityEngine.ResourceManagement.AsyncOperations;
     using UnityEngine.ResourceManagement.ResourceLocations;
 
-    public class Database : Core.Controller {
+    public class Database : Core.Controller, LoadingScreen.IMonitored {
         public delegate void LoadOnPreAndPost(IResourceLocation[] locations);
         public delegate void LoadOnProgress<T>(
             IResourceLocation[] locations,
@@ -172,6 +172,15 @@ namespace Ph.CoDe_A.Lakbay {
 
         public override void Awake() {
             base.Awake();
+        }
+
+        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen) {
+            if(currentLocation != null) {
+                return new LoadingScreen.MonitorInfo(
+                    currentLocation.PrimaryKey, loadingProgress);
+            }
+
+            return default;
         }
     }
 }

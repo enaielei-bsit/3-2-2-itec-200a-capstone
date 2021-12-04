@@ -20,10 +20,11 @@ namespace Ph.CoDe_A.Lakbay {
     using QuestionRunner;
     using UnityEngine.Localization;
 
-    public static class Session {
+    public class Session : Controller {
         public static Database database;
         public static Localizer localizer;
         public static LoadingScreen loadingScreen;
+        public static SceneController sceneController;
 
         public static GameMode mode = GameMode.NonPro;
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
@@ -34,5 +35,7 @@ namespace Ph.CoDe_A.Lakbay {
         }
         public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count - 1
             ? qrLevels[qrLevelIndex] : default;
+
+        public static void SetMode(int value) => mode = (GameMode) value;
     }
 }

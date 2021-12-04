@@ -24,6 +24,7 @@ namespace Ph.CoDe_A.Lakbay {
     using UnityEngine.Localization.Settings;
     using UnityEngine.SceneManagement;
 
+    // [AddComponentMenu("Init")]
     public class Initialization : Controller {
         protected static bool _finished = false;
         public static bool finished => _finished;
@@ -34,19 +35,21 @@ namespace Ph.CoDe_A.Lakbay {
         protected Database _database; 
         [SerializeField]
         protected Localizer _localizer; 
+        [SerializeField]
+        protected SceneController _sceneController; 
 
         public override void Awake() {
             base.Awake();
         }
 
         public new virtual IEnumerator Start() {
-            if(finished) Destroy(gameObject);
+            if(finished) yield break;
 
             Session.loadingScreen =
                 _loadingScreen ? _loadingScreen.CreateFirstInstance() : default;
             if(Session.loadingScreen) {
                 Session.loadingScreen.gameObject.MakePersistent();
-                Session.loadingScreen.Show("Loading...", 0.0f);
+                Session.loadingScreen.Show();
             }
 
             // Load Unity stuffs first...
@@ -57,6 +60,7 @@ namespace Ph.CoDe_A.Lakbay {
                 _database ? _database.CreateFirstInstance() : default;
             if(Session.database) {
                 Session.database.gameObject.MakePersistent();
+
                 Session.database.Load<Sprite>();
                 yield return new WaitWhile(() => Session.database.loading);
 
@@ -66,24 +70,24 @@ namespace Ph.CoDe_A.Lakbay {
 
             Session.localizer = 
                 _localizer ? _localizer.CreateFirstInstance() : default;
-            if(Session.localizer) {
+            if(Session.localizer && Session.database) {
                 Session.localizer.gameObject.MakePersistent();
+
                 var localizables = Session.database.Get<ILocalizable>();
                 foreach(var localizable in localizables) {
                     localizable.Value.Localize(Session.localizer);
                 }
+            }
 
-                Helper.TriggerLocaleChange();
+            Session.sceneController =
+                _sceneController ? _sceneController.CreateFirstInstance() : default;
+            if(Session.sceneController) {
+                Session.sceneController.gameObject.MakePersistent();
             }
 
             _finished = true;
             Session.loadingScreen?.Hide();
-
-            if(SceneManager.GetActiveScene().buildIndex == 0) {
-                SceneManager.LoadScene(1);
-            }
-
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
         public override void Update() {

@@ -101,6 +101,7 @@ namespace Utilities {
         }
 
         public static void TriggerLocaleChange() {
+            if(!LocalizationSettings.InitializationOperation.IsDone) return;
             var value = LocalizationSettings.SelectedLocale;
             LocalizationSettings.SelectedLocale = 
                 LocalizationSettings.AvailableLocales.Locales.Find(

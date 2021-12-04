@@ -23,9 +23,33 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
     [RequireComponent(typeof(Canvas)), RequireComponent(typeof(CanvasGroup))]
     public class LoadingScreen : Controller {
-        protected TweenBase progressTween;
+        public class MonitorInfo {
+            public string text;
+            public float progress;
 
-        public virtual bool showing => gameObject.activeSelf;
+            public MonitorInfo(string text, float progress) {
+                this.text = text;
+                this.progress = progress;
+            }
+        }
+
+        public interface IMonitored {
+            MonitorInfo OnMonitor(LoadingScreen loadingScreen);
+        }
+
+        protected TweenBase _progressTween;
+        protected IMonitored _monitored;
+        protected bool _hideOnNull;
+
+        public virtual CanvasGroup group => GetComponent<CanvasGroup>();
+        public virtual bool showing {
+            get => group.alpha > 0 && group.interactable && group.blocksRaycasts;
+            set {
+                group.alpha = value ? 1f : 0f;
+                group.interactable = value;
+                group.blocksRaycasts = value;
+            }
+        }
         public TextMeshProUGUI text;
         public Slider progress;
 
@@ -33,23 +57,56 @@ namespace Ph.CoDe_A.Lakbay.Core {
             base.Awake();
         }
 
+        public virtual void Show() {
+            if(!showing) showing = true;
+        }
+
         public virtual void Show(string text, float progress) {
+            Show();
             progress = Mathf.Clamp(progress, 0.0f, 1.0f);
-            if(!gameObject.activeSelf) gameObject.SetActive(true);
             if(this.text) {
                this.text.SetText(text); 
             }
 
             if(this.progress) {
-                if(progressTween != null) progressTween.Finish();
-                progressTween = Tween.Value(
+                if(_progressTween != null) _progressTween.Finish();
+                _progressTween = Tween.Value(
                     this.progress.value,
                     progress, (v) => this.progress.value = v, 0.05f, 0.0f);
             }
         }
 
         public virtual void Hide() {
-            if(gameObject.activeSelf) gameObject.SetActive(false);
+            if(showing) showing = false;
+        }
+
+        public virtual void Monitor(IMonitored monitored, bool hideOnNull=true) {
+            _monitored = monitored;
+            _hideOnNull = hideOnNull;
+            if(_monitored != null) Show();
+        }
+        
+        public virtual void Monitor(GameObject gameObjec, bool hideOnNull=true) {
+            var monitored = gameObject.GetComponents(typeof(IMonitored))
+                .Select((m) => m as IMonitored);
+            if(monitored != null && monitored.Count() != 0) {
+                Monitor(monitored.First());
+            }
+        }
+
+        public virtual void Unmonitor() => _monitored = null;
+
+        public override void Update() {
+            base.Update();
+            if(_monitored != null) {
+                var info = _monitored.OnMonitor(this);
+                if(info != null) {
+                    Show(info.text, info.progress);
+                } else {
+                    Unmonitor();
+                    if(_hideOnNull) Hide();
+                }
+            }
         }
     }
 }

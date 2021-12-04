@@ -141,6 +141,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1699376083858092323}
     m_Modifications:
+    - target: {fileID: 9079558354264907106, guid: 5887a21da030a8440844358c6cade7c4,
+        type: 3}
+      propertyPath: m_VerticalFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9079558354264907109, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
       propertyPath: m_enableWordWrapping
@@ -169,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
@@ -179,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
@@ -189,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
@@ -234,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -444.41248
       objectReference: {fileID: 0}
     - target: {fileID: 9079558354264907110, guid: 5887a21da030a8440844358c6cade7c4,
         type: 3}
@@ -483,6 +488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980432997238684994, guid: 4f4aa479f75b4c84aa135688637c991b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6980432997238684995, guid: 4f4aa479f75b4c84aa135688637c991b,
         type: 3}
