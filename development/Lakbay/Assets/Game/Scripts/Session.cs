@@ -33,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay {
             get => _qrLevelIndex;
             set => _qrLevelIndex = Mathf.Clamp(value, 0, qrLevels.Count - 1);
         }
-        public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count - 1
+        public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count
             ? qrLevels[qrLevelIndex] : default;
 
         public static void SetMode(int value) => mode = (GameMode) value;

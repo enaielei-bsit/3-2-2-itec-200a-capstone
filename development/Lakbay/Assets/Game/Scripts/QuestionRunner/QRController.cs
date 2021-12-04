@@ -16,9 +16,11 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Utilities;
-
-    public class QRController : Core.Controller {
-        public QRLevel level;
+    using Core;
+    
+    public class QRController : Controller {
+        public virtual LocalizeQRLevelEvent levelLocalization
+            => GetComponent<LocalizeQRLevelEvent>();
         public Transform repeaterHandlerLocation;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -29,17 +31,28 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.Awake();
         }
 
-        public override void Start() {
-            base.Start();
+        public new virtual IEnumerator Start() {
+            yield return new WaitUntil(() => Initialization.finished);
+            Build();
         }
 
         public virtual void Build() {
             if(repeaterHandlerLocation) {
-                if(level) {
+                if(Session.qrLevelIndex == 0) {
+                    var levels = Session.database.Get<QRLevel>().Values
+                        .Where((l) => l.category == Session.mode);
+                    Session.qrLevels.Clear();
+                    Session.qrLevels.AddRange(levels);
+                }
+
+                if(Session.qrLevel) {
+                    var level = Session.qrLevel;
                     repeaterHandler = Instantiate(
-                       level.repeaterHandler, repeaterHandlerLocation);
+                        level.repeaterHandler, repeaterHandlerLocation);
+                    var questions = level.questions;
 
                     repeaterHandler.Build();
+                    Session.loadingScreen?.Monitor(repeaterHandler);
                 }
             }
         }
@@ -87,6 +100,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void Resume() {
             if(player) Resume(player);
+        }
+
+        public virtual void UpdateLevel(QRLevel level) {
+            if(Session.qrLevel) {
+
+            }
         }
     }
 }

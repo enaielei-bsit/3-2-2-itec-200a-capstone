@@ -42,6 +42,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
         protected Coroutine _timer;
         public string timeFormat = "00.00";
 
+        [ContextMenu("Clear Question")]
+        public override void Clear() {
+            base.Clear();
+            time?.SetText("99.99");
+            if(Application.isPlaying) this.choices.DestroyChildren();
+            else this.choices.DestroyChildrenImmediately();
+        }
+
+        [ContextMenu("Build Question")]
         public override void Build() {
             Build(question);
         }

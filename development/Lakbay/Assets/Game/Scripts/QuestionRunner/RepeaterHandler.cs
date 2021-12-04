@@ -17,11 +17,16 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class RepeaterHandler : Core.Controller {
+    using Core;
+
+    public class RepeaterHandler : Controller, LoadingScreen.IMonitored {
+        protected Coroutine _coroutine;
         protected bool _built = false;
         public virtual bool built => _built;
 
-        public int count = 5;
+        public int maxCount = 10;
+        protected int _count;
+        public virtual int count => _count;
         [HideInInspector]
         public int repeated = 0;
         public int maxRepeat = -1;
@@ -41,20 +46,33 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         [ContextMenu("Build")]
         public virtual void Build() {
+            if(_coroutine == null) {
+                _coroutine = StartCoroutine(BuildEnumerator());
+            }
+        }
+
+        public virtual IEnumerator BuildEnumerator() {
+            _built = false;
             if(repeaters.Count > 0 && root) {
+                _count = 0;
+
                 for(int i = 0; i < repeaters.Count; i++) {
                     var repeater = repeaters[i];
                     root.DetachChildren();
-                    if(!repeater.gameObject.scene.IsValid()) {
+                    if(!repeater.gameObject.IsExisting()) {
                         repeaters[i] = Instantiate(repeater);
+                        _count++;
+                        yield return null;
                     }
                 }
 
                 if(Application.isPlaying) root.DestroyChildren();
                 else root.DestroyChildrenImmediately();
 
-                while(repeaters.Count < count) {
+                while(repeaters.Count < maxCount) {
                     repeaters.Add(Instantiate(repeaters.PickRandomly()));
+                    _count++;
+                    yield return null;
                 }
 
                 for(int i = 0; i < repeaters.Count; i++) {
@@ -67,6 +85,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                 _built = true;
             }
+
+            _coroutine = null;
+            yield break;
         }
 
         public static void Position(
@@ -95,6 +116,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 first.transform.Translate(offset);
                 first.OnRepeat();
             }
+        }
+
+        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen) {
+            if(!built) {
+                return new LoadingScreen.MonitorInfo(
+                    "RepeaterHandler",
+                    count / maxCount
+                );
+            }
+
+            return default;
         }
     }
 }

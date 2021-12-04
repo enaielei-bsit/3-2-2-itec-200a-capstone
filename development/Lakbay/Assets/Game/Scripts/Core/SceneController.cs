@@ -38,7 +38,6 @@ namespace Ph.CoDe_A.Lakbay.Core {
             Action<AsyncOperation> onFinish=null,
             bool allowSceneActivation=true) {
             if(_coroutine == null) {
-                printLog("loading");
                 _coroutine = StartCoroutine(
                     LoadEnumerator(
                         sceneBuildIndex,

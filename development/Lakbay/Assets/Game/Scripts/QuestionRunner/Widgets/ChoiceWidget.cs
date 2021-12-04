@@ -26,8 +26,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
         public bool automatic = true;
         public virtual Button button => GetComponentInChildren<Button>();
-        public virtual TextMeshProUGUI text =>
-            GetComponentInChildren<TextMeshProUGUI>();
+        public TextMeshProUGUI text;
         public Choice choice;
 
         public override void Update() {
