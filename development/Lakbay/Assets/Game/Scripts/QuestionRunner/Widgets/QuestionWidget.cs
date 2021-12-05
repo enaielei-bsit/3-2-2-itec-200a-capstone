@@ -57,14 +57,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
         public virtual void Build(Question question) {
             if(question != null) {
+                Clear();
                 this.question = question;
                 Build(question.content);
                 if(!choice || !this.choices) return;
-                if(Application.isPlaying) this.choices.DestroyChildren();
-                else this.choices.DestroyChildrenImmediately();
 
                 List<Choice> choices = question.choices.ToList();
                 if(shuffledChoices) choices = choices.Shuffle().ToList();
+                printLog("build");
 
                 foreach(var choice in choices) {
                     var choiceWidget = Instantiate(
@@ -121,6 +121,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             }
         }
 
+        [ContextMenu("Run Question")]
         public virtual void Run() {
             if(time && question != null) {
                 if(question.time > 0.0f) {

@@ -21,8 +21,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
     [RequireComponent(typeof(Button))]
     public class ChoiceWidget : Controller {
-        protected int _oldHash;
-        protected int _hash => choice.text.GetHashCode();
+        protected string _oldValue;
+        protected string _value => choice.text;
 
         public bool automatic = true;
         public virtual Button button => GetComponentInChildren<Button>();
@@ -32,7 +32,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
         public override void Update() {
             base.Update();
             if(automatic) {
-                if(_oldHash != _hash) Build(choice.text);
+                if(_oldValue != _value) {
+                    _oldValue = _value;
+                    Build(choice.text);
+                }
             }
         }
 

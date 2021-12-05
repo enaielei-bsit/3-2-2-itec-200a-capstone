@@ -22,9 +22,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
     using Layout = Tuple<Entry.Type, LayoutGroup>;
 
     public class Content : Controller {
-        protected IEnumerable<int> _oldHashes;
-        protected virtual IEnumerable<int> _hashes =>
-            content.Select((e) => e.raw.GetHashCode());
+        protected IEnumerable<string> _oldValues;
+        protected virtual IEnumerable<string> _values =>
+            content.Select((e) => e.raw);
 
         [Serializable]
         public struct Group<T0, T1>
@@ -54,10 +54,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public override void Update() {
             base.Update();
             if(automatic) {
-                var hashes = _hashes.ToArray();
-                if(_oldHashes == null || _oldHashes.Count() == 0
-                    || _oldHashes.Enumerate().Any((h) => hashes[h.Key] != h.Value)) {
-                    Build(content);
+                var values = _values.ToArray();
+                if(_oldValues == null || _oldValues.Count() == 0
+                    || _oldValues.Enumerate().Any((h) => values[h.Key] != h.Value)) {
+                    _oldValues = values;
+                    Build();
                 }
             }
         }
@@ -79,6 +80,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void Build(params Entry[] content) {
             if(root) {
                 Clear();
+                this.content.Clear();
+                this.content.AddRange(content);
                 var root = this.root;
 
                 foreach(var entry in content) {
