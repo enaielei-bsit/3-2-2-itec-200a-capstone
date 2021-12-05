@@ -45,24 +45,32 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 else location.DestroyChildrenImmediately();
 
                 foreach(var spawn in spawns) {
-                    Spawn(originalLocations, location, originalSpawns, spawn);
+                    if(CanSpawn(originalLocations, location, originalSpawns, spawn)) {
+                        var @new = Instantiate(spawn, location);
+                        OnSpawnInstantiate(@new);
+                    }
                 }
             }
         }
 
-        public virtual Spawn Spawn(
+        public virtual void OnSpawnInstantiate(Spawn spawn) {
+
+        }
+
+        public virtual bool CanSpawn(
             Transform[] locations, Transform location, Spawn[] spawns, Spawn spawn) {
             float chance = UnityEngine.Random.value;
             float spawnChance = chances.Count >= spawns.Length
                 ? chances[Array.IndexOf(spawns, spawn)] : 1.0f;
-            if(chance > spawnChance) return default;
+            if(chance > spawnChance) return false;
 
             var currentSpawns = location.GetComponentsInChildren<Spawn>();
-            if(currentSpawns.Length >= maxSpawnPerLocation) return default;
+            if(currentSpawns.Length >= maxSpawnPerLocation) return false;
             if(spawn.OnSpawn(this, locations, location)) {
-                return Instantiate(spawn, location);
+                return true;
             }
-            return default;
+
+            return false;
         }
     }
 }

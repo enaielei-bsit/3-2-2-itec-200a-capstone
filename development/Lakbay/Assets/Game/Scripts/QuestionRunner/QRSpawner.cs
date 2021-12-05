@@ -14,28 +14,63 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using Utilities;
+
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class QRSpawner : Core.Spawner {
+        public Repeater repeater;
         [SerializeField]
         protected List<string> _steps = new List<string>();
+        [SerializeField]
+        protected List<string> _intervals = new List<string>();
         public int[][] steps => _steps.Select((s) => s.Trim())
-            .Select((s) => s.Split(" ").Select((n) => int.Parse(n))
+            .Select((s) => s.Split(" ").Select((n) => Mathf.Max(int.Parse(n), 0))
+                .ToArray()).ToArray();
+        public int[][] intervals => _intervals.Select((s) => s.Trim())
+            .Select((s) => s.Split(" ").Select((n) => Mathf.Max(int.Parse(n), 1))
                 .ToArray()).ToArray();
 
-        public override Spawn Spawn(
+        public override bool CanSpawn(
             Transform[] locations, Transform location,
             Spawn[] spawns, Spawn spawn) {
-            var newSpawn = base.Spawn(locations, location, spawns, spawn);
-            if(!newSpawn) return default;
-            var questionSpawn = spawn as Spawns.QuestionSpawn;
-            if(questionSpawn) {
-                if(Session.qrLevel.questions.Count == 0) return default;
-                var question = Session.qrLevel.questions.Find((q) => !q.answered);
-                if(question == null) return default;
-                questionSpawn.question = question;
+            bool can = base.CanSpawn(locations, location, spawns, spawn);
+            if(!can) return false;
+
+            if(repeater && repeater.handler) {
+                int index = Array.IndexOf(spawns, spawn);
+
+                var steps = this.steps;
+                if(index.Within(0, steps.Length - 1)) {
+                    if(!steps[index].Contains(repeater.handler.repeated))
+                        return false;
+                }
+
+                var intervals = this.intervals;
+                if(index.Within(0, intervals.Length - 1)) {
+                    if(!intervals[index].Any((i) => repeater.handler.repeated % i == 0))
+                        return false;
+                }
             }
 
-            return spawn;
+            var questionSpawn = spawn as Spawns.QuestionSpawn;
+            if(questionSpawn) {
+                if(Session.qrLevel.questions.Count == 0) return false;
+                var question = Session.qrLevel.questions.Shuffle()
+                    .FirstOrDefault((q) => !q.answered);
+                if(question == null) return false;
+            }
+
+            return true;
+        }
+
+        public override void OnSpawnInstantiate(Spawn spawn) {
+            base.OnSpawnInstantiate(spawn);
+            var questionSpawn = spawn as Spawns.QuestionSpawn;
+            if(questionSpawn) {
+                var question = Session.qrLevel.questions.Shuffle()
+                    .FirstOrDefault((q) => !q.answered);
+                questionSpawn.question = question;
+            }
         }
     }
 }

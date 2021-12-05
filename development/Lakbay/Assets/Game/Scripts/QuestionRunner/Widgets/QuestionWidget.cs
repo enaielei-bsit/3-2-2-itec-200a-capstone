@@ -31,6 +31,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
         public float timeScale = 1.0f;
 
+        public CanvasGroup tweenable;
         public TextMeshProUGUI time;
         public RectTransform choices;
         public ChoiceWidget choice;
@@ -64,7 +65,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
 
                 List<Choice> choices = question.choices.ToList();
                 if(shuffledChoices) choices = choices.Shuffle().ToList();
-                printLog("build");
 
                 foreach(var choice in choices) {
                     var choiceWidget = Instantiate(
@@ -74,12 +74,31 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             }
         }
 
+        public virtual void Show() {
+            gameObject.SetActive(true);
+            if(!tweenable) return;
+            // Tween.CanvasGroupAlpha(tweenable, 0.0f, 1.0f, 0.25f, 0.0f);
+            // Tween.LocalScale(
+            //     tweenable, Vector3.zero, Vector3.one,
+            //     0.25f, 0.0f
+            // );
+        }
+
+        public virtual void Hide() {
+            gameObject.SetActive(false);
+            // Tween.LocalScale(
+            //     transform, Vector3.zero,
+            //     0.25f, 0.0f,
+            //     completeCallback: () => gameObject.SetActive(false)
+            // );
+        }
+
         public virtual void Answer(params Choice[] choices) {
             if(question == null) return;
             question.Answer(choices);
             if(_timer != null) StopCoroutine(_timer);
             onAnswer?.Invoke(this, choices);
-            gameObject.SetActive(false);
+            Hide();
             FindObjectOfType<ImageViewer>()?.Hide();
         }
 

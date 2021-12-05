@@ -46,20 +46,22 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
         public virtual void Handle(Widgets.QuestionWidget widget, QRPlayer player) {
             if(widget) {
-                widget.gameObject.SetActive(true);
+                // widget.gameObject.SetActive(true);
+                widget.Show();
                 widget.Build(question);
-                Tween.LocalScale(
-                    widget.transform, Vector3.zero, Vector3.one,
-                    0.25f, 0.0f
-                );
+                // Tween.LocalScale(
+                //     widget.transform, Vector3.zero, Vector3.one,
+                //     0.25f, 0.0f
+                // );
                 
                 player?.Pause();
                 widget.onAnswer?.RemoveAllListeners();
                 widget.onAnswer?.AddListener((qw, c) => {
-                    Tween.LocalScale(
-                        qw.transform, Vector3.zero,
-                        0.25f, 0.0f
-                    );
+                    // Tween.LocalScale(
+                    //     qw.transform, Vector3.zero,
+                    //     0.25f, 0.0f
+                    // );
+                    qw.Hide();
                     player?.Resume();
                 });
 

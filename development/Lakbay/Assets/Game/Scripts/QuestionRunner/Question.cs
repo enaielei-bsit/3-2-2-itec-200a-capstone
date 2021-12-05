@@ -53,14 +53,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             + 10.0f;
         public Content content = new Content();
         public List<Choice> choices = new List<Choice>();
-        protected List<Choice> _answers = new List<Choice>();
+        [NonSerialized]
+        protected List<int> _answers = new List<int>();
         [YamlIgnore]
-        public virtual Choice[] answers => _answers.ToArray();
+        public virtual int[] answers => _answers.ToArray();
         [YamlIgnore]
         public virtual bool correct {
             get {
                 if(_answers.Count == 0) return false;
-                return _answers.All((a) => choices.Contains(a) && a.correct);
+                return _answers.All(
+                    (a) => a.Within(0, choices.Count - 1) && choices[a].correct);
             }
         }
         [YamlIgnore]
@@ -117,7 +119,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void AddAnswer(IEnumerable<Choice> choices) {
             foreach(var choice in choices) {
-                if(choices.Contains(choice)) _answers.Add(choice);
+                if(choices.Contains(choice)) _answers.Add(
+                    this.choices.IndexOf(choice));
             }
         }
         
@@ -135,7 +138,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         
         public virtual void RemoveAnswer(IEnumerable<Choice> choices) {
             foreach(var choice in choices) {
-                while(_answers.Contains(choice)) _answers.Remove(choice);
+                int index = this.choices.IndexOf(choice);
+                while(_answers.Contains(index))
+                    _answers.Remove(index);
             }
         }
 
