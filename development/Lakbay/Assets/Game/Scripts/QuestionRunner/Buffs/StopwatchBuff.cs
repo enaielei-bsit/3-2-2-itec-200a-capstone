@@ -24,7 +24,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
         public override void OnAdd(
             Caster caster, Buffable target, Skill skill,
             float duration) {
-            var player = target.GetComponent<Player>();
+            var player = target.GetComponent<QRPlayer>();
             if(player && player.travel) player.travel.timeScale *= speedFactor;
         }
 
@@ -36,7 +36,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
 
         public override void OnRemove(
             Caster caster, Buffable target, Skill skill) {
-            var player = target.GetComponent<Player>();
+            var player = target.GetComponent<QRPlayer>();
             if(player && player.travel) player.travel.timeScale /= speedFactor;
         }
     }

@@ -24,14 +24,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
-        public virtual QRController controller =>
-            FindObjectOfType<QRController>(true);
         public virtual Widgets.QuestionWidget questionWidget =>
             FindObjectOfType<Widgets.QuestionWidget>(true);
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
-            var player = collider.GetComponentInParent<Player>();
+            var player = collider.GetComponentInParent<QRPlayer>();
             
             if(player && collider.GetTrigger<SpawnTrigger>()) { 
                 if(!triggered) {
@@ -41,12 +39,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             }
         }
 
-        public virtual void OnTrigger(Player trigger) {
+        public virtual void OnTrigger(QRPlayer trigger) {
             if(question != null) Handle(trigger);
             gameObject.SetActive(false);
         }
 
-        public virtual void Handle(Widgets.QuestionWidget widget, Player player) {
+        public virtual void Handle(Widgets.QuestionWidget widget, QRPlayer player) {
             if(widget) {
                 widget.gameObject.SetActive(true);
                 widget.Build(question);
@@ -55,21 +53,21 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     0.25f, 0.0f
                 );
                 
-                controller?.Pause(player);
+                player?.Pause();
                 widget.onAnswer?.RemoveAllListeners();
                 widget.onAnswer?.AddListener((qw, c) => {
                     Tween.LocalScale(
                         qw.transform, Vector3.zero,
                         0.25f, 0.0f
                     );
-                    controller?.Resume(player);
+                    player?.Resume();
                 });
 
                 widget.Run();
             }
         }
 
-        public virtual void Handle(Player player) {
+        public virtual void Handle(QRPlayer player) {
             Handle(questionWidget, player);
         }
 

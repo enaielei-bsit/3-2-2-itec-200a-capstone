@@ -38,7 +38,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
-            var player = collider.GetComponentInParent<Player>();
+            var player = collider.GetComponentInParent<QRPlayer>();
             
             if(player && collider.GetTrigger<SpawnTrigger>()) { 
                 if(!triggered) {
@@ -48,14 +48,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void OnTrigger(Player player) {
+        public virtual void OnTrigger(QRPlayer player) {
         }
     }
 
     public abstract class SkillSpawn<T> : SkillSpawn where T : Buff {
         public virtual Type buffType => typeof(T);
 
-        public override void OnTrigger(Player trigger) {
+        public override void OnTrigger(QRPlayer trigger) {
             base.OnTrigger(trigger);
             var skill = trigger.caster.GetSkillWithBuff(buffType);
             if(skill != null && skill.buff) {

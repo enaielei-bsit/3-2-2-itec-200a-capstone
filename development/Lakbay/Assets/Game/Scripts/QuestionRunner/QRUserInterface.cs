@@ -20,16 +20,19 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Widgets;
 
     public class QRUserInterface : Core.Controller {
-        public Player player;
+        public QRPlayer player;
         public Transform skillsRoot;
         [SerializeField]
         protected SkillWidget _skill;
         public virtual SkillWidget[] skills =>
             skillsRoot.GetComponentsInChildren<SkillWidget>();
 
+        public Button play;
+        public Button pause;
+
         public override void Awake() {
             base.Awake();
-            if(!player) player = FindObjectOfType<Player>();
+            if(!player) player = FindObjectOfType<QRPlayer>();
         }
 
         public override void Start() {

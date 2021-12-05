@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc3bdb92e3236a45a9751955b6cbf93, type: 3}
   m_Name: MissileSkill
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  image: {fileID: 0}
+  color: {r: 0.9063317, g: 0.2657432, b: 0.27728373, a: 1}
+  image: {fileID: 21300000, guid: f9b601cb6c75c904ca9834af172d9f5b, type: 3}
   label: Missile
   description: 
-  stackable: 0
-  instances: 0
+  stackable: 1
+  instances: 1
   duration: 4
   cooldown: 1
-  buff: {fileID: 0}
+  buff: {fileID: 7253629556291450866, guid: 479e620c81a620a4b88bd297f4750c75, type: 3}
   travelDistance: 200

@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class StopwatchSpawn : SkillSpawn<Buffs.StopwatchBuff> {
-        public override void OnTrigger(Player player) {
+        public override void OnTrigger(QRPlayer player) {
             base.OnTrigger(player);
             gameObject.SetActive(false);
         }

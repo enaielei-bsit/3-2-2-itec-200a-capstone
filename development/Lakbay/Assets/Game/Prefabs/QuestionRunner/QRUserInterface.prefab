@@ -399,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c,
         type: 3}
       propertyPath: m_Name
-      value: Interface
+      value: QRUserInterface
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
@@ -428,8 +428,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  skillsRoot: {fileID: 0}
-  _skill: {fileID: 0}
+  skillsRoot: {fileID: 3909944807947719583}
+  _skill: {fileID: 3904465884926188383, guid: 5e896819cd8e1974c93e121ac63e4e9b, type: 3}
+  play: {fileID: 0}
+  pause: {fileID: 122326920528451813}
 --- !u!1001 &5772974193520603564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,6 +631,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.QuestionRunner.QRPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5885974772820093258, guid: b90656c77d41abd4ab63503092a9959e,
         type: 3}
       propertyPath: m_Type
@@ -657,3 +719,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b90656c77d41abd4ab63503092a9959e, type: 3}
+--- !u!114 &122326920528451813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5885974772820093257, guid: b90656c77d41abd4ab63503092a9959e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5772974193520603564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

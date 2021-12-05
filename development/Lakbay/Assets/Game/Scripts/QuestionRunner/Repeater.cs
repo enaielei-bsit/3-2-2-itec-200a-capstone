@@ -33,6 +33,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
+            if(!handler || !handler.built) return;
             var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger && !_triggered) {
                 _triggered = true;
@@ -41,12 +42,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void OnTriggerStay(Collider collider) {
             base.OnTriggerStay(collider);
+            if(!handler || !handler.built) return;
             var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger) _occupied = true;
         }
 
         public override void OnTriggerExit(Collider collider) {
             base.OnTriggerExit(collider);
+            if(!handler || !handler.built) return;
             var trigger = collider.GetTrigger<RepeaterTrigger>();
             if(trigger) {
                 _occupied = false;

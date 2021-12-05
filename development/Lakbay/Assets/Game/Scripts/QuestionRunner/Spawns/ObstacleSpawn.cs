@@ -25,7 +25,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
             if(!collided) {
-                var player = collision.gameObject.GetComponentInParent<Player>();
+                var player = collision.gameObject.GetComponentInParent<QRPlayer>();
 
                 if(player && collision.collider.GetTrigger<SpawnTrigger>()) {
                     collided = true;
@@ -34,7 +34,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             }
         }
 
-        public virtual void OnCollision(Player player) {
+        public virtual void OnCollision(QRPlayer player) {
             printLog("Player took damage!");
             Break();
         }

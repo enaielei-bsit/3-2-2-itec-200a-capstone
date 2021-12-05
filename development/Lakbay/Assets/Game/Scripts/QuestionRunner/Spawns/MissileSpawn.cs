@@ -26,7 +26,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             return can;
         }
 
-        public override void OnTrigger(Player trigger) {
+        public override void OnTrigger(QRPlayer trigger) {
             base.OnTrigger(trigger);
             gameObject.SetActive(false);
         }
