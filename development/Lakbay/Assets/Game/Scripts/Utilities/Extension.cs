@@ -28,6 +28,15 @@ namespace Utilities {
             return value > min && value < max;
         }
 
+        // source: https://stackoverflow.com/a/2691042/14733693
+        public static float Mod(this float n1, float n2) {
+            float result = n1 % n2;
+            if((result < 0 && n2 > 0) || (result > 0 && n2 <0)) {
+                result += n2;
+            }
+            return result;
+        }
+
         // int
         public static bool Within(this int value, int min, int max) {
             return ((float) value).Within(min, max);
@@ -37,6 +46,13 @@ namespace Utilities {
             return ((float) value).Between(min, max);
         }
 
+        public static int Mod(this int n1, int n2) {
+            int result = n1 % n2;
+            if((result < 0 && n2 > 0) || (result > 0 && n2 <0)) {
+                result += n2;
+            }
+            return result;
+        }
 
         // string
         public static string TrimEnd(this string str, string substring) {

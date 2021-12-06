@@ -48,6 +48,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void OnValidate() {}
 
+        public virtual void OnDestroy() {}
+
         public static void print(params object[] objs) {
             MonoBehaviour.print(string.Join(", ", objs));
         }

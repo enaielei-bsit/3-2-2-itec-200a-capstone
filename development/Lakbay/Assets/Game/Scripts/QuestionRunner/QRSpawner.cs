@@ -47,17 +47,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                 var intervals = this.intervals;
                 if(index.Within(0, intervals.Length - 1)) {
-                    if(!intervals[index].Any((i) => repeater.handler.repeated % i == 0))
+                    if(intervals[index].All((i) => (repeater.handler.repeated.Mod(i)) != 0))
                         return false;
                 }
             }
 
             var questionSpawn = spawn as Spawns.QuestionSpawn;
             if(questionSpawn) {
-                if(Session.qrLevel.questions.Count == 0) return false;
-                var question = Session.qrLevel.questions.Shuffle()
-                    .FirstOrDefault((q) => !q.answered);
-                if(question == null) return false;
+                if(Session.spawnedQuestionIndices.Count
+                    == Session.qrLevel.questions.Count) {
+                    return false;
+                }
             }
 
             return true;
@@ -67,8 +67,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.OnSpawnInstantiate(spawn);
             var questionSpawn = spawn as Spawns.QuestionSpawn;
             if(questionSpawn) {
+                var spawned = Session.spawnedQuestions;
                 var question = Session.qrLevel.questions.Shuffle()
-                    .FirstOrDefault((q) => !q.answered);
+                    .FirstOrDefault((q) => !spawned.Contains(q));
+                Session.spawnedQuestionIndices.Add(
+                    Session.qrLevel.questions.IndexOf(question));
                 questionSpawn.question = question;
             }
         }

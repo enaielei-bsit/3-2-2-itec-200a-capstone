@@ -77,5 +77,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             Spawner spawner, Transform[] locations, Transform location) {
             return base.OnSpawn(spawner, locations, location);
         }
+
+        public override void OnDestroy() {
+            base.OnDestroy();
+            if(!triggered) {
+                Session.spawnedQuestionIndices.Remove(
+                    Session.qrLevel.questions.IndexOf(question)
+                );
+            }
+        }
     }
 }

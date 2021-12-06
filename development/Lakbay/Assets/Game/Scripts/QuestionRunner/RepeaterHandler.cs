@@ -105,7 +105,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 if(maxRepeat > 0) {
                     if(repeated < maxRepeat) repeated++;
                     else return;
-                }
+                } else repeated++;
 
                 var first = repeaters.Pop(0);
                 Repeater last;

@@ -35,6 +35,12 @@ namespace Ph.CoDe_A.Lakbay {
         }
         public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count
             ? qrLevels[qrLevelIndex] : default;
+        public static readonly List<int> spawnedQuestionIndices
+            = new List<int>();
+        public static Question[] spawnedQuestions
+            => spawnedQuestionIndices.Count() == 0 ? new Question[] {}
+                : spawnedQuestionIndices.Select((i)
+                    => qrLevel.questions[i]).ToArray();
 
         public static void SetMode(int value) => mode = (GameMode) value;
     }
