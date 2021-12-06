@@ -60,6 +60,27 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
             }
 
+            var stop = spawn as Spawns.PlayerStopSpawn;
+            if(stop) {
+                bool existing = Array.Find(locations,
+                    (l) => l.GetComponentInChildren<Spawns.PlayerStopSpawn>()
+                );
+                int current = repeater.handler.repeated;
+                int offset = 5;
+                if(existing || !Session.qrLevel.questions.All((q) => q.answered)
+                    || current != (Session.stopStart + offset)) {
+                    printLog("triggered1");
+                    return false;
+                }
+            }
+
+            if(Session.stopStart != -1) {
+                if(spawn as SkillSpawn || spawn as Spawns.ObstacleSpawn) {
+                    printLog("triggered2");
+                    return false;
+                }
+            }
+
             return true;
         }
 

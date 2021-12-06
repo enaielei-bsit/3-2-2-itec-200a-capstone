@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -31,6 +31,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Slide slide;
         public Buffable buffable;
         public Caster caster;
+        public new CinemachineVirtualCamera camera;
+        public int lives = 3;
 
         public override void Awake() {
             base.Awake();
@@ -100,9 +102,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void UpdateLevel(QRLevel level) {
-            if(Session.qrLevel) {
+        public virtual void NextLevel() {
+            if(Session.qrLevelIndex != Session.qrLevels.Count - 1) {
+                Session.qrLevelIndex++;
+                Session.stopStart = -1;
+                Session.stopEnd = -1;
+                Session.spawnedQuestionIndices.Clear();
 
+                Session.sceneController.Load(2);
+                Session.loadingScreen?.Monitor(Session.sceneController);
             }
         }
     }

@@ -21,6 +21,7 @@ using Ph.CoDe_A.Lakbay.Core;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     using Core;
 
+    [RequireComponent(typeof(Collider))]
     public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
@@ -40,27 +41,23 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void OnTrigger(QRPlayer trigger) {
-            if(question != null) Handle(trigger);
+            if(question != null) {
+                Handle(trigger);
+            }
             gameObject.SetActive(false);
         }
 
         public virtual void Handle(Widgets.QuestionWidget widget, QRPlayer player) {
             if(widget) {
-                // widget.gameObject.SetActive(true);
                 widget.Show();
                 widget.Build(question);
-                // Tween.LocalScale(
-                //     widget.transform, Vector3.zero, Vector3.one,
-                //     0.25f, 0.0f
-                // );
-                
+
                 player?.Pause();
                 widget.onAnswer?.RemoveAllListeners();
                 widget.onAnswer?.AddListener((qw, c) => {
-                    // Tween.LocalScale(
-                    //     qw.transform, Vector3.zero,
-                    //     0.25f, 0.0f
-                    // );
+                    if(Session.qrLevel.questions.All((q) => q.answered)) {
+                        Session.stopStart = player.repeaterHandler.repeated;
+                    }
                     qw.Hide();
                     player?.Resume();
                 });

@@ -102,7 +102,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Repeat() {
             if(!built) return;
             if(repeaters.Count > 0) {
-                if(maxRepeat > 0) {
+                if(maxRepeat >= 0) {
                     if(repeated < maxRepeat) repeated++;
                     else return;
                 } else repeated++;

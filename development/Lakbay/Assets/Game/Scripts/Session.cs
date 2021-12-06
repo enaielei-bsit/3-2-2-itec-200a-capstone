@@ -41,6 +41,8 @@ namespace Ph.CoDe_A.Lakbay {
             => spawnedQuestionIndices.Count() == 0 ? new Question[] {}
                 : spawnedQuestionIndices.Select((i)
                     => qrLevel.questions[i]).ToArray();
+        public static int stopStart = -1;
+        public static int stopEnd = -1;
 
         public static void SetMode(int value) => mode = (GameMode) value;
     }

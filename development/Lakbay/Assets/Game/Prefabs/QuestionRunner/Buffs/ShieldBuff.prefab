@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3662186659167284432}
   - component: {fileID: 3662186659167284435}
+  - component: {fileID: 4102036275532728415}
   m_Layer: 0
   m_Name: ShieldBuff
   m_TagString: Untagged
@@ -45,3 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 2100000, guid: 725ac60dd851a8043967b315885b80a0, type: 2}
+--- !u!65 &4102036275532728415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662186659167284433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 5, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}

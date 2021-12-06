@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 0}
-  _onRepeat:
+  onRepeat:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -3111826948303004205}
@@ -193,9 +193,19 @@ MonoBehaviour:
   - {fileID: 1911610269122787206}
   - {fileID: 2281045218820937710}
   spawns:
+  - {fileID: -4726829628616247382, guid: 745a6772a11f0714bb08a4dd2c9092d4, type: 3}
+  - {fileID: 3413716529291483781, guid: edbccb35902b3ec4b9ac33c0f7469f44, type: 3}
+  - {fileID: -9110859736092152041, guid: d7a5efd70615bad459789f834ae4e912, type: 3}
+  - {fileID: 4292866669476366468, guid: adaa58f8baf48324d8877e9327a1c3bf, type: 3}
   - {fileID: 6057575602438236895, guid: 3f23608152177d741ad92deae1b3acb9, type: 3}
+  - {fileID: 9204601694307742822, guid: a2e76f3fe048d1049b2a9e107467f12a, type: 3}
   chances:
   - 0.2
+  - 0.02
+  - 0.02
+  - 0.02
+  - 0.1
+  - 1
   repeater: {fileID: 8776119556182143781}
   _steps: []
   _intervals: []
