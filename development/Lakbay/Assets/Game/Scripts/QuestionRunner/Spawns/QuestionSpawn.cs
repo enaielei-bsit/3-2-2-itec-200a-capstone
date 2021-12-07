@@ -26,8 +26,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public Question question;
         public bool triggered = false;
         public bool handled = false;
-        public virtual Widgets.QuestionWidget questionWidget =>
-            FindObjectOfType<Widgets.QuestionWidget>(true);
+        public virtual QuestionUI questionUI =>
+            FindObjectOfType<QuestionUI>(true);
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -48,29 +48,29 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             gameObject.SetActive(false);
         }
 
-        public virtual void Handle(Widgets.QuestionWidget widget, QRPlayer player) {
-            if(widget && !widget.gameObject.activeSelf) {
+        public virtual void Handle(QuestionUI ui, QRPlayer player) {
+            if(ui && !ui.gameObject.activeSelf) {
                 handled = true;
                 // Take note of the last count for playerStop
                 Session.qrLevel.lastStop = player.repeaterHandler.repeated;
 
-                widget.Show();
-                widget.Build(question);
+                ui.Show();
+                ui.Build(question);
 
                 player?.Pause();
-                widget.onAnswer?.RemoveAllListeners();
-                widget.onAnswer?.AddListener((qw, c) => {
-                    printLog(Session.qrLevel.questions.Select((q) => q.answered).Join(", "));
+                ui.onAnswer?.RemoveAllListeners();
+                ui.onAnswer?.AddListener((qw, c) => {
+                    player.inGameUI.SetProgress(Session.qrLevel.progress);
                     qw.Hide();
                     player?.Resume();
                 });
 
-                widget.Run();
+                ui.Run();
             }
         }
 
         public virtual void Handle(QRPlayer player) {
-            Handle(questionWidget, player);
+            Handle(questionUI, player);
         }
 
         public override bool OnSpawnCheck(

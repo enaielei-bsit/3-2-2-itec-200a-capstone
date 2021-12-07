@@ -39,14 +39,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             }
         }
 
-        public virtual void Build(QuestionWidget questionWidget, Choice choice) {
+        public virtual void Build(QuestionUI questionInterface, Choice choice) {
             if(choice == null) return;
             this.choice = choice;
             Build(choice.text);
             if(button) {
                 button.onClick.RemoveAllListeners();
                 if(Application.isPlaying) button.onClick.AddListener(
-                    () => questionWidget.Answer(choice)
+                    () => questionInterface.Answer(choice)
                 );
             }
         }

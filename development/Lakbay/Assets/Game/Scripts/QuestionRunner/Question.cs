@@ -144,6 +144,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
+        public virtual void ClearAnswers() => RemoveAnswer(answers);
+
         public override string ToString() {
             return new string[] {content.ToString(), choices.Join("\n")}
                 .Join("\n");

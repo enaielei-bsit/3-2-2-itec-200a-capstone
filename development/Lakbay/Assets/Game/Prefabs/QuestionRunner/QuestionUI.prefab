@@ -1965,6 +1965,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7151369744330123894, guid: fba673096dccaae40a3c7a25324a44a4,
         type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151369744330123894, guid: fba673096dccaae40a3c7a25324a44a4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151369744330123894, guid: fba673096dccaae40a3c7a25324a44a4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151369744330123894, guid: fba673096dccaae40a3c7a25324a44a4,
+        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -2106,9 +2121,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 227767321, guid: fba673096dccaae40a3c7a25324a44a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fba673096dccaae40a3c7a25324a44a4, type: 3}
---- !u!114 &5211864541177548531 stripped
+--- !u!114 &8536228354371977285 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 227767325, guid: fba673096dccaae40a3c7a25324a44a4,
+  m_CorrespondingSourceObject: {fileID: 4477287600351181483, guid: fba673096dccaae40a3c7a25324a44a4,
     type: 3}
   m_PrefabInstance: {fileID: 5211864541402823406}
   m_PrefabAsset: {fileID: 0}
@@ -2774,7 +2789,7 @@ PrefabInstance:
     - target: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c,
         type: 3}
       propertyPath: m_Name
-      value: QuestionWidget
+      value: QuestionUI
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c,
         type: 3}
@@ -2804,29 +2819,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4811730571307768406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16763a8d20216c4bbd3c1c466d3e5be, type: 3}
+  m_Script: {fileID: 11500000, guid: 38178aedfdfabd24fb9dac0e17d31109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  automatic: 0
-  root: {fileID: 5211864541177548531}
-  textGroup:
-    layout: {fileID: 8973411565081740203, guid: a35bb8a8f2daa0040912323849295db5,
-      type: 3}
-    component: {fileID: 3867895198786723608, guid: f4a76bfcbbea45a49a6ff295e76e1991,
-      type: 3}
-    _viewer: {fileID: 0}
-  imageGroup:
-    layout: {fileID: 1749534115560031116, guid: 1df94666be343fd42bc0c9b4a0af520d,
-      type: 3}
-    component: {fileID: 8670713519039775998, guid: 4d96ad99edd72d74aa276118fc8534e5,
-      type: 3}
-    _viewer: {fileID: 0}
-  content: []
   timeScale: 1
   tweenable: {fileID: 6774658684277651266}
   time: {fileID: 9079558353787505812}
-  choices: {fileID: 3284909208005384559}
-  choice: {fileID: 3490443697728519781, guid: 2ba77cb563ed10a418149eed5272f4bf, type: 3}
+  timeFormat: 00.00
   timeTextColors:
   - progress: 0.5
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -2834,14 +2833,42 @@ MonoBehaviour:
     color: {r: 0.9063317, g: 0.2657432, b: 0.27728373, a: 1}
   - progress: 1
     color: {r: 0.90588236, g: 0, b: 0.016672729, a: 1}
-  shuffledChoices: 1
-  onAnswer:
-    m_PersistentCalls:
-      m_Calls: []
+  questionContent: {fileID: 2371787755721850763}
   question:
     content: []
     choices: []
-  timeFormat: 00.00
+  shuffledChoices: 1
+  choices: {fileID: 3284909208005384559}
+  _choice: {fileID: 3490443697728519781, guid: 2ba77cb563ed10a418149eed5272f4bf, type: 3}
+  onAnswer:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2371787755721850763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811730571307768406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f2e1588c968c24cb52252da1e2b5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automatic: 1
+  root: {fileID: 8536228354371977285}
+  textGroup:
+    layout: {fileID: 8127734471175329552, guid: e8467b3d8f908fc4d8723281fc4adb3a,
+      type: 3}
+    component: {fileID: 4257948763916131174, guid: 9fc5e083a1c2c0346999f17ebf2d2723,
+      type: 3}
+    _viewer: {fileID: 0}
+  imageGroup:
+    layout: {fileID: 367105830462977800, guid: fa0c90f55f3cad54591d034fb3533582, type: 3}
+    component: {fileID: 1265852937950365968, guid: 4b8400f1b5bc1ee488fca8b85bebf64e,
+      type: 3}
+    _viewer: {fileID: 0}
+  content: []
 --- !u!1001 &6382169645996821847
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         protected readonly List<float> _timeScales = new List<float>();
 
         [Header("Level")]
-        public QRUserInterface ui;
+        public QRInGameUI inGameUI;
         public Transform repeaterHandlerLocation;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -32,6 +32,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Buffable buffable;
         public Caster caster;
         public new CinemachineVirtualCamera camera;
+        public int maxLives = 3;
+        [Min(0)]
         public int lives = 3;
 
         public override void Awake() {
@@ -46,7 +48,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             yield return new WaitUntil(() => Initialization.finished);
             Build();
             travel?.Perform(true);
-            ui?.pause?.onClick.Invoke();
+            inGameUI?.pause?.onClick.Invoke();
         }
 
         public virtual void Build() {
@@ -69,6 +71,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                     repeaterHandler.Build();
                     Session.loadingScreen?.Monitor(repeaterHandler);
+
+                    inGameUI?.Build();
                 }
             }
         }
@@ -113,5 +117,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 Session.loadingScreen?.Monitor(Session.sceneController);
             }
         }
+
+        public virtual void ResetLevel(int index) {
+            if(index.Within(0, Session.qrLevels.Count - 1))
+                Session.qrLevels[index].Reset();
+        }
+
+        public virtual void ResetLevel() => ResetLevel(Session.qrLevelIndex);
     }
 }

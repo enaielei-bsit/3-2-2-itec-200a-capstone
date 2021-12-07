@@ -47,6 +47,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 return !questions.Contains(free) ? null : free;
             }
         }
+        public virtual float progress => questions.Count((q) => q.answered)
+            / (float) questions.Count;
         [HideInInspector]
         public int lastStop = 0;
         [HideInInspector]
@@ -85,6 +87,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Localize(Localizer localizer) {
             localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
                 questionsFile, LoadQuestions);
+        }
+
+        public virtual void Reset() {
+            foreach(var question in questions) {
+                question.ClearAnswers();
+            }
         }
     }
 }

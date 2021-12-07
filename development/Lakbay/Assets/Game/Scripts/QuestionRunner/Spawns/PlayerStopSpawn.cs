@@ -37,6 +37,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         lck.zPosition.value = player.camera.transform.position.z;
                     }
 
+                    player.inGameUI?.gameObject.SetActive(false);
+
                     if(player.repeaterHandler) {
                         player.repeaterHandler.maxRepeat = 0;
                     }

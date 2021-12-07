@@ -19,40 +19,52 @@ using TMPro;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Core;
+    using Widgets;
 
-    public class QuestionWidget : Content {
+    public class QuestionUI : Controller {
         [Serializable]
         public struct TimeTextColor {
             public float progress;
             public Color color;
         }
 
+        protected Coroutine _timer;
+
         public float timeScale = 1.0f;
 
         public CanvasGroup tweenable;
-        public TextMeshProUGUI time;
-        public RectTransform choices;
-        public ChoiceWidget choice;
-        public List<TimeTextColor> timeTextColors = new List<TimeTextColor>();
-        public bool shuffledChoices = true;
-        public UnityEvent<QuestionWidget, IEnumerable<Choice>> onAnswer =
-            new UnityEvent<QuestionWidget, IEnumerable<Choice>>();
-        public Question question;
-        protected Coroutine _timer;
-        public string timeFormat = "00.00";
 
-        [ContextMenu("Clear Question")]
-        public override void Clear() {
-            base.Clear();
+        [Header("Time")]
+        public TextMeshProUGUI time;
+        public string timeFormat = "00.00";
+        public List<TimeTextColor> timeTextColors = new List<TimeTextColor>();
+
+        [Header("Question")]
+        public Content questionContent;
+        public Question question;
+
+        [Header("Choices")]
+        public bool shuffledChoices = true;
+        public RectTransform choices;
+        [SerializeField]
+        protected ChoiceWidget _choice;
+
+        [Space]
+        public UnityEvent<QuestionUI, IEnumerable<Choice>> onAnswer =
+            new UnityEvent<QuestionUI, IEnumerable<Choice>>();
+
+        [ContextMenu("Clear")]
+        public virtual void Clear() {
+            questionContent.Clear();
             time?.SetText("99.99");
             if(Application.isPlaying) this.choices.DestroyChildren();
             else this.choices.DestroyChildrenImmediately();
         }
 
-        [ContextMenu("Build Question")]
-        public override void Build() {
+        [ContextMenu("Build")]
+        public virtual void Build() {
             Build(question);
         }
 
@@ -60,15 +72,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
             if(question != null) {
                 Clear();
                 this.question = question;
-                Build(question.content);
-                if(!choice || !this.choices) return;
+                questionContent.Build(question.content);
+                if(!_choice || !this.choices) return;
 
                 List<Choice> choices = question.choices.ToList();
                 if(shuffledChoices) choices = choices.Shuffle().ToList();
 
                 foreach(var choice in choices) {
                     var choiceWidget = Instantiate(
-                        this.choice, this.choices.transform);
+                        this._choice, this.choices.transform);
                     choiceWidget.Build(this, choice);
                 }
             }
