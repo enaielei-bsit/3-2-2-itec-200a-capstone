@@ -34,6 +34,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             }
         }
 
+        public override bool OnSpawnCheck(
+            Spawner spawner, Transform[] locations, Transform location) {
+            if(base.OnSpawnCheck(spawner, locations, location)) {
+                return !Session.qrLevel.done;
+            }
+
+            return false;
+        }
+
         public virtual void OnCollision(QRPlayer player) {
             printLog("Player took damage!");
             Break();

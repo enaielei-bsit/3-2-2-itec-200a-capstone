@@ -47,6 +47,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 foreach(var spawn in spawns) {
                     if(CanSpawn(originalLocations, location, originalSpawns, spawn)) {
                         var @new = Instantiate(spawn, location);
+                        @new.OnSpawn(this);
                         OnSpawnInstantiate(@new);
                     }
                 }
@@ -66,7 +67,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
             var currentSpawns = location.GetComponentsInChildren<Spawn>();
             if(currentSpawns.Length >= maxSpawnPerLocation) return false;
-            if(spawn.OnSpawn(this, locations, location)) {
+            if(spawn.OnSpawnCheck(this, locations, location)) {
                 return true;
             }
 

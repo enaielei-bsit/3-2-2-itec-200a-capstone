@@ -16,9 +16,9 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class QRSpawn : Core.Spawn {
-        public override bool OnSpawn(
+        public override bool OnSpawnCheck(
             Spawner spawner, Transform[] locations, Transform location) {
-            if(base.OnSpawn(spawner, locations, location)) {
+            if(base.OnSpawnCheck(spawner, locations, location)) {
                 var occupied =
                     locations.Count((l) => l.GetComponentInChildren<QRSpawner>());
                 if(occupied >= locations.Length) return false;

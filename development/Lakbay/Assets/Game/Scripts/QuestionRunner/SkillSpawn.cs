@@ -23,9 +23,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public abstract class SkillSpawn : QRSpawn {
         public bool triggered = false;
 
-        public override bool OnSpawn(
+        public override bool OnSpawnCheck(
             Core.Spawner spawner, Transform[] locations, Transform location) {
-            bool can = base.OnSpawn(spawner, locations, location);
+            bool can = base.OnSpawnCheck(spawner, locations, location);
             if(can) {
                 var existing =
                     Array.Find(locations, (l) => l.GetComponentInChildren<SkillSpawn>());

@@ -15,10 +15,21 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
+    using Core;
+
     public class ShieldSpawn : SkillSpawn<Buffs.ShieldBuff> {
         public override void OnTrigger(QRPlayer player) {
             base.OnTrigger(player);
             gameObject.SetActive(false);
+        }
+
+        public override bool OnSpawnCheck(
+            Spawner spawner, Transform[] locations, Transform location) {
+            if(base.OnSpawnCheck(spawner, locations, location)) {
+                return !Session.qrLevel.done;
+            }
+
+            return false;
         }
     }
 }

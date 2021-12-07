@@ -25,6 +25,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class QuestionSpawn : QRSpawn {
         public Question question;
         public bool triggered = false;
+        public bool handled = false;
         public virtual Widgets.QuestionWidget questionWidget =>
             FindObjectOfType<Widgets.QuestionWidget>(true);
 
@@ -48,16 +49,18 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void Handle(Widgets.QuestionWidget widget, QRPlayer player) {
-            if(widget) {
+            if(widget && !widget.gameObject.activeSelf) {
+                handled = true;
+                // Take note of the last count for playerStop
+                Session.qrLevel.lastStop = player.repeaterHandler.repeated;
+
                 widget.Show();
                 widget.Build(question);
 
                 player?.Pause();
                 widget.onAnswer?.RemoveAllListeners();
                 widget.onAnswer?.AddListener((qw, c) => {
-                    if(Session.qrLevel.questions.All((q) => q.answered)) {
-                        Session.stopStart = player.repeaterHandler.repeated;
-                    }
+                    printLog(Session.qrLevel.questions.Select((q) => q.answered).Join(", "));
                     qw.Hide();
                     player?.Resume();
                 });
@@ -70,15 +73,31 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             Handle(questionWidget, player);
         }
 
-        public override bool OnSpawn(
+        public override bool OnSpawnCheck(
             Spawner spawner, Transform[] locations, Transform location) {
-            return base.OnSpawn(spawner, locations, location);
+            if(base.OnSpawnCheck(spawner, locations, location)) {
+                return Session.qrLevel.spawned.Count
+                    != Session.qrLevel.questions.Count;
+            }
+
+            return false;
+        }
+
+        public override void OnSpawn(Spawner spawner) {
+            base.OnSpawn(spawner);
+            var question = Session.qrLevel.free;
+            if(question != null) {
+                var questions = Session.qrLevel.questions;
+                Session.qrLevel.spawned.Add(questions.IndexOf(question));
+                this.question = question;
+            }
         }
 
         public override void OnDestroy() {
             base.OnDestroy();
-            if(!triggered) {
-                Session.spawnedQuestionIndices.Remove(
+            if(!handled) {
+                if(!Session.qrLevel.questions.Contains(question)) return;
+                Session.qrLevel.spawned.Remove(
                     Session.qrLevel.questions.IndexOf(question)
                 );
             }

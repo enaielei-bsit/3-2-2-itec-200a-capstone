@@ -30,6 +30,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public GameMode category = GameMode.NonPro;
         public TimeOfDay time;
 
+        public RepeaterHandler _repeaterHandler;
+        [HideInInspector]
         public RepeaterHandler repeaterHandler;
 
         [SerializeField]
@@ -37,6 +39,19 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         // protected TextAsset _questionsFile;
         public LocalizedAsset<TextAsset> questionsFile;
         public List<Question> questions = new List<Question>();
+        public virtual bool done => questions.All((q) => q.answered);
+        public virtual Question free {
+            get {
+                var free = questions.Shuffle() .FirstOrDefault(
+                    (q) => !q.answered && !spawned.Contains(questions.IndexOf(q)));
+                return !questions.Contains(free) ? null : free;
+            }
+        }
+        [HideInInspector]
+        public int lastStop = 0;
+        [HideInInspector]
+        public QRPlayer player;
+        public readonly List<int> spawned = new List<int>();
 
         public virtual void LoadQuestions(bool update=true) =>
             LoadQuestions(questionsFile.LoadAsset(), update);

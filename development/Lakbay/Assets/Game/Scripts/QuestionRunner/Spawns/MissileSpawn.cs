@@ -16,11 +16,11 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class MissileSpawn : SkillSpawn<Buffs.MissileBuff> {
-        public override bool OnSpawn(
+        public override bool OnSpawnCheck(
             Core.Spawner spawner, Transform[] locations, Transform location) {
-            bool can = base.OnSpawn(spawner, locations, location);
+            bool can = base.OnSpawnCheck(spawner, locations, location);
             if(can) {
-
+                return !Session.qrLevel.done;
             }
 
             return can;

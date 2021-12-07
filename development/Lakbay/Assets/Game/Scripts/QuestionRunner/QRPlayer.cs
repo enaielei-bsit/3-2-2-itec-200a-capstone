@@ -59,10 +59,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
 
                 if(Session.qrLevel) {
+                    Session.qrLevel.player = this;
+
                     var level = Session.qrLevel;
                     repeaterHandler = Instantiate(
-                        level.repeaterHandler, repeaterHandlerLocation);
+                        level._repeaterHandler, repeaterHandlerLocation);
                     var questions = level.questions;
+                    Session.qrLevel.repeaterHandler = repeaterHandler;
 
                     repeaterHandler.Build();
                     Session.loadingScreen?.Monitor(repeaterHandler);
@@ -102,12 +105,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void NextLevel() {
+        public virtual void Proceed() {
             if(Session.qrLevelIndex != Session.qrLevels.Count - 1) {
                 Session.qrLevelIndex++;
-                Session.stopStart = -1;
-                Session.stopEnd = -1;
-                Session.spawnedQuestionIndices.Clear();
 
                 Session.sceneController.Load(2);
                 Session.loadingScreen?.Monitor(Session.sceneController);

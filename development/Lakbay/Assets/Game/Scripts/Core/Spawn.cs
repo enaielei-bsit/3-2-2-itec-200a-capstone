@@ -16,10 +16,13 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class Spawn : Controller {
-        public virtual bool OnSpawn(
+        public virtual bool OnSpawnCheck(
             Spawner spawner, Transform[] locations, Transform location
         ) {
             return true;
+        }
+
+        public virtual void OnSpawn(Spawner spawner) {
         }
     }
 }
