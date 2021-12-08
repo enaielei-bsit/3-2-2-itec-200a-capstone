@@ -69,5 +69,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void PerformRight(float offset, float duration) =>
             Perform(Mathf.Abs(offset), duration);
+
+        public virtual void PerformLeft() {
+            PerformLeft(offset, duration);
+        }
+
+        public virtual void PerformRight() {
+            PerformRight(offset, duration);
+        }
     }
 }

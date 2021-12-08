@@ -33,13 +33,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     triggered = true;
                     if(player.camera) {
                         var lck = player.camera.GetComponent<CinemachineLock>();
-                        lck.zPosition.locked = true;
-                        lck.zPosition.value = player.camera.transform.position.z;
+                        if(!lck.zPosition.locked) {
+                            lck.zPosition.locked = true;
+                            lck.zPosition.value = player.camera.transform.position.z;
+                        }
                     }
 
                     player.inGameUI?.gameObject.SetActive(false);
 
-                    if(player.repeaterHandler) {
+                    if(player.repeaterHandler
+                        && player.repeaterHandler.maxRepeat != 0) {
                         player.repeaterHandler.maxRepeat = 0;
                     }
                 }
@@ -49,9 +52,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public override bool OnSpawnCheck(
             Spawner spawner, Transform[] locations, Transform location) {
             if(base.OnSpawnCheck(spawner, locations, location)) {
+                int count = Session.qrLevel.repeaterHandler.repeated;
+                int target = Session.qrLevel.lastStop + offset;
                 return Session.qrLevel.done
-                    && Session.qrLevel.repeaterHandler.repeated
-                        == Session.qrLevel.lastStop + offset;
+                    && count >= target;
             }
 
             return false;

@@ -17,11 +17,15 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public class QRPlayer : Core.Controller {
+    using Core;
+
+    public class QRPlayer : Controller {
         protected readonly List<float> _timeScales = new List<float>();
 
         [Header("Level")]
+        public QRPrePlayUI prePlayUI;
         public QRInGameUI inGameUI;
+        public GameMenuUI gameMenuUI;
         public Transform repeaterHandlerLocation;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -47,8 +51,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public new virtual IEnumerator Start() {
             yield return new WaitUntil(() => Initialization.finished);
             Build();
-            travel?.Perform(true);
-            inGameUI?.pause?.onClick.Invoke();
+            prePlayUI.gameObject.SetActive(true);
         }
 
         public virtual void Build() {
@@ -95,6 +98,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             slide.timeScale = 0.0f;
         }
 
+        public virtual void Pause(bool showUI) {
+            if(showUI) gameMenuUI?.gameObject.SetActive(true);
+            Pause();
+        }
+
         public virtual void Resume() {
             try {
                 caster.timeScale = _timeScales.Pop();
@@ -107,6 +115,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 travel.timeScale = 1.0f;
                 slide.timeScale = 1.0f;
             }
+        }
+
+        public virtual void Resume(bool hideUI) {
+            if(hideUI) gameMenuUI?.gameObject.SetActive(false);
+            Resume();
         }
 
         public virtual void Proceed() {
@@ -124,5 +137,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void ResetLevel() => ResetLevel(Session.qrLevelIndex);
+
+        public virtual void PrePlay() {
+            prePlayUI?.gameObject.SetActive(false);
+            travel?.Perform(true);
+        }
     }
 }

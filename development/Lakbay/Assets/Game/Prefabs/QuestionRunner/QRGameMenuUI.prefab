@@ -135,10 +135,28 @@ PrefabInstance:
     - target: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c,
         type: 3}
       propertyPath: m_Name
-      value: GameMenu
+      value: QRGameMenuUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
+--- !u!1 &3408460254938071028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4096073339990284867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3814043722294436349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408460254938071028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325d142ee775851498f3c55182fda1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3408460254938071031 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c,

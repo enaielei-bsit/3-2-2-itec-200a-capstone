@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: ff40c731577d4e04382e02c9cf803db7, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 6814168512260210819
   m_TableData:
   - m_Id: 16467791872
     m_Localized: Non-Professional
@@ -30,6 +31,20 @@ MonoBehaviour:
     m_Localized: Proceed
     m_Metadata:
       m_Items: []
+  - m_Id: 1125474479542272
+    m_Localized: Level {ui.level}
+    m_Metadata:
+      m_Items:
+      - rid: 6814168512260210819
+  - m_Id: 1211624883916800
+    m_Localized: Pick up {ui.goal} {ui.goal:Question|Questions}
+    m_Metadata:
+      m_Items:
+      - rid: 6814168512260210819
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 6814168512260210819
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0090ce66f74d040000908ef29cff0300
