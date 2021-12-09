@@ -17,7 +17,7 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: ff40c731577d4e04382e02c9cf803db7, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 6814168512260210819
+    - rid: 6814168536965185806
   m_TableData:
   - m_Id: 16467791872
     m_Localized: Non-Professional
@@ -35,16 +35,36 @@ MonoBehaviour:
     m_Localized: Level {ui.level}
     m_Metadata:
       m_Items:
-      - rid: 6814168512260210819
+      - rid: 6814168536965185806
   - m_Id: 1211624883916800
     m_Localized: Pick up {ui.goal} {ui.goal:Question|Questions}
     m_Metadata:
       m_Items:
-      - rid: 6814168512260210819
+      - rid: 6814168536965185806
+  - m_Id: 1656798567108608
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1656927747477504
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1657186917715968
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1657282673676288
+    m_Localized: End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1727938002063360
+    m_Localized: Failed
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
-    - rid: 6814168512260210819
+    - rid: 6814168536965185806
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 0090ce66f74d040000908ef29cff0300

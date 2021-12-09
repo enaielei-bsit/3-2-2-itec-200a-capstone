@@ -29,6 +29,17 @@ namespace Utilities {
         public struct Axis {
             public bool locked;
             public float value;
+
+            public void Lock(float value) {
+                Lock();
+                this.value = value;
+            }
+
+            public void Lock() {
+                locked = true;
+            }
+
+            public void Unlock() => locked = false;
         }
 
         [Header("Position")]

@@ -21,11 +21,18 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
     public class QRPlayer : Controller {
         protected readonly List<float> _timeScales = new List<float>();
+        
+        public virtual int level => Session.qrLevel
+            ? Session.qrLevelIndex + 1 : 0;
+        public virtual int goal => Session.qrLevel
+            ? Session.qrLevel.questions.Count : 0;
 
         [Header("Level")]
-        public QRPrePlayUI prePlayUI;
-        public QRInGameUI inGameUI;
         public GameMenuUI gameMenuUI;
+        public PrePlayUI prePlayUI;
+        public PostPlayUI postPlayUI;
+        public QRInGameUI qrInGameUI;
+        public QuestionUI questionUI;
         public Transform repeaterHandlerLocation;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -75,7 +82,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     repeaterHandler.Build();
                     Session.loadingScreen?.Monitor(repeaterHandler);
 
-                    inGameUI?.Build();
+                    qrInGameUI?.Build();
                 }
             }
         }
@@ -141,6 +148,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void PrePlay() {
             prePlayUI?.gameObject.SetActive(false);
             travel?.Perform(true);
+        }
+
+        public virtual void Restart() {
+            Session.sceneController.Load(SceneController.current.buildIndex);
+            Session.loadingScreen?.Monitor(Session.sceneController);
+        }
+
+        public virtual void End() {
+            Session.sceneController.Load(BuiltScene.MainMenu);
+            Session.loadingScreen?.Monitor(Session.sceneController);
         }
     }
 }

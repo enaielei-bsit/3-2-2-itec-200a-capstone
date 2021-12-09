@@ -26,8 +26,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public Question question;
         public bool triggered = false;
         public bool handled = false;
-        public virtual QuestionUI questionUI =>
-            FindObjectOfType<QuestionUI>(true);
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -60,7 +58,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 player?.Pause();
                 ui.onAnswer?.RemoveAllListeners();
                 ui.onAnswer?.AddListener((qw, c) => {
-                    player.inGameUI.SetProgress(Session.qrLevel.progress);
+                    player.qrInGameUI.SetProgress(Session.qrLevel.progress);
                     qw.Hide();
                     player?.Resume();
                 });
@@ -70,7 +68,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void Handle(QRPlayer player) {
-            Handle(questionUI, player);
+            Handle(player.questionUI, player);
         }
 
         public override bool OnSpawnCheck(

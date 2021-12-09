@@ -44,7 +44,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void OnCollision(QRPlayer player) {
-            printLog("Player took damage!");
+            if(player.lives > 0) {
+                player.lives--;
+                printLog($"Player took damage! Current Lives: {player.lives}");
+            } else {
+                
+            }
             Break();
         }
 

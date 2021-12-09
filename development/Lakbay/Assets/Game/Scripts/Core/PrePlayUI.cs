@@ -14,15 +14,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.Core {
     using Utilities;
-    using Core;
     using TMPro;
 
-    public class QRPrePlayUI : Controller {
-        public virtual int level => Session.qrLevel
-            ? Session.qrLevelIndex + 1 : 0;
-        public virtual int goal => Session.qrLevel
-            ? Session.qrLevel.questions.Count : 0;
+    public class PrePlayUI : Controller {
     }
 }

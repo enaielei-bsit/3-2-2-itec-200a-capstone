@@ -16,20 +16,17 @@ using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    using Core;
+namespace Ph.CoDe_A.Lakbay.Core {
     using Pixelplacement;
 
-    public class PostGameplay : Controller {
+    public class PostPlayUI : Controller {
         public CanvasGroup tweenable;
-        public QRPlayer player;
 
         public virtual void Show() {
             gameObject.SetActive(true);
-            if(tweenable && player) {
+            if(tweenable) {
                 Tween.CanvasGroupAlpha(
-                    tweenable, 0.0f, 1.0f, 1.0f, 0.0f,
-                    completeCallback: player.Pause
+                    tweenable, 0.0f, 1.0f, 1.0f, 0.0f
                 );
             }
         }

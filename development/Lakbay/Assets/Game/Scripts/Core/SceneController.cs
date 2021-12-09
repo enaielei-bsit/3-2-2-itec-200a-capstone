@@ -18,6 +18,12 @@ using UnityEngine.UI;
 using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
+    public enum BuiltScene {
+        Initialization,
+        MainMenu,
+        QuestionRunner
+    }
+
     public class SceneController : Controller, LoadingScreen.IMonitored {
         public static Scene current => SceneManager.GetActiveScene();
 
@@ -27,6 +33,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         protected AsyncOperation _operation;
         public virtual AsyncOperation operation => _operation;
         protected Coroutine _coroutine;
+
+        public virtual void Load(BuiltScene scene) => Load((int) scene);
 
         public virtual void Load(int sceneBuildIndex) =>
             Load(sceneBuildIndex, null);

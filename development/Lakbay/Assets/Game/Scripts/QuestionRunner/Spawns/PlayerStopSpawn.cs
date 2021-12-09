@@ -34,12 +34,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     if(player.camera) {
                         var lck = player.camera.GetComponent<CinemachineLock>();
                         if(!lck.zPosition.locked) {
-                            lck.zPosition.locked = true;
-                            lck.zPosition.value = player.camera.transform.position.z;
+                            lck.zPosition.Lock(player.camera.transform.position.z);
                         }
                     }
 
-                    player.inGameUI?.gameObject.SetActive(false);
+                    player.qrInGameUI?.gameObject.SetActive(false);
 
                     if(player.repeaterHandler
                         && player.repeaterHandler.maxRepeat != 0) {
