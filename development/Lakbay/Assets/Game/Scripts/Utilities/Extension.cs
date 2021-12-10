@@ -340,5 +340,26 @@ namespace Utilities {
         public static bool IsDontDestroyOnLoad(this Scene scene) {
             return scene.name == "DontDestroyOnLoad";
         }
+
+        // LocalizedString
+        public static void Set(this LocalizedString str, IEnumerable<object> args) {
+            str.Arguments = new List<object>() {};
+            str.Add(args);
+        }
+
+        public static void Set(this LocalizedString str, params object[] args) {
+            str.Set(args.AsEnumerable());
+        }
+
+        public static void Add(this LocalizedString str, IEnumerable<object> args) {
+            foreach(var arg in args.Enumerate()) {
+                str.Arguments.Add(new Dictionary<string, object>() {{
+                    arg.Key.ToString(), arg.Value}});
+            }
+        }
+
+        public static void Add(this LocalizedString str, params object[] args) {
+            str.Add(args.AsEnumerable());
+        }
     }
 }

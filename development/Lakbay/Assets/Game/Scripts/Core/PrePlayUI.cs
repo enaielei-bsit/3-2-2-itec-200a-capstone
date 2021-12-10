@@ -17,7 +17,25 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.Core {
     using Utilities;
     using TMPro;
+    using UnityEngine.Localization;
+    using UnityEngine.Localization.Components;
 
     public class PrePlayUI : Controller {
+        public LocalizeStringEvent header; 
+        public LocalizeStringEvent subheader;
+
+        public override void Awake() {
+            base.Awake();
+        }
+
+        public virtual void Show(
+            IEnumerable<object> headerArgs,
+            IEnumerable<object> subheaderArgs) {
+            header?.StringReference.Set(headerArgs);
+            subheader?.StringReference.Set(subheaderArgs);
+            gameObject.SetActive(true);
+        }
+
+        public virtual void Hide() => gameObject.SetActive(false);
     }
 }

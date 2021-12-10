@@ -37,6 +37,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             MonitorInfo OnMonitor(LoadingScreen loadingScreen);
         }
 
+        protected Coroutine _hideDelay;
         protected TweenBase _progressTween;
         protected IMonitored _monitored;
         protected bool _hideOnNull;
@@ -52,6 +53,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
         public TextMeshProUGUI text;
         public Slider progress;
+        public float hideDelay = 1.0f;
 
         public override void Awake() {
             base.Awake();
@@ -77,7 +79,15 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public virtual void Hide() {
-            if(showing) showing = false;
+            if(showing) {
+                showing = false;
+            }
+        }
+
+        public virtual void Hide(float delay) {
+            if(delay > 0.0f) {
+                Invoke("Hide", delay);
+            } else Hide();
         }
 
         public virtual void Monitor(IMonitored monitored, bool hideOnNull=true) {
@@ -104,7 +114,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     Show(info.text, info.progress);
                 } else {
                     Unmonitor();
-                    if(_hideOnNull) Hide();
+                    if(_hideOnNull) Hide(hideDelay);
                 }
             }
         }

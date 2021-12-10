@@ -29,6 +29,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         [Header("Level")]
         public GameMenuUI gameMenuUI;
+        public GameOverUI gameOverUI;
         public PrePlayUI prePlayUI;
         public PostPlayUI postPlayUI;
         public QRInGameUI qrInGameUI;
@@ -58,19 +59,23 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public new virtual IEnumerator Start() {
             yield return new WaitUntil(() => Initialization.finished);
             Build();
-            prePlayUI.gameObject.SetActive(true);
         }
 
         public virtual void Build() {
             if(repeaterHandlerLocation) {
-                if(Session.qrLevelIndex == 0) {
+                if(Session.qrLevelIndex == -1) {
                     var levels = Session.database.Get<QRLevel>().Values
                         .Where((l) => l.category == Session.mode);
                     Session.qrLevels.Clear();
                     Session.qrLevels.AddRange(levels);
+                    foreach(var level in Session.qrLevels) {
+                        level.LoadQuestions(level.questionsFile?.LoadAsset());
+                    }
+                    Session.qrLevelIndex = 0;
                 }
 
                 if(Session.qrLevel) {
+                    ResetLevel();
                     Session.qrLevel.player = this;
 
                     var level = Session.qrLevel;
@@ -83,6 +88,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     Session.loadingScreen?.Monitor(repeaterHandler);
 
                     qrInGameUI?.Build();
+                    prePlayUI?.Show(new object[] {this}, new object[] {this});
                 }
             }
         }
@@ -145,7 +151,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void ResetLevel() => ResetLevel(Session.qrLevelIndex);
 
-        public virtual void PrePlay() {
+        public virtual void Play() {
             prePlayUI?.gameObject.SetActive(false);
             travel?.Perform(true);
         }
@@ -156,6 +162,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void End() {
+            Session.qrLevels.Clear();
             Session.sceneController.Load(BuiltScene.MainMenu);
             Session.loadingScreen?.Monitor(Session.sceneController);
         }

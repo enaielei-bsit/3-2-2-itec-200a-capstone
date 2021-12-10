@@ -30,10 +30,10 @@ namespace Ph.CoDe_A.Lakbay {
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
         private static int _qrLevelIndex = 0;
         public static int qrLevelIndex {
-            get => _qrLevelIndex;
+            get => qrLevels.Count > 0 ? _qrLevelIndex : -1;
             set => _qrLevelIndex = Mathf.Clamp(value, 0, qrLevels.Count - 1);
         }
-        public static QRLevel qrLevel => qrLevelIndex < qrLevels.Count
+        public static QRLevel qrLevel => qrLevelIndex.Within(0, qrLevels.Count - 1)
             ? qrLevels[qrLevelIndex] : default;
 
         public static void SetMode(int value) => mode = (GameMode) value;

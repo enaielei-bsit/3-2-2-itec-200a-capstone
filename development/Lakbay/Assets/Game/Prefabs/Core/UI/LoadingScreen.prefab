@@ -635,6 +635,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1073787857343438916, guid: 4de4a05ce9f61e246a1725c4e37ab33d,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073787857343438916, guid: 4de4a05ce9f61e246a1725c4e37ab33d,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044470632504261960, guid: 4de4a05ce9f61e246a1725c4e37ab33d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8044470632504261961, guid: 4de4a05ce9f61e246a1725c4e37ab33d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -745,6 +760,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8044470632504262005, guid: 4de4a05ce9f61e246a1725c4e37ab33d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4de4a05ce9f61e246a1725c4e37ab33d, type: 3}
 --- !u!1 &6070373050268354496 stripped
@@ -767,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 9079558355412653777}
   progress: {fileID: 6980432997965298684}
+  hideDelay: 1
 --- !u!224 &6070373050268354556 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8044470632504261961, guid: 4de4a05ce9f61e246a1725c4e37ab33d,

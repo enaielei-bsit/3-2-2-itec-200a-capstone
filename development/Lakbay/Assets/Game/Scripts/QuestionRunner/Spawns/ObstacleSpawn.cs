@@ -47,9 +47,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             if(player.lives > 0) {
                 player.lives--;
                 printLog($"Player took damage! Current Lives: {player.lives}");
-            } else {
-                
             }
+
+            if(player.lives <= 0) {
+                player.gameOverUI?.gameObject.SetActive(true);
+                player.Pause();
+            }
+            
             Break();
         }
 

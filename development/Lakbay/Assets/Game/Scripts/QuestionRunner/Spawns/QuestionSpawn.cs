@@ -94,7 +94,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public override void OnDestroy() {
             base.OnDestroy();
             if(!handled) {
-                if(!Session.qrLevel.questions.Contains(question)) return;
+                if(!Session.qrLevel || !Session.qrLevel.questions.Contains(question)) return;
                 Session.qrLevel.spawned.Remove(
                     Session.qrLevel.questions.IndexOf(question)
                 );
