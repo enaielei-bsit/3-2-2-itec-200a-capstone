@@ -52,12 +52,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 // Take note of the last count for playerStop
                 Session.qrLevel.lastStop = player.repeaterHandler.repeated;
 
-                ui.Show();
-                ui.Build(question);
-
                 player?.Pause();
-                ui.onAnswer?.RemoveAllListeners();
-                ui.onAnswer?.AddListener((qw, c) => {
+                ui.Show(question, (qw, c) => {
                     player.qrInGameUI.SetProgress(Session.qrLevel.progress);
                     qw.Hide();
                     player?.Resume();

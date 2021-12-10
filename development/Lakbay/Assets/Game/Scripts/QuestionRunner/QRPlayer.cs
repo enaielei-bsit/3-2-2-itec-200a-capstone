@@ -18,6 +18,8 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Core;
+    using UnityEngine.Localization;
+    using UnityEngine.Localization.Settings;
 
     public class QRPlayer : Controller {
         protected readonly List<float> _timeScales = new List<float>();
@@ -88,6 +90,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     Session.loadingScreen?.Monitor(repeaterHandler);
 
                     qrInGameUI?.Build();
+
+                    // Update questionUI if it is present.
+                    LocalizationSettings.SelectedLocaleChanged +=
+                        UpdateQuestionUI;
+
                     prePlayUI?.Show(new object[] {this}, new object[] {this});
                 }
             }
@@ -162,9 +169,18 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void End() {
+            LocalizationSettings.SelectedLocaleChanged -= UpdateQuestionUI;
             Session.qrLevels.Clear();
             Session.sceneController.Load(BuiltScene.MainMenu);
             Session.loadingScreen?.Monitor(Session.sceneController);
+        }
+
+        public virtual void UpdateQuestionUI(Locale locale) {
+            if(questionUI) {
+                if(questionUI.gameObject.activeSelf) {
+                    questionUI.Build(questionUI.question);
+                }
+            }
         }
     }
 }

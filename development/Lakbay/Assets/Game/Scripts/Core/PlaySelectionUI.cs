@@ -1,0 +1,27 @@
+/*
+ * Date Created: Friday, December 10, 2021 2:50 PM
+ * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
+ * 
+ * Copyright © 2021 CoDe_A. All Rights Reserved.
+ */
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace Ph.CoDe_A.Lakbay.Core {
+    public class PlaySelectionUI : Controller {
+        public ToggleGroup group;
+
+        public new virtual IEnumerator Start() {
+            base.Start();
+            yield return new WaitUntil(() => Initialization.finished);
+            group?.GetFirstActiveToggle().onValueChanged.Invoke(true);
+        }
+    }
+}

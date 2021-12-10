@@ -96,6 +96,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             // );
         }
 
+        public virtual void Show(
+            Question question, UnityAction<QuestionUI, IEnumerable<Choice>> onAnswer) {
+            Show();
+            Build(question);
+            this.onAnswer.RemoveAllListeners();
+            if(onAnswer != null) this.onAnswer.AddListener(onAnswer);
+        }
+
         public virtual void Hide() {
             gameObject.SetActive(false);
             // Tween.LocalScale(
@@ -153,13 +161,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         [ContextMenu("Run Question")]
-        public virtual void Run() {
+        public virtual void Run() => Run(0.0f);
+
+        public virtual void Run(float duration) {
             if(time && question != null) {
                 if(question.time > 0.0f) {
                     if(_timer != null) StopCoroutine(_timer);
 
                     _timer = this.Run(
-                        question.time,
+                        duration <= 0.0f ? question.time : duration,
                         onProgress: (d, e) => {
                             question.elapsedTime = e;
                             return Time.deltaTime * timeScale;
