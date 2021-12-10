@@ -21,6 +21,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
     using UnityEngine.Localization.Components;
 
     public class PrePlayUI : Controller {
+        public RectTransform nonProLabel;
+        public RectTransform proLabel;
         public LocalizeStringEvent header; 
         public LocalizeStringEvent subheader;
 
@@ -37,5 +39,16 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public virtual void Hide() => gameObject.SetActive(false);
+
+        public override void Update() {
+            base.Update();
+            if(Session.mode == GameMode.NonPro) {
+                nonProLabel?.gameObject.SetActive(true);
+                proLabel?.gameObject.SetActive(false);
+            } else if(Session.mode == GameMode.Pro) {
+                nonProLabel?.gameObject.SetActive(false);
+                proLabel?.gameObject.SetActive(true);
+            }
+        }
     }
 }

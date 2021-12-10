@@ -31,6 +31,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public static void LoadScene(int scene) => LoadScene((BuiltScene) scene);
+        
+        public static void LoadScene() => LoadScene(
+            SceneController.current.buildIndex);
 
         public static void SetMode(GameMode mode) {
             Session.mode = mode;

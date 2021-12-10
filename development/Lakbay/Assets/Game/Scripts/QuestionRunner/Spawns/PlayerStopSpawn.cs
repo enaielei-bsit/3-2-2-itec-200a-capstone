@@ -22,6 +22,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class PlayerStopSpawn : QRSpawn {
         public bool triggered = false;
         [Min(0)]
+        public float delay = 2.0f;
+        [Min(0)]
         public int offset = 5;
 
         public override void OnTriggerEnter(Collider collider) {
@@ -34,6 +36,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     if(player.camera) {
                         var lck = player.camera.GetComponent<CinemachineLock>();
                         if(!lck.zPosition.locked) {
+                            player.Invoke("Proceed", delay);
                             lck.zPosition.Lock(player.camera.transform.position.z);
                         }
                     }

@@ -21,7 +21,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using UnityEngine.Localization;
     using UnityEngine.Localization.Settings;
 
-    public class QRPlayer : Controller {
+    public class QRPlayer : Player {
         protected readonly List<float> _timeScales = new List<float>();
         
         public virtual int level => Session.qrLevel
@@ -58,12 +58,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.Update();
         }
 
-        public new virtual IEnumerator Start() {
-            yield return new WaitUntil(() => Initialization.finished);
-            Build();
-        }
-
-        public virtual void Build() {
+        public override void Build() {
             if(repeaterHandlerLocation) {
                 if(Session.qrLevelIndex == -1) {
                     var levels = Session.database.Get<QRLevel>().Values
@@ -145,9 +140,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Proceed() {
             if(Session.qrLevelIndex != Session.qrLevels.Count - 1) {
                 Session.qrLevelIndex++;
-
-                Session.sceneController.Load(2);
-                Session.loadingScreen?.Monitor(Session.sceneController);
+                LoadScene();
             }
         }
 
@@ -171,8 +164,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void End() {
             LocalizationSettings.SelectedLocaleChanged -= UpdateQuestionUI;
             Session.qrLevels.Clear();
-            Session.sceneController.Load(BuiltScene.MainMenu);
-            Session.loadingScreen?.Monitor(Session.sceneController);
+            LoadScene(BuiltScene.MainMenu);
         }
 
         public virtual void UpdateQuestionUI(Locale locale) {

@@ -18,6 +18,10 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class Slide : Core.DirectionalMovement {
+        protected float _initial;
+        public virtual float initial => _initial;
+        protected float _target;
+        public virtual float target => _target;
         protected int _index;
         public int index => _index;
         public int minIndex = -1;
@@ -39,8 +43,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Perform(float offset, float duration) {
             if(performing) return;
 
-            float initial = transform.position.x;
-            float target = initial + offset;
+            _initial = transform.position.x;
+            _target = initial + offset;
 
             duration = Mathf.Max(0.001f, duration);
             xAxis.speed = offset / duration;
@@ -61,7 +65,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     var pos = transform.position;
                     pos.x = target;
                     transform.position = pos;
-            });
+                }, fixedUpdate: true
+            );
         }
 
         public virtual void PerformLeft(float offset, float duration) =>
