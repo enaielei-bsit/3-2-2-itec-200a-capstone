@@ -208,12 +208,18 @@ namespace Ph.CoDe_A.Lakbay {
         }
 
         // [MenuItem("Game/Build/Debug")]
-        [ContextMenu("Build/Debug")]
-        public virtual void BuildDebug() => Build(this.BuildDebugPath, true);
+        [ContextMenu("Build/Debug and Run")]
+        public virtual void BuildDebugAndRun() => Build(this.BuildDebugPath, true);
 
         // [MenuItem("Game/Build/Release")]
+        [ContextMenu("Build/Release and Run")]
+        public virtual void BuildReleaseAndRun() => Build(this.BuildReleasePath, false);
+
+        [ContextMenu("Build/Debug")]
+        public virtual void BuildDebug() => Build(this.BuildDebugPath, true, false);
+
         [ContextMenu("Build/Release")]
-        public virtual void BuildRelease() => Build(this.BuildReleasePath, true);
+        public virtual void BuildRelease() => Build(this.BuildReleasePath, false, false);
 
         // [MenuItem("Game/Mark Assets as Addressables and Localize")]
         [ContextMenu("Mark Assets as Addressables and Localize")]
@@ -222,7 +228,9 @@ namespace Ph.CoDe_A.Lakbay {
             LocalizeAddressableAssets();
         }
 
-        public static void Build(string path, bool development=false) {
+        public static void Build(
+            string path, bool development=false,
+            bool autoRun=true) {
             AddressableAssetSettings.BuildPlayerContent();
 
             var now = DateTime.Now;
@@ -235,8 +243,8 @@ namespace Ph.CoDe_A.Lakbay {
                 locationPathName = $"{folder}/{name.ToLower()}-v{version}.apk",
                 target = BuildTarget.Android,
             };
-            buildPlayerOptions.options |= BuildOptions.AutoRunPlayer;
             if(development) buildPlayerOptions.options |= BuildOptions.Development;
+            if(autoRun) buildPlayerOptions.options |= BuildOptions.AutoRunPlayer;
 
             var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
             var summary = report.summary;

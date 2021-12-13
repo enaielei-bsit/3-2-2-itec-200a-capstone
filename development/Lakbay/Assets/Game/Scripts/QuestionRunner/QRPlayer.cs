@@ -33,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public GameMenuUI gameMenuUI;
         public GameOverUI gameOverUI;
         public PrePlayUI prePlayUI;
-        public PostPlayUI postPlayUI;
+        public QRPostPlayUI qrPostPlayUI;
         public QRInGameUI qrInGameUI;
         public QuestionUI questionUI;
         public Transform repeaterHandlerLocation;
@@ -142,7 +142,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 Session.qrLevelIndex++;
                 LoadScene();
             } else {
-                
+
             }
         }
 
