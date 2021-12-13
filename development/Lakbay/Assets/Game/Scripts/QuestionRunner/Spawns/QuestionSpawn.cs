@@ -70,8 +70,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public override bool OnSpawnCheck(
             Spawner spawner, Transform[] locations, Transform location) {
             if(base.OnSpawnCheck(spawner, locations, location)) {
-                return Session.qrLevel.spawned.Count
-                    != Session.qrLevel.questions.Count;
+                return Session.qrLevel.free != null;
             }
 
             return false;
@@ -84,6 +83,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 var questions = Session.qrLevel.questions;
                 Session.qrLevel.spawned.Add(questions.IndexOf(question));
                 this.question = question;
+                printLog(Session.qrLevel.spawned.Count);
             }
         }
 

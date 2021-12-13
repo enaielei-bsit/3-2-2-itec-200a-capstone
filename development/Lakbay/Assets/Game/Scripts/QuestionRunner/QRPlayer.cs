@@ -141,6 +141,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             if(Session.qrLevelIndex != Session.qrLevels.Count - 1) {
                 Session.qrLevelIndex++;
                 LoadScene();
+            } else {
+                
             }
         }
 
