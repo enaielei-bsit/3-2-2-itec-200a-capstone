@@ -59,7 +59,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     player?.Resume();
                 });
 
-                ui.Run();
+                // ui.Run(); // Done in the Show method instead...
             }
         }
 

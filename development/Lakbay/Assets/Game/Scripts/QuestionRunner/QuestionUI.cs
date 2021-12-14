@@ -33,10 +33,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         protected Coroutine _timer;
 
         public float timeScale = 1.0f;
+        public bool readOnly = false;
 
         public CanvasGroup tweenable;
+        public Button dismiss;
 
         [Header("Time")]
+        public Slider timeProgress;
         public TextMeshProUGUI time;
         public string timeFormat = "00.00";
         public List<TimeTextColor> timeTextColors = new List<TimeTextColor>();
@@ -50,6 +53,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public RectTransform choices;
         [SerializeField]
         protected ChoiceWidget _choice;
+
+        [Space]
+        public RectTransform legend;
 
         [Space]
         public UnityEvent<QuestionUI, IEnumerable<Choice>> onAnswer =
@@ -81,7 +87,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 foreach(var choice in choices) {
                     var choiceWidget = Instantiate(
                         this._choice, this.choices.transform);
-                    choiceWidget.Build(this, choice);
+                    choiceWidget.Build(this, choice, readOnly);
                 }
             }
         }
@@ -97,11 +103,18 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void Show(
-            Question question, UnityAction<QuestionUI, IEnumerable<Choice>> onAnswer) {
+            Question question,
+            UnityAction<QuestionUI,IEnumerable<Choice>> onAnswer=null,
+            bool readOnly=false) {
+            this.readOnly = readOnly;
             Show();
             Build(question);
             this.onAnswer.RemoveAllListeners();
             if(onAnswer != null) this.onAnswer.AddListener(onAnswer);
+
+            legend?.gameObject.SetActive(readOnly);
+            dismiss?.gameObject.SetActive(readOnly);
+            if(!readOnly) Run();
         }
 
         public virtual void Hide() {
@@ -140,6 +153,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                         99.99f
                     ).ToString(timeFormat)
                 );
+                if(timeProgress) timeProgress.value = 1.0f - question.progress;
 
                 float progress = question.elapsedTime / question.time;
                 // if(progress <= 0.65f) time.color = timeStarting;

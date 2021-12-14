@@ -28,6 +28,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             ? Session.qrLevelIndex + 1 : 0;
         public virtual int goal => Session.qrLevel
             ? Session.qrLevel.questions.Count : 0;
+        public virtual int score => Session.qrScore;
+        public virtual int maxScore => Session.qrMaxScore;
 
         [Header("Level")]
         public GameMenuUI gameMenuUI;

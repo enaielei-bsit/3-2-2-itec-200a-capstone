@@ -17,7 +17,8 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: ff40c731577d4e04382e02c9cf803db7, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 6814168563831276286
+    - id: 0
+    - id: 1
   m_TableData:
   - m_Id: 16467791872
     m_Localized: Non-Professional
@@ -35,12 +36,14 @@ MonoBehaviour:
     m_Localized: Level {0.level}
     m_Metadata:
       m_Items:
-      - rid: 6814168563831276286
+      - id: 0
+      - id: 1
   - m_Id: 1211624883916800
     m_Localized: Pick up {0.goal} {0.goal:Question|Questions}
     m_Metadata:
       m_Items:
-      - rid: 6814168563831276286
+      - id: 0
+      - id: 1
   - m_Id: 1656798567108608
     m_Localized: Restart
     m_Metadata:
@@ -87,10 +90,33 @@ MonoBehaviour:
     m_Localized: Pro
     m_Metadata:
       m_Items: []
+  - m_Id: 71868003291136
+    m_Localized: Answered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72046089244672
+    m_Localized: Correct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81039264223232
+    m_Localized: You can click on each number to review your answers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83358101966848
+    m_Localized: Review
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89312080072704
+    m_Localized: '{0.score} out of {0.maxScore} {0.maxScore:Question|Questions} were
+      correct!'
+    m_Metadata:
+      m_Items:
+      - id: 1
   references:
-    version: 2
-    RefIds:
-    - rid: 6814168563831276286
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+    00000001:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0090ce66f74d040000908ef29cff0300
+        m_Entries: 00908ef29cff03000090ce66f74d04000090ce963a510000

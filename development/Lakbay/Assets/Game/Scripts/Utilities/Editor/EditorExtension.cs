@@ -24,25 +24,30 @@ using UnityEngine.UI;
 
 using Humanizer;
 using UnityEngine.Localization.Settings;
+using static UnityEditor.AddressableAssets.Settings.AddressableAssetSettings;
 
 namespace Utilities {
     public static class EditorExtension {
         public static AddressableAssetGroup EnsureGroup(
             this AddressableAssetSettings settings, string name) {
             var group = settings.FindGroup(name);
-            if(!group)
+            if(!group) {
                 group = settings.CreateGroup(
                     name, false, false, true, null,
                     new Type[] {typeof(ContentUpdateGroupSchema)}
                 );
+                // settings.SetDirty(ModificationEvent.GroupAdded, group, true, true);
+            }
 
             return group;
         }
 
         public static string EnsureLabel(
             this AddressableAssetSettings settings, string name) {
-            if(!settings.GetLabels().Contains(name))
+            if(!settings.GetLabels().Contains(name)) {
                 settings.AddLabel(name);
+                // settings.SetDirty(ModificationEvent.LabelAdded, name, true, true);
+            }
             return name;
         }
 
@@ -52,8 +57,14 @@ namespace Utilities {
             var grp = settings.DefaultGroup;
             if(group != null && group.Length > 0)
                 grp = settings.EnsureGroup(group);
-            var entry = settings.CreateOrMoveEntry(
-                AssetDatabase.AssetPathToGUID(path), grp);
+            
+            string guid = AssetDatabase.AssetPathToGUID(path);
+            var entry = settings.FindAssetEntry(guid);
+            if(entry == null) {
+                entry = settings.AddEntry(
+                    AssetDatabase.AssetPathToGUID(path), grp.Name);
+            }
+            
 
             if(labels != null && labels.Length > 0) {
                 foreach(string label in labels) {
@@ -95,6 +106,7 @@ namespace Utilities {
                 new LocaleIdentifier(code.ToLower()),
                 key,
                 asset);
+            // EditorUtility.SetDirty(atc);
         }
         
         public static void Localize(

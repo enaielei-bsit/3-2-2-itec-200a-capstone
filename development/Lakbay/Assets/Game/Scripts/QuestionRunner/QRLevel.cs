@@ -49,6 +49,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
         public virtual float progress => questions.Count((q) => q.answered)
             / (float) questions.Count;
+        public virtual int score => questions.Count((q) => q.correct);
+        public virtual int maxScore => questions.Count;
         [HideInInspector]
         public int lastStop = 0;
         [HideInInspector]

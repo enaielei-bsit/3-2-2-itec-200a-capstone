@@ -25,6 +25,7 @@ using UnityEngine.UI;
 using Humanizer;
 
 using Utilities;
+using static UnityEditor.AddressableAssets.Settings.AddressableAssetSettings;
 
 namespace Ph.CoDe_A.Lakbay {
     [CreateAssetMenu(fileName="Helper", menuName="Game/Editor/Helper")]
@@ -146,10 +147,12 @@ namespace Ph.CoDe_A.Lakbay {
                                 $"Asset: {path}",
                                 (assets.IndexOf(asset) + 1) / assets.Count);
 
-                            settings.AddEntry(path, asset.group, asset.labels);
+                            var entry =
+                                settings.AddEntry(path, asset.group, asset.labels);
                         }
                     }
                 }
+
             } catch {}
 
             EditorUtility.ClearProgressBar();
@@ -178,6 +181,9 @@ namespace Ph.CoDe_A.Lakbay {
                         }
                     }
                 }
+
+                // settings.SetDirty(ModificationEvent.BatchModification,
+                //     null, true, true);
             } catch {}
 
             EditorUtility.ClearProgressBar();
@@ -200,8 +206,13 @@ namespace Ph.CoDe_A.Lakbay {
                             (entries.IndexOf(entry) + 1) / entries.Count);
 
                         entry.SetAddress(entry.AssetPath);
+                        // settings.SetDirty(ModificationEvent.EntryModified,
+                        //     entry.AssetPath, true, true);
                     }
                 }
+
+                // settings.SetDirty(ModificationEvent.BatchModification,
+                //     null, true, true);
             } catch {}
 
             EditorUtility.ClearProgressBar();
@@ -259,7 +270,7 @@ namespace Ph.CoDe_A.Lakbay {
         public static string[] ToParts(string str, string separator=";") {
             var parts = new string[] {};
             if(!string.IsNullOrEmpty(str))
-                parts = str.Split(";")
+                parts = str.Split(';')
                     .Select((e) => e.Trim()).ToArray();
             return parts;
         }

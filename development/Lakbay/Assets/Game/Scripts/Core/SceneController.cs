@@ -127,7 +127,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public static string GetSceneName(string path) {
-            return path.Split("/").Last().TrimEnd(".unity");
+            return path.Split('/').Last().TrimEnd(".unity");
         }
     }
 }

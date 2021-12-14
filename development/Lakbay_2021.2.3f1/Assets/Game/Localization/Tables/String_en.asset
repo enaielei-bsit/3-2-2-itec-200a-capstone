@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: String_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ff40c731577d4e04382e02c9cf803db7, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 6814168563831276286
+  m_TableData:
+  - m_Id: 16467791872
+    m_Localized: Non-Professional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5021237153792
+    m_Localized: Professional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 664493592842240
+    m_Localized: Proceed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1125474479542272
+    m_Localized: Level {0.level}
+    m_Metadata:
+      m_Items:
+      - rid: 6814168563831276286
+  - m_Id: 1211624883916800
+    m_Localized: Pick up {0.goal} {0.goal:Question|Questions}
+    m_Metadata:
+      m_Items:
+      - rid: 6814168563831276286
+  - m_Id: 1656798567108608
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1656927747477504
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1657186917715968
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1657282673676288
+    m_Localized: End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1727938002063360
+    m_Localized: Failed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2167756955750400
+    m_Localized: Choose a Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2172450490978304
+    m_Localized: In this mode, the Player is challenged with 60 questions and 10
+      practical applications about driving.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2173086070640640
+    m_Localized: In this mode, the Player is challenged with 100 questions and 10
+      practical applications about driving.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2175736635887616
+    m_Localized: Refer to the Help section in the Main Menu to learn more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2195082741452800
+    m_Localized: Non-Pro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2195203092811776
+    m_Localized: Pro
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 6814168563831276286
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0090ce66f74d040000908ef29cff0300

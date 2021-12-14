@@ -41,13 +41,15 @@ MonoBehaviour:
       m_Items: []
   m_Metadata:
     m_Items:
-    - rid: 6814168415083954288
+    - id: 0
+    - id: 1
   m_KeyGenerator:
-    rid: 6814168415083954289
+    id: 2
   references:
-    version: 2
-    RefIds:
-    - rid: 6814168415083954288
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+    00000001:
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
@@ -77,8 +79,7 @@ MonoBehaviour:
           - fil
         m_TypeString: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-    - rid: 6814168415083954289
-      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
-        asm: Unity.Localization}
+    00000002:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1638038342866
+        m_CustomEpoch: 1639410478546

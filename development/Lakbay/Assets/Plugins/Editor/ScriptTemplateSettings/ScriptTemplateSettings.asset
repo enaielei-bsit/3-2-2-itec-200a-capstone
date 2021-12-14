@@ -15,12 +15,10 @@ MonoBehaviour:
   version: 1.11.2
   allKeywords:
   - {fileID: 114006841538007530}
-  - {fileID: 114141027725322898}
-  - {fileID: 114364570387524256}
-  - {fileID: 114380126654612652}
   - {fileID: 114613935506991482}
-  - {fileID: 11400000, guid: 57d187c5aa4e37d4da60c9494e4c8116, type: 2}
-  - {fileID: 11400000, guid: 7ffd35f858d55df4591c75555b660679, type: 2}
+  - {fileID: 114380126654612652}
+  - {fileID: 114364570387524256}
+  - {fileID: 114141027725322898}
   processedFiles:
   - .cs
   - .js
@@ -74,10 +72,10 @@ MonoBehaviour:
     mode: 4
     regexOptions: 0
     caseSensitive: 1
-  - pattern: Game
+  - pattern: game
     mode: 3
     regexOptions: 1
-    caseSensitive: 1
+    caseSensitive: 0
   prefixWithEditorRootNamespace: 1
 --- !u!114 &114380126654612652
 MonoBehaviour:

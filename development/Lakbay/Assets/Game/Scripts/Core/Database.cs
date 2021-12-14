@@ -65,6 +65,10 @@ namespace Ph.CoDe_A.Lakbay.Core {
             LoadOnPreAndPost onFinish=default,
             bool ignoreExisting=true) {
             _loading = true;
+
+            // yield return new WaitUntil(() => Addressables.InitializationOperation.IsDone);
+            yield return Addressables.InitializeAsync(true);
+
             var locationsHandle = Addressables.LoadResourceLocationsAsync(
                 key, typeof(T));
             yield return locationsHandle;

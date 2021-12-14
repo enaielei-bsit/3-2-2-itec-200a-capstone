@@ -25,9 +25,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
         protected string _value => choice.text;
 
         public bool automatic = true;
+        public bool readOnly = false;
         public virtual Button button => GetComponentInChildren<Button>();
+        public Image background;
         public TextMeshProUGUI text;
+        public Color backgroundIdle;
+        public Color backgroundCorrect;
+        public Color textIdle;
+        public Color textChosen;
         public Choice choice;
+        protected Question _question;
 
         public override void Update() {
             base.Update();
@@ -37,13 +44,33 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                     Build(choice.text);
                 }
             }
+
+            if(background && choice != null) {
+                background.color = backgroundIdle;
+                if(readOnly && choice.correct) {
+                    background.color = backgroundCorrect;
+                }
+            }
+
+            if(_question != null) {
+                int index = _question.choices.IndexOf(choice);
+                bool answered = _question.answers.Contains(index);
+                if(text) {
+                    if(answered) text.color = textChosen;
+                    else text.color = textIdle;
+                }
+            }
         }
 
-        public virtual void Build(QuestionUI questionInterface, Choice choice) {
+        public virtual void Build(
+            QuestionUI questionInterface, Choice choice, bool readOnly=false) {
             if(choice == null) return;
+            _question = questionInterface.question;
             this.choice = choice;
+            this.readOnly = readOnly;
             Build(choice.text);
-            if(button) {
+
+            if(button && !readOnly) {
                 button.onClick.RemoveAllListeners();
                 if(Application.isPlaying) button.onClick.AddListener(
                     () => questionInterface.Answer(choice)

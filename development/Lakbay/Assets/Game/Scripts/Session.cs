@@ -35,6 +35,8 @@ namespace Ph.CoDe_A.Lakbay {
         }
         public static QRLevel qrLevel => qrLevelIndex.Within(0, qrLevels.Count - 1)
             ? qrLevels[qrLevelIndex] : default;
+        public static int qrScore => qrLevels.Sum((l) => l.score);
+        public static int qrMaxScore => qrLevels.Sum((l) => l.maxScore);
 
         public static void SetMode(int value) => mode = (GameMode) value;
     }

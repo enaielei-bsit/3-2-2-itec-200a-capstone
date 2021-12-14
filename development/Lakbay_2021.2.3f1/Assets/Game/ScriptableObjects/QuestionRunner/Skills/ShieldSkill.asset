@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f84a0a17ea3b4f43810fcc67b07251b, type: 3}
+  m_Name: ShieldSkill
+  m_EditorClassIdentifier: 
+  color: {r: 0.36078414, g: 0.57254905, b: 0.9058825, a: 1}
+  image: {fileID: 21300000, guid: 6c67c4364b1dccb4b8aaee485500dcb9, type: 3}
+  label: Shield
+  description: 
+  stackable: 0
+  instances: 1
+  duration: 3
+  cooldown: 1
+  buff: {fileID: 3662186659167284435, guid: af30eaedf6e25e44381166f14c79e133, type: 3}
