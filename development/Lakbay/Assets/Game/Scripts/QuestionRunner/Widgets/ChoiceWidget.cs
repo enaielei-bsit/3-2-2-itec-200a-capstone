@@ -76,6 +76,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
                     () => questionInterface.Answer(choice)
                 );
             }
+
+            if(readOnly) button.interactable = false;
         }
 
         public virtual void Build(string text) {

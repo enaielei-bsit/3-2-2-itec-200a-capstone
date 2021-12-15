@@ -24,7 +24,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public override bool CanSpawn(
             Transform[] locations, Transform location,
             Spawn[] spawns, Spawn spawn) {
-            // printLog(Session.qrLevel.spawned.Count, Session.qrLevel.done);
             if(base.CanSpawn(locations, location, spawns, spawn)) {
                 return locations.Count((l) => l.GetComponentInChildren<QRSpawn>())
                     < locations.Length - freeLocationPerRow;

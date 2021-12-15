@@ -99,7 +99,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 _goalSet = Tween.Value(
                     progress.normalizedValue, value,
                     (v) => progress.normalizedValue = v,
-                    duration, delay);
+                    duration, delay,
+                    AnimationCurve.EaseInOut(0.0f, progress.value, duration, value)
+                );
             }
         }
 

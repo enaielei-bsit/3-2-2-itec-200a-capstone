@@ -144,7 +144,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 Session.qrLevelIndex++;
                 LoadScene();
             } else {
-
+                qrPostPlayUI?.Show();
             }
         }
 
@@ -161,6 +161,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void Restart() {
+            ResetLevel();
             Session.sceneController.Load(SceneController.current.buildIndex);
             Session.loadingScreen?.Monitor(Session.sceneController);
         }

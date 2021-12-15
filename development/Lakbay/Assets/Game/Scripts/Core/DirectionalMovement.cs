@@ -56,5 +56,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
             vec[axis] = offset;
             transform.Translate(vec);
         }
+
+        public virtual void StopPerforming() => Perform(false);
+        public virtual void StartPerforming() => Perform(true);
     }
 }

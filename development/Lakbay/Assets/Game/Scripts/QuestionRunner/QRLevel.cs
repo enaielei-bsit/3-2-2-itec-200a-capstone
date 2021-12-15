@@ -95,6 +95,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             foreach(var question in questions) {
                 question.ClearAnswers();
             }
+            spawned.Clear();
         }
     }
 }

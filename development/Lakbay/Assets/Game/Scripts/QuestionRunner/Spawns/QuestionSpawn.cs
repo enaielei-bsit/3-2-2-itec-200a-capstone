@@ -83,7 +83,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                 var questions = Session.qrLevel.questions;
                 Session.qrLevel.spawned.Add(questions.IndexOf(question));
                 this.question = question;
-                printLog(Session.qrLevel.spawned.Count);
             }
         }
 

@@ -37,6 +37,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         var lck = player.camera.GetComponent<CinemachineLock>();
                         if(!lck.zPosition.locked) {
                             player.Invoke("Proceed", delay);
+                            player.travel?.Invoke("StopPerforming", delay);
                             lck.zPosition.Lock(player.camera.transform.position.z);
                         }
                     }
