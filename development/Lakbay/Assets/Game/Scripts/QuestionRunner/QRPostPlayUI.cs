@@ -36,6 +36,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         protected Button _wrongReview;
         public RectTransform reviews;
 
+        [Header("Remarks")]
+        public RectTransform passedRemark;
+        public RectTransform failedRemark;
+
+        [Header("Controls")]
+        public Button proceed;
+        public Button retry;
+
         public virtual void Show() {
             if(!gameObject.activeSelf) {
                 gameObject.SetActive(true);
@@ -88,6 +96,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     }
                 }
             }
+
+            passedRemark?.gameObject.SetActive(Session.qrPassed);
+            failedRemark?.gameObject.SetActive(!Session.qrPassed);
+
+            proceed?.gameObject.SetActive(Session.qrPassed);
+            retry?.gameObject.SetActive(!Session.qrPassed);
         }
     }
 }

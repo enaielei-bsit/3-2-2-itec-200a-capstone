@@ -63,8 +63,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     skill.instances += 1;
                     int answered = Session.qrLevel.questions.Count((q) => q.answered);
                     int unanswered = Session.qrLevel.questions.Count((q) => !q.answered);
-                    printLog($"Answered: {answered}, Unanswered {unanswered}, Done: {Session.qrLevel.done}");
-                    // printLog($"Player received a skill instance. Instances: {skill.instances}.");
                 }
                 gameObject.SetActive(false);
             }

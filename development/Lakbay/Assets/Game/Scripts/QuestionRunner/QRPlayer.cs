@@ -144,7 +144,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 Session.qrLevelIndex++;
                 LoadScene();
             } else {
-                qrPostPlayUI?.Show();
+                // TODO: Redirect to SteppedApplication
+                Session.qrLevelIndex = 0;
+                LoadScene(BuiltScene.MainMenu);
             }
         }
 
@@ -160,8 +162,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             travel?.Perform(true);
         }
 
-        public virtual void Restart() {
-            ResetLevel();
+        public virtual void Restart(bool current=true) {
+            if(current) {
+                ResetLevel();
+            } else {
+                Session.qrLevelIndex = 0;
+                foreach(int level in Session.qrLevels.Select((l, i) => i))
+                    ResetLevel(level);
+            }
             Session.sceneController.Load(SceneController.current.buildIndex);
             Session.loadingScreen?.Monitor(Session.sceneController);
         }

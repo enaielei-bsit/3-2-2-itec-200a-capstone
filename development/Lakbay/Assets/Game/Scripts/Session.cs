@@ -37,6 +37,10 @@ namespace Ph.CoDe_A.Lakbay {
             ? qrLevels[qrLevelIndex] : default;
         public static int qrScore => qrLevels.Sum((l) => l.score);
         public static int qrMaxScore => qrLevels.Sum((l) => l.maxScore);
+        public static float qrPassingScorePercentage = 0.75f;
+        public static int qrPassingScore =>
+            (int) (qrPassingScorePercentage * qrMaxScore);
+        public static bool qrPassed => qrScore >= qrPassingScore;
 
         public static void SetMode(int value) => mode = (GameMode) value;
     }
