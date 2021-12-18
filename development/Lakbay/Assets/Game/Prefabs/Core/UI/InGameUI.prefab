@@ -95,7 +95,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6774658682405414389, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774658682405414389, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6774658682405414389, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
 --- !u!1001 &2983921141505805551
 PrefabInstance:
