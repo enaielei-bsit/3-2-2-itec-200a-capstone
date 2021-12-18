@@ -21,7 +21,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Pixelplacement.TweenSystem;
     using Widgets;
 
-    public class QRInGameUI : Core.Controller {
+    public class QRInGameUI : Core.InGameUI {
         protected LTDescr _setGoal;
 
         public QRPlayer player;
@@ -37,9 +37,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [SerializeField]
         protected Image _life;
         public Slider progress;
-        
-        [Space()]
-        public Button pause;
 
         public override void Awake() {
             base.Awake();

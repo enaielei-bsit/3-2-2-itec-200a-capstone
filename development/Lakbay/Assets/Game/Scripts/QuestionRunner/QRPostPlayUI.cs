@@ -18,7 +18,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using TMPro;
     using Utilities;
 
-    public class QRPostPlayUI : Core.Controller {
+    public class QRPostPlayUI : Core.PostPlayUI {
+        [Space]
         public QRPlayer player;
 
         [Header("Rating")]
@@ -39,10 +40,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [Header("Remarks")]
         public RectTransform passedRemark;
         public RectTransform failedRemark;
-
-        [Header("Controls")]
-        public Button proceed;
-        public Button retry;
 
         public virtual void Show() {
             if(!gameObject.activeSelf) {

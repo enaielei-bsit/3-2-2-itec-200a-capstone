@@ -42,7 +42,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Slider timeProgress;
         public TextMeshProUGUI time;
         public string timeFormat = "00.00";
-        public List<TimeTextColor> timeTextColors = new List<TimeTextColor>();
+        public List<TimeTextColor> timeColors = new List<TimeTextColor>();
 
         [Header("Question")]
         public Content questionContent;
@@ -95,11 +95,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Show() {
             gameObject.SetActive(true);
             if(!tweenable) return;
-            // Tween.CanvasGroupAlpha(tweenable, 0.0f, 1.0f, 0.25f, 0.0f);
-            // Tween.LocalScale(
-            //     tweenable, Vector3.zero, Vector3.one,
-            //     0.25f, 0.0f
-            // );
         }
 
         public virtual void Show(
@@ -119,11 +114,6 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void Hide() {
             gameObject.SetActive(false);
-            // Tween.LocalScale(
-            //     transform, Vector3.zero,
-            //     0.25f, 0.0f,
-            //     completeCallback: () => gameObject.SetActive(false)
-            // );
         }
 
         public virtual void Answer(params Choice[] choices) {
@@ -156,13 +146,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 if(timeProgress) timeProgress.value = 1.0f - question.progress;
 
                 float progress = question.elapsedTime / question.time;
-                // if(progress <= 0.65f) time.color = timeStarting;
-                // else time.color = timeEnding;
-                if(timeTextColors != null && timeTextColors.Count > 0) {
-                    var ttc = timeTextColors.Find(
+                if(timeColors != null && timeColors.Count > 0) {
+                    var ttc = timeColors.Find(
                         (ttc) => progress <= ttc.progress);
                     time.color = ttc.color;
-                    // Tween.Color(time, ttc.color, 0.25f, 0.0f);
+                    var fill = timeProgress.fillRect?.GetComponent<Image>();
+                    if(fill) fill.color = ttc.color;
                 }
 
                 if(progress == 1.0f) {

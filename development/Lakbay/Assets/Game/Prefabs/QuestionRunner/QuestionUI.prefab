@@ -1903,13 +1903,15 @@ MonoBehaviour:
   timeProgress: {fileID: 67847734256093491}
   time: {fileID: 2545919428535763565}
   timeFormat: 00.00
-  timeTextColors:
-  - progress: 0.5
+  timeColors:
+  - progress: 0.25
     color: {r: 1, g: 1, b: 1, a: 1}
+  - progress: 0.5
+    color: {r: 1, g: 0.698359, b: 0, a: 1}
   - progress: 0.75
-    color: {r: 0.9063317, g: 0.2657432, b: 0.27728373, a: 1}
+    color: {r: 1, g: 0.45000002, b: 0, a: 1}
   - progress: 1
-    color: {r: 0.90588236, g: 0, b: 0.016672729, a: 1}
+    color: {r: 1, g: 0.116666675, b: 0, a: 1}
   questionContent: {fileID: 2371787755721850763}
   question:
     content: []

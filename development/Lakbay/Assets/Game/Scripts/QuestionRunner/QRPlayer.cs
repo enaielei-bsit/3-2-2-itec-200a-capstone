@@ -112,7 +112,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             });
         }
 
-        public virtual void Pause() {
+        public override void Pause() {
             _Save();
             caster.timeScale = 0.0f;
             buffable.timeScale = 0.0f;
@@ -120,12 +120,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             slide.timeScale = 0.0f;
         }
 
-        public virtual void Pause(bool showUI) {
-            if(showUI) gameMenuUI?.gameObject.SetActive(true);
+        public virtual void Pause(bool screen) {
+            gameMenuUI?.gameObject.SetActive(screen);
             Pause();
         }
 
-        public virtual void Resume() {
+        public override void Resume() {
             try {
                 caster.timeScale = _timeScales.Pop();
                 buffable.timeScale = _timeScales.Pop();
@@ -139,8 +139,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Resume(bool hideUI) {
-            if(hideUI) gameMenuUI?.gameObject.SetActive(false);
+        public virtual void Resume(bool screen) {
+            gameMenuUI?.gameObject.SetActive(screen);
             Resume();
         }
 
@@ -162,12 +162,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void ResetLevel() => ResetLevel(Session.qrLevelIndex);
 
-        public virtual void Play() {
-            prePlayUI?.gameObject.SetActive(false);
+        public virtual void Play(bool screen) {
+            prePlayUI?.gameObject.SetActive(screen);
             travel?.Perform(true);
         }
 
-        public virtual void Restart(bool current=true) {
+        public virtual void Restart(bool current) {
             if(current) {
                 ResetLevel();
             } else {
@@ -179,7 +179,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             Session.loadingScreen?.Monitor(Session.sceneController);
         }
 
-        public virtual void End() {
+        public override void End() {
             Session.qrLevels.Clear();
             LoadScene(BuiltScene.MainMenu);
         }

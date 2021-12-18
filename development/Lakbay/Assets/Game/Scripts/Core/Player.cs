@@ -25,31 +25,51 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         }
 
-        public static void LoadScene(BuiltScene scene) {
+        public virtual void LoadScene(BuiltScene scene) {
             Session.sceneController?.Load(scene);
             Session.loadingScreen?.Monitor(Session.sceneController);
         }
 
-        public static void LoadScene(int scene) => LoadScene((BuiltScene) scene);
+        public virtual void LoadScene(int scene) => LoadScene((BuiltScene) scene);
         
-        public static void LoadScene() => LoadScene(
+        public virtual void LoadScene() => LoadScene(
             SceneController.current.buildIndex);
 
-        public static void SetMode(GameMode mode) {
+        public virtual void SetMode(GameMode mode) {
             Session.mode = mode;
             Debug.Log($"Mode selected: {Session.mode}");
         }
 
-        public static void SetMode(int mode) => SetMode((GameMode) mode);
+        public virtual void SetMode(int mode) => SetMode((GameMode) mode);
 
-        public static void SetMode(bool mode) => 
+        public virtual void SetMode(bool mode) => 
             SetMode(mode ? 1 : 0);
 
-        public static void Play(GameMode mode) {
+        public virtual void Play(GameMode mode) {
             SetMode(mode);
             LoadScene(BuiltScene.QuestionRunner);
         }
 
-        public static void Play(int mode) => Play((GameMode) mode);
+        public virtual void Play(int mode) => Play((GameMode) mode);
+
+        public virtual void Resume() {
+            
+        }
+
+        public virtual void Pause() {
+
+        }
+
+        public virtual void Tweak() {
+
+        }
+
+        public virtual void Restart() {
+
+        }
+
+        public virtual void End() {
+
+        }
     }
 }
