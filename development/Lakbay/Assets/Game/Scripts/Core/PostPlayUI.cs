@@ -2,7 +2,7 @@
  * Date Created: Saturday, December 18, 2021 5:04 PM
  * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
  * 
- * Copyright © #YEAR# #COMPANY_NAME#. All Rights Reserved.
+ * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
 using System;
