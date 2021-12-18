@@ -38,9 +38,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public QRPostPlayUI qrPostPlayUI;
         public QRInGameUI qrInGameUI;
         public QuestionUI questionUI;
-        public Transform repeaterHandlerLocation;
+        public Transform initial;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
+
+        [Header("Events")]
+        public LocalizeTextAssetEvent questionsEvent;
 
         [Header("Gameplay")]
         public Travel travel;
@@ -60,18 +63,20 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.Update();
         }
 
+        public virtual void InitializeLevels() {
+            var levels = Session.database.Get<QRLevel>().Values
+                .Where((l) => l.category == Session.mode);
+            Session.qrLevels.Clear();
+            Session.qrLevels.AddRange(levels);
+            foreach(var level in Session.qrLevels) {
+                level.LoadQuestions(level.questionsFile?.LoadAsset());
+            }
+            Session.qrLevelIndex = 0;
+        }
+
         public override void Build() {
-            if(repeaterHandlerLocation) {
-                if(Session.qrLevelIndex == -1) {
-                    var levels = Session.database.Get<QRLevel>().Values
-                        .Where((l) => l.category == Session.mode);
-                    Session.qrLevels.Clear();
-                    Session.qrLevels.AddRange(levels);
-                    foreach(var level in Session.qrLevels) {
-                        level.LoadQuestions(level.questionsFile?.LoadAsset());
-                    }
-                    Session.qrLevelIndex = 0;
-                }
+            if(initial) {
+                if(Session.qrLevelIndex == -1) InitializeLevels();
 
                 if(Session.qrLevel) {
                     ResetLevel();
@@ -79,7 +84,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                     var level = Session.qrLevel;
                     repeaterHandler = Instantiate(
-                        level._repeaterHandler, repeaterHandlerLocation);
+                        level._repeaterHandler, initial);
                     var questions = level.questions;
                     Session.qrLevel.repeaterHandler = repeaterHandler;
 
@@ -89,10 +94,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     qrInGameUI?.Build();
 
                     // Update questionUI if it is present.
-                    LocalizationSettings.SelectedLocaleChanged +=
-                        UpdateQuestionUI;
+                    questionsEvent?.Subscribe(
+                            Session.qrLevel.questionsFile, UpdateQuestionUI);
 
-                    prePlayUI?.Show(new object[] {this}, new object[] {this});
+                    prePlayUI?.Show();
                 }
             }
         }
@@ -175,15 +180,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public virtual void End() {
-            LocalizationSettings.SelectedLocaleChanged -= UpdateQuestionUI;
             Session.qrLevels.Clear();
             LoadScene(BuiltScene.MainMenu);
         }
 
-        public virtual void UpdateQuestionUI(Locale locale) {
+        public virtual void UpdateQuestionUI(TextAsset asset) {
             if(questionUI) {
                 if(questionUI.gameObject.activeSelf) {
-                    questionUI.Build(questionUI.question);
+                    questionUI.Build();
                 }
             }
         }

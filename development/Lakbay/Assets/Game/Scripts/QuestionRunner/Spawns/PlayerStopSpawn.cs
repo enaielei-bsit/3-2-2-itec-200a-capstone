@@ -38,7 +38,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         if(!lck.zPosition.locked) {
                             if(Session.qrLevelIndex != Session.qrLevels.Count - 1)
                                 player.Invoke("Proceed", delay);
-                            else player.qrPostPlayUI?.Invoke("Show", 0.0f);
+                            else player.qrPostPlayUI?.Invoke("Show", delay);
                             
                             player.travel?.Invoke("StopPerforming", delay);
                             lck.zPosition.Lock(player.camera.transform.position.z);

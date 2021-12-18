@@ -23,18 +23,12 @@ namespace Ph.CoDe_A.Lakbay.Core {
     public class PrePlayUI : Controller {
         public RectTransform nonProLabel;
         public RectTransform proLabel;
-        public LocalizeStringEvent header; 
-        public LocalizeStringEvent subheader;
 
         public override void Awake() {
             base.Awake();
         }
 
-        public virtual void Show(
-            IEnumerable<object> headerArgs,
-            IEnumerable<object> subheaderArgs) {
-            header?.StringReference.Set(headerArgs);
-            subheader?.StringReference.Set(subheaderArgs);
+        public virtual void Show() {
             gameObject.SetActive(true);
         }
 

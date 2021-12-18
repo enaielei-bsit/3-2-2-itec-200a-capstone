@@ -46,7 +46,7 @@ namespace Ph.CoDe_A.Lakbay {
             if(finished) yield break;
 
             Session.loadingScreen =
-                _loadingScreen ? _loadingScreen.CreateFirstInstance() : default;
+                _loadingScreen ? _loadingScreen.EnsureInstance() : default;
             if(Session.loadingScreen) {
                 Session.loadingScreen.gameObject.MakePersistent();
                 Session.loadingScreen.Show();
@@ -57,7 +57,7 @@ namespace Ph.CoDe_A.Lakbay {
 
             // Proceed with loading Game related stuffs...
             Session.database =
-                _database ? _database.CreateFirstInstance() : default;
+                _database ? _database.EnsureInstance() : default;
             if(Session.database) {
                 Session.database.gameObject.MakePersistent();
 
@@ -69,7 +69,7 @@ namespace Ph.CoDe_A.Lakbay {
             }
 
             Session.localizer = 
-                _localizer ? _localizer.CreateFirstInstance() : default;
+                _localizer ? _localizer.EnsureInstance() : default;
             if(Session.localizer && Session.database) {
                 Session.localizer.gameObject.MakePersistent();
 
@@ -80,7 +80,7 @@ namespace Ph.CoDe_A.Lakbay {
             }
 
             Session.sceneController =
-                _sceneController ? _sceneController.CreateFirstInstance() : default;
+                _sceneController ? _sceneController.EnsureInstance() : default;
             if(Session.sceneController) {
                 Session.sceneController.gameObject.MakePersistent();
             }

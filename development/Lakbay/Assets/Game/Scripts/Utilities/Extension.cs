@@ -234,14 +234,15 @@ namespace Utilities {
         }
 
         public static void MakePersistent(this GameObject gameObject) {
-            if(!gameObject.IsPersistent()) UnityEngine.Object.DontDestroyOnLoad(gameObject);
+            if(!gameObject.IsPersistent() && gameObject.transform.parent == null)
+                UnityEngine.Object.DontDestroyOnLoad(gameObject);
         }
 
         public static bool IsExisting(this GameObject gameObject) {
             return gameObject.scene.IsValid();
         }
 
-        public static GameObject CreateFirstInstance(
+        public static GameObject EnsureInstance(
             this GameObject gameObject, string name=null) {
             var go = gameObject.IsExisting()
                 ? gameObject : GameObject.Instantiate(gameObject);
@@ -251,9 +252,9 @@ namespace Utilities {
         }
 
         // Component
-        public static T CreateFirstInstance<T>(this T component, string name=null)
+        public static T EnsureInstance<T>(this T component, string name=null)
             where T : Component {
-            var go = component.gameObject.CreateFirstInstance(name);
+            var go = component.gameObject.EnsureInstance(name);
             return go.GetComponent<T>();
         }
 

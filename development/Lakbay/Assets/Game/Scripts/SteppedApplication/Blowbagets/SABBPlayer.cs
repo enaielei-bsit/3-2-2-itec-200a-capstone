@@ -16,7 +16,8 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
     using Core;
+    using Utilities;
 
-    public class SABBPlayer : Player {
+    public class SABBPlayer : SAPlayer {
     }
 }

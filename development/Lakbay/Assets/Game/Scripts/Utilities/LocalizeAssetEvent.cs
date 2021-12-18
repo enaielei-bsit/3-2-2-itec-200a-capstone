@@ -14,5 +14,18 @@ namespace Utilities {
     public class LocalizeAssetEvent<T> :
         LocalizedAssetEvent<
         T, LocalizedAsset<T>, UnityEvent<T>> where T : UnityEngine.Object {
+        public virtual void Subscribe(
+            LocalizedAsset<T> reference,
+            params UnityAction<T>[] actions) {
+            AssetReference = reference;
+            OnUpdateAsset.RemoveAllListeners();
+            Subscribe(actions);
+        }
+
+        public virtual void Subscribe(params UnityAction<T>[] actions) {
+            foreach(var action in actions) {
+                OnUpdateAsset.AddListener(action);
+            }
+        }
     }
 }
