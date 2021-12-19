@@ -18,6 +18,7 @@ namespace Ph.CoDe_A.Lakbay {
     using Utilities;
     using Core;
     using QuestionRunner;
+    using SteppedApplication.Blowbagets;
     using UnityEngine.Localization;
 
     public class Session : Controller {
@@ -27,6 +28,8 @@ namespace Ph.CoDe_A.Lakbay {
         public static SceneController sceneController;
 
         public static GameMode mode = GameMode.NonPro;
+
+
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
         private static int _qrLevelIndex = 0;
         public static int qrLevelIndex {
@@ -41,6 +44,9 @@ namespace Ph.CoDe_A.Lakbay {
         public static int qrPassingScore =>
             (int) (qrPassingScorePercentage * qrMaxScore);
         public static bool qrPassed => qrScore >= qrPassingScore;
+
+
+        public static SABBLevel sabbLevel;
 
         public static void SetMode(int value) => mode = (GameMode) value;
     }

@@ -18,7 +18,7 @@ namespace Ph.CoDe_A.Lakbay {
     using Utilities;
     using Core;
     using QuestionRunner;
-    using SteppedApplication;
+    using SteppedApplication.Blowbagets;
     using UnityEngine.Localization;
     using UnityEngine.Localization.Components;
     using UnityEngine.Localization.Settings;
@@ -64,7 +64,16 @@ namespace Ph.CoDe_A.Lakbay {
                 Session.database.Load<Sprite>();
                 yield return new WaitWhile(() => Session.database.loading);
 
+                // Session.database.Load<TextAsset>();
+                // yield return new WaitWhile(() => Session.database.loading);
+
+                // Session.database.Load<AudioClip>();
+                // yield return new WaitWhile(() => Session.database.loading);
+
                 Session.database.Load<QRLevel>();
+                yield return new WaitWhile(() => Session.database.loading);
+
+                Session.database.Load<SABBLevel>();
                 yield return new WaitWhile(() => Session.database.loading);
             }
 
