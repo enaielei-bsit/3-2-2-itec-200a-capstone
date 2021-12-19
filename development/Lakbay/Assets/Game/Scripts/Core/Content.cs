@@ -92,10 +92,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
                                 (v) => v.Show(entry.value));
                             break;
                         case Entry.Type.Image:
-                            // TODO: Set Image...
                             Build(entry, imageGroup,
-                                (c) => c.sprite = default,
-                                (v) => v.Show(default));
+                                (c) => c.sprite = entry.GetAsset<Sprite>(),
+                                (v) => v.Show(entry.GetAsset<Sprite>()));
                             break;
                         default: break;
                     }

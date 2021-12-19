@@ -21,7 +21,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
     public enum BuiltScene {
         // Initialization,
         MainMenu,
-        QuestionRunner
+        QuestionRunner,
+        Blowbagets,
     }
 
     public class SceneController : Controller, LoadingScreen.IMonitored {
@@ -129,5 +130,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public static string GetSceneName(string path) {
             return path.Split('/').Last().TrimEnd(".unity");
         }
+
+        public static bool IsCurrent(BuiltScene scene) {
+            return current.buildIndex == (int) scene;
+        }
+
+        public static BuiltScene GetCurrent() => (BuiltScene) current.buildIndex;
     }
 }

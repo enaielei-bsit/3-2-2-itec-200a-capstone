@@ -149,9 +149,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 Session.qrLevelIndex++;
                 LoadScene();
             } else {
-                // TODO: Redirect to SteppedApplication
-                Session.qrLevelIndex = 0;
-                LoadScene(BuiltScene.MainMenu);
+                LoadScene(BuiltScene.Blowbagets);
             }
         }
 

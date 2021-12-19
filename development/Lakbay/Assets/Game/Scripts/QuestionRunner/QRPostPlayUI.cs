@@ -63,7 +63,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 int maxScore = player ? player.maxScore : 1;
                 float part = maxScore / (float) maxRating;
                 for(int i = 0; i < maxRating; i++) {
-                    if(score != 0 && score <= (part * (i + 1))) {
+                    if(score != 0 && score < (part * (i + 1))) {
                         Instantiate(_emptyRating, ratings);
                     } else Instantiate(_filledRating, ratings);
                 }

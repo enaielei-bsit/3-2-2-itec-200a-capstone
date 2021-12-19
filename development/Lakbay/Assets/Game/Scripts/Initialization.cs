@@ -36,7 +36,9 @@ namespace Ph.CoDe_A.Lakbay {
         [SerializeField]
         protected Localizer _localizer; 
         [SerializeField]
-        protected SceneController _sceneController; 
+        protected SceneController _sceneController;
+        [SerializeField]
+        protected CheatEngine _cheatEngine;
 
         public override void Awake() {
             base.Awake();
@@ -92,6 +94,12 @@ namespace Ph.CoDe_A.Lakbay {
                 _sceneController ? _sceneController.EnsureInstance() : default;
             if(Session.sceneController) {
                 Session.sceneController.gameObject.MakePersistent();
+            }
+
+            Session.cheatEngine =
+                _cheatEngine ? _cheatEngine.EnsureInstance() : default;
+            if(Session.cheatEngine) {
+                Session.cheatEngine.gameObject.MakePersistent();
             }
 
             _finished = true;

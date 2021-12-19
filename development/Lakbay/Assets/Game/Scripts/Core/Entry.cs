@@ -51,6 +51,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
             this.value = value;
         }
 
+        public virtual T GetAsset<T>(Database database)
+            where T : UnityEngine.Object {
+            return database?.Get<T>(value);
+        }
+
+        public virtual T GetAsset<T>() 
+            where T : UnityEngine.Object => GetAsset<T>(Session.database);
+
         public static Entry Parse(string str) {
             Entry entry = default;
             Parser.Default.ParseArguments<Entry>(str.ToCommandLine())
