@@ -65,7 +65,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void InitializeLevels() {
             var levels = Session.database.Get<QRLevel>().Values
-                .Where((l) => l.category == Session.mode);
+                .Where((l) => l.category == Session.mode)
+                .OrderBy((l) => l.index);
             Session.qrLevels.Clear();
             Session.qrLevels.AddRange(levels);
             foreach(var level in Session.qrLevels) {

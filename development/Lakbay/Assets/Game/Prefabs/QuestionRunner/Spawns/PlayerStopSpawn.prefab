@@ -7,63 +7,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 5763449590391717610, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7347244214875593073, guid: 9797effb69ff39f49a61f8694b0b4197,
-        type: 3}
+    - target: {fileID: 7347244214875593073, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
       propertyPath: m_Name
       value: PlayerStopSpawn
       objectReference: {fileID: 0}
@@ -72,8 +60,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
 --- !u!1 &2929927558905861768 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7347244214875593073, guid: 9797effb69ff39f49a61f8694b0b4197,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 7347244214875593073, guid: 9797effb69ff39f49a61f8694b0b4197, type: 3}
   m_PrefabInstance: {fileID: 5575340034317488121}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &3996840086263728913
@@ -102,4 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggered: 0
+  delay: 3
   offset: 5

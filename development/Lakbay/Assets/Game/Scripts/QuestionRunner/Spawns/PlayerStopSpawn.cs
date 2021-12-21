@@ -22,7 +22,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     public class PlayerStopSpawn : QRSpawn {
         public bool triggered = false;
         [Min(0)]
-        public float delay = 2.0f;
+        public float delay = 3.0f;
         [Min(0)]
         public int offset = 5;
 

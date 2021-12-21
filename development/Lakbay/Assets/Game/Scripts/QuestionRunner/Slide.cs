@@ -33,8 +33,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public override void Update() {
             base.Update();
 
-            bool left = Input.GetKeyUp(KeyCode.LeftArrow);
-            bool right = Input.GetKeyUp(KeyCode.RightArrow);
+            bool left = IInput.keyboard.leftArrowKey.wasPressedThisFrame;
+            bool right = IInput.keyboard.leftArrowKey.wasPressedThisFrame;
 
             if(left) PerformLeft(offset, duration);
             if(right) PerformRight(offset, duration);

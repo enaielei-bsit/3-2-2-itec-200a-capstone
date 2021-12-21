@@ -31,21 +31,33 @@ namespace Ph.CoDe_A.Lakbay {
 
         public CanvasGroup group;
         public LayoutGroup root;
+        public Button toggleLanguage;
+        public virtual TextMeshProUGUI toggleLanguageText =>
+            toggleLanguage?.GetComponentInChildren<TextMeshProUGUI>();
 
+        [Space]
         [SerializeField]
         protected TextMeshProUGUI _text;
         [SerializeField]
         protected Button _button;
 
         protected TextMeshProUGUI _qrText;
+        protected bool _ready = false;
 
         public override void Awake() {
             base.Awake();
             if(!Debug.isDebugBuild) gameObject.SetActive(false);
         }
 
+        public new virtual IEnumerator Start() {
+            yield return LocalizationSettings.InitializationOperation;
+            _ready = true;
+
+        }
+
         public override void Update() {
             base.Update();
+            if(!_ready) return;
             group.blocksRaycasts = false;
             if(!Debug.isDebugBuild) {
                 group.alpha = 0.0f;
@@ -66,6 +78,13 @@ namespace Ph.CoDe_A.Lakbay {
 
         public virtual void Build(BuiltScene scene) {
             if(!root) return;
+            if(toggleLanguage) {
+                var text = toggleLanguageText;
+                text?.SetText(LocalizationSettings.SelectedLocale.name);
+                toggleLanguage.onClick.RemoveAllListeners();
+                toggleLanguage.onClick.AddListener(ToggleLanguage);
+            }
+
             root.transform.DestroyChildren();
             if(scene == BuiltScene.QuestionRunner) {
                 _qrText = Instantiate(_text, root.transform);
@@ -92,5 +111,24 @@ namespace Ph.CoDe_A.Lakbay {
                 
             }
         }
+
+        public virtual void ToggleLanguage() {
+            var next = GetNextLocale();
+            LocalizationSettings.SelectedLocale = next;
+            toggleLanguageText?.SetText(LocalizationSettings.SelectedLocale.name);
+        }
+
+        public static Locale GetNextLocale(Locale locale) {
+            var locales = LocalizationSettings.AvailableLocales.Locales;
+            var current = LocalizationSettings.SelectedLocale;
+            int index = locales.IndexOf(current);
+            int nextIndex = index + 1;
+            nextIndex = nextIndex >= locales.Count ? 0 : nextIndex;
+            var next = locales[nextIndex];
+            return next;
+        }
+
+        public static Locale GetNextLocale() =>
+            GetNextLocale(LocalizationSettings.SelectedLocale);
     }
 }

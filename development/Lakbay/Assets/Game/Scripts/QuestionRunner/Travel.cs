@@ -12,9 +12,12 @@ using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+    using Utilities;
+
     public class Travel : Core.DirectionalMovement {
         public float speed {
             set {
@@ -26,7 +29,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public override void Update() {
             base.Update();
-            bool spaced = Input.GetKeyUp(KeyCode.Space);
+            bool spaced = IInput.keyboard.spaceKey.wasPressedThisFrame;
 
             if(spaced) Perform(!performing);
         }

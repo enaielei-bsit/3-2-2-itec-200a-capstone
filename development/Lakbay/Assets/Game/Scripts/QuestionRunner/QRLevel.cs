@@ -27,6 +27,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     public class QRLevel : Asset, ILocalizable {
         protected LocalizeTextAssetEvent _questionsFileEvent;
 
+        public int index = 0;
         public GameMode category = GameMode.NonPro;
         public TimeOfDay time;
 

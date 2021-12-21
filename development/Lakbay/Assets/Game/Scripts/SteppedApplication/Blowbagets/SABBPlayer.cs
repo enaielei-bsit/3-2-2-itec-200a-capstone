@@ -32,6 +32,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
 
         [Header("Level")]
         public new CinemachineVirtualCamera camera;
+        public SABBInGameUI inGameUI;
         public BlowbagetsUI blowbagetsUI;
         public virtual CinemachineOrbitalTransposer transposer =>
             camera?.GetCinemachineComponent<CinemachineOrbitalTransposer>();
@@ -69,6 +70,19 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             }
         }
 
+        protected bool _done;
+
+        public override void Update() {
+            base.Update();
+            if(finished && (bool) !blowbagetsUI?.gameObject.activeSelf) {
+                if(!_done) {
+                    _done = true;
+                    inGameUI?.gameObject.SetActive(false);
+                    Invoke("Proceed", 3.0f);
+                }
+            }
+        }
+
         public override void Build() {
             base.Build();
             Session.sabbLevel = Session.database.Get<SABBLevel>().First().Value;
@@ -99,7 +113,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
 
         public virtual void ShowLights() {
             lightsCount = Mathf.Clamp(lightsCount + 1, 0, maxLightsCount);
-            if(lights) ShowInfo(Session.sabbLevel.lights);
+            ShowInfo(Session.sabbLevel.lights);
         }
 
         public virtual void ShowOil() {
@@ -134,7 +148,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
 
         public virtual void ShowTires() {
             tiresCount = Mathf.Clamp(tiresCount + 1, 0, maxTiresCount);
-            if(tires) ShowInfo(Session.sabbLevel.tires);
+            ShowInfo(Session.sabbLevel.tires);
         }
 
         public virtual void ShowSelf() {
@@ -156,6 +170,22 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             if(info && blowbagetsUI && blowbagetsUI.gameObject.activeSelf) {
                 blowbagetsUI.Build();
             }
+        }
+
+        public virtual void Proceed() {
+            End();
+        }
+
+        public override void End() {
+            base.End();
+            Session.qrLevelIndex = -1;
+            Session.qrLevels.Clear();
+            LoadScene(BuiltScene.MainMenu);
+        }
+
+        public override void Restart() {
+            base.Restart();
+            LoadScene();
         }
     }
 }
