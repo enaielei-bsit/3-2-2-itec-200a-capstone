@@ -12,6 +12,7 @@ using System.Linq;
 using Humanizer;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -361,6 +362,34 @@ namespace Utilities {
 
         public static void Add(this LocalizedString str, params object[] args) {
             str.Add(args.AsEnumerable());
+        }
+
+        // PointerEventData
+        // source: https://forum.unity.com/threads/pointereventdata-pressure-support.436870/#post-2830577
+        public static bool GetTouch(this PointerEventData data, out Touch touch) {
+            touch = default;
+            for (var i = 0; i < Input.touches.Length; i++) {
+                var touch_ = Input.touches[i];
+                if (touch_.fingerId == data.pointerId) {
+                    touch = touch_;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static Touch GetTouch(this PointerEventData data) {
+            data.GetTouch(out var touch);
+            return touch;
+        }
+
+        public static float GetPressure(this PointerEventData data) {
+            if(data.GetTouch(out var touch)) {
+                return touch.pressure;
+            }
+
+            return 1.0f;
         }
     }
 }
