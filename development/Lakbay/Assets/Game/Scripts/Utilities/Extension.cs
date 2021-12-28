@@ -411,5 +411,48 @@ namespace Utilities {
 
             return default;
         }
+
+        // Camera
+        public static RaycastHit[] Raycast(
+            this Camera camera,
+            Vector2 position,
+            float distance=Mathf.Infinity,
+            QueryTriggerInteraction interaction=QueryTriggerInteraction.UseGlobal,
+            params string[] layers
+        ) {
+            var mask = LayerMask.GetMask(layers);
+            Ray ray = camera.ScreenPointToRay(position);
+            var hits = Physics.RaycastAll(
+                ray.origin, ray.direction, distance, mask, interaction);
+            return hits;
+        }
+
+        // Collider
+        public static bool IsHitFrom(
+            this Collider collider,
+            Camera camera,
+            Vector2 position,
+            out RaycastHit hit,
+            float distance=Mathf.Infinity,
+            QueryTriggerInteraction interaction=QueryTriggerInteraction.UseGlobal,
+            params string[] layers
+        ) {
+            hit = default;
+            return camera.Raycast(position, distance, interaction, layers)
+                .Select((h) => h.collider)
+                .Contains(collider);
+        }
+
+        public static bool IsHitFrom(
+            this Collider collider,
+            Camera camera,
+            Vector2 position,
+            float distance=Mathf.Infinity,
+            QueryTriggerInteraction interaction=QueryTriggerInteraction.UseGlobal,
+            params string[] layers
+        ) {
+            return collider.IsHitFrom(
+                camera, position, out var hit, distance, interaction, layers);
+        }
     }
 }

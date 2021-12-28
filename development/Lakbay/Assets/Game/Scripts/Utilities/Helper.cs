@@ -28,6 +28,17 @@ namespace Utilities {
             .Build();
         public static Locale[] locales =>
             LocalizationSettings.AvailableLocales.Locales.ToArray();
+        public static Vector3[] inputPositions {
+            get {
+                var position = new List<Vector3>();
+                if(Input.touchSupported) {
+                    return Input.touches.Select((t) => t.position)
+                    .Select((p) => (Vector3) p).ToArray();
+                } else {
+                    return new Vector3[] {Input.mousePosition};
+                }
+            }
+        }
 
         // source: https://scholarwithin.com/average-reading-speed
         // Word per Minute
