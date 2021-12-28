@@ -16,6 +16,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
+    using Utilities;
+
     public class Test : EventTrigger {
         public VehicleController vehicle;
         public bool handbrake = false;
@@ -63,16 +65,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
 
         public virtual void Accelerate(BaseEventData datas) {
             var data = datas as PointerEventData;
-            if(data.eligibleForClick) print("eligible");
-            else print("not eligi");
-            if(data.dragging) print("dragging");
-            // var selected = data..GetComponent<RectTransform>();
-            // var max = selected.anchorMax;
-            // var min = selected.anchorMin;
-            // var pos = data.position;
-            // if(pos.x <= max.x && pos.y <= max.y && pos.x >= max.x && pos.y >= max.y) {
-            //     print("Within...");
-            // }
+            if(!vehicle) return;
+            vehicle.input.Throttle = data.GetPressure();
         }
         public virtual void Accelerate() {
             if(!vehicle) return;

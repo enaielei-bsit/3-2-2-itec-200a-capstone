@@ -370,7 +370,7 @@ namespace Utilities {
             touch = default;
             for (var i = 0; i < Input.touches.Length; i++) {
                 var touch_ = Input.touches[i];
-                if (touch_.fingerId == data.pointerId) {
+                if(touch_.fingerId == data.pointerId) {
                     touch = touch_;
                     return true;
                 }
@@ -389,7 +389,27 @@ namespace Utilities {
                 return touch.pressure;
             }
 
-            return 1.0f;
+            return Application.platform != RuntimePlatform.Android ? 1.0f : 0.0f;
+        }
+
+        // EventTrigger
+        public static EventTrigger.Entry EnsureEntry(
+            this EventTrigger trigger, EventTriggerType type) {
+            if(trigger) {
+                var find = trigger.triggers.Find((t) => t.eventID == type);
+                if(find == null) {
+                    var entry = new EventTrigger.Entry {
+                        eventID = type,
+                        callback = new EventTrigger.TriggerEvent()
+                    };
+                    trigger.triggers.Add(entry);
+                    return entry;
+                }
+
+                return find;
+            }
+
+            return default;
         }
     }
 }

@@ -140,23 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d83bdad9487e2f4a9aa8c1159683b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 9401813}
-  onPointerPress:
+  onPointerHold:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1702041709}
-        m_TargetAssemblyTypeName: Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking.Test,
-          Assembly-CSharp
-        m_MethodName: OnDrag
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &9401813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,11 +3325,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6321862060562089969, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: powertrain.clutch.isAutomatic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6321862060562089969, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: powertrain.transmission._transmissionType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6321862061206856172, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_Name

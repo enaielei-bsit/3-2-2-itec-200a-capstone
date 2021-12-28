@@ -26,9 +26,9 @@ namespace Utilities {
         public Event onPointerHold = new Event();
 
         public virtual Event pointerDown =>
-            trigger?.triggers.Find((t) => t.eventID == ET.PointerDown).callback;
+            trigger?.EnsureEntry(ET.PointerDown).callback;
         public virtual Event pointerUp =>
-            trigger?.triggers.Find((t) => t.eventID == ET.PointerUp).callback;
+            trigger?.EnsureEntry(ET.PointerUp).callback;
 
         protected BaseEventData _onPointerHoldData = null;
         
