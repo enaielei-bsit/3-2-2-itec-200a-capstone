@@ -34,7 +34,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             base.Update();
 
             bool left = IInput.keyboard.leftArrowKey.wasPressedThisFrame;
-            bool right = IInput.keyboard.leftArrowKey.wasPressedThisFrame;
+            bool right = IInput.keyboard.rightArrowKey.wasPressedThisFrame;
 
             if(left) PerformLeft(offset, duration);
             if(right) PerformRight(offset, duration);
