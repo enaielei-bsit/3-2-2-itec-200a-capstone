@@ -36,7 +36,7 @@ Transform:
   - {fileID: 1734030936172649587}
   - {fileID: 2869563418038863604}
   - {fileID: 6682887418503823857}
-  - {fileID: 1874935058384964633}
+  - {fileID: 6702074230165867392}
   m_Father: {fileID: 7413365398089633905}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -190,19 +190,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071069
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000017982566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000012644051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Sprite
@@ -211,6 +211,34 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: TireRearRightGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowTires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -278,90 +306,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowGas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &1734030936172649587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
   m_PrefabInstance: {fileID: 915456242881067758}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1054338092887665284
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1432345616338866501}
-    m_Modifications:
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.049999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.049999993
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.04999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.2157532
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5671229
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.9230537
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.61035675
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.6479213
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.31246972
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.33170074
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 263dd77005d4f4e43b217833238a401e, type: 3}
-    - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
-      propertyPath: m_Name
-      value: SelfGizmo
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
---- !u!4 &1874935058384964633 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
-  m_PrefabInstance: {fileID: 1054338092887665284}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1061881938119472895
 PrefabInstance:
@@ -388,19 +374,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071069
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000017982566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000012644051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Sprite
@@ -409,6 +395,34 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: TireFrontRightGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowTires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -545,15 +559,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -574,6 +588,42 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: LightRearRightGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -611,15 +661,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -640,6 +690,42 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: LightFrontLeftGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -677,15 +763,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -706,6 +792,42 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: LightFrontRightGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -773,6 +895,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: EngineGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &2869563418038863604 stripped
@@ -839,6 +997,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &2816047873704197749 stripped
@@ -867,19 +1061,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071069
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000017982566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000012644051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Sprite
@@ -888,6 +1082,34 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: TireFrontLeftGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowTires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -982,15 +1204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1011,6 +1233,42 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: LightRearLeftGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -1078,12 +1336,162 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrakesGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowBrakes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &2926927188165581307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
   m_PrefabInstance: {fileID: 4339870997051604838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5307022018352983325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1432345616338866501}
+    m_Modifications:
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.19999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.226
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6075725
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.9551134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ae406976746aa340be7f244f5d1b448, type: 3}
+    - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Name
+      value: SelfGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
+--- !u!4 &6702074230165867392 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
+  m_PrefabInstance: {fileID: 5307022018352983325}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6133238657395560713
 PrefabInstance:
@@ -1110,19 +1518,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071069
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000017982566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487552820730996381, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000012644051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486524340137000277, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Sprite
@@ -1131,6 +1539,34 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: TireRearLeftGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowTires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
@@ -1198,6 +1634,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatteryGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowBattery
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &4725322891534731455 stripped
@@ -1264,6 +1736,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowAir
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
 --- !u!4 &7261075000512551855 stripped
@@ -1329,6 +1837,42 @@ PrefabInstance:
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Name
       value: OilGizmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -8585012129198210667}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowOil
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets.SABBPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901618278092775003, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57ff142117477c448a6384256265e1a, type: 3}
