@@ -20,15 +20,5 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
     using EVP;
 
     public class SAPPPlayer : SAVehiclePlayer {
-        public VehicleController vehicle;
-
-        public override void Build() {
-            base.Build();
-            // if(vehicle) {
-            //     vehicle
-            // }
-        }
-
-        // public virtual void 
     }
 }

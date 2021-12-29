@@ -173,7 +173,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         }
 
         public virtual void Proceed() {
-            End();
+            LoadScene(BuiltScene.ParallelParking);
         }
 
         public override void End() {

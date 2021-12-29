@@ -174,8 +174,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 foreach(int level in Session.qrLevels.Select((l, i) => i))
                     ResetLevel(level);
             }
-            Session.sceneController.Load(SceneController.current.buildIndex);
-            Session.loadingScreen?.Monitor(Session.sceneController);
+            LoadScene();
         }
 
         public override void End() {
