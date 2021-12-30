@@ -29,10 +29,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         [Space]
         public Toggle ignitionSwitch;
 
+        [Space]
+        public Slider handbrake;
+
+        [Header("Pedals")]
+        public Image acceleratorHighlight;
+        public Image brakeHighlight;
+
         [Header("Gears")]
         public Toggle driveGear;
         public Toggle neutralGear;
         public Toggle reverseGear;
+
+        [Header("Lights")]
+        public Toggle leftSignalLight;
+        public Toggle rightSignalLight;
 
         public override void Update() {
             base.Update();
@@ -40,17 +51,24 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 speed?.SetText(player.vehicle.Speed.ToString(speedFormat));
                 SetGear(player.currentGear);
                 SetIgnition(player.isEngineRunning);
+                SetSignalLight(player.signalLight);
+                Handbrake(player.vehicle.input.Handbrake);
+                Accelerate(player.vehicle.input.Throttle);
+                Brake(player.vehicle.input.Brakes);
             }
         }
 
         public virtual void SetGear(VehicleGear gear) {
-            if(gear == VehicleGear.Drive && driveGear) driveGear.isOn = true;
-            if(gear == VehicleGear.Neutral && neutralGear) neutralGear.isOn = true;
-            if(gear == VehicleGear.Reverse && reverseGear) reverseGear.isOn = true;
+            if(gear == VehicleGear.Drive && driveGear)
+                driveGear.SetIsOnWithoutNotify(true);
+            if(gear == VehicleGear.Neutral && neutralGear)
+                neutralGear.SetIsOnWithoutNotify(true);
+            if(gear == VehicleGear.Reverse && reverseGear)
+                reverseGear.SetIsOnWithoutNotify(true);
         }
 
         public virtual void SetIgnition(bool value) {
-            if(ignitionSwitch) ignitionSwitch.isOn = value;
+            if(ignitionSwitch) ignitionSwitch.SetIsOnWithoutNotify(value);
         }
 
         // public virtual void SetGear(int gear) {
@@ -59,5 +77,33 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         //     else rgear = (VehicleGear) gear;
         //     SetGear(rgear);
         // }
+
+        public virtual void SetSignalLight(SignalLight light) {
+            var ll = leftSignalLight;
+            var rl = rightSignalLight;
+            
+            if(ll) ll.SetIsOnWithoutNotify(false);
+            if(rl) rl.SetIsOnWithoutNotify(false);
+
+            if(light == SignalLight.Left) {
+                if(ll) ll.SetIsOnWithoutNotify(true);
+            } else if(light == SignalLight.Right) {
+                if(rl) rl.SetIsOnWithoutNotify(true);
+            }
+        }
+
+        public virtual void Handbrake(float value) {
+            if(handbrake) handbrake.SetValueWithoutNotify(value);
+        }
+
+        public virtual void Accelerate(float value) {
+            var hl = acceleratorHighlight;
+            hl?.gameObject?.SetActive(value > 0.0f); 
+        }
+
+        public virtual void Brake(float value) {
+            var hl = brakeHighlight;
+            hl?.gameObject?.SetActive(value > 0.0f); 
+        }
     }
 }

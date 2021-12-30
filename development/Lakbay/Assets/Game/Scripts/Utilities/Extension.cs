@@ -389,7 +389,7 @@ namespace Utilities {
                 return touch.pressure;
             }
 
-            return Application.platform != RuntimePlatform.Android ? 1.0f : 0.0f;
+            return !Input.touchPressureSupported ? 1.0f : 0.0f;
         }
 
         // EventTrigger

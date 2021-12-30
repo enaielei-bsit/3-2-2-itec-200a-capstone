@@ -29,6 +29,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
     [RequireComponent(typeof(VehicleController))]
     public class SAVehiclePlayer : SAPlayer {
+        public bool debug = true;
+
         public VehicleGear currentGear {
             get {
                 if(vehicle) {
@@ -42,13 +44,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 return VehicleGear.Neutral;
             }
         }
-        public SignalLight signalLight {
+        public virtual SignalLight signalLight {
             get {
                 if(!vehicle) return SignalLight.None;
-                var input = vehicle.input;
-                if(input.LeftBlinker) return SignalLight.Left;
-                if(input.RightBlinker) return SignalLight.Right;
-
+                var lights = vehicle.effectsManager.lightsManager;
+                if(lights.leftBlinkers.On) return SignalLight.Left;
+                if(lights.rightBlinkers.On) return SignalLight.Right;
                 return SignalLight.None;
             }
         }
@@ -95,16 +96,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void SetGear(int gear) => SetGear((VehicleGear) gear);
 
-        public virtual void ToggleIgnition(bool value) {
+        public virtual void SetIgnition(bool value) {
             if(vehicle) {
-                if(value) vehicle.powertrain.engine.Start();
-                else vehicle.powertrain.engine.Stop();
+                if(value) {
+                    vehicle.effectsManager.lightsManager.IsOn = true;
+                    vehicle.powertrain.engine.Start();
+                } else {
+                    vehicle.effectsManager.lightsManager.IsOn = false;
+                    vehicle.powertrain.engine.Stop();
+                }
             }
         }
 
         public virtual void ToggleIgnition() {
             if(vehicle) {
-                ToggleIgnition(!vehicle.input.EngineStartStop);
+                SetIgnition(!isEngineRunning);
             }
         }
 
@@ -126,12 +132,20 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         }
 
         public virtual void SetSignalLight(SignalLight light) {
-            if(!vehicle) return;
+            if(!vehicle || !isEngineRunning) return;
             var input = vehicle.input;
-            input.LeftBlinker = false;
-            input.RightBlinker = false;
-            if(light == SignalLight.Left) input.LeftBlinker = true;
-            if(light == SignalLight.Right) input.RightBlinker = true;
+
+            if(light == SignalLight.Left) {
+                input.LeftBlinker = true;
+            } else if(light == SignalLight.Right) {
+                input.RightBlinker = true;
+            } else {
+                if(signalLight == SignalLight.Left) {
+                    input.LeftBlinker = true;
+                } else if(signalLight == SignalLight.Right) {
+                    input.RightBlinker = true;
+                }
+            }
         }
 
         public virtual void ToggleSignalLight(SignalLight light) {
@@ -143,17 +157,53 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public virtual void ToggleSignalLight(int light) =>
             ToggleSignalLight((SignalLight) light);
 
-        // public virtual void ToggleLeftSignalLight(bool value) =>
-        //     SetSignalLight(value ? SignalLight.Left : SignalLight.None);
-
-        // public virtual void ToggleRightSignalLight(bool value) =>
-        //     SetSignalLight(value ? SignalLight.Right : SignalLight.None);
-
         public virtual void SetSignalLight(int light) =>
             SetSignalLight((SignalLight) light);
 
         public override void Update() {
             base.Update();
+
+            if(vehicle.input.LeftBlinker) printLog("left");
+            if(vehicle.input.RightBlinker) printLog("right");
+
+            if(Debug.isDebugBuild && !Input.touchSupported && debug) {
+                var kb = IInput.keyboard;
+                if(kb.leftArrowKey.isPressed) {
+                    Steer(-1.0f);
+                } else if(kb.rightArrowKey.isPressed) {
+                    Steer(1.0f);
+                }
+
+                if(kb.upArrowKey.isPressed) {
+                    Accelerate(1.0f);
+                } else Accelerate(0.0f);
+
+                if(kb.downArrowKey.isPressed) {
+                    Brake(1.0f);
+                } else Brake(0.0f);
+
+                if(kb.spaceKey.isPressed) {
+                    Handbrake(1.0f);
+                } else Handbrake(0.0f);
+
+                if(kb.digit1Key.isPressed) {
+                    SetGear(VehicleGear.Drive);
+                } else if(kb.digit2Key.isPressed) {
+                    SetGear(VehicleGear.Neutral);
+                } else if(kb.digit3Key.isPressed) {
+                    SetGear(VehicleGear.Reverse);
+                }
+
+                if(kb.zKey.wasPressedThisFrame) {
+                    ToggleSignalLight(SignalLight.Left);
+                } else if(kb.xKey.wasPressedThisFrame) {
+                    ToggleSignalLight(SignalLight.Right);
+                }
+
+                if(kb.iKey.wasPressedThisFrame) {
+                    ToggleIgnition();
+                }
+            }
         }
     }
 }

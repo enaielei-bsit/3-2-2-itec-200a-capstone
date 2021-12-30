@@ -16,14 +16,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Utilities {
-    [ExecuteInEditMode]
+    // [ExecuteInEditMode]
     public class Gizmo : MonoBehaviour {
         [Serializable]
-        public struct Alpha {
+        public struct Value {
             public float min;
             public float max;
 
-            public Alpha(float min, float max) {
+            public Value(float min, float max) {
                 this.min = min;
                 this.max = max;
             }
@@ -32,23 +32,22 @@ namespace Utilities {
         public bool active = true;
         [Tooltip("If on alpha.min is reached the closer the camera is.")]
         public bool invert = false;
-        [Tooltip("The maximum distance needed to reach alpha.min.")]
+        [Tooltip("The maximum distance needed to reach value.min.")]
         public float maxDistance = 10.0f;
-        public Alpha alpha = new Alpha(0.15f, 1.0f);
+        public Value value = new Value(0.15f, 1.0f);
         public new Camera camera;
-        public SpriteRenderer sprite;
+        public UnityEvent<float> onValueChange = new UnityEvent<float>();
 
         public virtual void Update() {
-            if(active && sprite && camera) {
+            if(active && onValueChange != null && camera) {
                 float distance = Mathf.Abs(
                     Vector3.Distance(
                         transform.position, camera.transform.position));
                 float percentage = distance / maxDistance;
                 percentage = !invert ? 1 - percentage : percentage;
-                percentage = Mathf.Clamp(percentage, alpha.min, alpha.max);
-                var color = sprite.color;
-                color.a = percentage;
-                sprite.color = color;
+                percentage = Mathf.Clamp(percentage, value.min, value.max);
+
+                onValueChange.Invoke(percentage);
             }
         }
     }
