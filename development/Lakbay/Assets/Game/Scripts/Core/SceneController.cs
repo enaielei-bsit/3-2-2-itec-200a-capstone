@@ -19,7 +19,7 @@ using Utilities;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public enum BuiltScene {
-        // Initialization,
+        None = -1,
         MainMenu,
         QuestionRunner,
         Blowbagets,

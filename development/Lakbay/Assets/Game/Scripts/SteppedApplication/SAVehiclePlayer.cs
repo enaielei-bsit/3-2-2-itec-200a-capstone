@@ -33,6 +33,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public bool debug = true;
 
         [Header("Level")]
+        public SAVehicleInGameUI inGameUI;
         public GameOverUI gameOverUI;
 
         public VehicleGear currentGear {
@@ -77,7 +78,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void Accelerate(BaseEventData data) {
             var ndata = data as PointerEventData;
-            Accelerate(ndata.GetPressure());
+            // Accelerate(ndata.GetPressure());
+            Accelerate(1.0f);
             printLog($"Accelerating: {vehicle.input.Throttle}");
         }
 
@@ -88,7 +90,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void Brake(BaseEventData data) {
             var ndata = data as PointerEventData;
-            Brake(ndata.GetPressure());
+            // Brake(ndata.GetPressure());
+            Brake(1.0f);
             printLog($"Braking: {vehicle.input.Brakes}");
         }
 

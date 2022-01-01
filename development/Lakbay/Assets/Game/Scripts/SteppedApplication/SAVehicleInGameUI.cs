@@ -98,12 +98,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void Accelerate(float value) {
             var hl = acceleratorHighlight;
-            hl?.gameObject?.SetActive(value > 0.0f); 
+            hl?.gameObject.SetActive(value > 0.0f); 
         }
 
         public virtual void Brake(float value) {
             var hl = brakeHighlight;
-            hl?.gameObject?.SetActive(value > 0.0f); 
+            hl?.gameObject.SetActive(value > 0.0f); 
         }
     }
 }

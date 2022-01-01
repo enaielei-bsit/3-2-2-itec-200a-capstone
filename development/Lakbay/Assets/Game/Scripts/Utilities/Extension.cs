@@ -16,9 +16,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.EnhancedTouch;
+
 using static Utilities.Helper;
+using UnityEngine.UIElements;
 
 namespace Utilities {
+    using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+    using UETouch = UnityEngine.Touch;
+
     public static class Extension {
         // float
         public static bool Within(this float value, float min, float max) {
@@ -205,6 +211,26 @@ namespace Utilities {
             return enumerable.Select((c, i) => new KeyValuePair<int, T>(i, c));
         }
 
+        public static Vector3 ToVector3(this IEnumerable<float> enumerable) {
+            var vector = Vector3.zero;
+            var arr = enumerable.ToArray();
+            int count = arr.Length;
+            for(int i = 0; i < 3; i++) {
+                if(i <= count - 1) vector[i] = arr[i];
+            }
+            return vector;
+        }
+
+        public static Vector2 ToVector2(this IEnumerable<float> enumerable) {
+            var vector = Vector2.zero;
+            var arr = enumerable.ToArray();
+            int count = arr.Length;
+            for(int i = 0; i < 2; i++) {
+                if(i <= count - 1) vector[i] = arr[i];
+            }
+            return vector;
+        }
+
         // IList
         public static T Pop<T>(this IList<T> list, int index=0) {
             var item = list[index];
@@ -365,12 +391,15 @@ namespace Utilities {
         }
 
         // PointerEventData
-        // source: https://forum.unity.com/threads/pointereventdata-pressure-support.436870/#post-2830577
-        public static bool GetTouch(this PointerEventData data, out Touch touch) {
+        [RuntimeInitializeOnLoadMethod]
+        public static void EnableEnhancedTouch() {
+            EnhancedTouchSupport.Enable();
+        }
+
+        public static bool GetTouch(this PointerEventData data, out UETouch touch) {
             touch = default;
-            for (var i = 0; i < Input.touches.Length; i++) {
-                var touch_ = Input.touches[i];
-                if(touch_.fingerId == data.pointerId) {
+            foreach(var touch_ in Input.touches) {
+                if(touch_.position == data.position) {
                     touch = touch_;
                     return true;
                 }
@@ -379,7 +408,7 @@ namespace Utilities {
             return false;
         }
 
-        public static Touch GetTouch(this PointerEventData data) {
+        public static UETouch GetTouch(this PointerEventData data) {
             data.GetTouch(out var touch);
             return touch;
         }
@@ -453,6 +482,38 @@ namespace Utilities {
         ) {
             return collider.IsHitFrom(
                 camera, position, out var hit, distance, interaction, layers);
+        }
+
+        // Vector2
+        public static IEnumerable<float> ToEnumerable(this Vector2 vector) {
+            var arr = new float[] {vector[0], vector[1]};
+            return arr;
+        }
+
+        public static bool Within(this Vector2 vector, Vector2 min, Vector2 max) {
+            return Enumerable.Range(0, 2)
+                .All((i) => vector[i].Within(min[i], max[i]));
+        }
+
+        public static Vector2 Abs(this Vector2 vector) {
+            return Enumerable.Range(0, 2)
+                .Select((i) => Mathf.Abs(vector[i])).ToVector2();
+        }
+
+        // Vector3
+        public static IEnumerable<float> ToEnumerable(this Vector3 vector) {
+            var arr = new float[] {vector[0], vector[1], vector[2]};
+            return arr;
+        }
+
+        public static bool Within(this Vector3 vector, Vector3 min, Vector3 max) {
+            return Enumerable.Range(0, 3)
+                .All((i) => vector[i].Within(min[i], max[i]));
+        }
+
+        public static Vector3 Abs(this Vector3 vector) {
+            return Enumerable.Range(0, 3)
+                .Select((i) => Mathf.Abs(vector[i])).ToVector3();
         }
     }
 }

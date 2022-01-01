@@ -27,10 +27,11 @@ namespace Ph.CoDe_A.Lakbay {
     using TMPro;
 
     public class CheatEngine : Controller {
-        protected BuiltScene _lastScene;
+        protected BuiltScene _lastScene = BuiltScene.None;
 
         public CanvasGroup group;
         public LayoutGroup root;
+        public RectTransform scenes;
         public Button toggleLanguage;
         public virtual TextMeshProUGUI toggleLanguageText =>
             toggleLanguage?.GetComponentInChildren<TextMeshProUGUI>();
@@ -52,7 +53,6 @@ namespace Ph.CoDe_A.Lakbay {
         public new virtual IEnumerator Start() {
             yield return LocalizationSettings.InitializationOperation;
             _ready = true;
-
         }
 
         public override void Update() {
@@ -90,6 +90,19 @@ namespace Ph.CoDe_A.Lakbay {
                 _qrText = Instantiate(_text, root.transform);
             } else if(scene == BuiltScene.Blowbagets) {
                 
+            }
+
+                    
+            if(this.scenes) {
+                this.scenes.DestroyChildren();
+                var scenes = Enum.GetValues(typeof(BuiltScene)).Cast<BuiltScene>();
+                foreach(var sc in scenes) {
+                    if((int) sc < 0) continue;
+                    var scb = Instantiate(_button, this.scenes);
+                    var text = scb.GetComponentInChildren<TextMeshProUGUI>();
+                    text.SetText(sc.ToString());
+                    scb.onClick.AddListener(LoadScene(sc));
+                }
             }
         }
 
@@ -130,5 +143,9 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static Locale GetNextLocale() =>
             GetNextLocale(LocalizationSettings.SelectedLocale);
+        
+        public static UnityAction LoadScene(BuiltScene scene) {
+            return () => FindObjectOfType<Player>().LoadScene(scene);
+        }
     }
 }
