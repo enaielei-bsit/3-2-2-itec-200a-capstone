@@ -25,6 +25,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
         protected bool _done = false;
         public virtual bool done => _done;
 
+        public bool targetRotation = false;
         public Vector3 targetPositionOffset = new Vector3(3.0f, 3.0f, 3.0f);
         public Vector3 targetRotationOffset = new Vector3(7.0f, 7.0f, 7.0f);
 
@@ -58,11 +59,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
                 var max = position + offset;
                 bool posOk = transform.position.Within(min, max);
 
-                var rotation = target.transform.rotation.eulerAngles;
-                offset = targetRotationOffset;
-                min = rotation - offset;
-                max = rotation + offset;
-                bool rotOk = transform.rotation.eulerAngles.Within(min, max);
+                bool rotOk = true;
+                if(targetRotation) {
+                    var rotation = target.transform.rotation.eulerAngles;
+                    offset = targetRotationOffset;
+                    min = rotation - offset;
+                    max = rotation + offset;
+                    rotOk = transform.rotation.eulerAngles.Within(min, max);
+                }
 
                 printLog($"Position: {posOk}, Rotation: {rotOk}");
                 if(posOk && rotOk && !done && Mathf.Floor(vehicle.Speed) == 0.0f) {
