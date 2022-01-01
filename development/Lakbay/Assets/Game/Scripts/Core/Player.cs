@@ -65,11 +65,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public virtual void Restart() {
-
+            LoadScene();
         }
 
         public virtual void End() {
-
+            LoadScene(BuiltScene.MainMenu);
         }
     }
 }

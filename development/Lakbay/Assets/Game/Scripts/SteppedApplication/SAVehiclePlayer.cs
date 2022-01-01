@@ -18,6 +18,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication {
     using Utilities;
+    using Core;
 
     public enum SignalLight {
         Left = -1, None, Right
@@ -30,6 +31,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
     [RequireComponent(typeof(VehicleController))]
     public class SAVehiclePlayer : SAPlayer {
         public bool debug = true;
+
+        [Header("Level")]
+        public GameOverUI gameOverUI;
 
         public VehicleGear currentGear {
             get {

@@ -20,5 +20,26 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
     using EVP;
 
     public class SAPPPlayer : SAVehiclePlayer {
+        protected bool _failed = false;
+        public virtual bool failed => _failed;
+
+        public virtual void Proceed() {
+            LoadScene(BuiltScene.ParallelParking);
+        }
+
+        public override void OnCollisionEnter(Collision collision) {
+            base.OnCollisionEnter(collision);
+            var collider = collision.collider;
+            var target = collider.GetTrigger<TargetTrigger>();
+            var obstacle = collider.GetTrigger<ObstacleTrigger>();
+            if(target) {
+
+            } else if(obstacle) {
+                if(!failed) {
+                    _failed = true;
+                    gameOverUI?.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 }

@@ -174,12 +174,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 foreach(int level in Session.qrLevels.Select((l, i) => i))
                     ResetLevel(level);
             }
-            LoadScene();
+            Restart();
         }
 
         public override void End() {
             Session.qrLevels.Clear();
-            LoadScene(BuiltScene.MainMenu);
+            base.End();
         }
 
         public virtual void UpdateQuestionUI(TextAsset asset) {

@@ -177,15 +177,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         }
 
         public override void End() {
-            base.End();
             Session.qrLevelIndex = -1;
             Session.qrLevels.Clear();
-            LoadScene(BuiltScene.MainMenu);
+            base.End();
         }
 
         public override void Restart() {
             base.Restart();
-            LoadScene();
         }
     }
 }

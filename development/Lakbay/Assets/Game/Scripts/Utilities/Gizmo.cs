@@ -35,14 +35,14 @@ namespace Utilities {
         [Tooltip("The maximum distance needed to reach value.min.")]
         public float maxDistance = 10.0f;
         public Value value = new Value(0.15f, 1.0f);
-        public new Camera camera;
+        public Transform target;
         public UnityEvent<float> onValueChange = new UnityEvent<float>();
 
         public virtual void Update() {
-            if(active && onValueChange != null && camera) {
+            if(active && onValueChange != null && target) {
                 float distance = Mathf.Abs(
                     Vector3.Distance(
-                        transform.position, camera.transform.position));
+                        transform.position, target.position));
                 float percentage = distance / maxDistance;
                 percentage = !invert ? 1 - percentage : percentage;
                 percentage = Mathf.Clamp(percentage, value.min, value.max);
