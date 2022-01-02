@@ -212,5 +212,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 }
             }
         }
+
+        public override void Build() {
+            base.Build();
+            if(vehicle) vehicle.input.Handbrake = 1.0f;
+        }
     }
 }

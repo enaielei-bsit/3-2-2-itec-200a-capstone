@@ -25,9 +25,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
         protected bool _done = false;
         public virtual bool done => _done;
 
-        public bool targetRotation = false;
-        public Vector3 targetPositionOffset = new Vector3(3.0f, 3.0f, 3.0f);
-        public Vector3 targetRotationOffset = new Vector3(7.0f, 7.0f, 7.0f);
+        public bool targetRotationIsBothWays = true;
+        [Min(0.0f)]
+        public float targetPositionOffset = 2.0f;
+        [Min(0.0f)]
+        public float targetRotationOffset = 5.0f;
 
         public virtual void Proceed() {
             LoadScene(BuiltScene.ParallelParking);
@@ -53,19 +55,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
             base.OnTriggerStay(collider);
             var target = collider.GetTrigger<TargetTrigger>();
             if(target && !failed) {
-                var position = target.transform.position;
-                var offset = targetPositionOffset;
-                var min = position - offset;
-                var max = position + offset;
-                bool posOk = transform.position.Within(min, max);
+                var targetPos = target.transform.position;
+                var thisPos = transform.position;
+                float posOffset = Mathf.Abs(targetPositionOffset);
+                float distance =
+                    Mathf.Abs(Vector3.Distance(thisPos, targetPos));
+                bool posOk = distance <= posOffset;
 
-                bool rotOk = true;
-                if(targetRotation) {
-                    var rotation = target.transform.rotation.eulerAngles;
-                    offset = targetRotationOffset;
-                    min = rotation - offset;
-                    max = rotation + offset;
-                    rotOk = transform.rotation.eulerAngles.Within(min, max);
+                var targetRot = target.transform.rotation;
+                var thisRot = transform.rotation;
+                float rotOffset = Mathf.Abs(targetRotationOffset);
+                float angle =
+                    Mathf.Abs(Quaternion.Angle(thisRot, targetRot));
+                bool rotOk = angle <= rotOffset;
+                if(!rotOk && targetRotationIsBothWays) {
+                    var rtargetRot = targetRot * Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                    angle = Mathf.Abs(Quaternion.Angle(rtargetRot, thisRot));
+                    rotOk = angle <= rotOffset;
                 }
 
                 printLog($"Position: {posOk}, Rotation: {rotOk}");
@@ -84,6 +90,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
 
         public override void Update() {
             base.Update();
+            // printLog(transform.rotation.eulerAngles.normalized);
         }
     }
 }

@@ -23,7 +23,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
         MainMenu,
         QuestionRunner,
         Blowbagets,
-        ParallelParking
+        ParallelParking,
+        PerpendicularParking,
+        ContentTester
     }
 
     public class SceneController : Controller, LoadingScreen.IMonitored {

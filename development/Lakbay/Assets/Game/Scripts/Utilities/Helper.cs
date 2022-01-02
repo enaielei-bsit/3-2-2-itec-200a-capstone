@@ -119,5 +119,9 @@ namespace Utilities {
                     (l) => l != value);
             LocalizationSettings.SelectedLocale = value;
         }
+
+        public static string GetClipboard() {
+            return GUIUtility.systemCopyBuffer;
+        }
     }
 }

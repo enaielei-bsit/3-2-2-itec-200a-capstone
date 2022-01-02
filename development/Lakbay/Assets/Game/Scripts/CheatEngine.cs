@@ -91,13 +91,12 @@ namespace Ph.CoDe_A.Lakbay {
             } else if(scene == BuiltScene.Blowbagets) {
                 
             }
-
                     
             if(this.scenes) {
                 this.scenes.DestroyChildren();
                 var scenes = Enum.GetValues(typeof(BuiltScene)).Cast<BuiltScene>();
                 foreach(var sc in scenes) {
-                    if((int) sc < 0) continue;
+                    if((int) sc <= (int) BuiltScene.None) continue;
                     var scb = Instantiate(_button, this.scenes);
                     var text = scb.GetComponentInChildren<TextMeshProUGUI>();
                     text.SetText(sc.ToString());
