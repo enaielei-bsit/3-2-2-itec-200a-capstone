@@ -515,5 +515,17 @@ namespace Utilities {
             return Enumerable.Range(0, 3)
                 .Select((i) => Mathf.Abs(vector[i])).ToVector3();
         }
+
+        // Color
+        public static Color Invert(this Color color) {
+            float max = 1.0f;
+            return new Color(max - color.r, max - color.g, max - color.b, color.a);
+        }
+
+        // Color32
+        public static Color32 Invert(this Color32 color) {
+            byte max = 255;
+            return new Color(max - color.r, max - color.g, max - color.b, color.a);
+        }
     }
 }

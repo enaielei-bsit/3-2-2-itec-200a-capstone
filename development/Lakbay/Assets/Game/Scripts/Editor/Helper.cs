@@ -218,19 +218,30 @@ namespace Ph.CoDe_A.Lakbay {
             EditorUtility.ClearProgressBar();
         }
 
-        // [MenuItem("Game/Build/Debug")]
-        [ContextMenu("Build/Debug and Run")]
-        public virtual void BuildDebugAndRun() => Build(this.BuildDebugPath, true);
+        [ContextMenu("Build/Android/Debug and Run")]
+        public virtual void BuildAndroidDebugAndRun() => Build(this.BuildDebugPath, true);
 
-        // [MenuItem("Game/Build/Release")]
-        [ContextMenu("Build/Release and Run")]
-        public virtual void BuildReleaseAndRun() => Build(this.BuildReleasePath, false);
+        [ContextMenu("Build/Android/Release and Run")]
+        public virtual void BuildAndroidReleaseAndRun() => Build(this.BuildReleasePath, false);
 
-        [ContextMenu("Build/Debug")]
-        public virtual void BuildDebug() => Build(this.BuildDebugPath, true, false);
+        [ContextMenu("Build/Android/Debug")]
+        public virtual void BuildAndroidDebug() => Build(this.BuildDebugPath, true, false);
 
-        [ContextMenu("Build/Release")]
-        public virtual void BuildRelease() => Build(this.BuildReleasePath, false, false);
+        [ContextMenu("Build/Android/Release")]
+        public virtual void BuildAndroidRelease() => Build(this.BuildReleasePath, false, false);
+
+
+        [ContextMenu("Build/Windows/Debug and Run")]
+        public virtual void BuildWindowsDebugAndRun() => Build(this.BuildDebugPath, true, platform: BuildTarget.StandaloneWindows);
+
+        [ContextMenu("Build/Windows/Release and Run")]
+        public virtual void BuildWindowsReleaseAndRun() => Build(this.BuildReleasePath, false, platform: BuildTarget.StandaloneWindows);
+
+        [ContextMenu("Build/Windows/Debug")]
+        public virtual void BuildWindowsDebug() => Build(this.BuildDebugPath, true, false, platform: BuildTarget.StandaloneWindows);
+
+        [ContextMenu("Build/Windows/Release")]
+        public virtual void BuildWindowsRelease() => Build(this.BuildReleasePath, false, false, platform: BuildTarget.StandaloneWindows);
 
         // [MenuItem("Game/Mark Assets as Addressables and Localize")]
         [ContextMenu("Mark Assets as Addressables and Localize")]
@@ -241,19 +252,29 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static void Build(
             string path, bool development=false,
-            bool autoRun=true) {
+            bool autoRun=true,
+            BuildTarget platform=BuildTarget.Android) {
             AddressableAssetSettings.BuildPlayerContent();
 
             var now = DateTime.Now;
             PlayerSettings.bundleVersion = $"{now.Year:0000}.{now.Month:00}.{now.Day:00}";
             string name = PlayerSettings.productName, version = PlayerSettings.bundleVersion;
             string folder = path;
-
+            
+            string pathName = "";
+            string outputName = $"{name.ToLower()}-v{version}";
+            string platformPath = $"{folder}/{platform}";
+            if(platform == BuildTarget.Android) {
+                pathName = $"{platformPath}/{outputName}.apk";
+            } else {
+                pathName = $"{platformPath}/{outputName}";
+            }
             var buildPlayerOptions = new BuildPlayerOptions() {
                 scenes = EditorBuildSettings.scenes.Select((s) => s.path).ToArray(),
-                locationPathName = $"{folder}/{name.ToLower()}-v{version}.apk",
-                target = BuildTarget.Android,
+                locationPathName = pathName,
+                target = platform,
             };
+            
             if(development) buildPlayerOptions.options |= BuildOptions.Development;
             if(autoRun) buildPlayerOptions.options |= BuildOptions.AutoRunPlayer;
 

@@ -31,7 +31,7 @@ namespace Ph.CoDe_A.Lakbay {
 
         public CanvasGroup group;
         public LayoutGroup root;
-        public RectTransform scenes;
+        public TMP_Dropdown scenes;
         public Button toggleLanguage;
         public virtual TextMeshProUGUI toggleLanguageText =>
             toggleLanguage?.GetComponentInChildren<TextMeshProUGUI>();
@@ -44,6 +44,10 @@ namespace Ph.CoDe_A.Lakbay {
 
         protected TextMeshProUGUI _qrText;
         protected bool _ready = false;
+
+        public static BuiltScene[] allScenes =>
+            Enum.GetValues(typeof(BuiltScene)).Cast<BuiltScene>()
+            .Where((s) => (int) s > (int) BuiltScene.None).ToArray();
 
         public override void Awake() {
             base.Awake();
@@ -93,15 +97,16 @@ namespace Ph.CoDe_A.Lakbay {
             }
                     
             if(this.scenes) {
-                this.scenes.DestroyChildren();
-                var scenes = Enum.GetValues(typeof(BuiltScene)).Cast<BuiltScene>();
+                this.scenes.ClearOptions();
+                this.scenes.onValueChanged.RemoveAllListeners();
+                var scenes = allScenes;
                 foreach(var sc in scenes) {
-                    if((int) sc <= (int) BuiltScene.None) continue;
-                    var scb = Instantiate(_button, this.scenes);
-                    var text = scb.GetComponentInChildren<TextMeshProUGUI>();
-                    text.SetText(sc.ToString());
-                    scb.onClick.AddListener(LoadScene(sc));
+                    this.scenes.options.Add(new TMP_Dropdown.OptionData(sc.ToString()));
+                    var option = this.scenes.options.Last();
                 }
+                this.scenes.onValueChanged.AddListener(LoadScene);
+                this.scenes.SetValueWithoutNotify(Array.IndexOf(
+                    allScenes, scene));
             }
         }
 
@@ -143,8 +148,10 @@ namespace Ph.CoDe_A.Lakbay {
         public static Locale GetNextLocale() =>
             GetNextLocale(LocalizationSettings.SelectedLocale);
         
-        public static UnityAction LoadScene(BuiltScene scene) {
-            return () => FindObjectOfType<Player>().LoadScene(scene);
+        public static void LoadScene(int scene) {
+            if(scene.Within(0, allScenes.Length - 1)) {
+                FindObjectOfType<Player>()?.LoadScene(allScenes[scene]);
+            }
         }
     }
 }

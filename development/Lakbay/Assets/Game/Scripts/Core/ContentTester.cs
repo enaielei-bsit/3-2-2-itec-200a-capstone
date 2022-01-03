@@ -20,6 +20,12 @@ namespace Ph.CoDe_A.Lakbay.Core {
     using Utilities;
 
     public class ContentTester : Controller {
+        public Color idle = Color.white;
+        public Color succeeded = Color.green;
+        public Color failed = Color.red;
+
+        [Space]
+        public Button test;
         public TMP_InputField input;
         public Content output;
 
@@ -46,10 +52,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
                         ? input.text.DeserializeAsYaml<List<Entry>>()
                         : new List<Entry>() {};
                     output.Build(content);
+                    SetTestColor(succeeded);
                 } catch {
                     printLog("Something is wrong with the input!");
+                    SetTestColor(failed);
                 }
+                Invoke("SetTestColor", 0.25f);
             }
         }
+
+        public virtual void SetTestColor(Color color) {
+            if(test) {
+                test.image.color = color;
+                var text = test.GetComponentInChildren<TextMeshProUGUI>();
+                if(text) text.color = color.Invert();
+            }
+        }
+
+        public virtual void SetTestColor() => SetTestColor(idle);
     }
 }

@@ -296,6 +296,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6321862060562089969, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: input.states.handbrake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321862060562089969, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: brakes.brakeWhileAsleep
       value: 0
       objectReference: {fileID: 0}
@@ -385,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650200283600, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.31500053
+      value: 0.315
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
@@ -442,6 +446,8 @@ MonoBehaviour:
   prePlayUI: {fileID: 0}
   gameMenuUI: {fileID: 0}
   debug: 0
+  inGameUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
 --- !u!1001 &6261789815727808735
 PrefabInstance:
   m_ObjectHideFlags: 0

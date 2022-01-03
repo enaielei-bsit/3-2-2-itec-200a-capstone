@@ -58,12 +58,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             }
         }
 
-        public virtual void SetGear(VehicleGear gear) {
-            if(gear == VehicleGear.Drive && driveGear)
+        public virtual void SetGear(GearBox gear) {
+            if(gear == GearBox.Drive && driveGear)
                 driveGear.SetIsOnWithoutNotify(true);
-            if(gear == VehicleGear.Neutral && neutralGear)
+            if(gear == GearBox.Neutral && neutralGear)
                 neutralGear.SetIsOnWithoutNotify(true);
-            if(gear == VehicleGear.Reverse && reverseGear)
+            if(gear == GearBox.Reverse && reverseGear)
                 reverseGear.SetIsOnWithoutNotify(true);
         }
 

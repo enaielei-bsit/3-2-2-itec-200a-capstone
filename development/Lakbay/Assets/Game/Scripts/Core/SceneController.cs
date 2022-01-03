@@ -25,6 +25,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         Blowbagets,
         ParallelParking,
         PerpendicularParking,
+        BackInAngleParking,
         ContentTester
     }
 

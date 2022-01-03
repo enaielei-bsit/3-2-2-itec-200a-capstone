@@ -24,29 +24,29 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         Left = -1, None, Right
     }
 
-    public enum VehicleGear {
+    public enum GearBox {
         Reverse = -1, Neutral, Drive
     }
 
     [RequireComponent(typeof(VehicleController))]
     public class SAVehiclePlayer : SAPlayer {
-        public bool debug = true;
+        public bool debug = false;
 
         [Header("Level")]
         public SAVehicleInGameUI inGameUI;
         public GameOverUI gameOverUI;
 
-        public VehicleGear currentGear {
+        public GearBox currentGear {
             get {
                 if(vehicle) {
                     int rgear = vehicle.powertrain.transmission.Gear;
-                    if(rgear >= (int) VehicleGear.Drive)
-                        return VehicleGear.Drive;
-                    var gear = (VehicleGear) rgear;
+                    if(rgear >= (int) GearBox.Drive)
+                        return GearBox.Drive;
+                    var gear = (GearBox) rgear;
                     return gear;
                 }
 
-                return VehicleGear.Neutral;
+                return GearBox.Neutral;
             }
         }
         public virtual SignalLight signalLight {
@@ -95,13 +95,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             printLog($"Braking: {vehicle.input.Brakes}");
         }
 
-        public virtual void SetGear(VehicleGear gear) {
+        public virtual void SetGear(GearBox gear) {
             if(!vehicle) return;
             vehicle.powertrain.transmission.ShiftInto((int) gear);
             // _currentGear = gear;
         }
 
-        public virtual void SetGear(int gear) => SetGear((VehicleGear) gear);
+        public virtual void SetGear(int gear) => SetGear((GearBox) gear);
 
         public virtual void SetIgnition(bool value) {
             if(vehicle) {
@@ -194,11 +194,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 } else Handbrake(0.0f);
 
                 if(kb.digit1Key.isPressed) {
-                    SetGear(VehicleGear.Drive);
+                    SetGear(GearBox.Drive);
                 } else if(kb.digit2Key.isPressed) {
-                    SetGear(VehicleGear.Neutral);
+                    SetGear(GearBox.Neutral);
                 } else if(kb.digit3Key.isPressed) {
-                    SetGear(VehicleGear.Reverse);
+                    SetGear(GearBox.Reverse);
                 }
 
                 if(kb.zKey.wasPressedThisFrame) {
@@ -215,7 +215,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public override void Build() {
             base.Build();
-            if(vehicle) vehicle.input.Handbrake = 1.0f;
+            if(vehicle) Reset();
+        }
+
+        public virtual void Reset() {
+            SetGear(GearBox.Neutral);
+            SetSignalLight(SignalLight.None);
+            Handbrake(1.0f);
+            SetIgnition(false);
         }
     }
 }
