@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1515e040ce2743a65798c953077c5, type: 3}
   m_Name: 01NonProLevel
   m_EditorClassIdentifier: 
+  index: 0
   category: 0
-  time: 2
+  time: 0
   _repeaterHandler: {fileID: 2415629609239330157, guid: 4098712c80984814aa83ffa9e7669e1c, type: 3}
-  repeaterHandler: {fileID: 2415629609239330157, guid: 4098712c80984814aa83ffa9e7669e1c, type: 3}
+  repeaterHandler: {fileID: 0}
   questionsFile:
     m_TableReference:
       m_TableCollectionName: GUID:9d434f24c90158541b9384585d66c918
@@ -24,6 +25,115 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-  questions: []
-  lastStop: 0
+  questions:
+  - content:
+    - _type: 0
+      _value: At this junction there is a stop sign with a solid white line on the
+        road surface. Why is there a stop sign there?
+    choices:
+    - correct: 0
+      text: Speed on the major road is derestricted
+    - correct: 0
+      text: It is a busy junction
+    - correct: 1
+      text: Visibility along the major road is restricted
+  - content:
+    - _type: 0
+      _value: You are allowed to stop on an expressway when you?
+    choices:
+    - correct: 0
+      text: Need to convey a passenger
+    - correct: 0
+      text: Need to unload a passenger
+    - correct: 1
+      text: Are told to do so by a traffic enforcer
+  - content:
+    - _type: 0
+      _value: What flag color is required to be attached on projecting loads of a
+        vehicle?
+    choices:
+    - correct: 0
+      text: Yellow
+    - correct: 0
+      text: Green
+    - correct: 1
+      text: Red
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/SchoolChildrenCrossing.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: Railroad Crosssing
+    - correct: 1
+      text: School Zone
+    - correct: 0
+      text: Animal Crossing
+  - content:
+    - _type: 0
+      _value: While driving, how should you look at your side and rear view mirror?
+    choices:
+    - correct: 0
+      text: Stare longer at your mirrors
+    - correct: 0
+      text: A quick glance
+    - correct: 1
+      text: NOT less than once per one minute
+  - content:
+    - _type: 0
+      _value: What can make you lose your concentration while driving?
+    choices:
+    - correct: 0
+      text: Using the wiper wash
+    - correct: 1
+      text: Listening to loud music
+    - correct: 0
+      text: Glancing at the side mirror
+  - content:
+    - _type: 0
+      _value: If you see a stopped vehicle on the side of the road, what should you
+        do?
+    choices:
+    - correct: 0
+      text: Blow the horn
+    - correct: 0
+      text: Stop and provoke the driver
+    - correct: 1
+      text: Slow down and use caution when passing
+  - content:
+    - _type: 0
+      _value: Is it true that a person may apply for a Student-driver's Permit even
+        with a tuberculosis or sexually transmitted disease?
+    choices:
+    - correct: 1
+      text: True
+    - correct: 0
+      text: False
+    - correct: 0
+      text: Maybe
+  - content:
+    - _type: 0
+      _value: What should you do when your doctor prescribes you a medicine which
+        is likely to affect your driving?
+    choices:
+    - correct: 0
+      text: Avoid driving on expressways
+    - correct: 0
+      text: Drive only if someone is with you
+    - correct: 1
+      text: Do NOT Drive
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntryForCars.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: No Overtaking
+    - correct: 1
+      text: Clearway(no stopping)
+    - correct: 0
+      text: No Motor vehicles
+  lastStop: 15
   player: {fileID: 0}

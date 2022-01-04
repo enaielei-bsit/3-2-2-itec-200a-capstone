@@ -29,6 +29,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public float offset = 4.0f;
         [Min(0.001f)]
         public float duration = 0.2f;
+        
+        [Space]
+        public UnityEvent onSlideLeft = new UnityEvent();
+        public UnityEvent onSlideRight = new UnityEvent();
 
         public override void Update() {
             base.Update();
@@ -55,6 +59,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             _index += xAxis.direction;
 
             Perform(true);
+            if(xAxis.direction == -1) onSlideLeft?.Invoke();
+            else onSlideRight?.Invoke();
             this.Run(
                 duration,
                 onProgress: (d, e) => {

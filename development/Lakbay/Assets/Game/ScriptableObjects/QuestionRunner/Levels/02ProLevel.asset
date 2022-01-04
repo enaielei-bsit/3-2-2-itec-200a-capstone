@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   category: 1
-  time: 2
+  time: 1
   _repeaterHandler: {fileID: 2415629609239330157, guid: 9a4f2117c67062d4491464d2f1a14ba1, type: 3}
   repeaterHandler: {fileID: 2415629609239330157, guid: 9a4f2117c67062d4491464d2f1a14ba1, type: 3}
   questionsFile:
@@ -25,6 +25,233 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-  questions: []
+  questions:
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/TrafficLightsAhead.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: Beware of traffic enforcers
+    - correct: 0
+      text: Traffic Signs ahead
+    - correct: 1
+      text: Traffic Signal Light ahead
+  - content:
+    - _type: 0
+      _value: What is the effect of pushing on the brake pedal intermittently while
+        the vehicle is not in motion or the engine is off?
+    choices:
+    - correct: 0
+      text: May increase breaking capacity
+    - correct: 1
+      text: May damage the fluid lines
+    - correct: 0
+      text: May improve breaking ability of driver
+  - content:
+    - _type: 0
+      _value: What is the primary function of ECM, ECU, or PLD (Computer Box)?
+    choices:
+    - correct: 0
+      text: To send signals to electronic sensors and alert the driver of warnings
+    - correct: 1
+      text: To receive signals from sensors and convert it into audible and visible
+        information to the driver or to the engine
+    - correct: 0
+      text: To think what will happen if anything goes wrong electronically
+  - content:
+    - _type: 0
+      _value: 'Certain vehicles are equipped with body leveling valve switch, this
+        is especially useful for:'
+    choices:
+    - correct: 0
+      text: Crossing long bridges
+    - correct: 1
+      text: Crossing flooded areas
+    - correct: 0
+      text: Crossing highways
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/OilLowPressure.png
+    - _type: 0
+      _value: What does this warning light on the instrument panel mean?
+    choices:
+    - correct: 0
+      text: Low air pressure
+    - correct: 0
+      text: Low fuel pressure
+    - correct: 1
+      text: Low oil pressure
+  - content:
+    - _type: 0
+      _value: When will the trailer more likely to swing?
+    choices:
+    - correct: 0
+      text: An endurance brake(retarder) is fitted
+    - correct: 0
+      text: Braking lightly several times
+    - correct: 1
+      text: Braking on a bend, over steering at speed and when the brakes are out
+        of adjustment
+  - content:
+    - _type: 0
+      _value: What should you do when your dispatcher is calling on your radio about
+        your whereabouts?
+    choices:
+    - correct: 0
+      text: Quickly answer the radio and shut it off
+    - correct: 0
+      text: Wait for red traffic light then answer the radio
+    - correct: 1
+      text: Do not answer the radio
+  - content:
+    - _type: 0
+      _value: What is your violation if you are driving at the center of a broken
+        line?
+    choices:
+    - correct: 1
+      text: Obstruction/Reckless(Straddling)
+    - correct: 0
+      text: Speeding
+    - correct: 0
+      text: None
+  - content:
+    - _type: 0
+      _value: What is the best way of maintaining an appropriate stopping distance?
+    choices:
+    - correct: 0
+      text: A driver should drive at low gear in the expressway
+    - correct: 1
+      text: A driver should match the speed with the traffic flow while driving within
+        speed limit
+    - correct: 0
+      text: A driver should drive slowly at all times to improve traffic flow
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/ArmSignalTurnRight.png
+    - _type: 0
+      _value: What arm signal is shown?
+    choices:
+    - correct: 0
+      text: Arm signal to U-turn
+    - correct: 0
+      text: Arm signal to turn left
+    - correct: 1
+      text: Arm signal to turn right
+  - content:
+    - _type: 0
+      _value: Applying as a delivery driver for a chemical manufacturing company.
+        What must you have first?
+    choices:
+    - correct: 0
+      text: Medical Clearance
+    - correct: 0
+      text: NBI Clearance
+    - correct: 1
+      text: Seminar/Training on transporting and handling of chemicals
+  - content:
+    - _type: 0
+      _value: You are transporting frozen foods. What important additional training
+        do you need to have?
+    choices:
+    - correct: 0
+      text: Packaging procedures
+    - correct: 1
+      text: Food-handling procedures
+    - correct: 0
+      text: Waste-handling procedures
+  - content:
+    - _type: 0
+      _value: Does family drivers are required to bring their Certificate of Public
+        Convenience(CPC) when driving in the country?
+    choices:
+    - correct: 0
+      text: Yes, CPC is valid all over the Philippines
+    - correct: 0
+      text: No, Franchise must be brought instead of CPC
+    - correct: 1
+      text: No, CPCs are for Public Utility Vehicles only
+  - content:
+    - _type: 0
+      _value: The penalty for the third and subsequent violation for any PUV Operator
+        whose driver refuses to render service to the public or passengers is?
+    choices:
+    - correct: 0
+      text: Monetary penalty and revocation of license
+    - correct: 1
+      text: Monetary penalty and cancellation of CPC where unit is authorized
+    - correct: 0
+      text: Monetary penalty and cancellation of unit from the CPC
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoEntry.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: Speed Restrictions
+    - correct: 1
+      text: No Entry
+    - correct: 0
+      text: School Crossing Patrol
+  - content:
+    - _type: 0
+      _value: What is the penalty if you failed to settle the Temporary Operator
+        Permit violation within 15 days after apprehension?
+    choices:
+    - correct: 0
+      text: 60 days suspension
+    - correct: 0
+      text: One year suspension
+    - correct: 1
+      text: 30 days suspension
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/CurveLeft.png
+    - _type: 2
+      _value: Assets/Game/Images/CurveRight.png
+    - _type: 0
+      _value: What should you do if you see these signs while driving?
+    choices:
+    - correct: 0
+      text: Stop at the sign
+    - correct: 0
+      text: Stop and look for open farm gates
+    - correct: 1
+      text: Slow, there is road curve ahead
+  - content:
+    - _type: 0
+      _value: What is the most probable effect does braking have on a load that is
+        not tied down or secured?
+    choices:
+    - correct: 0
+      text: Unsecured load may collapse when applying the brakes
+    - correct: 1
+      text: Unsecured load may shift forward when applying the brakes
+    - correct: 0
+      text: Unsecured load may destroy the frame of the vehicle when applying the
+        brakes
+  - content:
+    - _type: 0
+      _value: How can you avoid brake fade when driving downhill?
+    choices:
+    - correct: 0
+      text: Shift to neutral
+    - correct: 1
+      text: Shift to lower gear
+    - correct: 0
+      text: Increase the RPM
+  - content:
+    - _type: 0
+      _value: What type of vehicle is allowed to a holder of a professional drivers
+        license for light vehicles?
+    choices:
+    - correct: 0
+      text: Public Utility Vehicle up to 1600 kgs GVW
+    - correct: 1
+      text: Public Utility Vehicle up to 4500 kgs GVW
+    - correct: 0
+      text: Public Utility Vehicle above 4500 kgs GVW
   lastStop: 0
   player: {fileID: 0}

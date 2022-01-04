@@ -23,6 +23,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
     [RequireComponent(typeof(Collider))]
     public class QuestionSpawn : QRSpawn {
+        public float progressUpdateDuration = 0.5f;
         public Question question;
         public bool triggered = false;
         public bool handled = false;
@@ -54,7 +55,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
                 player?.Pause();
                 ui.Show(question, (qw, c) => {
-                    player.qrInGameUI.SetProgress(Session.qrLevel.progress);
+                    player.qrInGameUI.SetProgress(
+                        Session.qrLevel.progress,
+                        progressUpdateDuration
+                    );
                     qw.Hide();
                     player?.Resume();
                 });

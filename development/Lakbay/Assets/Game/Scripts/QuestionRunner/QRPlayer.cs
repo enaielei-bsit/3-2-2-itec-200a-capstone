@@ -21,6 +21,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using UnityEngine.Localization;
     using UnityEngine.Localization.Settings;
 
+    [Serializable]
+    public struct TimeSkybox {
+        public TimeOfDay time;
+        public Material skybox;
+        public Light sun;
+    }
+
     public class QRPlayer : Player {
         protected readonly List<float> _timeScales = new List<float>();
         
@@ -54,6 +61,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public int maxLives = 3;
         [Min(0)]
         public int lives = 3;
+
+        [Space]
+        public List<TimeSkybox> times = new List<TimeSkybox>();
 
         public override void Awake() {
             base.Awake();
@@ -98,6 +108,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     questionsEvent?.Subscribe(
                             Session.qrLevel.questionsFile, UpdateQuestionUI);
 
+                    SetTime(Session.qrLevel.time);
                     prePlayUI?.Show();
                 }
             }
@@ -187,6 +198,20 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 if(questionUI.gameObject.activeSelf) {
                     questionUI.Build();
                 }
+            }
+        }
+
+        public virtual void SetTime(TimeOfDay time) {
+            var ftime = times.Find((t) => t.time == time);
+            if(ftime.skybox) {
+                var sun = RenderSettings.sun;
+                if(sun) {
+                    if(ftime.sun) {
+                        Destroy(sun.gameObject);
+                        Instantiate(ftime.sun);
+                    }
+                }
+                RenderSettings.skybox = ftime.skybox;
             }
         }
     }

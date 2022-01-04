@@ -52,7 +52,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual void Build() {
             BuildSkills();
             BuildLives();
-            SetProgress(Session.qrLevel.progress);
+            SetProgress(Session.qrLevel.progress, 0.0f);
         }
 
         public virtual void BuildSkills() {
@@ -89,16 +89,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void SetProgress(float value, float duration=0.20f, float delay=0.0f) {
+        public virtual void SetProgress(float value, float duration=0.35f, float delay=0.0f) {
             if(progress) {
                 value = Mathf.Clamp(value, 0.0f, 1.0f);
-                // if(_goalSet != null) _goalSet.Cancel();
-                // _goalSet = Tween.Value(
-                //     progress.normalizedValue, value,
-                //     (v) => progress.normalizedValue = v,
-                //     duration, delay,
-                //     AnimationCurve.EaseInOut(0.0f, progress.value, duration, value)
-                // );
                 if(_setGoal != null) LeanTween.cancel(_setGoal.id);
                 _setGoal = LeanTween.value(progress.value, value, duration);
                 _setGoal.setDelay(delay);

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   category: 0
-  time: 2
+  time: 1
   _repeaterHandler: {fileID: 2415629609239330157, guid: 9a4f2117c67062d4491464d2f1a14ba1, type: 3}
-  repeaterHandler: {fileID: 2415629609239330157, guid: 9a4f2117c67062d4491464d2f1a14ba1, type: 3}
+  repeaterHandler: {fileID: 0}
   questionsFile:
     m_TableReference:
       m_TableCollectionName: GUID:9d434f24c90158541b9384585d66c918
@@ -25,6 +25,173 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-  questions: []
+  questions:
+  - content:
+    - _type: 0
+      _value: Road rage among motorists arises when?
+    choices:
+    - correct: 1
+      text: Either of the party starts to provoke the other
+    - correct: 0
+      text: Neither of the party starts to provoke the other
+    - correct: 0
+      text: Neither of the party knows traffic rules and regulations
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/Stop.png
+    - _type: 0
+      _value: What MUST you do when you see this sign?
+    choices:
+    - correct: 0
+      text: Stop, look, and listen
+    - correct: 1
+      text: Stop, ONLY if children are waiting to cross
+    - correct: 0
+      text: Stop, ONLY if traffic is approaching
+  - content:
+    - _type: 0
+      _value: Your doctor has prescribed you a medicine, why should you ask how it
+        will affect you?
+    choices:
+    - correct: 0
+      text: The medicine you take may affect your hearing
+    - correct: 0
+      text: You will have to let your insurance company know about the medicine
+    - correct: 1
+      text: Some types of medicine can cause your reactions to slow down
+  - content:
+    - _type: 0
+      _value: When motorists flash their headlights at you it means?
+    choices:
+    - correct: 0
+      text: That they are giving way to you
+    - correct: 0
+      text: That there is a radar speed trap ahead
+    - correct: 1
+      text: That they are warning you of their presence
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/SharpTurnLeft.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 1
+      text: Steep left curve
+    - correct: 0
+      text: No left turn
+    - correct: 0
+      text: Dangerous right
+  - content:
+    - _type: 0
+      _value: While changing lanes, you should give a signal, check your side and
+        rear-view mirror, and?
+    choices:
+    - correct: 0
+      text: "Turn on the vehicle\u2019s headlight"
+    - correct: 0
+      text: Watch out for approaching vehicles
+    - correct: 1
+      text: Sound your horn
+  - content:
+    - _type: 0
+      _value: Which of these, if neglected, could cause a road crash?
+    choices:
+    - correct: 0
+      text: Air conditioning freon level
+    - correct: 0
+      text: Radiator Water level
+    - correct: 1
+      text: Brake fluid level
+  - content:
+    - _type: 0
+      _value: What should you do when being pressured by motorists behind you to
+        drive faster?
+    choices:
+    - correct: 1
+      text: Using directional signal, slowly ease to the slow moving vehicle lane
+        and allow faster vehicles to overtake on your left
+    - correct: 0
+      text: Step on the brake once or twice while getting off the road
+    - correct: 0
+      text: Activate the hazard switch while gaining speed
+  - content:
+    - _type: 0
+      _value: What should you do if several vehicles pass you on the left?
+    choices:
+    - correct: 0
+      text: Stop and wait for the vehicle to pass
+    - correct: 1
+      text: Maintain or slightly reduce speed and keep to the right
+    - correct: 0
+      text: Reduce speed and change lane
+  - content:
+    - _type: 0
+      _value: What is the right-of-way rule before a vehicle enters a public roadway
+        from a driveway, alley, or private road?
+    choices:
+    - correct: 1
+      text: Vehicle must stop and yield the right-of-way to traffic on the roadway
+        and to pedestrians
+    - correct: 0
+      text: Vehicle has the right-of-way to traffic from all directions
+    - correct: 0
+      text: Vehicle has the right-of-way to traffic especially from left side of
+        the street
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/OpeningBridge.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: Broken bridge
+    - correct: 1
+      text: Swing bridge
+    - correct: 0
+      text: Narrow bridge
+  - content:
+    - _type: 0
+      _value: If you see a ball coming from behind a parked vehicle on a city street,
+        chances are a kid is following it. What will you do?
+    choices:
+    - correct: 0
+      text: Increase your speed
+    - correct: 1
+      text: Slow down
+    - correct: 0
+      text: Blow your horn and maintain your speed
+  - content:
+    - _type: 0
+      _value: Student-driver's Permit has a validity period of?
+    choices:
+    - correct: 0
+      text: Six months
+    - correct: 1
+      text: One year
+    - correct: 0
+      text: Ninety days
+  - content:
+    - _type: 0
+      _value: You are on an expressway and approaching the toll gates. There are
+        red flashing lights above in every lane. You must?
+    choices:
+    - correct: 0
+      text: Pull onto the lay-by
+    - correct: 0
+      text: Stop and reverse
+    - correct: 1
+      text: Stop and wait
+  - content:
+    - _type: 2
+      _value: Assets/Game/Images/NoParkingAnytime.png
+    - _type: 0
+      _value: What does this traffic sign means?
+    choices:
+    - correct: 0
+      text: You can park on the days shown
+    - correct: 1
+      text: No parking anytime
+    - correct: 0
+      text: No parking at all from Monday to Friday
   lastStop: 0
   player: {fileID: 0}
