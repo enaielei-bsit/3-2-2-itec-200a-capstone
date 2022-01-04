@@ -1,5 +1,5 @@
 /*
- * Date Created: Monday, January 3, 2022 3:56 PM
+ * Date Created: Tuesday, January 4, 2022 9:00 AM
  * Author: enaielei <nommel.isanar.lavapie.amolat@gmail.com>
  * 
  * Copyright © 2022 CoDe_A. All Rights Reserved.
@@ -14,12 +14,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.ThreePointTurn {
+    using Utilities;
     using Core;
 
-    public class SABIAPPlayer : SAVehicleParkingPlayer {
-        public override void Proceed() {
-            LoadScene(BuiltScene.ThreePointTurn);
-        }
+    public class SATPTPlayer : SASteppedVehiclePlayer {
     }
 }

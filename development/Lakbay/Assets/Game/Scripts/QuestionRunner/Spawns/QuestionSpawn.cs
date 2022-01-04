@@ -24,6 +24,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     [RequireComponent(typeof(Collider))]
     public class QuestionSpawn : QRSpawn {
         public float progressUpdateDuration = 0.5f;
+        public float delayBeforeResuming = 0f;
         public Question question;
         public bool triggered = false;
         public bool handled = false;
@@ -60,7 +61,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         progressUpdateDuration
                     );
                     qw.Hide();
-                    player?.Resume();
+                    player?.Invoke("Resume", delayBeforeResuming);
                 });
 
                 // ui.Run(); // Done in the Show method instead...

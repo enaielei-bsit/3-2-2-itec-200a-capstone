@@ -49,6 +49,10 @@ namespace Utilities {
             return ((float) value).Within(min, max);
         }
 
+        public static bool Within<T>(this int value, IEnumerable<T> enumerable) {
+            return ((float) value).Within(0, enumerable.Count() - 1);
+        }
+
         public static bool Between(this int value, int min, int max) {
             return ((float) value).Between(min, max);
         }

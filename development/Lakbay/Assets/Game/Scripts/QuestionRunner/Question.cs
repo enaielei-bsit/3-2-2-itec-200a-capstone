@@ -50,7 +50,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
         [YamlIgnore]
         public virtual float time => Helper.GetExpectedReadTime(ToString())
-            + 10.0f;
+            + 15.0f;
         [YamlIgnore]
         public virtual float progress => elapsedTime / time;
         public Content content = new Content();

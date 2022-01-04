@@ -26,6 +26,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         ParallelParking,
         PerpendicularParking,
         BackInAngleParking,
+        ThreePointTurn,
         ContentTester
     }
 

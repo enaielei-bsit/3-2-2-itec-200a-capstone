@@ -16,6 +16,8 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication {
     using Core;
+    using UnityEngine.Animations;
+    using Utilities;
 
     public class SAVehicleParkingPlayer : SAVehiclePlayer {
         protected bool _hitObstacle = false;
@@ -28,6 +30,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public float targetPositionOffset = 0.5f;
         [Min(0.0f)]
         public float targetRotationOffset = 5.0f;
+        public LookAtConstraint arrowGuide;
 
         public virtual void Proceed() {
             LoadScene();
@@ -54,29 +57,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             base.OnTriggerStay(collider);
             var target = collider.GetTrigger<TargetTrigger>();
             if(target && !hitObstacle) {
-                var targetPos = target.transform.position;
-                var thisPos = transform.position;
-                float posOffset = Mathf.Abs(targetPositionOffset);
-                float distance =
-                    Mathf.Abs(Vector3.Distance(thisPos, targetPos));
-                bool posOk = distance <= posOffset;
+                var parked = ParkedProperly(
+                    transform, target.transform,
+                    targetPositionOffset, targetRotationOffset,
+                    targetRotationIsBothWays
+                );
 
-                var targetRot = target.transform.rotation;
-                var thisRot = transform.rotation;
-                float rotOffset = Mathf.Abs(targetRotationOffset);
-                float angle =
-                    Mathf.Abs(Quaternion.Angle(thisRot, targetRot));
-                bool rotOk = angle <= rotOffset;
-                if(!rotOk && targetRotationIsBothWays) {
-                    var rtargetRot = targetRot * Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                    angle = Mathf.Abs(Quaternion.Angle(rtargetRot, thisRot));
-                    rotOk = angle <= rotOffset;
-                }
-
-                printLog($"Position: {posOk}, Rotation: {rotOk}");
-                if(posOk && rotOk && !doneParking && Mathf.Floor(vehicle.Speed) == 0.0f) {
+                printLog($"Parked: {parked}");
+                if(parked && !doneParking && Mathf.Floor(vehicle.Speed) == 0.0f) {
                     _doneParking = true;
-                    SetIgnition(false);
+                    Reset();
                     inGameUI?.gameObject.SetActive(false);
                     Invoke("Proceed", 3.0f);
                 }
@@ -89,6 +79,62 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public override void Update() {
             base.Update();
+        }
+
+        public static bool ParkedProperly(
+            Transform vehicle,
+            Transform location,
+            float positionOffset=0.0f,
+            float rotationOffset=0.0f,
+            bool bothWays=true
+        ) {
+            return PositionedProperly(
+                vehicle.position, location.position, positionOffset)
+                && RotatedProperly(
+                    vehicle.rotation, location.rotation, rotationOffset, bothWays
+                );
+        }
+
+        public static bool PositionedProperly(
+            Vector3 vehicle,
+            Vector3 location,
+            float offset=0.0f
+        ) {
+            offset = Mathf.Abs(offset);
+            float distance =
+                Mathf.Abs(Vector3.Distance(vehicle, location));
+            return distance <= offset;
+        }
+
+        public static bool RotatedProperly(
+            Quaternion vehicle,
+            Quaternion location,
+            float offset=0.0f,
+            bool bothWays=true
+        ) {
+            offset = Mathf.Abs(offset);
+            float angle =
+                Mathf.Abs(Quaternion.Angle(vehicle, location));
+            bool ok = angle <= offset;
+            if(!ok && bothWays) {
+                // Check the 180deg version of the location
+                // if the vehicle is parked that way.
+                var rlocation = location * Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                angle = Mathf.Abs(Quaternion.Angle(vehicle, rlocation));
+                ok = angle <= offset;
+            }
+
+            return ok;
+        }
+
+        public virtual void SetGuide(Transform transform) {
+            if(arrowGuide) {
+                if(arrowGuide.sourceCount != 0) arrowGuide.RemoveSource(0);
+                arrowGuide.AddSource(new ConstraintSource() {
+                    sourceTransform = transform,
+                    weight = 1,
+                });
+            }
         }
     }
 }

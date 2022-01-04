@@ -139,6 +139,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 94
       objectReference: {fileID: 0}
+    - target: {fileID: 4737108878859916808, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.x
+      value: 131.8936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108878859916808, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.z
+      value: 72.45644
+      objectReference: {fileID: 0}
     - target: {fileID: 4737108878859916811, guid: 56d940143269a0c48803a57060cd7010, type: 3}
       propertyPath: m_RootOrder
       value: 76
@@ -146,6 +154,14 @@ PrefabInstance:
     - target: {fileID: 4737108878864097734, guid: 56d940143269a0c48803a57060cd7010, type: 3}
       propertyPath: m_RootOrder
       value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108878944200422, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.x
+      value: 130.4064
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108878944200422, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.z
+      value: 74.78705
       objectReference: {fileID: 0}
     - target: {fileID: 4737108878944200425, guid: 56d940143269a0c48803a57060cd7010, type: 3}
       propertyPath: m_RootOrder
@@ -163,9 +179,25 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 74
       objectReference: {fileID: 0}
+    - target: {fileID: 4737108879314690145, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.x
+      value: 131.8936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108879314690145, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.z
+      value: 74.78705
+      objectReference: {fileID: 0}
     - target: {fileID: 4737108879527345861, guid: 56d940143269a0c48803a57060cd7010, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.31500053
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108879566863268, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.x
+      value: 130.4064
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737108879566863268, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+      propertyPath: wheel.worldPosition.z
+      value: 72.45644
       objectReference: {fileID: 0}
     - target: {fileID: 4737108879566863271, guid: 56d940143269a0c48803a57060cd7010, type: 3}
       propertyPath: m_RootOrder
@@ -636,6 +668,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3087768433049422402, guid: 56d940143269a0c48803a57060cd7010, type: 3}
   m_PrefabInstance: {fileID: 2898865875504784795}
   m_PrefabAsset: {fileID: 0}
+--- !u!1183024399 &6176055332954518579 stripped
+LookAtConstraint:
+  m_CorrespondingSourceObject: {fileID: 9047475180655333800, guid: 56d940143269a0c48803a57060cd7010, type: 3}
+  m_PrefabInstance: {fileID: 2898865875504784795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1770097495977375792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,3 +693,4 @@ MonoBehaviour:
   targetRotationIsBothWays: 1
   targetPositionOffset: 0.5
   targetRotationOffset: 5
+  arrowGuide: {fileID: 6176055332954518579}
