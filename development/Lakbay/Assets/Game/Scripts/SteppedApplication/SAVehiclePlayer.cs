@@ -228,15 +228,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public override void Pause() {
             base.Pause();
             Time.timeScale = 0.0f;
-            SetGear(GearBox.Neutral);
-            Handbrake(1.0f);
         }
 
         public override void Resume() {
             base.Resume();
             Time.timeScale = 1.0f;
-            SetGear(GearBox.Drive);
-            Handbrake(0.0f);
         }
     }
 }

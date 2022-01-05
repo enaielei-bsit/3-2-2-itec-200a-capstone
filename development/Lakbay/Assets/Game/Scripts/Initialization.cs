@@ -103,7 +103,7 @@ namespace Ph.CoDe_A.Lakbay {
             }
 
             _finished = true;
-            Session.loadingScreen?.Hide();
+            Session.loadingScreen?.Hide(Session.loadingScreen.hideDelay);
             // Destroy(gameObject);
         }
 
@@ -120,7 +120,7 @@ namespace Ph.CoDe_A.Lakbay {
                 if(Session.database && Session.database.currentLocation != null) {
                     Session.loadingScreen.Show(
                         Session.database.currentLocation.PrimaryKey,
-                        Session.database.loadingProgress
+                        Mathf.Clamp(Session.database.loadingProgress, 0.0f, 1.0f)
                     );
                 }
             }

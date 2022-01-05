@@ -22,6 +22,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
     public class SATGPlayer : SAVehiclePlayer {
         protected bool _failed = false;
         public virtual bool failed => _failed;
+        protected bool _done = false;
+        public bool done => _done;
 
         [Space]
         public bool hasMaintainingDistance = true;
@@ -35,7 +37,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
             var trigger = collision.collider.GetTrigger<ObstacleTrigger>();
-            if(trigger && !failed) {
+            if(trigger && !failed && !done) {
                 _failed = true;
                 TriggerGameOver();
             }
@@ -44,20 +46,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
             var trigger = collider.GetTrigger<DangerZoneTrigger>();
-            if(trigger && !failed) {
+            if(trigger && !failed && !done) {
                 _failed = true;
                 TriggerGameOver();
             }
 
             if(!failed) {
                 var stop = collider.GetTrigger<StopTrigger>();
-                if(stop) {
+                if(stop && !done) {
+                    _done = true;
                     inGameUI?.gameObject.SetActive(false);
                     if(cameraLock) {
                         cameraLock.xPosition.Lock(cameraLock.transform.position.x);
                         cameraLock.yPosition.Lock(cameraLock.transform.position.y);
                         cameraLock.zPosition.Lock(cameraLock.transform.position.z);
                     }
+                    frontVehicle.StopTravel();
+                    frontVehicle.StopCountdown();
                     Invoke("Proceed", 3.0f);
                 }
             }
@@ -78,7 +83,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
                         transform.position, frontVehicle.transform.position
                     ));
 
-                    if(distance > max) {
+                    if(distance > max && !failed && !done) {
                         _failed = true;
                         TriggerGameOver();
                     }
@@ -88,13 +93,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
 
         public virtual void TriggerGameOver(bool screen) {
             frontVehicle.StopTravel();
+            frontVehicle.StopCountdown();
             Reset();
             gameOverUI?.gameObject.SetActive(screen);
         }
 
         public virtual void TriggerGameOver() => TriggerGameOver(true);
 
-        public virtual void Procced() {
+        public virtual void Proceed() {
             LoadScene();
         }
     }

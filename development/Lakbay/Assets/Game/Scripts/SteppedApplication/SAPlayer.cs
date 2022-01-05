@@ -30,10 +30,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void Pause(bool screen) {
             gameMenuUI?.gameObject.SetActive(screen);
+            Pause();
         }
 
         public virtual void Resume(bool screen) {
             gameMenuUI?.gameObject.SetActive(screen);
+            Resume();
         }
 
         public virtual void Play(bool screen) {

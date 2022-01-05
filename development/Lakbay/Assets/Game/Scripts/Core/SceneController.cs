@@ -62,8 +62,13 @@ namespace Ph.CoDe_A.Lakbay.Core {
                             _operation = o;
                             onStart?.Invoke(o);
                         },
-                        onProgress,
                         (o) => {
+                            // printLog("success: ", _operation.progress);
+                            // Session.loadingScreen?.Show("Scene Loading...", _operation.progress);
+                            onProgress?.Invoke(o);
+                        },
+                        (o) => {
+                            Session.loadingScreen?.Hide(1.0f);
                             _currentLoadPath = default;
                             _operation = null;
                             _coroutine = null;
@@ -142,5 +147,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public static BuiltScene GetCurrent() => (BuiltScene) current.buildIndex;
+
+        public override void Update() {
+            base.Update();
+        }
     }
 }

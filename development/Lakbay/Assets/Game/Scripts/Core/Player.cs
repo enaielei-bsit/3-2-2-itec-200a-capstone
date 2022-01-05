@@ -26,6 +26,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public virtual void LoadScene(BuiltScene scene) {
+            printLog($"Loading scene: {scene}");
             Session.sceneController?.Load(scene);
             Session.loadingScreen?.Monitor(Session.sceneController);
         }

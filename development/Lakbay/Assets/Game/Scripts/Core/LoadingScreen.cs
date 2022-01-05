@@ -38,7 +38,6 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         protected Coroutine _hideDelay;
-        protected TweenBase _progressTween;
         protected IMonitored _monitored;
         protected bool _hideOnNull;
 
@@ -65,16 +64,15 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Show(string text, float progress) {
             Show();
-            progress = Mathf.Clamp(progress, 0.0f, 1.0f);
             if(this.text) {
                this.text.SetText(text); 
             }
 
             if(this.progress) {
-                if(_progressTween != null) _progressTween.Finish();
-                _progressTween = Tween.Value(
-                    this.progress.value,
-                    progress, (v) => this.progress.value = v, 0.05f, 0.0f);
+                progress = Mathf.Clamp(
+                    (float) Math.Round(progress, 2),
+                    this.progress.minValue, this.progress.maxValue);
+                this.progress.value = progress;
             }
         }
 

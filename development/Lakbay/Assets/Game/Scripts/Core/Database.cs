@@ -40,11 +40,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
             => _currentHandle;
         public virtual float loadingProgress {
             get {
-                if(_currentLocations == null || _currentLocations.Length == 0.0f
-                    || _currentLocation == null)
-                    return 0.0f;
-                return Array.IndexOf(currentLocations, currentLocation)
-                    / (float) (_currentLocations.Length - 1);
+                float value = 0.0f;
+                if(_currentLocations != null
+                    && _currentLocations.Contains(currentLocation)) {
+                    value = (Array.IndexOf(currentLocations, currentLocation) + 1)
+                        / (float) _currentLocations.Length;
+                }
+
+                return Mathf.Clamp(value, 0.0f, 1.0f);
             }
         }
         public virtual float assetLoadingProgress {
