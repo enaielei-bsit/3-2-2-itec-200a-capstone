@@ -63,12 +63,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
                             onStart?.Invoke(o);
                         },
                         (o) => {
-                            // printLog("success: ", _operation.progress);
-                            // Session.loadingScreen?.Show("Scene Loading...", _operation.progress);
                             onProgress?.Invoke(o);
                         },
                         (o) => {
-                            Session.loadingScreen?.Hide(1.0f);
                             _currentLoadPath = default;
                             _operation = null;
                             _coroutine = null;
