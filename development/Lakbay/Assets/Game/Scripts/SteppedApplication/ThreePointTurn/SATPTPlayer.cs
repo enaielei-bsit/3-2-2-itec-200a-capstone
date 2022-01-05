@@ -19,5 +19,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ThreePointTurn {
     using Core;
 
     public class SATPTPlayer : SASteppedVehiclePlayer {
+        public override void Proceed() {
+            LoadScene(BuiltScene.Tailgating);
+        }
     }
 }

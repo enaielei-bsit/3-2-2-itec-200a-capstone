@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowGuideGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 2634071619011998997, guid: b4ca1384509341b4b8239906993de08c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4ca1384509341b4b8239906993de08c, type: 3}
 --- !u!1001 &4265936523208746773
@@ -380,44 +384,76 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 67bd3fea3c5393b46858a6f03f14ff23, type: 2}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.right.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.forward.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -17.053598
+      value: -31.346401
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -25.783558
+      value: -88.27644
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650200283600, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.315
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.right.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.forward.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -15.5664
+      value: -32.8336
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -23.452955
+      value: -90.60705
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650437521317, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.right.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.forward.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -17.053598
+      value: -31.346401
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -23.452955
+      value: -90.60705
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.right.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
+      propertyPath: wheel.forward.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -15.566401
+      value: -32.8336
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -25.78356
+      value: -88.27644
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
@@ -565,7 +601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515311740486025478, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7637963821107026668, guid: e57ff142117477c448a6384256265e1a, type: 3}
       propertyPath: m_Sources.Array.size

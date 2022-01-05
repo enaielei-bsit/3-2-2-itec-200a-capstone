@@ -43,6 +43,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
     [Serializable]
     public class Question {
+        public static float AdditionalTime = 20.0f;
+        
         protected float _elapsedTime = 0.0f;
         public virtual float elapsedTime {
             get => _elapsedTime;
@@ -50,7 +52,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
         [YamlIgnore]
         public virtual float time => Helper.GetExpectedReadTime(ToString())
-            + 15.0f;
+            + AdditionalTime;
         [YamlIgnore]
         public virtual float progress => elapsedTime / time;
         public Content content = new Content();
