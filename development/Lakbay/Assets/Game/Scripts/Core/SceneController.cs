@@ -29,6 +29,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         ThreePointTurn,
         Tailgating,
         RightOfWay,
+        TrafficSignalRules,
         ContentTester
     }
 
