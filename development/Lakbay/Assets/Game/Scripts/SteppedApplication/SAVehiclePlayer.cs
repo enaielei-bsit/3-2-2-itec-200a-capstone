@@ -49,6 +49,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 return GearBox.Neutral;
             }
         }
+        protected SignalLight _staticSignalLight = SignalLight.None;
+        public virtual SignalLight staticSignalLight => _staticSignalLight;
         public virtual SignalLight signalLight {
             get {
                 if(!vehicle) return SignalLight.None;
@@ -140,6 +142,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public virtual void SetSignalLight(SignalLight light) {
             if(!vehicle || !isEngineRunning) return;
+            _staticSignalLight = light;
             var input = vehicle.input;
 
             if(light == SignalLight.Left) {

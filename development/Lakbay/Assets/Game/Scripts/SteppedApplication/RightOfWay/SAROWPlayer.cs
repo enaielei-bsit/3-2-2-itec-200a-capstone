@@ -21,8 +21,6 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
     public class SAROWPlayer : SASteppedVehiclePlayer {
         protected bool _failed = false;
         public virtual bool failed => _failed;
-        protected bool _done = false;
-        public virtual bool done => _done;
         protected bool _pedestriansStartedWalking = false;
         protected bool _staying = false;
 
@@ -57,6 +55,18 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
                                 pedestrianCamera.m_Lens.FieldOfView;
                     }
                 }
+            }
+
+            var tl = collider.GetTrigger<TurnLeftTrigger>();
+            var tr = collider.GetTrigger<TurnRightTrigger>();
+            if(((tl && staticSignalLight != SignalLight.Left)
+                || (tr && staticSignalLight != SignalLight.Right))
+                && !failed) {
+                if(tl) tl.gameObject.SetActive(false);
+                if(tr) tr.gameObject.SetActive(false);
+                _failed = true;
+                Reset();
+                gameOverUI?.gameObject.SetActive(true);
             }
         }
 

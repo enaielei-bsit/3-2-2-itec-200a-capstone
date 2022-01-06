@@ -15,6 +15,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
-    public class TurnRightTrigger : MonoBehaviour {
+    public class TurnRightTrigger : Core.Trigger {
     }
 }
