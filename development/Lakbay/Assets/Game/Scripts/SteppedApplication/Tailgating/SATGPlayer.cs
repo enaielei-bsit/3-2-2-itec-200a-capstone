@@ -101,7 +101,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public virtual void TriggerGameOver() => TriggerGameOver(true);
 
         public virtual void Proceed() {
-            LoadScene();
+            LoadScene(BuiltScene.RightOfWay);
         }
     }
 }

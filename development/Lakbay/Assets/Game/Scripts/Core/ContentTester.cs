@@ -47,6 +47,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Test() {
             if(input && output) {
+                output.Clear();
                 try {
                     var content = input.text != null
                         ? input.text.DeserializeAsYaml<List<Entry>>()

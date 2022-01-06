@@ -28,6 +28,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         BackInAngleParking,
         ThreePointTurn,
         Tailgating,
+        RightOfWay,
         ContentTester
     }
 

@@ -1,200 +1,220 @@
 -
     content:
-        - '"Gumamit lamang ng telepono kung?"'
+    - "Gumamit lamang ng telepono kung?"
     choices:
-        -
+    -
             correct: true
             text: "Nakaparada na ang sasakyan"
-        -
+    -
             correct: false
             text: "Tatanggap ng tawag"
-        -
+    -
             correct: false
             text: "Nagmamaneho ng Automatikong sasakyan"
 -
     content:
-        - '"Ano ang dapat gawin kapag ikaw ay nakaramdam ng pagod na sa pagmamaneho?"'
+    - "Ano ang dapat gawin kapag ikaw ay nakaramdam ng pagod na sa pagmamaneho?"
     choices:
-        -
+    -
             correct: false
             text: "Uminom ng gamot sa sakit ng ulo at magpatuloy sa pagmamaneho"
-        -
+    -
             correct: true
             text: "Maghintay na maging maayos ang pakiramdam bago magmaneho ulit"
-        -
+    -
             correct: false
             text: "Bagalan ang pagmamaneho at lumipat sa hazard warning light"
 -
     content:
-        - '"Ang dalawahang highway na iyong lilikuan sa kanan ay isang makitid na kalsada. Dapat kang:"'
+    - "Ang dalawahang highway na iyong lilikuan sa kanan ay isang makitid na kalsada. Dapat kang:"
     choices:
-        -
+    -
             correct: false
             text: "Magpatuloy kaagad at kalimutan ang tungkol sa right of way"
-        -
+    -
             correct: false
             text: "Hintayin ang ibang mga sasakyan at sundan sila"
-        -
+    -
             correct: true
             text: "Maghintay hanggang sa ang kalsada ay malinis sa parehong direksyon"
 -
     content:
-        - '"Ang mga palatandaan ukol sa bilis sa daan ay dapat isipin bilang tanda kung?"'
+    - "Ang mga palatandaan ukol sa bilis sa daan ay dapat isipin bilang tanda kung?"
     choices:
-        -
+    -
             correct: false
             text: "Ang inirekomendang bilis sa ilalim ng malala na kondisyon ng kalsada at panahon"
-        -
+    -
             correct: true
             text: "Ang legal na bilis ng pagtakbo sa kalsada at ang kalagayan ng panahon"
-        -
+    -
             correct: false
             text: "Ang inirekomendang bilis sa ilalim ng magandang kalsada at maayos na panahon"
 -
     content:
-        - '-t Image "Assets/Game/Images/RoadWork.png"'
-        - '"Bakit kailangnang ipakita ang karatulang ito"'
+    -
+            image:
+                path: "Assets/Game/Images/RoadWork.png"
+                description: ""
+                source: ""
+                source: ""
+    - "Bakit kailangnang ipakita ang karatulang ito"
     choices:
-        -
+    -
             correct: true
             text: "Upang ipaalam na may ginagawang kalsada sa unahan"
-        -
+    -
             correct: false
             text: "Upang balaan na dulo na ng expressway"
-        -
+    -
             correct: false
             text: "Upang balaan sa mababang tulay"
 -
     content:
-        - '"Pagdating sa isang intersection, ano ang dapat mong gawin kung nalaman mong ang daanan ay naharang sa trapiko?"'
+    - "Pagdating sa isang intersection, ano ang dapat mong gawin kung nalaman mong ang daanan ay naharang sa trapiko?"
     choices:
-        -
+    -
             correct: false
             text: "Panatilihing malapit sa sasakyan sa unahan"
-        -
+    -
             correct: false
             text: "Magpatuloy ng mabagal sa intersection hanggang umusad ang trapiko"
-        -
+    -
             correct: true
             text: "Huminto bago mag intersection at hintayin na umusad ang trapiko"
 -
     content:
-        - '-t Image "Assets/Game/Images/GiveWay.png"'
-        - '"Ano ang ibig sabihin ng karatulang ito?"'
+    -
+            image:
+                path: "Assets/Game/Images/GiveWay.png"
+                description: ""
+                source: ""
+                source: ""
+    - "Ano ang ibig sabihin ng karatulang ito?"
     choices:
-        -
+    -
             correct: true
             text: "Magbigay ng right-of-way"
-        -
+    -
             correct: false
             text: "Huminto at magpatuloy kapag sinabihan ng traffic enforcer"
-        -
+    -
             correct: false
             text: "Inirerekomenda ang rolling stop"
 -
     content:
-        - '"Ayon sa RA 8750 ang penalty ng first offense sa pagpapaupo sa 6 na taong gulang na bata sa harapan ay nagkakahalaga ng?"'
+    - "Ayon sa RA 8750 ang penalty ng first offense sa pagpapaupo sa 6 na taong gulang na bata sa harapan ay nagkakahalaga ng?"
     choices:
-        -
+    -
             correct: false
             text: "Php 1,500"
-        -
+    -
             correct: false
             text: "Php 2,000"
-        -
+    -
             correct: true
             text: "Php 1,000"
 -
     content:
-        - '"Sa papaanong paraan ang tamang pagsusuri ng langis?"'
+    - "Sa papaanong paraan ang tamang pagsusuri ng langis?"
     choices:
-        -
+    -
             correct: true
             text: "Kapag nakatayo ang motorsiklo sa UPRIGHT na posisyon"
-        -
+    -
             correct: false
             text: "Ang motorsiklo ay nakatayo sa gilid ng filler ng langis"
-        -
+    -
             correct: false
             text: "Ang motorsiklo ay nakatayo palayo sa gilid ng filler ng langis"
 -
     content:
-        - '"Saan kailangang nakatapat ang mga gulong kapag pumarada paakyat sa may kurba?"'
+    - "Saan kailangang nakatapat ang mga gulong kapag pumarada paakyat sa may kurba?"
     choices:
-        -
+    -
             correct: false
             text: "Padiretso"
-        -
+    -
             correct: true
             text: "Palayo sa kurba"
-        -
+    -
             correct: false
             text: "Papuntang kurba"
 -
     content:
-        - '-t Image "Assets/Game/Images/ReverseTurn.png"'
-        - '"Anong simbolo ang ipinakikita sa larawan?"'
+    -
+            image:
+                path: "Assets/Game/Images/ReverseTurn.png"
+                description: ""
+                source: ""
+                source: ""
+    - "Anong simbolo ang ipinakikita sa larawan?"
     choices:
-        -
+    -
             correct: true
             text: "Reverse Turn"
-        -
+    -
             correct: false
             text: "One-way"
-        -
+    -
             correct: false
             text: "No Entry"
 -
     content:
-        - '"Nakasunod ka sa isang student driver na tumambad sa isang junction.Dapat kang?"'
+    - "Nakasunod ka sa isang student driver na tumambad sa isang junction.Dapat kang?"
     choices:
-        -
+    -
             correct: false
             text: "Agad na lumiko sa kanila at magmaneho"
-        -
+    -
             correct: false
             text: "Simulang paganahin ang iyong makina kung magtatagal silang mag-restart"
-        -
+    -
             correct: true
             text: "Maging mapagpasensya dahil alam mong baguhan ang drayber at maaaring magkamali"
 -
     content:
-        - '"Naghahanap ka ng lugar pamparada ng iyong sasakyan. Puno ang lugar maliban sa mga puwang na minarkahang "PWD".Alin sa mga sumusunod ang tama?"'
+    - |-
+            Naghahanap ka ng lugar pamparada ng iyong sasakyan. Puno ang lugar maliban sa mga puwang na minarkahang "PWD".Alin sa mga sumusunod ang tama?
     choices:
-        -
+    -
             correct: false
             text: "Maaari mong gamitin ang mga puwang na ito kapag puno ang ibang lugar"
-        -
+    -
             correct: true
             text: "HINDI ka dapat huminto doon maliban kung ikaw ay kasama o mayroon kang isang PWD"
-        -
+    -
             correct: false
             text: "Maaari mong gamitin ang mga puwang na ito, kung ikaw man ay PWD o hindi"
 -
     content:
-        - '-t Image ""Assets/Game/Images/SpeedRestriction.png"'
-        - '"Anong ibig sabihin ng simbolong ito?"'
+    -
+            image:
+                path: "Assets/Game/Images/SpeedRestriction.png"
+                description: ""
+                source: ""
+                source: ""
+    - "Anong ibig sabihin ng simbolong ito?"
     choices:
-        -
+    -
             correct: false
             text: "Minimum speed na 30 kph"
-        -
+    -
             correct: false
             text: "Dulo ng Maximum speed"
-        -
+    -
             correct: true
             text: "Minimum na takbo na 40 kph"
 -
     content:
-        - |-
-            "Nakaparada kang nakaharap sa isang matarik na burol. Kung nagmamaneho ka ng isang awtomatiko, dapat mong iparada ang iyong kotse, Anong gear ang dapat mong gamitin?"
+    - "Nakaparada kang nakaharap sa isang matarik na burol. Kung nagmamaneho ka ng isang awtomatiko, dapat mong iparada ang iyong kotse, Anong gear ang dapat mong gamitin?"
     choices:
-        -
+    -
             correct: false
             text: "Iwanan ang sasakyan ng naka-neutral"
-        -
+    -
             correct: false
             text: "Iwanan ang sasakyan sa first gear"
-        -
+    -
             correct: true
             text: "Iwanan ang sasakyan sa reverse"

@@ -67,7 +67,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                     label,
                     description,
                     false,
-                    -1,
+                -1,
                     duration,
                     cooldown,
                     buff

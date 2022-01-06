@@ -89,6 +89,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             if(points.Count != 0) {
                 currentPoint.Show();
                 SetGuide(currentPoint);
+            } else {
+                SetGuide(target.transform);
             }
         }
 

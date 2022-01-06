@@ -24,7 +24,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
     public class Content : Controller {
         protected IEnumerable<string> _oldValues;
         protected virtual IEnumerable<string> _values =>
-            content.Select((e) => e.raw);
+            content?.Select((e) => e.ToString());
 
         [Serializable]
         public struct Group<T0, T1>
@@ -88,8 +88,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     switch(entry.type) {
                         case Entry.Type.Text:
                             Build(entry, textGroup,
-                                (c) => c.SetText(entry.value),
-                                (v) => v.Show(entry.value));
+                                (c) => c.SetText(entry.text.value),
+                                (v) => v.Show(entry.text.value));
                             break;
                         case Entry.Type.Image:
                             Build(entry, imageGroup,
