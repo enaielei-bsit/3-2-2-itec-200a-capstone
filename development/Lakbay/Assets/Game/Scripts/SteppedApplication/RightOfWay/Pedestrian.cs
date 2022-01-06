@@ -33,7 +33,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
 
         public virtual void StartWalking(float duration) {
             StopWalking();
-            animator?.StartPlayback();
+            if(animator) animator.enabled = true;
             _walk = this.Run(
                 duration,
                 onProgress: (d, e) => {
@@ -50,7 +50,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
         public virtual void StartWalking() => StartWalking(walkDuration);
 
         public virtual void StopWalking() {
-            animator?.StopPlayback();
+            if(animator) animator.enabled = false;
             if(_walk != null) {
                 StopCoroutine(_walk);
                 _walk = null;

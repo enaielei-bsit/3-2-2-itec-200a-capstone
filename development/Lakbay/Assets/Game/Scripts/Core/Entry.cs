@@ -154,7 +154,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         
         public virtual T GetAsset<T>(Database database)
             where T : UnityEngine.Object {
-            if(type == Type.Image) return image.Get(database) as T;
+            if(type == Type.Image) return image?.Get(database) as T;
             return default;
         }
 
