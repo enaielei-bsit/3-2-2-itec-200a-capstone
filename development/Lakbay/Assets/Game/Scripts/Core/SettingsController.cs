@@ -20,7 +20,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
     [Serializable]
     public class Settings {
 
-        public Audio audio;
+        // public Audio audio;
     }
 
     public class SettingsController : Controller {

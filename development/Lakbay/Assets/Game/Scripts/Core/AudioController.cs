@@ -11,58 +11,126 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 
 namespace Ph.CoDe_A.Lakbay.Core {
+    using Utilities;
+    using OnVolumeChange = UnityEvent<AudioController, float, float>;
+    
     [Serializable]
-    public class Audio {
-        protected float _masterVolume = -1.0f; 
-        public virtual float masterVolume {
-            get => _masterVolume;
-            set {
-                value = Mathf.Clamp(value, 0.0f, 1.0f);
-                if(_masterVolume == value) return;
-                _masterVolume = value;
-            }
-        }
-        protected float _musicVolume = -1.0f; 
-        public virtual float musicVolume {
-            get => _musicVolume;
-            set {
-                value = Mathf.Clamp(value, 0.0f, 1.0f);
-                if(_musicVolume == value) return;
-                _musicVolume = value;
-            }
-        }
-        protected float _soundVolume = -1.0f; 
-        public virtual float soundVolume {
-            get => _soundVolume;
-            set {
-                value = Mathf.Clamp(value, 0.0f, 1.0f);
-                if(_soundVolume == value) return;
-                _soundVolume = value;
-            }
-        }
+    public class VolumeData {
+        public string name = "";
+        public List<AdditionalVolume> additionals = new List<AdditionalVolume>();
+        public OnVolumeChange onChange =
+            new OnVolumeChange();
+        
+        public VolumeData() {}
 
-        public Audio() : this(1.0f) {}
-
-        public Audio(
-            float masterVolume=1.0f,
-            float musicVolume=1.0f, float soundVolume=1.0f) {
-            Update(masterVolume, musicVolume, soundVolume);
+        public VolumeData(string name) {
+            this.name = name;
         }
+    }
 
-        public virtual void Update(
-            float masterVolume=1.0f,
-            float musicVolume=1.0f, float soundVolume=1.0f) {
-            this.masterVolume = masterVolume;
-            this.musicVolume = musicVolume;
-            this.soundVolume = soundVolume;
+    [Serializable]
+    public class AdditionalVolume {
+        public AudioMixer mixer;
+        public List<string> volumes = new List<string>();
+
+        public virtual void Set(float value) {
+            if(!mixer) return;
+            foreach(var vol in volumes) {
+                mixer.SetVolume(vol, value);
+            }
         }
     }
 
     public class AudioController : Controller {
-        public new Audio audio = new Audio(-1.0f, -1.0f, -1.0f);
+        [YamlIgnore]
+        public AudioMixer mixer;
+        [SerializeField]
+        [Range(0.0f, 1.0f)]
+        protected float _masterVolume = -1.0f;
+        public List<VolumeData> volumes = new List<VolumeData>() {
+            new VolumeData("musicVolume"),
+            new VolumeData("soundVolume"),
+        };
+        public virtual float masterVolume {
+            get => _masterVolume;
+            set {
+                value = Mathf.Clamp(value, 0.0f, 1.0f);
+                float old = masterVolume;
+                _masterVolume = value;
+                foreach(var vol in volumes) {
+                    if(!lastVolumes.ContainsKey(vol.name))
+                        lastVolumes[vol.name] = 0.0f;
+                    SetVolume(vol.name, lastVolumes[vol.name] * masterVolume,
+                        false, vol.additionals, vol.onChange);
+                }
+
+                if(old != value) {
+                    onMasterVolumeChange?.Invoke(this, old, masterVolume);
+                }
+            }
+        }
+        public OnVolumeChange onMasterVolumeChange =
+            new OnVolumeChange();
+
+        protected Dictionary<string, float> lastVolumes =
+            new Dictionary<string, float>();
+
+        public override void Update() {
+            base.Update();
+        }
+
+        public override void OnValidate() {
+            base.OnValidate();
+            masterVolume = _masterVolume;
+        }
+
+        public virtual void SetVolume(
+            string name,
+            float value,
+            bool asLastVolume,
+            IEnumerable<AdditionalVolume> additionals,
+            OnVolumeChange onValueChange) {
+            value = Mathf.Clamp(value, 0.0f, 1.0f);
+            float volume = GetVolume(name);
+            if(volume == value) return;
+            float old = volume;
+            mixer?.SetVolume(name, value);
+            foreach(var additional in additionals) {
+                additional.Set(value);
+            }
+            if(asLastVolume) {
+                float newVolume = GetVolume(name);
+                lastVolumes[name] = newVolume;
+            }
+
+            onValueChange?.Invoke(this, old, volume);
+        }
+
+        public virtual void SetVolume(
+            string name,
+            float value) {
+            SetVolume(name, value, false);
+        }
+
+        public virtual void SetVolume(
+            string name,
+            float value,
+            bool asLastVolume) {
+            var match = volumes.FirstOrDefault((v) => v.name == name);
+            SetVolume(name, value, asLastVolume,
+                match?.additionals,
+                match?.onChange);
+        }
+
+        public virtual float GetVolume(string name) {
+            if(mixer) return mixer.GetVolume(name);
+            return 0.0f;
+        }
     }
 }

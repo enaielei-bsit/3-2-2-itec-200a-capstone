@@ -20,6 +20,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 using static Utilities.Helper;
 using UnityEngine.UIElements;
+using UnityEngine.Audio;
 
 namespace Utilities {
     using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -33,6 +34,14 @@ namespace Utilities {
 
         public static bool Between(this float value, float min, float max) {
             return value > min && value < max;
+        }
+
+        // source: https://stackoverflow.com/a/63472191/14733693
+        public static float Remap(
+            this float value,
+            float min1, float max1,
+            float min2, float max2) {
+            return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
         }
 
         // source: https://stackoverflow.com/a/2691042/14733693
@@ -530,6 +539,21 @@ namespace Utilities {
         public static Color32 Invert(this Color32 color) {
             byte max = 255;
             return new Color(max - color.r, max - color.g, max - color.b, color.a);
+        }
+
+        // AudioMixer
+        public static float GetVolume(this AudioMixer mixer, string name) {
+            float value = 0.0f;
+            mixer?.GetFloat(name, out value);
+            // Log to Linear
+            value = Mathf.Pow(10.0f, Mathf.Clamp(value, -80.0f, 0.0f) / 20.0f);
+            return value;
+        }
+
+        public static void SetVolume(this AudioMixer mixer, string name, float value) {
+            // Linear to Log
+            value = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1.0f)) * 20.0f;
+            mixer?.SetFloat(name, value);
         }
     }
 }

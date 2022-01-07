@@ -38,6 +38,8 @@ namespace Ph.CoDe_A.Lakbay {
         [SerializeField]
         protected SceneController _sceneController;
         [SerializeField]
+        protected AudioController _audioController;
+        [SerializeField]
         protected CheatEngine _cheatEngine;
 
         public override void Awake() {
@@ -95,6 +97,12 @@ namespace Ph.CoDe_A.Lakbay {
                 _sceneController ? _sceneController.EnsureInstance() : default;
             if(Session.sceneController) {
                 Session.sceneController.gameObject.MakePersistent();
+            }
+
+            Session.audioController =
+                _audioController ? _audioController.EnsureInstance() : default;
+            if(Session.audioController) {
+                Session.audioController.gameObject.MakePersistent();
             }
 
             Session.cheatEngine =
