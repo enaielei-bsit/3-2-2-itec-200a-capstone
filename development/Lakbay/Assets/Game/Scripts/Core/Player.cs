@@ -53,6 +53,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Play(int mode) => Play((GameMode) mode);
 
+        public virtual void Play() => Play(Session.mode);
+
         public virtual void Resume() {
             
         }

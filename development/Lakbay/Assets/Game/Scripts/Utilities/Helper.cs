@@ -8,8 +8,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -123,5 +124,37 @@ namespace Utilities {
         public static string GetClipboard() {
             return GUIUtility.systemCopyBuffer;
         }
+
+        public static void WriteFile(
+            string path,
+            string content,
+            bool append,
+            Encoding encoding
+        ) {
+            var writer = new StreamWriter(path, append, encoding);
+            writer.Write(content);
+            writer.Close();
+        }
+
+        public static void WriteFile(
+            string path, string content,
+            bool append=false
+        ) {
+            WriteFile(path, content, append, Encoding.UTF8);
+        }
+
+        public static string ReadFile(
+            string path, Encoding encoding, bool create=true
+        ) {
+            if(!File.Exists(path) && create)
+                WriteFile(path, "", false, encoding);
+            var reader = new StreamReader(path, encoding);
+            string content = reader.ReadToEnd();
+            reader.Close();
+            return content;
+        }
+
+        public static string ReadFile(string path, bool create=true) =>
+            ReadFile(path, Encoding.UTF8, create);
     }
 }
