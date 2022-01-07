@@ -46,6 +46,7 @@ namespace Ph.CoDe_A.Lakbay {
 
         public new virtual IEnumerator Start() {
             if(finished) yield break;
+            SceneManager.sceneLoaded += ResetTimeScale;
 
             Session.loadingScreen =
                 _loadingScreen ? _loadingScreen.EnsureInstance() : default;
@@ -128,6 +129,10 @@ namespace Ph.CoDe_A.Lakbay {
 
         protected static Action<QRLevel> OnQRLevelChange(int index) {
             return (l) =>  Session.qrLevels[index] = l;
+        }
+
+        public virtual void ResetTimeScale(Scene scene, LoadSceneMode mode) {
+            Time.timeScale = 1.0f;
         }
     }
 }

@@ -30,7 +30,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,8 +70,7 @@ MonoBehaviour:
   m_text: Lorem Ipsum.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ee8d66dfb265284ea39d5c7764f10ee, type: 2}
-  m_sharedMaterial: {fileID: 8266315899957240779, guid: 8f8b3d771f77b5a41b469be8c8002ee1,
-    type: 2}
+  m_sharedMaterial: {fileID: 8266315899957240779, guid: 8f8b3d771f77b5a41b469be8c8002ee1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -190,5 +188,4 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 1
   references:
-    version: 2
-    RefIds: []
+    version: 1
