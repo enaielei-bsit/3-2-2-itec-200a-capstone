@@ -40,6 +40,8 @@ namespace Ph.CoDe_A.Lakbay {
         [SerializeField]
         protected AudioController _audioController;
         [SerializeField]
+        protected SettingsController _settingsController;
+        [SerializeField]
         protected CheatEngine _cheatEngine;
 
         public override void Awake() {
@@ -105,6 +107,14 @@ namespace Ph.CoDe_A.Lakbay {
                 Session.audioController.gameObject.MakePersistent();
             }
 
+            Session.settingsController =
+                _settingsController ? _settingsController.EnsureInstance() : default;
+            if(Session.settingsController) {
+                Session.settingsController.gameObject.MakePersistent();
+                Session.settingsController.Load();
+                SceneManager.sceneUnloaded += SaveSettings;
+            }
+
             Session.cheatEngine =
                 _cheatEngine ? _cheatEngine.EnsureInstance() : default;
             if(Session.cheatEngine) {
@@ -141,6 +151,12 @@ namespace Ph.CoDe_A.Lakbay {
 
         public virtual void ResetTimeScale(Scene scene, LoadSceneMode mode) {
             Time.timeScale = 1.0f;
+        }
+
+        public virtual void SaveSettings(Scene scene) {
+            if(Session.settingsController)
+                Session.settingsController.UpdateSettings();
+                Session.settingsController.Save();
         }
     }
 }

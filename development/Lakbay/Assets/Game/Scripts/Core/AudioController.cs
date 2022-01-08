@@ -100,6 +100,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             float volume = GetVolume(name);
             if(volume == value) return;
             float old = volume;
+            printLog($"setting... {name} to {value}");
             mixer?.SetVolume(name, value);
             foreach(var additional in additionals) {
                 additional.Set(value);

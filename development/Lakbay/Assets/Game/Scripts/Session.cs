@@ -27,6 +27,7 @@ namespace Ph.CoDe_A.Lakbay {
         public static LoadingScreen loadingScreen;
         public static SceneController sceneController;
         public static AudioController audioController;
+        public static SettingsController settingsController;
         public static CheatEngine cheatEngine;
 
         public static GameMode mode = GameMode.NonPro;
