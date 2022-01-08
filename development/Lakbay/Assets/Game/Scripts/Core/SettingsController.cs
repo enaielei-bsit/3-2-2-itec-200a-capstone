@@ -16,7 +16,12 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     using System.IO;
+    using UnityEngine.Localization.Settings;
     using Utilities;
+
+    public enum Orientation {
+        Left, Right, Both
+    }
 
     [Serializable]
     public class Settings {
@@ -46,12 +51,40 @@ namespace Ph.CoDe_A.Lakbay.Core {
             } 
         }
 
+        [Serializable]
+        public class Video {
+            public string quality = "Low";
+            public Orientation orientation = Orientation.Left;
+
+            public Video() {}
+
+            public Video(string quality="Low", Orientation orientation=Orientation.Left) {
+                this.quality = quality;
+                this.orientation = orientation;
+            }
+        }
+
+        [Serializable]
+        public class Accessibility {
+            public string language = "en";
+
+            public Accessibility() {}
+            
+            public Accessibility(string language="en") {
+                this.language = language;
+            }
+        }
+
         public Audio audio = new Audio();
+        public Video video = new Video();
+        public Accessibility accessibility = new Accessibility();
 
         public Settings() {}
 
-        public Settings(Audio audio) {
+        public Settings(Audio audio, Video video, Accessibility accessibility) {
             this.audio = audio ?? new Audio();
+            this.video = video ?? new Video();
+            this.accessibility = accessibility ?? new Accessibility();
         }
     }
 
@@ -85,6 +118,15 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 }
             }
             settings.audio = new Settings.Audio(volumes);
+
+            // Update Video..
+            // settings.video.orientation = GetOrientation();
+            // var names = QualitySettings.names;
+            // settings.video.quality = names[QualitySettings.GetQualityLevel()];
+
+            // // Update Accessibility
+            // settings.accessibility.language =
+            //     LocalizationSettings.SelectedLocale.Identifier.Code;
         }
 
         [ContextMenu("Save Settings")]
@@ -115,7 +157,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void ApplySettings() {
             var audio = Session.audioController;
-
+            
+            // Audio
             if(audio && settings.audio != null) {
                 audio.masterVolume = settings.audio.GetVolume("masterVolume");
                 foreach(var vol in audio.volumes) {
@@ -125,6 +168,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
                         volume >= 1.0f ? volume * audio.masterVolume : volume,
                         true
                     );
+                }
+            }
+
+            // Video
+            if(settings.video != null) {
+                int quality = Array.IndexOf(
+                    QualitySettings.names, settings.video.quality);
+                QualitySettings.SetQualityLevel(quality);
+                SetOrientation(settings.video.orientation);
+            }
+
+            // Accessibility
+            if(settings.accessibility != null) {
+                var selected = Helper.locales.FirstOrDefault(
+                    (l) => l.Identifier.Code == settings.accessibility.language);
+                if(selected != null) {
+                    LocalizationSettings.SelectedLocale = selected;
                 }
             }
         }
@@ -141,12 +201,41 @@ namespace Ph.CoDe_A.Lakbay.Core {
             return new Settings.Audio(volumes);
         }
 
+        public virtual Settings.Video GetVideoDefault() {
+            return new Settings.Video();
+        }
+
+        public virtual Settings.Accessibility GetAccessibilityDefault() {
+            return new Settings.Accessibility();
+        }
+
         public virtual Settings GetDefault() {
             var settings = new Settings(
-                GetAudioDefault()
+                GetAudioDefault(),
+                GetVideoDefault(),
+                GetAccessibilityDefault()
             );
 
             return settings;
+        }
+
+        public virtual void SetOrientation(Orientation orientation) {
+            Screen.orientation = ScreenOrientation.AutoRotation;
+            Screen.autorotateToPortrait = false;
+            Screen.autorotateToPortraitUpsideDown = false;
+
+            if(orientation == Orientation.Left || orientation == Orientation.Both)
+                Screen.autorotateToLandscapeLeft = true;
+            if(orientation == Orientation.Right || orientation == Orientation.Both)
+                Screen.autorotateToLandscapeRight = true;
+        }
+
+        public virtual Orientation GetOrientation() {
+            return Screen.autorotateToLandscapeLeft && Screen.autorotateToLandscapeRight
+                ? Orientation.Both : (
+                    Screen.autorotateToLandscapeLeft ? Orientation.Left
+                    : Orientation.Right
+                );
         }
     }
 }
