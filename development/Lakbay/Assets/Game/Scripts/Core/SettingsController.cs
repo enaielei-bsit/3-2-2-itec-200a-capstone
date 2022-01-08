@@ -165,7 +165,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     float volume = settings.audio.GetVolume(vol.name);
                     audio.SetVolume(
                         vol.name,
-                        volume >= 1.0f ? volume * audio.masterVolume : volume,
+                        volume,
                         true
                     );
                 }
@@ -194,7 +194,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             volumes.Add("masterVolume", 1.0f);
             if(Session.audioController) {
                 foreach(var vol in Session.audioController.volumes) {
-                    volumes.Add(vol.name, 1.0f);
+                    volumes.Add(vol.name, 0.5f);
                 }
             }
 

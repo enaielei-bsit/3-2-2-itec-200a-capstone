@@ -16,13 +16,15 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class Player : Controller {
+        public AudioSource backgroundMusic;
+
         public new virtual IEnumerator Start() {
             yield return new WaitUntil(() => Initialization.finished);
             Build();
         }
 
         public virtual void Build() {
-
+            backgroundMusic?.Play();
         }
 
         public virtual void LoadScene(BuiltScene scene) {

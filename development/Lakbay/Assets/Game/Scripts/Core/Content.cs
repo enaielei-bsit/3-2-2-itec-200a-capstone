@@ -94,7 +94,14 @@ namespace Ph.CoDe_A.Lakbay.Core {
                         case Entry.Type.Image:
                             Build(entry, imageGroup,
                                 (c) => c.sprite = entry.GetAsset<Sprite>(),
-                                (v) => v.Show(entry.GetAsset<Sprite>()));
+                                (v) => {
+                                    (v as ImageViewer).Show(
+                                        entry.GetAsset<Sprite>(),
+                                        entry.image.description,
+                                        entry.image.source
+                                    );
+                                }
+                            );
                             break;
                         default: break;
                     }
