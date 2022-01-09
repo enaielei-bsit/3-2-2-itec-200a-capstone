@@ -132,8 +132,12 @@ namespace Utilities {
             var names = str.Humanize().Split(' ').ToList();
             var code = names.Pop(names.Count - 1);
             name = names.Join(" ").Dehumanize();
-            return Array.Find(
-                locales, (l) => l.Identifier.Code.ToLower() == code.ToLower());
+            if(locales != null && locales.Length != 0) {
+                return Array.Find(
+                    locales, (l) => l.Identifier.Code.ToLower() == code.ToLower());
+            }
+
+            return null;
         }
 
         public static Locale GetLocale(this string str, out string name) {

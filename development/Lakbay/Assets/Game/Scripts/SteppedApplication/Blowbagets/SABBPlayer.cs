@@ -24,6 +24,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
     public class BlowbagetsInfo {
         public string title = "";
         public string image = "";
+        public string description = "";
+        public string source = "";
         public List<Entry> content = new List<Entry>();
     }
 

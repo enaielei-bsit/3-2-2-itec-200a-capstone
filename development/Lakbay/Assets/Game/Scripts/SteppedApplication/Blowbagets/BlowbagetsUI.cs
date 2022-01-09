@@ -15,21 +15,32 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
+    using Utilities;
     using Core;
     using TMPro;
 
     public class BlowbagetsUI : Controller {
         public TextMeshProUGUI title;
         public Image image;
+        public ImageViewer viewer;
         public Content content;
 
         public BlowbagetsInfo info;
 
-        public virtual void Build(string title, Sprite image, IEnumerable<Entry> content) {
+        public virtual void Build(string title, Sprite image,
+            IEnumerable<Entry> content, string description="", string source="") {
             gameObject.SetActive(true);
             this.title?.SetText(title);
             this.content?.Build(content);
-            if(this.image) this.image.sprite = image;
+            if(this.image) {
+                this.image.sprite = image;
+                if(viewer) {
+                    var button = this.image.gameObject.EnsureComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(
+                        () => viewer.Show(image, description, source));
+                }
+            }
         }
 
         public virtual void Build(string title, Sprite image, IEnumerable<string> content) {

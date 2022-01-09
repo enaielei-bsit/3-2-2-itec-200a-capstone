@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class Player : Controller {
-        public AudioSource backgroundMusic;
+        public UnityEvent onBuild = new UnityEvent();
 
         public new virtual IEnumerator Start() {
             yield return new WaitUntil(() => Initialization.finished);
@@ -24,7 +24,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         public virtual void Build() {
-            backgroundMusic?.Play();
+            onBuild?.Invoke();
         }
 
         public virtual void LoadScene(BuiltScene scene) {
