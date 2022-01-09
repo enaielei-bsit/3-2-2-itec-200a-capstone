@@ -2518,6 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f5f82647b7eba4b89eb917f92d800c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  includeChildren: 1
 --- !u!114 &1217737730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2788,11 +2789,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2800,11 +2801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -640.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663938, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -3889,6 +3890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825dea93df900d04e87b68a167bc18da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  includeChildren: 1
 --- !u!114 &1553737442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,6 +4416,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -4.4300003
       objectReference: {fileID: 0}
+    - target: {fileID: 1300605112301291430, guid: ec721c3ebb02a594cab3f0576d10ff51, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 3cb4554330e174643870f82557166124, type: 3}
     - target: {fileID: 1928027049437363166, guid: ec721c3ebb02a594cab3f0576d10ff51, type: 3}
       propertyPath: m_SizeDelta.y
       value: -4.4300003
