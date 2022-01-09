@@ -139,5 +139,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
             return component;
         }
+
+        public virtual void Build(TextAsset asset) {
+            if(asset) Build(asset.text.DeserializeAsYaml<List<Entry>>());
+        }
     }
 }
