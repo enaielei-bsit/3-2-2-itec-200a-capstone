@@ -170,5 +170,42 @@ namespace Ph.CoDe_A.Lakbay.Core {
             root?.gameObject.SetActive(false);
             ClearSelected();
         }
+
+        public virtual void LaunchCurrent() {
+            var current = SceneController.GetCurrent();
+            Toggle toggle = null;
+            switch(current) {
+                case BuiltScene.QuestionRunner:
+                    toggle = questionRunner;
+                    break;
+                case BuiltScene.Blowbagets:
+                    toggle = blowbagets;
+                    break;
+                case BuiltScene.ParallelParking:
+                    toggle = parallelParking;
+                    break;
+                case BuiltScene.PerpendicularParking:
+                    toggle = perpendicularParking;
+                    break;
+                case BuiltScene.BackInAngleParking:
+                    toggle = backInAngleParking;
+                    break;
+                case BuiltScene.ThreePointTurn:
+                    toggle = threePointTurn;
+                    break;
+                case BuiltScene.Tailgating:
+                    toggle = tailgating;
+                    break;
+                case BuiltScene.RightOfWay:
+                    toggle = rightOfWay;
+                    break;
+                case BuiltScene.TrafficSignalRules:
+                    toggle = trafficSignalRules;
+                    break;
+            }
+            
+            gameObject.SetActive(true);
+            if(toggle) toggle.isOn = true;
+        }
     }
 }

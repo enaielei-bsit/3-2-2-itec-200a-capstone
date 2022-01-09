@@ -154,9 +154,9 @@ namespace Ph.CoDe_A.Lakbay {
         }
 
         public virtual void SaveSettings(Scene scene) {
-            if(Session.settingsController)
-                Session.settingsController.UpdateSettings();
-                Session.settingsController.Save();
+            // if(Session.settingsController)
+            //     Session.settingsController.UpdateSettings();
+            //     Session.settingsController.Save();
         }
     }
 }
