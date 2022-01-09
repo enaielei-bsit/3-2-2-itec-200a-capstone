@@ -91,7 +91,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
         }
 
         public override void Proceed() {
-            LoadScene();
+            LoadScene(BuiltScene.TrafficSignalRules);
         }
 
         public virtual void WalkPedestrians() {
