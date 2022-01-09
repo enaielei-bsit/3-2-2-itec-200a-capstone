@@ -1,0 +1,48 @@
+- "<b>QUESTION RUNNER PHASE"
+- " "
+- " "
+- |-
+    Is the standardized phase of the game consists of three (3) levels wherein,
+    the player must drive along the road and answer the pop-up questions while avoiding the barricades.
+- " "
+- |-
+    <b>Entities</b>
+        Is any object present in the game that is visible to the player.
+
+        <b>Vehicle</b> - the main entity of the game. The player can control the vehicle to have interactivity with other entities.
+        <b>Barricades</b> - are the non-player entities of the game. It is randomly placed on the road and has to be avoided to preserve life counts
+        <b>Environment</b> - is the setting of the game, this includes the aesthetics, the road, streetlights, trees, and time of the day.
+
+    <b>Controls</b>
+        Are the interactable user interfaces that can be navigated by the player. The life status bar and the progress indicator bar can be located at the top-left part of the screen,  the left arrow button can be located at the middle-left, the right arrow is on the middle-right, the pause button in on the top-right, and the power-ups are on the bottom-center part of the screen.
+
+        <b>Play Button</b> – begins the game and resumes when paused.  
+        <b>Pause Button</b>- temporarily halts the progression of the game and summons the main menu for more settings of the game. 
+        <b>Main Menu Button</b>-  summons the settings, restart, help, and end button.
+        <b>Restart Button</b>- replays the game from the start.
+        <b>Settings</b>- summons the settings
+        <b>Help Button</b>- summons help settings
+        <b>End Button</b>- ends the game and brings the player to the main menu
+        <b>Left and Right Arrows Button</b> - are the navigation of the vehicle's direction.
+        <b>Power-ups Button</b>- are the temporary ability boosters of the game.
+            <b>Rocket</b>- clears up one lane of the road for the vehicle to drive continuously.
+            <b>Shield</b>- protects the vehicle from the barricade and lets it through without losing a life count.
+            <b>Time</b>- is slowing the vehicle's speed to have more time to shift directions.
+        <b>Indicators</b>	
+            <b>Life Status Bar</b>- is the display of life counts.
+            <b>Progress Indicator Bar</b>- displays the current level of the player.
+            <b>Summary</b> – is the display of your scores, the correct answers, and the result of your game.
+
+    <b>MECHANICS OF THE GAME</b>
+        The following are the things to consider in the Question Runner Phase.
+
+        1. This phase consists of three (3) levels and each level is a pre-requisite to proceed to the next level.
+        2. In each level, the player is given three (3) lives and one (1) of each power-ups.
+        3. To complete each level the player must answer the required number of questions while avoiding the barricades to preserve life counts.
+        4. The player must answer the question within the allotted time.
+        5. To avoid the barricade/s, the player must use the left and right arrows and lead the vehicle away from it.
+        6. Along the road, there will be power-ups that will appear randomly and it is not required, but is advised to take for it will aid the player in completing the level.
+        7. The player must use power-ups to boost his/her ability temporarily.
+        8.  After completing the level, the player will be redirected to the next level automatically.
+        9. Once the player has cleared all the levels, the player's summary of answers will be displayed. Also, the correct answer to each question will be provided in the summary.
+        10. The player must reach the average score to pass and proceed in the next phase(Stepped Application).
