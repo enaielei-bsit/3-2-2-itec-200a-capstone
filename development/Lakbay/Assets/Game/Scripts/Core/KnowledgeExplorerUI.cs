@@ -90,7 +90,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 foreach(var file in files) {
                     var nfile = Instantiate(btn, contents.transform);
                     var text = nfile.GetComponentInChildren<TextMeshProUGUI>();
-                    file.name.GetLocale(null, out string name);
+                    // file.name.GetLocale(null, out string name);
+                    string name = file.name.TrimEnd("EN").TrimEnd("FIL");
                     text?.SetText(name);
                     nfile.onClick.AddListener(OnFileClick(path.type, file));
                 }

@@ -23,6 +23,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
 
     public class SATSRPlayer : SASteppedVehiclePlayer {
         [Space]
+        public RectTransform gameFinishedUI;
+
+        [Space]
         public float trafficLightRedDuration = 20.0f;
         public float trafficLightYellowDuration = 20.0f;
         public float trafficLightGreenDuration = 20.0f;
@@ -159,7 +162,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
             SetCamera(CameraView.TrafficLight);
 
         public override void Proceed() {
-            LoadScene(BuiltScene.MainMenu);
+            if(gameFinishedUI) {
+                gameFinishedUI.gameObject.SetActive(true);
+            } else LoadScene(BuiltScene.MainMenu);
         }
 
         public override void Update() {

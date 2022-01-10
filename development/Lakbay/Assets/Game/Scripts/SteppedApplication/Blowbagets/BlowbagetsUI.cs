@@ -43,19 +43,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             }
         }
 
-        public virtual void Build(string title, Sprite image, IEnumerable<string> content) {
-            Build(title, image, content.Select((c) => (Entry) c));
+        public virtual void Build(string title, Sprite image,
+            IEnumerable<string> content, string description="", string source="") {
+            Build(title, image, content.Select((c) => (Entry) c),
+                description, source);
         }
 
-        public virtual void Build(string title, Sprite image, params string[] content) {
-            Build(title, image, content.AsEnumerable());
+        public virtual void Build(string title, Sprite image,
+            string description="", string source="",
+            params string[] content) {
+            Build(title, image, content.AsEnumerable(), description, source);
         }
 
         public virtual void Build(BlowbagetsInfo info) {
             this.info = info;
             // Load image from the database.
             var image = Session.database.Get<Sprite>(info.image);
-            Build(info.title, image, info.content);
+            Build(info.title, image, info.content, info.description, info.source);
         }
 
         public virtual void Build() => Build(info);

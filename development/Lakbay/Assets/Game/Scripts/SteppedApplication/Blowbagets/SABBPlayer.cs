@@ -88,6 +88,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public override void Build() {
             base.Build();
             Session.sabbLevel = Session.database.Get<SABBLevel>().First().Value;
+            Session.sabbLevel?.Load();
             Session.localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
                 Session.sabbLevel.batteryFile, UpdateBlowbagetsInfo);
 
