@@ -109,7 +109,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
                 onProgress: (d, e) => {
                     follower.value = e / d;
                     return Time.deltaTime * travelTimeScale;
-                }
+                },
+                fixedUpdate: true
             );
         }
 

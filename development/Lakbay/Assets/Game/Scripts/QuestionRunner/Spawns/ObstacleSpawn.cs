@@ -21,6 +21,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
     public class ObstacleSpawn : QRSpawn {
         public bool collided = false;
+        public UnityEvent onTrigger = new UnityEvent();
+        public UnityEvent onBreak = new UnityEvent();
 
         public override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
@@ -29,6 +31,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
                 if(player && collision.collider.GetTrigger<SpawnTrigger>()) {
                     collided = true;
+                    onTrigger?.Invoke();
                     OnCollision(player);
                 }
             }
@@ -58,6 +61,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public virtual void Break() {
+            onBreak?.Invoke();
             foreach(var collider in GetComponentsInChildren<Collider>()) {
                 var rb = collider.gameObject.EnsureComponent<Rigidbody>();
             };

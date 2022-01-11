@@ -43,7 +43,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
                 onFinish: (d, e) => {
                     follower.value = 1.0f;
                     StopWalking();
-                }
+                },
+                fixedUpdate: true
             );
         }
 

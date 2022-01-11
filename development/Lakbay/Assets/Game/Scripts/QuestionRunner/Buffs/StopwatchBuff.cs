@@ -20,10 +20,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
     public class StopwatchBuff : Buff {
 
         public float speedFactor = 0.5f;
+        protected Volume _volume;
+        public Volume volume;
 
         public override void OnAdd(
             Caster caster, Buffable target, Skill skill,
             float duration) {
+            if(volume) _volume = Instantiate(volume, transform);
             var player = target.GetComponent<QRPlayer>();
             if(player && player.travel) player.travel.timeScale *= speedFactor;
         }

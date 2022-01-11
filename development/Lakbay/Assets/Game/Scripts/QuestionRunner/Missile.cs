@@ -31,7 +31,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
 
                 obstacle.collided = true;
-                Destroy(obstacle.gameObject);
+                obstacle.Break();
+                // Destroy(obstacle.gameObject);
             }
         }
     }

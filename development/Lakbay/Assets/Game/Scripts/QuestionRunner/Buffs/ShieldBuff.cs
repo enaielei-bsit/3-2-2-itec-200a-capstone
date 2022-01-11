@@ -12,6 +12,7 @@ using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 using Utilities;
@@ -21,6 +22,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
         protected readonly List<Material> _materials = new List<Material>();
 
         public Material effect;
+        protected Volume _volume;
+        public Volume volume;
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -34,6 +37,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
         public override void OnAdd(
             Caster caster, Buffable target, Skill skill,
             float duration) {
+            if(volume) _volume = Instantiate(volume, transform);
             _materials.Clear();
             for(int i = 0; i < target.mainMaterials.Count; i++) {
                 var material = target.mainMaterials[i];

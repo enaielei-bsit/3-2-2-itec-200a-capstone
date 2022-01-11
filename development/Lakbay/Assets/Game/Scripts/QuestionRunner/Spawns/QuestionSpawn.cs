@@ -28,6 +28,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public Question question;
         public bool triggered = false;
         public bool handled = false;
+        public AudioSource _sound;
+        public UnityEvent onTrigger = new UnityEvent();
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -43,6 +45,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
         public virtual void OnTrigger(QRPlayer trigger) {
             if(question != null) {
+                onTrigger?.Invoke();
+                if(_sound) {
+                    var sound = Instantiate(_sound, transform.parent);
+                    sound.Play();
+                }
                 Handle(trigger);
             }
             gameObject.SetActive(false);

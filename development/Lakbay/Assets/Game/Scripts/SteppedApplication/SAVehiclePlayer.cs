@@ -36,6 +36,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public SAVehicleInGameUI inGameUI;
         public GameOverUI gameOverUI;
 
+        protected Vector3 _oldVelocity;
+
         public GearBox currentGear {
             get {
                 if(vehicle) {
@@ -230,12 +232,15 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public override void Pause() {
             base.Pause();
-            Time.timeScale = 0.0f;
+            var rb = GetComponent<Rigidbody>();
+            _oldVelocity = rb.velocity;
+            rb.velocity = Vector3.zero;
         }
 
         public override void Resume() {
             base.Resume();
-            Time.timeScale = 1.0f;
+            var rb = GetComponent<Rigidbody>();
+            rb.velocity = _oldVelocity;
         }
     }
 }

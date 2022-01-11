@@ -608,6 +608,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 12.38
       objectReference: {fileID: 0}
+    - target: {fileID: 4276045532841603330, guid: dfe40b7186ac39548bb015529681e201, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4276045532841603331, guid: dfe40b7186ac39548bb015529681e201, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -727,6 +731,25 @@ MonoBehaviour:
   description: {fileID: 0}
   instances: {fileID: 3132285701448013694}
   instancesChangeEffect: {fileID: 0}
+--- !u!95 &6494657098689366733
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903384852327803545}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed309b63660c0c447bb9db3705fa27c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7545907335628357313
 PrefabInstance:
   m_ObjectHideFlags: 0

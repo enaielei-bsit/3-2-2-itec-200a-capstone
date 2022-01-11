@@ -33,12 +33,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         
         public virtual int level => Session.qrLevel
             ? Session.qrLevelIndex + 1 : 0;
+        public virtual int levels => Session.qrLevels.Count();
         public virtual int goal => Session.qrLevel
             ? Session.qrLevel.questions.Count : 0;
         public virtual int score => Session.qrScore;
         public virtual int maxScore => Session.qrMaxScore;
 
         [Header("Level")]
+        public MessageBoxUI messageBoxUI;
         public GameMenuUI gameMenuUI;
         public GameOverUI gameOverUI;
         public PrePlayUI prePlayUI;
@@ -65,6 +67,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [Space]
         public List<TimeSkybox> times = new List<TimeSkybox>();
 
+        [Space]
+        public LocalizedString intro;
+
         public override void Awake() {
             base.Awake();
         }
@@ -86,6 +91,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         }
 
         public override void Build() {
+            base.Build();
             if(initial) {
                 if(Session.qrLevelIndex == -1) InitializeLevels();
 
@@ -110,6 +116,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                     SetTime(Session.qrLevel.time);
                     prePlayUI?.Show();
+                    if(Session.qrLevelIndex == 0)
+                        messageBoxUI?.ShowMessage(intro);
                 }
             }
         }

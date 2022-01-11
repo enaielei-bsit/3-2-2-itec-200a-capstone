@@ -342,6 +342,23 @@ namespace Utilities {
             }
         }
 
+        public static T[] GetComponentsInChildren<T>(
+            this Transform transform, bool includeSelf=true, bool includeInactive=true)
+            where T : Component {
+            var comps = transform.GetComponentsInChildren<T>(
+                includeInactive: includeInactive
+            ).ToList();
+            if(!includeSelf) {
+                var self = comps.Find((c) => c.transform == transform);
+                while(self) {
+                    comps.Remove(self);
+                    self = comps.Find((c) => c.transform == transform);
+                }
+            }
+
+            return comps.ToArray();
+        }
+
         // MonoBehaviour
         public static Coroutine Run(
             this MonoBehaviour mono,

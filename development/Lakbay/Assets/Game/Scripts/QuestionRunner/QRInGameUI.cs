@@ -19,6 +19,7 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using Pixelplacement;
     using Pixelplacement.TweenSystem;
+    using UnityEngine.Localization.Components;
     using Widgets;
 
     public class QRInGameUI : Core.InGameUI {
@@ -34,8 +35,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [Header("Indicators")]
         public float lifeMinColorValueOffset = 0.10f;
         public RectTransform lives;
+        public LocalizeStringEvent level;
+
+        [Space]
+        public float lifeLostAlpha = 0.20f;
         [SerializeField]
         protected Image _life;
+
+        [Space]
         public Slider progress;
 
         public override void Awake() {
@@ -53,6 +60,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             BuildSkills();
             BuildLives();
             SetProgress(Session.qrLevel.progress, 0.0f);
+            level?.RefreshString();
         }
 
         public virtual void BuildSkills() {
@@ -84,8 +92,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void UpdateLives() {
             if(!lives || !player) return;
-            foreach(var img in lives.GetComponentsInChildren<Image>().Enumerate()) {
-                img.Value.enabled = img.Key <= player.lives;
+            foreach(var img in lives.GetComponentsInChildren<Image>(
+                includeSelf: false).Enumerate()) {
+                // img.Value.enabled = img.Key <= player.lives;
+                var color = img.Value.color;
+                color.a = img.Key < player.lives
+                    ? color.a : lifeLostAlpha;
+                img.Value.color = color;
             }
         }
 

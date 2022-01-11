@@ -22,6 +22,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     [RequireComponent(typeof(Collider))]
     public abstract class SkillSpawn : QRSpawn {
         public bool triggered = false;
+        public AudioSource _sound;
+        public UnityEvent onTrigger = new UnityEvent();
 
         public override bool OnSpawnCheck(
             Core.Spawner spawner, Transform[] locations, Transform location) {
@@ -43,6 +45,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             if(player && collider.GetTrigger<SpawnTrigger>()) { 
                 if(!triggered) {
                     triggered = true;
+                    onTrigger?.Invoke();
+                    if(_sound) {
+                        var sound = Instantiate(_sound, transform.parent);
+                        sound.Play();
+                    }
                     OnTrigger(player);
                 }
             }

@@ -30,7 +30,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public int index = 0;
         public GameMode category = GameMode.NonPro;
         public TimeOfDay time;
+        public float passingScorePercentage = 0.75f;
 
+        [Space]
         public RepeaterHandler _repeaterHandler;
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
@@ -52,6 +54,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             / (float) questions.Count;
         public virtual int score => questions.Count((q) => q.correct);
         public virtual int maxScore => questions.Count;
+        public virtual int passingScore => Mathf.Max(
+            Mathf.CeilToInt(maxScore * passingScorePercentage), maxScore
+        );
         [HideInInspector]
         public int lastStop = 0;
         [HideInInspector]
