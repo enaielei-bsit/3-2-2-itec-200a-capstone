@@ -1487,6 +1487,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 914cfc629a226aa48a1b52891788d360, type: 3}
     - target: {fileID: 3067637727069893542, guid: 7c9c77a74c973414da3a0fbae4f80cd5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067637727069893542, guid: 7c9c77a74c973414da3a0fbae4f80cd5, type: 3}
       propertyPath: m_Color.b
       value: 0.20784314
       objectReference: {fileID: 0}
@@ -1568,7 +1572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3067637727069893543, guid: 7c9c77a74c973414da3a0fbae4f80cd5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -264
+      value: -273
       objectReference: {fileID: 0}
     - target: {fileID: 3067637727069893543, guid: 7c9c77a74c973414da3a0fbae4f80cd5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2746,5 +2750,6 @@ MonoBehaviour:
   lifeMinColorValueOffset: 0.1
   lives: {fileID: 7439949787003724070}
   level: {fileID: 8243343345774379984}
+  lifeLostAlpha: 0.2
   _life: {fileID: 2616356144667871843, guid: c74efa2c999ce67478f564bd3d19edfa, type: 3}
   progress: {fileID: 1213316748045299313}

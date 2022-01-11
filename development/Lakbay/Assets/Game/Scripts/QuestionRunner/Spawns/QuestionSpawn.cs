@@ -20,15 +20,23 @@ using Ph.CoDe_A.Lakbay.Core;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
     using Core;
+    using UnityEngine.Localization;
 
     [RequireComponent(typeof(Collider))]
     public class QuestionSpawn : QRSpawn {
         public float progressUpdateDuration = 0.5f;
-        public float delayBeforeResuming = 0f;
+        public float delayBeforeResuming = 2f;
         public Question question;
         public bool triggered = false;
         public bool handled = false;
         public AudioSource _sound;
+        [Space]
+        public AudioSource correctSound;
+        public AudioSource wrongSound;
+        public LocalizedString correctMessage;
+        public LocalizedString wrongMessage;
+
+        [Space]
         public UnityEvent onTrigger = new UnityEvent();
 
         public override void OnTriggerEnter(Collider collider) {
@@ -68,6 +76,19 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         progressUpdateDuration
                     );
                     qw.Hide();
+                    bool correct = qw.question.correct;
+                    float dismiss = delayBeforeResuming * 0.98f;
+                    player?.notification?.ShowAutoDismiss(
+                        correct ? correctMessage : wrongMessage,
+                        autoDismiss: dismiss
+                    );
+                    AudioSource sound = null;
+                    if(correct) {
+                        sound = Instantiate(correctSound, player.transform);
+                    } else sound = Instantiate(wrongSound, player.transform);
+                    sound.Play();
+                    Destroy(sound.gameObject, dismiss);
+
                     player?.Invoke("Resume", delayBeforeResuming);
                 });
 

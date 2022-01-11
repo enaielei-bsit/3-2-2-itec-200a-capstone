@@ -36,10 +36,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     if(player.camera) {
                         var lck = player.camera.GetComponent<CinemachineLock>();
                         if(!lck.zPosition.locked) {
-                            if(Session.qrLevelIndex != Session.qrLevels.Count - 1)
-                                player.Invoke("Proceed", delay);
-                            else player.qrPostPlayUI?.Invoke("Show", delay);
-                            
+                            player.qrPostPlayUI?.Invoke("Show", delay);
                             player.travel?.Invoke("StopPerforming", delay);
                             lck.zPosition.Lock(player.camera.transform.position.z);
                         }

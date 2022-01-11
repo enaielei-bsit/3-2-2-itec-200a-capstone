@@ -44,7 +44,7 @@ namespace Ph.CoDe_A.Lakbay {
         public static int qrScore => qrLevels.Sum((l) => l.score);
         public static int qrMaxScore => qrLevels.Sum((l) => l.maxScore);
         public static int qrPassingScore => qrLevels.Sum((l) => l.passingScore);
-        public static bool qrPassed => qrScore >= qrPassingScore;
+        public static bool qrPassed => qrLevels.All((l) => l.passed);
 
 
         public static SABBLevel sabbLevel;

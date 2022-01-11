@@ -154,5 +154,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             return new string[] {content.ToString(), choices.Join("\n")}
                 .Join("\n");
         }
+
+        public virtual void MarkAsCorrect() {
+            ClearAnswers();
+            AddAnswer(choices.Where((c) => c.correct));
+        }
     }
 }

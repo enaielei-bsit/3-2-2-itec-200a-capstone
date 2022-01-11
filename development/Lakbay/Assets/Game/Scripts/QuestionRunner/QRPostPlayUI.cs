@@ -16,6 +16,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.QuestionRunner {
     using TMPro;
+    using UnityEngine.Localization.Components;
     using Utilities;
 
     public class QRPostPlayUI : Core.PostPlayUI {
@@ -41,10 +42,23 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public RectTransform passedRemark;
         public RectTransform failedRemark;
 
+        [Header("Summary")]
+        public Button summary;
+        public Button overallSummary;
+        public LocalizeStringEvent message;
+        
+        protected int _score = 0;
+        public virtual int score => _score;
+        
+        protected int _maxScore = 0;
+        public virtual int maxScore => _maxScore;
+
         public virtual void Show() {
             if(!gameObject.activeSelf) {
+                summary?.gameObject.SetActive(false);
+                overallSummary?.gameObject.SetActive(false);
+                BuildSummary();
                 gameObject.SetActive(true);
-                Build();
             }
         }
 
@@ -54,13 +68,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Build() {
+        public virtual void Build(params QRLevel[] levels) {
             if(ratings && _filledRating && _emptyRating) {
                 if(Application.isPlaying) ratings.transform.DestroyChildren();
                 else ratings.transform.DestroyChildrenImmediately();
 
-                int score = player ? player.score : 0;
-                int maxScore = player ? player.maxScore : 1;
+                _score = levels.Sum((l) => l.score);
+                _maxScore = levels.Sum((l) => l.maxScore);
                 float part = maxScore / (float) maxRating;
                 for(int i = 0; i < maxRating; i++) {
                     if(score != 0 && score < (part * (i + 1))) {
@@ -73,11 +87,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 if(Application.isPlaying) reviews.transform.DestroyChildren();
                 else reviews.transform.DestroyChildrenImmediately();
 
-                var levels = Session.qrLevels.Select(
+                var levels_ = levels.Select(
                     (l) => l.spawned.Select((s) => l.questions[s]));
                 
                 int count = 0;
-                foreach(var level in levels) {
+                foreach(var level in levels_) {
                     foreach(var question in level) {
                         count++;
                         var _review = question.correct
@@ -94,11 +108,32 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
                 }
             }
 
-            passedRemark?.gameObject.SetActive(Session.qrPassed);
-            failedRemark?.gameObject.SetActive(!Session.qrPassed);
+            bool passed = levels.All((l) => l.passed);
+            passedRemark?.gameObject.SetActive(passed);
+            failedRemark?.gameObject.SetActive(!passed);
 
-            proceed?.gameObject.SetActive(Session.qrPassed);
-            retry?.gameObject.SetActive(!Session.qrPassed);
+            proceed?.gameObject.SetActive(passed);
+            retry?.gameObject.SetActive(!passed);
+        }
+
+        public virtual void BuildSummary() {
+            Build(Session.qrLevel);
+            summary?.gameObject.SetActive(
+                Session.qrLevelIndex == Session.qrLevels.Count - 1);
+            overallSummary?.gameObject.SetActive(false); 
+            message?.RefreshString();
+        }
+
+        public virtual void BuildOverallSummary() {
+            Build(Session.qrLevels.ToArray());
+            summary?.gameObject.SetActive(false);
+            overallSummary?.gameObject.SetActive(true);
+            message?.RefreshString();
+        }
+
+        public virtual void Restart() {
+            player?.Restart(
+                Session.qrLevelIndex != Session.qrLevels.Count() - 1);
         }
     }
 }

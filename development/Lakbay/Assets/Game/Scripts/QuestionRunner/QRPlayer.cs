@@ -40,6 +40,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public virtual int maxScore => Session.qrMaxScore;
 
         [Header("Level")]
+        public MessageBoxUI notification;
         public MessageBoxUI messageBoxUI;
         public GameMenuUI gameMenuUI;
         public GameOverUI gameOverUI;

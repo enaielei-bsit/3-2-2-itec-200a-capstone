@@ -47,7 +47,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void Show(string message) => Show(
             message, MessageBox.Message);
         
-        public virtual void Show(float animation=2.0f) {
+        public virtual void Show(float animation=0.25f) {
             gameObject.SetActive(true);
             root?.gameObject.SetActive(true);
             if(root) {
@@ -64,7 +64,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             UnityAction onOkay=default,
             UnityAction onYes=default,
             UnityAction onNo=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(animation);
             if(message != null) messageEvent.StringReference = message;
@@ -79,7 +79,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             UnityAction onOkay=default,
             UnityAction onYes=default,
             UnityAction onNo=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(animation);
             OnUpdateMessage(message);
@@ -90,7 +90,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void ShowMessage(
             LocalizedString message,
             UnityAction onOkay=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, onOkay: onOkay, animation: animation);
         }
@@ -98,7 +98,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void ShowMessage(
             string message,
             UnityAction onOkay=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, onOkay: onOkay, animation: animation);
         }
@@ -107,7 +107,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             LocalizedString message,
             UnityAction onYes=default,
             UnityAction onNo=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, MessageBox.Confirmation,
                 onYes: onYes, onNo: onNo, animation: animation);
@@ -117,7 +117,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
             string message,
             UnityAction onYes=default,
             UnityAction onNo=default,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, MessageBox.Confirmation,
                 onYes: onYes, onNo: onNo, animation: animation);
@@ -126,7 +126,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void ShowAutoDismiss(
             LocalizedString message,
             float autoDismiss=5.0f,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, MessageBox.AutoDismiss,
                 autoDismiss, animation: animation);
@@ -135,7 +135,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual void ShowAutoDismiss(
             string message,
             float autoDismiss=5.0f,
-            float animation=2.0f
+            float animation=0.25f
         ) {
             Show(message, MessageBox.AutoDismiss, autoDismiss);
         }

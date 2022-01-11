@@ -54,9 +54,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             / (float) questions.Count;
         public virtual int score => questions.Count((q) => q.correct);
         public virtual int maxScore => questions.Count;
-        public virtual int passingScore => Mathf.Max(
+        public virtual int passingScore => Mathf.Min(
             Mathf.CeilToInt(maxScore * passingScorePercentage), maxScore
         );
+        public virtual bool passed => score >= passingScore; 
         [HideInInspector]
         public int lastStop = 0;
         [HideInInspector]

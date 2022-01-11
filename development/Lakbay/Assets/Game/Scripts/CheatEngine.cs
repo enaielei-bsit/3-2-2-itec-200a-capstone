@@ -62,7 +62,7 @@ namespace Ph.CoDe_A.Lakbay {
         public override void Update() {
             base.Update();
             if(!_ready) return;
-            group.blocksRaycasts = false;
+            // group.blocksRaycasts = false;
             if(!Debug.isDebugBuild) {
                 group.alpha = 0.0f;
                 group.interactable = false;
@@ -92,6 +92,15 @@ namespace Ph.CoDe_A.Lakbay {
             root.transform.DestroyChildren();
             if(scene == BuiltScene.QuestionRunner) {
                 _qrText = Instantiate(_text, root.transform);
+                var button = Instantiate(_button, root.transform);
+                button.onClick.AddListener(() => {
+                    foreach(var question in Session.qrLevel.questions) {
+                        question.MarkAsCorrect();
+                    }
+                    FindObjectOfType<QRPlayer>().Proceed();
+                });
+                var text = button.GetComponentInChildren<TextMeshProUGUI>();
+                text?.SetText("Advance to next level");
             } else if(scene == BuiltScene.Blowbagets) {
                 
             }
