@@ -79,12 +79,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5484bd5c0d696d4db0dc3378678f898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuild:
+    m_PersistentCalls:
+      m_Calls: []
   prePlayUI: {fileID: 0}
   gameMenuUI: {fileID: 0}
   debug: 0
   inGameUI: {fileID: 0}
   gameOverUI: {fileID: 0}
   targetRotationIsBothWays: 1
-  targetPositionOffset: 1.5
+  targetPositionOffset: 1
   targetRotationOffset: 5
   arrowGuide: {fileID: 0}
+  parkedCorrectly:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  didntHitCar:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  hitCar:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1

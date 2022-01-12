@@ -42,6 +42,8 @@ namespace Ph.CoDe_A.Lakbay {
         [SerializeField]
         protected SettingsController _settingsController;
         [SerializeField]
+        protected CheckpointController _checkpointController;
+        [SerializeField]
         protected CheatEngine _cheatEngine;
 
         public override void Awake() {
@@ -113,6 +115,14 @@ namespace Ph.CoDe_A.Lakbay {
                 Session.settingsController.gameObject.MakePersistent();
                 Session.settingsController.Load();
                 SceneManager.sceneUnloaded += SaveSettings;
+            }
+
+            Session.checkpointController =
+                _checkpointController ? _checkpointController.EnsureInstance() : default;
+            if(Session.checkpointController) {
+                Session.checkpointController.gameObject.MakePersistent();
+                Session.checkpointController.Load();
+                // SceneManager.sceneUnloaded += Savecheckpoint;
             }
 
             Session.cheatEngine =

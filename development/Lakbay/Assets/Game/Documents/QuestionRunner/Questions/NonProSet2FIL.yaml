@@ -1,245 +1,217 @@
 -
     content:
-        - Nagkakarooon ng di-pagkakaunawaan sa mga motorista kapag?
+        - Sa isang mahabang biyahe, ano ang dapat mong gawin kung ikaw ay pagod o inaantok?
     choices:
         -
             correct: true
-            text: Kapag may nagsimulang magkompronta sa kanila
+            text: Iparada sa angkop na hintuan ng pahinga at mag-idlip ng ilang minuto.
         -
             correct: false
-            text: Kapag walang may nagkompronta sa kanila
+            text: Pumarada, kahit saan mo gusto.
         -
             correct: false
-            text: Kapag wala sa kanila ang may alam sa batas-trapiko
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/Stop.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang dapat nating gawin kapag nakita natin ang karatulang ito?
-    choices:
-        -
-            correct: false
-            text: 'Huminto, Tumingin, at Makinig'
-        -
-            correct: true
-            text: Huminto lamang kapag may mga batang tatawid
-        -
-            correct: false
-            text: Huminto lamang kapag may trapiko
+            text: Magpatuloy sa pagmamaneho.
 -
     content:
         - >-
-            Nagreseta ang iyong doktor ng gamot, bakit kailangang tanungin kung
-            ano ang magiging epekto nito sa iyo?
+            Anong senyales ng kamay ang dapat ibigay ng tsuper kapag gusto niyang kumaliwa? 
     choices:
+        -
+            correct: true
+            text: Ang kaliwang braso ay nakahawak nang tuwid nang pahalang.
         -
             correct: false
             text: >-
-                Ang gamot na iyong iinumin ay maaring makaapekto sa iyong
-                pandinig
+                Ang kanang braso ay nakahawak nang patayo.
         -
             correct: false
-            text: Kailangang malaman ito ng iyong insurance company
-        -
-            correct: true
-            text: May ilang mga gamot na makakapagpabagal ng iyong reaksyon
+            text: Ang kanang braso ay nakahawak nang tuwid nang pahalang.
 -
     content:
         - >-
-            Ano ang ibig sabihin kapag itinapat ng ibang driver ang kanilang
-            headlight sa iyo?
-    choices:
-        -
-            correct: false
-            text: Na pinapadaan ka nila
-        -
-            correct: false
-            text: Na mayroong radar speed trap sa unahan
-        -
-            correct: true
-            text: Na nagpapahiwatig na sila ay nariyan
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/SharpTurnLeft.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng karatulang ito?
+            Mga karatulang ginagamit upang bigyan ng babala ang mga motorista sa mga posibleng mapanganib na kondisyon sa katabi ng kalsada ay tinatawag na:
     choices:
         -
             correct: true
-            text: Steep left curve
+            text: Mga palatandaan ng pag-iingat o babala.
         -
             correct: false
-            text: Bawal kumaliwa
+            text: Babala na tumigil.
         -
             correct: false
-            text: Mapanganib sa kanan
+            text: Walang parking sign.
 -
     content:
         - >-
-            Habang nagpapalit ng linya, kailangan mong magbigay ng senyales,
-            i-check ang side at rear-view mirror, at?
-    choices:
-        -
-            correct: false
-            text: I-on ang headlight ng sasakyan
-        -
-            correct: false
-            text: Magmatyag sa mga paparating na mga sasakyan
-        -
-            correct: true
-            text: Magbusina
--
-    content:
-        - >-
-            Alin sa mga ito, kung napabayaan, ay maaaring maging sanhi ng isang
-            road crash?
-    choices:
-        -
-            correct: false
-            text: Lebel ng Air conditioning freon
-        -
-            correct: false
-            text: Lebel ng Radiator Water
-        -
-            correct: true
-            text: Lebel ng Brake fluid
--
-    content:
-        - >-
-            Ano ang dapat mong gawin kapag nai-pressure ng mga motorista sa
-            likuran mo upang mas mabilis na magmaneho?
+            Anong mga dokumento ang dapat dalhin ng isang driver sa lahat ng oras kapag siya ay nagmamaneho?
     choices:
         -
             correct: true
-            text: >-
-                Gamit ang direksyonal na signal, dahan-dahang pumunta sa vehicle
-                lane at magbigay-daan sa mga humaharurot na sasakyan
-        -
-            correct: false
-            text: Magpreno ng isa o dalawang beses habang paalis ng kalsada
-        -
-            correct: false
-            text: Paganahin ang switch hazard habang tumatakbo ng mabilis
--
-    content:
-        - >-
-            Ano ang dapat mong gawin kung maraming sasakyan ang dumadaan sa
-            iyong kaliwa?
-    choices:
-        -
-            correct: false
-            text: Huminto at hintaying dumaan ang sasakyan
-        -
-            correct: true
-            text: >-
-                Panatilihin o bahagyang bawasan ang bilis at panatilihin nasa
-                kanan ang sasakyan
-        -
-            correct: false
-            text: Bawasan ang bilis at magpalit ng linya
--
-    content:
-        - >-
-            Ano ang patakaran ng right-of-way bago pumasok sa sa pampublikong
-            kalsada, alley, at pribadong kalsada?
-    choices:
-        -
-            correct: true
-            text: >-
-                Ang sasakyan ay dapat huminto at ibigay ang right-of-way sa
-                trapiko, sa daanan at sa mga naglalakad
+            text: Lisensya, Certificate of Registration, at kasalukuyang Opisyal na Resibo (OR/CR)
         -
             correct: false
             text: >-
-                Ang sasakyan ay may right-of-way sa lahat ng direksyon sa
-                kalsada
+                Sertipiko ng kapanganakan
+        -
+            correct: false
+            text: Sertipiko ng Kasal
+-
+    content:
+        - >-
+            Sa isang toll gate, ang isang pulang X light/sign ay nangangahulugang?
+    choices:
+        -
+            correct: true
+            text: Hindi ka maaaring magmaneho sa lane na ito.
+        -
+            correct: false
+            text: Maaari kang magpatuloy sa pagmamaneho.
+        -
+            correct: false
+            text: Ihinto ang sasakyan.
+-
+    content:
+        - >-
+            Ano ang dapat mong gawin kapag tumatawid ka sa isang riles at WALANG mga kagamitang babala?
+    choices:
+        -
+            correct: true
+            text: Dahan-dahan, suriin ang magkabilang gilid ng kalsada pagkatapos ay magpatuloy nang may pag-iingat kung malinaw.
         -
             correct: false
             text: >-
-                Ang sasakyan ay may right-of-way sa trapiko lalo na sa kaliwang
-                bahagi ng daan
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/OpeningBridge.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng karatulang ito?
-    choices:
+                Tumawid nang hindi nagsusuri.
         -
             correct: false
-            text: Broken bridge
-        -
-            correct: true
-            text: Swing bridge
-        -
-            correct: false
-            text: Narrow bridge
+            text: Baliktarin ang iyong sasakyan.
 -
     content:
         - >-
-            Kung may nakitang bola mula likod ng nakaparadang sasakyan, maaaring
-            may batang nakasunod doon. Ano ang iyong gagawin?
+            Kailan mo kailangang gumawa ng isang "full stop"?
     choices:
         -
-            correct: false
-            text: Bilisan ang pagpapatakbo
-        -
             correct: true
-            text: Bagalan ang takbo
+            text: Sa pulang na ilaw ng trapiko.
         -
             correct: false
-            text: Magbusina at panatilihin ang bilis ng takbo
--
-    content:
-        - Ang Student-driver's Permit ay tumatagal lamang ng?
-    choices:
+            text: Sa berdeng ilaw ng trapiko.
         -
             correct: false
-            text: Anim na buwan
-        -
-            correct: true
-            text: Isang taon
-        -
-            correct: false
-            text: Siyamnapung araw
+            text: Sa dilaw na ilaw ng trapiko.
 -
     content:
         - >-
-            Ikaw ay nasa expressway at malapit na sa tollgate. May mga
-            umiilaw-ilaw na pula sa taas ng lane dapat kang?
+            Upang protektahan ang mga sakay ng motorsiklo sa lahat ng oras, dapat silang magsuot ng?
     choices:
         -
-            correct: false
-            text: Huminto sa lay-by
-        -
-            correct: false
-            text: Huminto at mag-reverse
-        -
             correct: true
-            text: Huminto at maghintay
+            text: Magsuot ng helmet (ICC at PS stickers) at full-body gear para sa karagdagang proteksyon.
+        -
+            correct: false
+            text: >-
+                Magmaneho nang walang helmet.
+        -
+            correct: false
+            text: Magmaneho nang mabilis hanggang maaari.
 -
     content:
-        -
-            image:
-                path: Assets/Game/Images/NoParkingAnytime.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng karatulang ito?
+        - >-
+            Ang isang driver sa isang highway ay dapat magbigay ng right-of-way sa?
     choices:
         -
+            correct: true
+            text: Mga sasakyan ng pulis, trak ng bumbero, at mga ambulansya.
+        -
             correct: false
-            text: Maaring pumarada sa mga araw na nakalagay
+            text: Tricycle, motorbike, at skateboards.
+        -
+            correct: false
+            text: Mga pribadong sasakyan.
+-
+    content:
+        - >-
+            Ano ang dapat mong gawin kung gusto mong bumagal o huminto?
+    choices:
         -
             correct: true
-            text: Bawal pumarada sa lahat ng panahon
+            text: Pindutin nang bahagya ang iyong mga preno upang i-activate ang mga ilaw ng preno.
         -
             correct: false
-            text: Bawal pumarada mula Lunes hanggang Biyernes
+            text: >-
+                Tutugin mo ang iyong busina.
+        -
+            correct: false
+            text: Magsenyas ng ibang sasakyan.
+-
+    content:
+        - >-
+            Sa isang aksidente sa kalsada na kinasasangkutan ng isang pedestrian, ano ang dapat mong gawin?
+    choices:
+        -
+            correct: true
+            text: Huminto at suriin ang Sitwasyon upang magbigay ng tulong at huwag hawakan  walang malay o nasugatan na tao.
+
+        -
+            correct: false
+            text: Tumawag ng ambulansya.
+        -
+            correct: false
+            text: Itabi ang sasakyan.
+-
+    content:
+        - >-
+            Ang paggamit ng mobile phone habang nagmamaneho ay ipinagbabawal dahil?
+    choices:
+        -
+            correct: true
+            text: Nakakaabala ito sa iyong atensyon habang nagmamaneho.
+        -
+            correct: false
+            text: >-
+                Ito ay kasiya-siya.
+        -
+            correct: false
+            text: Makakatulong ito sa iyo na mag-focus.
+-
+    content:
+        - >-
+            Ano ang dapat gawin ng tsuper habang nagmamaneho sa basang kalsada?
+    choices:
+        -
+            correct: true
+            text: Magdahan-dahan at gawin ang mga kinakailangang pag-iingat.
+        -
+            correct: false
+            text: Bilisan ang pagmaamneho.
+        -
+            correct: false
+            text: Mag-overtake sa ibang sasakyan.
+-
+    content:
+        - >-
+            Kailan dapat suriin ang langis ng makina ng motorsiklo?
+    choices:
+        -
+            correct: true
+            text: Regular na mapanatili ang kondisyon ng sasakyan.
+        -
+            correct: false
+            text: Isang beses sa isang taon.
+        -
+            correct: false
+            text: Hindi ito mahalaga.
+-
+    content:
+        - >-
+            Ang mga turn signal light ay ginagamit upang?
+    choices:
+        -
+            correct: true
+            text: Gawing malinaw ang iyong direksyon sa pagliko sa mga tsuper at iba pang gumagamit ng kalsada.
+        -
+            correct: false
+            text: >-
+                Lumiko ka lang sa anumang direksyon na gusto mo.
+        -
+            correct: false
+            text: Senyasan ang driver na mag-iiba ka ng direksyon ngunit huwag itong linawin.

@@ -287,11 +287,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10129897862987776
-    m_Localized: 'Welcome to Question Runner!
-
-      This phase of the game introduces
-      you to an Endless Runner like gameplay. You will face levels with a different
-      set of questions.'
+    m_Localized: Welcome! you are in the  Question Runner Phase. This phase is like
+      an Endless Runner type of game. Answer the given number of questions per level.
     m_Metadata:
       m_Items: []
   - m_Id: 10131744384352256
@@ -327,6 +324,124 @@ MonoBehaviour:
     m_Localized: Wrong!
     m_Metadata:
       m_Items: []
+  - m_Id: 10379785800515584
+    m_Localized: Welcome to Stepped Application! In this phase of the game, you will
+      be tested with different driving rules and regulations on the road. Perform
+      the given application and Good Luck!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10389310809047040
+    m_Localized: What happened?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10398454458875904
+    m_Localized: You parked the car properly in its place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10399503743713280
+    m_Localized: You hit a car on your way to the parking location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10404098381447168
+    m_Localized: You did not hit a car on your way to the parking location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10412908831571968
+    m_Localized: You performed a three-point turn maneuver.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10417464466472960
+    m_Localized: You hit the leading vehicle in front of you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10417724370714624
+    m_Localized: You were too close to the leading vehicle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10418492897230848
+    m_Localized: You followed properly the leading vehicle while maintaining the
+      right distance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10418735294447616
+    m_Localized: You did not follow the leading vehicle in front of you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10421665774960640
+    m_Localized: You did not use the appropriate signal light while making the turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10422310783418368
+    m_Localized: You hit a pedestrian on your way to the location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10442942229250048
+    m_Localized: Slow down, maintain your speed around {0.slowdownMaxSpeed}km/hr,
+      and prepare to stop.
+    m_Metadata:
+      m_Items:
+      - id: 1
+  - m_Id: 10444411502329856
+    m_Localized: Accelerate and go!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10445842431082496
+    m_Localized: Full brakes and stay in your place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10463489382154240
+    m_Localized: You were not able to slowdown to the said speed when the traffic
+      signal went yellow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10463768110432256
+    m_Localized: You did not accelerate when the traffic signal went green.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10464455334559744
+    m_Localized: You did not fully stop when the traffic signal went red.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10464640391446528
+    m_Localized: You did not follow the traffic signals.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10467172383719424
+    m_Localized: You slowdown to the target when the traffic signal went yellow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10467434494164992
+    m_Localized: You did a full stop when the traffic light went red.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10467623678246912
+    m_Localized: You accelerated when the traffic signal went green.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10505899084611584
+    m_Localized: '{0.level:choose(0|1|2|3):|{1}|{2}|{2}}'
+    m_Metadata:
+      m_Items:
+      - id: 1
+  - m_Id: 10506733537198080
+    m_Localized: Identify the Road Traffic Signs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10529799457734656
+    m_Localized: 'The game has detected that you have an unfinished progress.
+
+      Do
+      you want to play using this checkpoint?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10534931054460928
+    m_Localized: You didn't hit a pedestrian on your way to the location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10535355480276992
+    m_Localized: You used the appropriate signal lights on the turns needed.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
@@ -334,4 +449,4 @@ MonoBehaviour:
     00000001:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00908ef29cff03000090ce66f74d04000090ce963a5100000000fc62521c1f0000003cc901182400
+        m_Entries: 00908ef29cff03000090ce66f74d04000090ce963a5100000000fc62521c1f0000003cc9011824000000fcf5cc1925000000fc3e0f532500

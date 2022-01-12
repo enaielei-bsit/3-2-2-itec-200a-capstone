@@ -48,6 +48,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 }
                 var old = _state;
                 _state = value;
+                if(state == State.Green) onGreen?.Invoke(this);
+                if(state == State.Yellow) onYellow?.Invoke(this);
+                if(state == State.Red) onRed?.Invoke(this);
+                if(state == State.None) onNone?.Invoke(this);
                 if(value != state) {
                     onStateChange?.Invoke(this, old, state);
                 }
@@ -57,9 +61,15 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public virtual float duration => _duration;
         protected float _elapsedTime = 0.0f;
         public virtual float elapsedTime => _elapsedTime;
+        public virtual float progress => duration > 0 ? elapsedTime / duration : 0.0f;
 
         public UnityEvent<TrafficLight, State, State> onStateChange = new UnityEvent<TrafficLight, State, State>();
         public UnityEvent<TrafficLight, State, State> onStateFinish = new UnityEvent<TrafficLight, State, State>();
+        public UnityEvent<TrafficLight> onGreen = new UnityEvent<TrafficLight>();
+        public UnityEvent<TrafficLight> onYellow = new UnityEvent<TrafficLight>();
+        public UnityEvent<TrafficLight> onRed = new UnityEvent<TrafficLight>();
+        public UnityEvent<TrafficLight> onNone = new UnityEvent<TrafficLight>();
+        public UnityEvent<float> onProgress = new UnityEvent<float>();
 
         public virtual void ToggleState(State state, float duration) {
             if(_setState != null) StopCoroutine(_setState);
@@ -76,6 +86,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 onProgress: (d, e) => {
                     _duration = d;
                     _elapsedTime = e;
+                    onProgress?.Invoke(progress);
                     return Time.deltaTime;
                 },
                 onFinish: (d, e) => {

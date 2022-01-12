@@ -16,10 +16,33 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking {
     using Core;
+    using UnityEngine.Localization;
 
     public class SABIAPPlayer : SAVehicleParkingPlayer {
+        [Header("Messages")]
+        public LocalizedString parkedCorrectly;
+        public LocalizedString didntHitCar;
+        public LocalizedString hitCar;
+        
         public override void Proceed() {
             LoadScene(BuiltScene.ThreePointTurn);
+        }
+
+        public override void OnPark() {
+            base.OnPark();
+            Session.checkpointController?.SaveCheckpoint(
+                new Checkpoint(Session.mode, BuiltScene.ThreePointTurn)
+            );
+            gameOverUI?.ShowPassed(
+                parkedCorrectly, didntHitCar
+            );
+        }
+
+        public override void OnObstacleHit() {
+            base.OnObstacleHit();
+            gameOverUI?.ShowFailed(
+                hitCar
+            );
         }
     }
 }

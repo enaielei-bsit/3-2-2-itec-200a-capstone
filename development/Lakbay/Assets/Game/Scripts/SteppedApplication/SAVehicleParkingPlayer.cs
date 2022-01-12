@@ -44,9 +44,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 if(!hitObstacle && !doneParking) {
                     _hitObstacle = true;
                     if(vehicle) Reset();
-                    gameOverUI?.gameObject.SetActive(true);
+                    // gameOverUI?.gameObject.SetActive(true);
+                    OnObstacleHit();
                 }
             }
+        }
+
+        public virtual void OnObstacleHit() {
+
         }
 
         public override void OnTriggerEnter(Collider collider) {
@@ -68,7 +73,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                     _doneParking = true;
                     Reset();
                     inGameUI?.gameObject.SetActive(false);
-                    Invoke("Proceed", 3.0f);
+                    Reset();
+                    OnPark();
                 }
             }
         }
@@ -135,6 +141,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                     weight = 1,
                 });
             }
+        }
+
+        public virtual void OnPark() {
+
         }
     }
 }

@@ -18,6 +18,7 @@ using Utilities;
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
     using Utilities;
     using Core;
+    using UnityEngine.Localization;
 
     public class SATGPlayer : SAVehiclePlayer {
         protected bool _failed = false;
@@ -34,12 +35,19 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public FrontVehicle frontVehicle;
         public List<LandmarkTrigger> triggers = new List<LandmarkTrigger>();
 
+        [Header("Messages")]
+        public LocalizedString hitLeading;
+        public LocalizedString redZone;
+        public LocalizedString followedProperly;
+        public LocalizedString didntFollow;
+
         public override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
             var trigger = collision.collider.GetTrigger<ObstacleTrigger>();
             if(trigger && !failed && !done) {
                 _failed = true;
                 TriggerGameOver();
+                gameOverUI?.ShowFailed(hitLeading);
             }
         }
 
@@ -49,6 +57,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             if(trigger && !failed && !done) {
                 _failed = true;
                 TriggerGameOver();
+                gameOverUI?.ShowFailed(
+                    redZone
+                );
             }
 
             if(!failed) {
@@ -63,7 +74,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
                     }
                     frontVehicle.StopTravel();
                     frontVehicle.StopCountdown();
-                    Invoke("Proceed", 3.0f);
+                    // Invoke("Proceed", 3.0f);
+                    Session.checkpointController?.SaveCheckpoint(
+                        new Checkpoint(Session.mode, BuiltScene.RightOfWay)
+                    );
+                    gameOverUI?.ShowPassed(
+                        followedProperly
+                    );
                 }
             }
         }
@@ -86,6 +103,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
                     if(distance > max && !failed && !done) {
                         _failed = true;
                         TriggerGameOver();
+                        gameOverUI?.ShowFailed(
+                            didntFollow
+                        );
                     }
                 }
             }
@@ -95,7 +115,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             frontVehicle.StopTravel();
             frontVehicle.StopCountdown();
             Reset();
-            gameOverUI?.gameObject.SetActive(screen);
+            // gameOverUI?.gameObject.SetActive(screen);
         }
 
         public virtual void TriggerGameOver() => TriggerGameOver(true);

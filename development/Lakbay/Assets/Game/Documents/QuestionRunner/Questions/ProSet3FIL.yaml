@@ -1,18 +1,133 @@
 -
     content:
-        - >-
-            Ito ay awtorisadong ibinigay ng LTO sa isang tao sa legal na
-            pagmamaneho ng pampribado at pampublikong sasakyan
+        - Ang ibig sabihin ng luntiang ilaw ng trapiko ay?
     choices:
         -
-            correct: false
-            text: Certificate of public convenience
+            correct: true
+            text: Ang mga sasakyang lumiliko sa direksyong iyon ay magpapatuloy.
         -
             correct: false
-            text: Certificate of registration
+            text: Dapat huminto ang sasakyan.
+        -
+            correct: false
+            text: Dapat bumagal ang sasakyan.
+-
+    content:
+        - Anong mga sasakyan ang pinapayagang gumamit ng pula at asul na kumikislap na ilaw (blinker)?
+    choices:
         -
             correct: true
-            text: Driver's license
+            text: Ang mga pulis ay nagpapatrol at awtorisadong sasakyan ng Traffic Enforcer.
+        -
+            correct: false
+            text: Sasakyang pang-gobyerno.
+        -
+            correct: false
+            text: Pribadong sasakyan.
+-
+    content:
+        - Kung ang isang driver ay nagpapatakbo ng isang de-motor na sasakyan na may kumikislap/nagpapatakbo/nagkislap na ilaw ng preno siya ay huhulihin para sa?
+    choices:
+        -
+            correct: true
+            text: Ilegal na pagbabago.
+        -
+            correct: false
+            text: Legal na pagbabago.
+        -
+            correct: false
+            text: Pagnanakaw.
+-
+    content:
+        - Ipinapakita nito ang engine revolution per minute (RPM).
+    choices:
+        -
+            correct: true
+            text: Takometer
+        -
+            correct: false
+            text: Speedometer
+        -
+            correct: false
+            text: Gas
+-
+    content:
+        - Huwag kailanman pumarada o huminto sa gilid ng kalsada sa loob ng _______ mula sa isang fire hydrant.
+    choices:
+        -
+            correct: true
+            text: 4 na metro
+        -
+            correct: false
+            text: 7 na metro
+        -
+            correct: false
+            text: 12 na metro
+-
+    content:
+        - Ito ay isa sa mga kinakailangan sa pagpapatakbo ng taxi?
+    choices:
+        -
+            correct: true
+            text: Inaprubahan ng LTFRB ang metro ng taxi na may selyo.
+        -
+            correct: false
+            text: Sense of Humor.
+        -
+            correct: false
+            text: Mabuting kalusugan.
+-
+    content:
+        - Ano ang mga pangunahing bahagi ng sistema ng pagpipiloto??
+    choices:
+        -
+            correct: true
+            text: Tie rod, box, pump, at mga linkage.
+        -
+            correct: false
+            text: Mga screwdriver at bolts.
+        -
+            correct: false
+            text: Martilyo at pako.
+-
+    content:
+        - Ano ang layunin ng mata ng pusa sa kalsada??
+    choices:
+        -
+            correct: true
+            text: Naka-install bilang kapalit sa mga sirang linya.
+        -
+            correct: false
+            text: Naka-install na kapalit sa mga tuwid na linya.
+        -
+            correct: false
+            text: Naka-install na kapalit sa mga kurbadong linya.
+-
+    content:
+        - Kapag nagmamaneho sa loob ng school zone, ang maximum na pinapahintulutang bilis ay?
+    choices:
+        -
+            correct: true
+            text: 20 kph
+        -
+            correct: false
+            text: 40 kph
+        -
+            correct: false
+            text: 80 kph
+-
+    content:
+        - Ano ang dapat mong gawin kung mali ang iyong pagliko sa isang one-way na kalsada?
+    choices:
+        -
+            correct: true
+            text:  I-back up kung maaari o ligtas na mag-U-turn.
+        -
+            correct: false
+            text: Bumaba agad ng sasakyan.
+        -
+            correct: false
+            text: Pumarada sa gitna ng kalsada.
 -
     content:
         -
@@ -20,377 +135,179 @@
                 path: Assets/Game/Images/NoParkingAnytime.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng road sign na ito?
-    choices:
-        -
-            correct: false
-            text: Maaaring pumarada ng Lunes hanggang Biyernes
-        -
-            correct: false
-            text: Hindi pwedeng pumarada
-        -
-            correct: true
-            text: Hindi pwedeng pumarada mula Lunes hanggang Biyernes
--
-    content:
-        - Ano ang unang hakbang sa pagtanggal ng trailer?
-    choices:
-        -
-            correct: false
-            text: Ibaba ang trailer legs at i-stow ang hawakan
-        -
-            correct: false
-            text: I-maneho ang tractor ng dahan-dahan at maayos
-        -
-            correct: true
-            text: Unahing i-secure ang the trailer brake
--
-    content:
-        - >-
-            Ano ang patakaran kapag ang traffic light ay steady green at steady
-            left/right arrow?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: >-
-                Ang mga sasakyan ay pwedeng dumiretso o ang mga nasa
-                kanan/kaliwa ay maaaring lumiko pakanan/pakaliwa
+            text: Bawal pumarada mula Lunes-Biyernes.
         -
             correct: false
-            text: Ang mga sasakyan sa kabila ay maaaring dumerecho
+            text: Maaring pumarada mula Lunes-Biyernes.
         -
             correct: false
-            text: Maaaring dumaan ang mga pedestrian
--
-    content:
-        - >-
-            Kung ikaw ay nagmamaneho na may anti-lock brake system, ano ang
-            gagawin mo sa pag-brake sa oras ng emergency?
-    choices:
-        -
-            correct: false
-            text: I-pump ang brake pedal ng maigi
-        -
-            correct: true
-            text: Mag-apply ng firm at tuloy-tuloy na pressure sa brake pedal
-        -
-            correct: false
-            text: Mag-apply ng minimum na pwersa sa brake pedal
+            text: Bawal pumarada.
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NextExit.png
+                path: Assets/Game/Images/SharpTurnLeft.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - >-
-            Ano ang ibig sabihin ng mga signs na ito pag nakita mo sa
-            expressway?
+        - Ano ang tawag sa babalang pantrapikong ito??
     choices:
         -
-            correct: false
-            text: 'Hinto, lahat ng lanes sa unahan ay sarado'
-        -
             correct: true
-            text: Ang susunod na labasan ay 15 kilometrp pa ang layo
+            text: Sharp Turn Left
         -
             correct: false
-            text: May sharp bend na naghihintay sa unahan
--
-    content:
-        - >-
-            Ano ang dapat mong gamiting gear sa pagbababa ng mga bata sa
-            eskwelahan?
-    choices:
+            text: Sharp Turn Right
         -
             correct: false
-            text: First gear
-        -
-            correct: false
-            text: Reverse gear
-        -
-            correct: true
-            text: Neutral
+            text: Sharp Left Curve
 -
     content:
         -
             image:
-                path: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
+                path: Assets/Game/Images/TJunctionAhead.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng road sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: May intersekyon na madadaanan sa unahan
-        -
             correct: true
-            text: May railroad crossing na madadaanan sa unahan
+            text: T Junction Ahead
         -
             correct: false
-            text: May river crossing na madadaanan sa unahan
+            text: Y Junction Ahead
+        -
+            correct: false
+            text: TY Junction Ahead
 -
     content:
         -
             image:
-                path: Assets/Game/Images/SpeedLimitDerestriction.png
+                path: Assets/Game/Images/YJunctionAhead.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng road sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Bagong speed limit na 50 kph
-        -
-            correct: false
-            text: Minimum na speed limit 60 kph
+            text: T Junction Ahead
         -
             correct: true
-            text: Huling 60 kph zone
--
-    content:
-        - >-
-            Hanggang kailan ang vaildity period ng Temporary Operators Permit
-            (TOP)?
-    choices:
+            text: Y Junction Ahead
         -
             correct: false
-            text: 3 araw mula sa araw ng aprehensiyon
-        -
-            correct: true
-            text: 72 hours mula sa oras ng aprehensiyon
-        -
-            correct: false
-            text: 15 days mula sa petsa ng aprehensiyon
--
-    content:
-        - Sa anong sitwasyon maaaring mag-swing ang isang trailer?
-    choices:
-        -
-            correct: false
-            text: Kapag ang trailer ay sobrang puno
-        -
-            correct: false
-            text: Kapag ang trailer ay hindi maayos
-        -
-            correct: true
-            text: Kapag ang trailer ay walang laman
--
-    content:
-        - Sa aling panukat nakikita ang fuel level ng sasakyan?
-    choices:
-        -
-            correct: false
-            text: Voltmeter
-        -
-            correct: false
-            text: Temperature gauge
-        -
-            correct: true
-            text: Fuel gauge
+            text: TY Junction Ahead
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoStoppingAnytime.png
+                path: Assets/Game/Images/UphillSign.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng traffic sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: Crossroad/interseksiyon
-        -
             correct: true
-            text: Bawal huminto anumang oras
+            text: Uphill Sign
         -
             correct: false
-            text: Rotonda
+            text: Downhill Sign
+        -
+            correct: false
+            text: TY Junction Ahead
+
+
+
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoLeftTurn.png
+                path: Assets/Game/Images/GreenSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng traffic sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: Bawal lumiko pakaliwa
+            text: Green Signal Light
         -
             correct: false
-            text: Bawal lumiko pakanan
+            text: Red Signal Light
         -
             correct: false
-            text: Bawal ang overtaking
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/Flood.png
+                path: Assets/Game/Images/RedSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Road ahead ends
+            text: Green Signal Light
         -
             correct: true
-            text: Road get flooded
+            text: Red Signal Light
         -
             correct: false
-            text: Uneven road surface
--
-    content:
-        - 'Maiiwasan at mababawasan ang road crashes kung ang drayber ay:'
-    choices:
-        -
-            correct: false
-            text: Kaskasero
-        -
-            correct: true
-            text: Marunong sumunod sa traffic signals at batas-trapiko
-        -
-            correct: false
-            text: Magaling magluto
--
-    content:
-        - >-
-            Saan dapat inilalagay ang mga mabibigat na bagahe kapag nagloload sa
-            sasakyan?
-    choices:
-        -
-            correct: true
-            text: Sa ilalim
-        -
-            correct: false
-            text: Sa gitna
-        -
-            correct: false
-            text: Sa itaas
--
-    content:
-        - >-
-            Ano ang ibig sabihin kapag ang headlights ay lumilinaw at dumidilim
-            kapag dinidiinan ang accelerator pedal?
-    choices:
-        -
-            correct: false
-            text: Battery overcharging
-        -
-            correct: false
-            text: Battery undercharging
-        -
-            correct: true
-            text: Battery dying
--
-    content:
-        - >-
-            May mga dayuhan na nagrereklamo sa overcharge na singil sa pamasahe.
-            Ano ang maaaring gawin dito?
-    choices:
-        -
-            correct: false
-            text: Huwag tumanggap ng dayuhang pasahero
-        -
-            correct: true
-            text: Umiwas sa pagkakasunduang pamasahe at sundin ang taxi meter
-        -
-            correct: false
-            text: Makipagkasundo sa singil ng pamasahe
--
-    content:
-        - Ano ang maipapayong gawin kapag magpaparada sa matataong lugar?
-    choices:
-        -
-            correct: true
-            text: Dapat na tingnan ng drayber kung naka-fold ang side mirrors
-        -
-            correct: false
-            text: Magparada sa intersection palayo sa pedestrian lane
-        -
-            correct: false
-            text: Magparada sa pedestrian lane
--
-    content:
-        - Ano ang ibig sabihin ng pavement marking na may dobleng solid line?
-    choices:
-        -
-            correct: true
-            text: Bawal mag-overtake at tumawid sa dalawang direksyon
-        -
-            correct: false
-            text: Bawal mag-overtake at tumawid sa isang direksyon
-        -
-            correct: false
-            text: Pwede ang pagtawid sa dalawang direksyon
--
-    content:
-        - >-
-            Bakit dapat na mas lalong maging alisto sa mga nakaparadang sasakyan
-            sa gabi?
-    choices:
-        -
-            correct: false
-            text: Maaaring lasing ang mga driver
-        -
-            correct: false
-            text: Maaaring masyadong marami ang nakaparada na sasakyan
-        -
-            correct: true
-            text: Maaari silang paandarin ng may-ari ano mang oras
--
-    content:
-        - Ano ang epekto ng pagsunod sa controlled hours?
-    choices:
-        -
-            correct: false
-            text: >-
-                Pagkakaroon ng mababang kita kaysa sa mga walang controlled
-                hours
-        -
-            correct: true
-            text: >-
-                Pagkakaroon ng mas mataas na kita kaysa sa mga walang controlled
-                hours
-        -
-            correct: false
-            text: Pagkakaroon ng parehas kita kaysa sa mga walang controlled hours
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoEntryForAll.png
+                path: Assets/Game/Images/YellowSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng road sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
+            correct: false
+            text: Green Signal Light
+        -
+            correct: false
+            text: Red Signal Light
+        -
             correct: true
-            text: Bawal pumasok
-        -
-            correct: false
-            text: Bawal pumarada
-        -
-            correct: false
-            text: Walang maayos na daanan
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoEntryForJeepneys.png
+                path: Assets/Game/Images/SlipperyWhenWet.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang ibig sabihin ng road sign na ito?
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: Bawal pumasok ang mga dyip
-        -
-            correct: true
-            text: Bawal pumasok ang malalaking sasakyan
+            text: Slippery when wet
         -
             correct: false
-            text: Bawal pumasok ang mga bus
+            text: Two-way Road Ahead
+        -
+            correct: false
+            text: T-Junction Ahead
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/TwoWayRoadAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito??
+    choices:
+        -
+            correct: false
+            text: Slippery when wet
+        -
+            correct: true
+            text: Two-way Road Ahead
+        -
+            correct: false
+            text: T-Junction Ahead

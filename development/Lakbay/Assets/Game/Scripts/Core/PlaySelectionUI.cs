@@ -12,16 +12,36 @@ using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core {
     public class PlaySelectionUI : Controller {
+        public Player player;
+        public MessageBoxUI message;
         public ToggleGroup group;
+
+        [Space]
+        public LocalizedString useCheckpoint;
 
         public new virtual IEnumerator Start() {
             base.Start();
             yield return new WaitUntil(() => Initialization.finished);
             group?.GetFirstActiveToggle().onValueChanged.Invoke(true);
+        }
+
+        public virtual void Play() {
+            if(Session.checkpointController.IsCheckpointValid()) {
+                message?.ShowConfirmation(
+                    useCheckpoint,
+                    onYes: () => Session.checkpointController.LoadCheckpoint(
+                        player
+                    ),
+                    onNo: () => player?.Play()
+                );
+            } else {
+                player?.Play();
+            }
         }
     }
 }

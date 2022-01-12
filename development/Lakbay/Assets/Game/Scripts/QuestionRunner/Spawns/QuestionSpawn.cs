@@ -30,7 +30,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         public bool triggered = false;
         public bool handled = false;
         public AudioSource _sound;
+
         [Space]
+        public Color correctColor;
+        public Color wrongColor;
         public AudioSource correctSound;
         public AudioSource wrongSound;
         public LocalizedString correctMessage;
@@ -78,10 +81,13 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     qw.Hide();
                     bool correct = qw.question.correct;
                     float dismiss = delayBeforeResuming * 0.98f;
-                    player?.notification?.ShowAutoDismiss(
+                    var notif = player?.notification;
+                    notif?.ShowAutoDismiss(
                         correct ? correctMessage : wrongMessage,
                         autoDismiss: dismiss
                     );
+                    if(notif) notif.message.color =
+                        correct ? correctColor : wrongColor;
                     AudioSource sound = null;
                     if(correct) {
                         sound = Instantiate(correctSound, player.transform);

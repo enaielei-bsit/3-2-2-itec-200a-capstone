@@ -1,18 +1,133 @@
 -
     content:
-        - >-
-            It is an authority granted by LTO in order to operate a private or
-            for hire/public utility vehicle
+        - A green arrow traffic light means?
     choices:
         -
-            correct: false
-            text: Certificate of public convenience
+            correct: true
+            text: Vehicles turning in that direction shall proceed.
         -
             correct: false
-            text: Certificate of registration
+            text: The vehicle must stop.
+        -
+            correct: false
+            text: The vehicle must slow down.
+-
+    content:
+        - What vehicles are allowed to use a red and blue flashing light (blinker)?
+    choices:
         -
             correct: true
-            text: Driver's license
+            text: Police patrols and authorized vehicles.
+        -
+            correct: false
+            text: Government cars.
+        -
+            correct: false
+            text: Private vehicles.
+-
+    content:
+        - If a driver operates a motor vehicle with a blinking/running/flashing brake light, he/she will be apprehended for?
+    choices:
+        -
+            correct: true
+            text: Illegal modification.
+        -
+            correct: false
+            text: Legal modification.
+        -
+            correct: false
+            text: Theft.
+-
+    content:
+        - It shows the engine revolution per minute (RPM).
+    choices:
+        -
+            correct: true
+            text: Tachometer
+        -
+            correct: false
+            text: Speedometer
+        -
+            correct: false
+            text: Gas Level
+-
+    content:
+        - Never Park or stop at the side of the road within _______ from a fire hydrant.
+    choices:
+        -
+            correct: true
+            text: 4 meters
+        -
+            correct: false
+            text: 7 meters
+        -
+            correct: false
+            text: 12 meters
+-
+    content:
+        - This is one of the requirements in operating a taxi?
+    choices:
+        -
+            correct: true
+            text: LTFRB approved taxi meter with seal.
+        -
+            correct: false
+            text: Sense of Humor.
+        -
+            correct: false
+            text: Good Health.
+-
+    content:
+        - What are the main components of the steering system?
+    choices:
+        -
+            correct: true
+            text: Tie rod, box, pump, and linkages.
+        -
+            correct: false
+            text: Screwdrivers and bolts.
+        -
+            correct: false
+            text: Hammer and nails.
+-
+    content:
+        - What is the purpose of a cats eye on the road?
+    choices:
+        -
+            correct: true
+            text: Installed as a substitute to broken lines.
+        -
+            correct: false
+            text: Installed substitute to straight lines.
+        -
+            correct: false
+            text: Installed substitute to curved lines.
+-
+    content:
+        - When driving within the school zone, the maximum permitted speed is?
+    choices:
+        -
+            correct: true
+            text: 20 kph
+        -
+            correct: false
+            text: 40 kph
+        -
+            correct: false
+            text: 80 kph
+-
+    content:
+        - What should you do if you make a wrong turn on a one-way road?
+    choices:
+        -
+            correct: true
+            text: Back up if possible or safely make a U-turn.
+        -
+            correct: false
+            text: Get out of the car immediately.
+        -
+            correct: false
+            text: Park in the middle of the road.
 -
     content:
         -
@@ -23,370 +138,173 @@
         - What does this traffic sign means?
     choices:
         -
-            correct: false
-            text: You can park on the days shown
-        -
-            correct: false
-            text: No parking anytime
-        -
             correct: true
-            text: No parking at all from Monday to Friday
--
-    content:
-        - What is the first step for decoupling trailers?
-    choices:
+            text: No Parking Anytime from Monday-Friday.
         -
             correct: false
-            text: Lower the trailer legs and stow the handle
+            text: Parking is allowed from Monday-Friday.
         -
             correct: false
-            text: Drive the tractor slowly and smoothly
-        -
-            correct: true
-            text: Secure the trailer brake
--
-    content:
-        - >-
-            What is the rule when the traffic light is steady green & steady
-            left/right arrow?
-    choices:
-        -
-            correct: true
-            text: >-
-                Vehicles can go straight or vehicles on the right/left can make
-                right/left turn
-        -
-            correct: false
-            text: Vehicles on the other side can go straight ahead
-        -
-            correct: false
-            text: Pedestrian can cross anytime
--
-    content:
-        - >-
-            You are driving a vehicle fitted with anti-lock brake system. What
-            should you do when braking in an emergency?
-    choices:
-        -
-            correct: false
-            text: Pump the brake pedal harshly
-        -
-            correct: true
-            text: Apply firm continuous pressure to the brake pedal
-        -
-            correct: false
-            text: Apply minimum force to the brake pedal
+            text: No Parking at all.
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NextExit.png
+                path: Assets/Game/Images/SharpTurnLeft.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - You see these signs overhead on the expressway. They mean?
+        - What does this traffic sign means?
     choices:
         -
-            correct: false
-            text: 'Stop, all lanes ahead closed'
-        -
             correct: true
-            text: Next exit is 15 kilometer ahead
+            text: Sharp Turn Left
         -
             correct: false
-            text: Sharp bend to the left ahead
--
-    content:
-        - What should be your gear position when dropping off school children?
-    choices:
+            text: Sharp Turn Right
         -
             correct: false
-            text: First gear
-        -
-            correct: false
-            text: Reverse gear
-        -
-            correct: true
-            text: Neutral
+            text: Sharp Left Curve
 -
     content:
         -
             image:
-                path: Assets/Game/Images/RailroaCrossingAdvanceWarning.png
+                path: Assets/Game/Images/TJunctionAhead.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
-            correct: false
-            text: There is a crossroad ahead
-        -
             correct: true
-            text: There is a railroad crossing ahead
+            text: T Junction Ahead
         -
             correct: false
-            text: There is a river crossing ahead
+            text: Y Junction Ahead
+        -
+            correct: false
+            text: TY Junction Ahead
 -
     content:
         -
             image:
-                path: Assets/Game/Images/SpeedLimitDerestriction.png
+                path: Assets/Game/Images/YJunctionAhead.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
             correct: false
-            text: New speed limit 50 kph
-        -
-            correct: false
-            text: Minimum speed limit 60 kph
+            text: T Junction Ahead
         -
             correct: true
-            text: End of 60 kph zone
--
-    content:
-        - What is the validity period of a Temporary Operators Permit(TOP)?
-    choices:
+            text: Y Junction Ahead
         -
             correct: false
-            text: 3 days from the date of apprehension
-        -
-            correct: true
-            text: 72 hours from the time of apprehension
-        -
-            correct: false
-            text: 15 days from the date of apprehension
--
-    content:
-        - What situation that a trailer may swing?
-    choices:
-        -
-            correct: false
-            text: Whenever the trailer is fully loaded
-        -
-            correct: false
-            text: Whenever the trailer is not properly fixed
-        -
-            correct: true
-            text: Whenever the trailer is empty
--
-    content:
-        - Which gauge displays the fuel level of the vehicle?
-    choices:
-        -
-            correct: false
-            text: Voltmeter
-        -
-            correct: false
-            text: Temperature gauge
-        -
-            correct: true
-            text: Fuel gauge
+            text: TY Junction Ahead
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoStoppingAnytime.png
+                path: Assets/Game/Images/UphillSign.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
-            correct: false
-            text: Crossroad/intersection
-        -
             correct: true
-            text: No stopping anytime
+            text: Uphill Sign
         -
             correct: false
-            text: Roundabout
+            text: Downhill Sign
+        -
+            correct: false
+            text: TY Junction Ahead
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoLeftTurn.png
+                path: Assets/Game/Images/GreenSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
             correct: true
-            text: No left turn
+            text: Green Signal Light
         -
             correct: false
-            text: No right turn
+            text: Red Signal Light
         -
             correct: false
-            text: No overtaking
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/Flood.png
+                path: Assets/Game/Images/RedSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
             correct: false
-            text: Road ahead ends
+            text: Green Signal Light
         -
             correct: true
-            text: Road get flooded
+            text: Red Signal Light
         -
             correct: false
-            text: Uneven road surface
--
-    content:
-        - 'Road crash can be avoided and minimized if the driver:'
-    choices:
-        -
-            correct: false
-            text: Is a Dancer
-        -
-            correct: true
-            text: 'Knows and obeys traffic signals, rules and regulations'
-        -
-            correct: false
-            text: Knows how to cook
--
-    content:
-        - >-
-            When loading cardboards, cartons, and boxes on a vehicle, where
-            should the heaviest items be placed?
-    choices:
-        -
-            correct: true
-            text: At the bottom of the load
-        -
-            correct: false
-            text: In the middle of the load
-        -
-            correct: false
-            text: At the top of the load
--
-    content:
-        - >-
-            What does it means when the headlights are getting brighter when
-            pressing accelerator pedal & goes dimmer when it is released?
-    choices:
-        -
-            correct: false
-            text: Battery overcharging
-        -
-            correct: false
-            text: Battery undercharging
-        -
-            correct: true
-            text: Battery dying
--
-    content:
-        - >-
-            Some foreigners are complaining about taxi drivers overcharging
-            fare. What is the best thing to do?
-    choices:
-        -
-            correct: false
-            text: As much as possible do not pick up foreigners
-        -
-            correct: true
-            text: Avoid negotiating the fare and follow the taxi meter
-        -
-            correct: false
-            text: Negotiate the fare if the foreigners agreed
--
-    content:
-        - >-
-            What is advisable to do when parking on places with many
-            pedestrians?
-    choices:
-        -
-            correct: true
-            text: The driver must see to it that side mirrors are folded
-        -
-            correct: false
-            text: >-
-                The driver must park at the intersection away from pedestrian
-                lane
-        -
-            correct: false
-            text: Be sure to park at pedestrian lane
--
-    content:
-        - What is the meaning of a pavement marking with a double solid line?
-    choices:
-        -
-            correct: true
-            text: No overtaking and crossing on both directions
-        -
-            correct: false
-            text: No overtaking and crossing from one direction
-        -
-            correct: false
-            text: Crossing is allowed on both directions
--
-    content:
-        - >-
-            Why should you be especially aware of parked cars when driving at
-            night?
-    choices:
-        -
-            correct: false
-            text: The drivers may be drunk
-        -
-            correct: false
-            text: There are more of them
-        -
-            correct: true
-            text: They are more likely to move off
--
-    content:
-        - What is the effect of following controlled hours?
-    choices:
-        -
-            correct: false
-            text: May have lower income than those without controlled hours
-        -
-            correct: true
-            text: >-
-                May have higher income than those without controlled hours when
-                computed in a month
-        -
-            correct: false
-            text: May have equal income than those without controlled hours
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoEntryForAll.png
+                path: Assets/Game/Images/YellowSignal.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?
+        - What does this traffic sign means?
     choices:
         -
+            correct: false
+            text: Green Signal Light
+        -
+            correct: false
+            text: Red Signal Light
+        -
             correct: true
-            text: No entry
-        -
-            correct: false
-            text: No parking
-        -
-            correct: false
-            text: No through road
+            text: Yellow Signal Light
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoEntryForJeepneys.png
+                path: Assets/Game/Images/SlipperyWhenWet.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this sign mean?"
+        - What does this traffic sign means?
     choices:
         -
             correct: true
-            text: No Entry for Jeepneys
-        -
-            correct: true
-            text: No Entry for Big Trucks
+            text: Slippery when wet
         -
             correct: false
-            text: No Entry for Busses
+            text: Two-way Road Ahead
+        -
+            correct: false
+            text: T-Junction Ahead
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/TwoWayRoadAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What does this traffic sign means?
+    choices:
+        -
+            correct: false
+            text: Slippery when wet
+        -
+            correct: true
+            text: Two-way Road Ahead
+        -
+            correct: false
+            text: T-Junction Ahead

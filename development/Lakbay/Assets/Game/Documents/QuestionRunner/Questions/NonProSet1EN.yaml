@@ -1,152 +1,180 @@
 -
     content:
-        - >-
-            At this junction there is a stop sign with a solid white line on the
-            road surface. Why is there a stop sign there?
+        -
+            image:
+                path: Assets/Game/Images/Stop.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: Speed on the major road is derestricted
-        -
-            correct: false
-            text: It is a busy junction
-        -
             correct: true
-            text: Visibility along the major road is restricted
--
-    content:
-        - You are allowed to stop on an expressway when you?
-    choices:
+            text: Stop, only if children are waiting to cross
         -
             correct: false
-            text: Need to convey a passenger
+            text: Stop, only if you feel like to
         -
             correct: false
-            text: Need to unload a passenger
-        -
-            correct: true
-            text: Are told to do so by a traffic enforcer
--
-    content:
-        - >-
-            What flag color is required to be attached on projecting loads of a
-            vehicle?
-    choices:
-        -
-            correct: false
-            text: Yellow
-        -
-            correct: false
-            text: Green
-        -
-            correct: true
-            text: Red
+            text: Stop and drive to the nearest intersection
 -
     content:
         -
             image:
-                path: Assets/Game/Images/SchoolChildrenCrossing.png
+                path: Assets/Game/Images/NoLeftTurn.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this traffic sign means?
-    choices:
-        -
-            correct: false
-            text: Railroad Crosssing
-        -
-            correct: true
-            text: School Zone
-        -
-            correct: false
-            text: Animal Crossing
--
-    content:
-        - >-
-            While driving, how should you look at your side and rear view
-            mirror?
-    choices:
-        -
-            correct: false
-            text: Stare longer at your mirrors
-        -
-            correct: false
-            text: A quick glance
-        -
-            correct: true
-            text: NOT less than once per one minute
--
-    content:
-        - What can make you lose your concentration while driving?
-    choices:
-        -
-            correct: false
-            text: Using the wiper wash
-        -
-            correct: true
-            text: Listening to loud music
-        -
-            correct: false
-            text: Glancing at the side mirror
--
-    content:
-        - >-
-            If you see a stopped vehicle on the side of the road, what should
-            you do?
-    choices:
-        -
-            correct: false
-            text: Blow the horn
-        -
-            correct: false
-            text: Stop and provoke the driver
-        -
-            correct: true
-            text: Slow down and use caution when passing
--
-    content:
-        - >-
-            Is it true that a person may apply for a Student-driver's Permit
-            even with a tuberculosis or sexually transmitted disease?
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: true
-            text: 'True'
+            text: No Left Turn
         -
             correct: false
-            text: 'False'
+            text: No Right Turn
         -
             correct: false
-            text: Maybe
--
-    content:
-        - >-
-            What should you do when your doctor prescribes you a medicine which
-            is likely to affect your driving?
-    choices:
-        -
-            correct: false
-            text: Avoid driving on expressways
-        -
-            correct: false
-            text: Drive only if someone is with you
-        -
-            correct: true
-            text: Do NOT Drive
+            text: Curve Left
 -
     content:
         -
             image:
-                path: Assets/Game/Images/NoEntryForCars.png
+                path: Assets/Game/Images/BikelaneAhead.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - What does this traffic sign means?
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: true
+            text: Bike Lane Ahead
+        -
+            correct: false
+            text: Bike Lane Behind
+        -
+            correct: false
+            text: Bike Lane at intersection
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/CurveLeft.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: No Overtaking
+            text: Curve Right
         -
             correct: true
-            text: Clearway(no stopping)
+            text: Curve Left
         -
             correct: false
-            text: No Motor vehicles
+            text: Right Turn
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/CurveRight.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: true
+            text: Curve Right
+        -
+            correct: false
+            text: Curve Left
+        -
+            correct: false
+            text: Right Turn
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/DownhillSign.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: false
+            text: Uphill Sign
+        -
+            correct: true
+            text: Downhill Sign
+        -
+            correct: false
+            text: Opening Bridge
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/Giveway.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: true
+            text: Giveway
+        -
+            correct: false
+            text: Give Away
+        -
+            correct: false
+            text: Reverse Way
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/OpeningBridge.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: false
+            text: Closing Bridge
+        -
+            correct: false
+            text: Opening Road Ahead
+        -
+            correct: true
+            text: Opening Bridge
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/NoEntry.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: true
+            text: No Entry
+        -
+            correct: false
+            text: No Entry for All
+        -
+            correct: false
+            text: No Cars Allowed
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/NoEntryForAll.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
+    choices:
+        -
+            correct: false
+            text: No Entry
+        -
+            correct: true
+            text: No Entry for All
+        -
+            correct: false
+            text: No Cars Allowed

@@ -36,6 +36,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                     if(player.camera) {
                         var lck = player.camera.GetComponent<CinemachineLock>();
                         if(!lck.zPosition.locked) {
+                            if(Session.qrPassed)
+                                Session.checkpointController?.SaveCheckpoint(
+                                    new Checkpoint(
+                                        Session.mode, BuiltScene.Blowbagets)
+                                );
                             player.qrPostPlayUI?.Invoke("Show", delay);
                             player.travel?.Invoke("StopPerforming", delay);
                             lck.zPosition.Lock(player.camera.transform.position.z);

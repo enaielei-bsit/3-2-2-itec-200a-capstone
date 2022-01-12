@@ -1,219 +1,270 @@
 -
     content:
-        - >-
-            Ano ang dapat gawin kung ang iyong pasahero ay sinabihan kang
-            magmaneho ng mabilis dahil may hinahabol siyang lakad?
+        -
+            image:
+                path: Assets/Game/Images/Stop.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang gagawin mo kapag nakita mo ang babalang ito?
     choices:
         -
-            correct: false
-            text: >-
-                Magmaneho ng mabilis at magbayad ng multa kung sakali kami ay
-                mahuli
-        -
             correct: true
-            text: >-
-                Magmaneho ng tama at makakarating kami sa destinasyon sa tamang
-                oras
+            text: Tumigil, kung ang mga bata ay naghihintay na tumawid
         -
             correct: false
-            text: Sasabihan ko ang pasahero na bumaba na lamang ng sasakyan
+            text: Tumigil lamang kung gugustuhin mo
+        -
+            correct: false
+            text: Tumigil at magmaneho sa pinakamalapit na interseksyon
 -
     content:
-        - 'Ang drayber sa isang highway ay dapat magbigay ng daan sa:'
+        -
+            image:
+                path: Assets/Game/Images/NoLeftTurn.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: 'Sasakyang pang-emergency tulad ng pulis,bumbero at ambulansiya'
+            text: No Left Turn
         -
             correct: false
-            text: Mga sasakyang may espesyal na plaka
+            text: No Right Turn
         -
             correct: false
-            text: Mga sasakyang pang-gobyerno
+            text: Curve Left
 -
     content:
-        - 'Sa isang aksidente, ang unang tungkulin ng drayber ay:'
+        -
+            image:
+                path: Assets/Game/Images/BikelaneAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: Puntahan ang naaksidente at tumawag ng tulong
+            text: Bike Lane sa unahan
         -
             correct: false
-            text: Iulat ang insidente sa pinakamalapit na istasyon ng pulis
+            text: Bike Lane sa likuran
         -
             correct: false
-            text: Iulat ang insidente sa hospital
+            text: Bike Lane sa interseksyon
 -
     content:
-        - >-
-            Ano ang dapat gawin kung ang iyong pasahero ay walang sapat na
-            pambayad sa pamasahe?
+        -
+            image:
+                path: Assets/Game/Images/CurveLeft.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Kunin ang mahahalagang bagay na meron ito bilang pambayad
-        -
-            correct: false
-            text: Pumirma ng kasunduan at magkasundong magbayad sa susunod na araw
+            text: Curve Right
         -
             correct: true
-            text: Tanggapin kung anong halagang meron ito at maayos na pagsabihan
+            text: Curve Left
+        -
+            correct: false
+            text: Right Turn
 -
     content:
-        - >-
-            Pinagmamadali kang pinapabalik ng iyong amo habang hinahatid ang
-            kanyang anak sa eskwelahan. Ano ang gagawin mo?
+        -
+            image:
+                path: Assets/Game/Images/CurveRight.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: Ihatid ang anak at magmadaling pumunta sa amo
-        -
             correct: true
-            text: >-
-                Hintaying makapasok ng ligtas ang anak sa eskwelahan at puntahan
-                ang amo
+            text: Curve Right
         -
             correct: false
-            text: >-
-                Sabihan ang anak na kailangan ng ama ang kotse at agad na
-                pababain ito
+            text: Curve Left
+        -
+            correct: false
+            text: Right Turn
 -
     content:
-        - >-
-            Ito ay isang paglabag na nagbabanta sa kaligtasan o mga karapatan ng
-            sinumang tao sa kalsada:
+        -
+            image:
+                path: Assets/Game/Images/DownhillSign.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Pakikinig sa malakas na tugtog habang nagmamaneho
+            text: Uphill Sign
         -
             correct: true
-            text: Walang ingat na pagmamaneho
+            text: Downhill Sign
         -
             correct: false
-            text: Hindi pagsusuot ng wastong uniporme
+            text: Opening Bridge
 -
     content:
-        - Ano ang wastong kulay ng uniporme ng mga jeepney drayber?
+        -
+            image:
+                path: Assets/Game/Images/Giveway.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: Pula
-        -
             correct: true
-            text: Mapusyaw na Asul
+            text: Giveway
         -
             correct: false
-            text: Puti
+            text: Give Away
+        -
+            correct: false
+            text: Reverse Way
 -
     content:
-        - 'Hindi pinapayagang makipag-usap ang drayber sa pasahero kung:'
+        -
+            image:
+                path: Assets/Game/Images/OpeningBridge.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
+            correct: false
+            text: Closing Bridge
+        -
+            correct: false
+            text: Opening Road Ahead
+        -
             correct: true
-            text: Ang sasakyan ay umaandar
-        -
-            correct: false
-            text: Ang sasakyan ay papaliko
-        -
-            correct: false
-            text: Ang sasakyan ay naka-parada
+            text: Opening Bridge
 -
     content:
-        - Ano ang dapat mong gawin pagkatapos lumiko pakanan?
+        -
+            image:
+                path: Assets/Game/Images/NoEntry.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: Magpatuloy sa panloob na linya
-        -
             correct: true
-            text: Manatili sa pinakalabas na linya
+            text: Bawal pumasok
         -
             correct: false
-            text: Panatilihing nakabukas ang signal light
+            text: Bawal pumasok ang anumang sasakyan
+        -
+            correct: false
+            text: Bawal pumasok ang mga sasakyan
 -
     content:
-        - >-
-            Ang Blue, Green,Red,White, at _____ ay ang opisyal na kinikilalang
-            mga kulay para sa mga patakaran at regulasyon sa trapiko
+        -
+            image:
+                path: Assets/Game/Images/NoEntryForAll.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
+            correct: false
+            text: Bawal pumasok
+        -
             correct: true
-            text: Yellow
+            text: Bawal pumasok ang anumang sasakyan
         -
             correct: false
-            text: Pink
-        -
-            correct: false
-            text: Violet
+            text: Bawal pumasok ang mga sasakyan
 -
     content:
-        - Ano ang dapat mong gawin kung nasusunog ang iyong sasakyan?
+        -
+            image:
+                path: Assets/Game/Images/ApproachToIntersection.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: true
-            text: Gumamit ng fire extinguisher upang maapula ang sunog
+            text: Papalapit na intersekyon
         -
             correct: false
-            text: Iwanan na lamang ang kotse
+            text: Papalapit na Traffic Lights
         -
             correct: false
-            text: I-parada ito sa highway
+            text: Papalapit na rotonda
 -
     content:
-        - >-
-            Ano ang iyong gagawin kung may sasakyan ng pulis ang sumusunod sa
-            iyo at nag pailaw ito ng headlights at tumuro pakanan?
+        -
+            image:
+                path: Assets/Game/Images/TrafficLightsAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Huminto agad
+            text: Papalapit na intersekyon
         -
             correct: true
-            text: Lumipat sa kanang bahagi ng daan at huminto
+            text: Papalapit na Traffic Lights
         -
             correct: false
-            text: Dumiretso at magmaneho
+            text: Papalapit na rotonda
 -
     content:
-        - >-
-            Saan dapat nakatutok ang harapang gulong ng sasakyan kung ikaw ay
-            paparada paakyat sa isang kurba?
+        -
+            image:
+                path: Assets/Game/Images/RoundaboutAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Ang gulong ay parallel sa kurba
-        -
-            correct: true
-            text: Ang gulong ay opposite sa kurba
+            text: Papalapit na intersekyon
         -
             correct: false
-            text: Ang gulong ay patungo sa kurba
+            text: Papalapit na Traffic Lights
+        -
+            correct: true
+            text: Papalapit na rotonda
 -
     content:
-        - 'Bakit HINDI dapat tapunan ng tubig ang gasolina,oil, at grease fire?'
+        -
+            image:
+                path: Assets/Game/Images/ReverseTurn.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
             correct: false
-            text: Mapapatay nito ang apoy
-        -
-            correct: true
-            text: 'Ikakalat lamang ng tubig ang gasolina, oil, at grasa'
+            text: Reverse Left
         -
             correct: false
-            text: Wala itong epekto sa apoy
+            text: Reverse Right
+        -
+            correct: true
+            text: Reverse Turn
 -
     content:
-        - >-
-            Ano ang kulay ng signal light na nagsasabing maaaring kang
-            magpatuloy sa pagmamaneho?
+        -
+            image:
+                path: Assets/Game/Images/SchoolChildrenCrossing.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
     choices:
         -
-            correct: false
-            text: Steady Red light
-        -
             correct: true
-            text: Steady Green light
+            text: School Children Crossing
         -
             correct: false
-            text: Flashing Red light
+            text: Papatawid na PWD
+        -
+            correct: false
+            text: Pedestrians

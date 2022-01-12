@@ -17,10 +17,31 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.ThreePointTurn {
     using Utilities;
     using Core;
+    using UnityEngine.Localization;
 
     public class SATPTPlayer : SASteppedVehiclePlayer {
+        [Header("Messages")]
+        public LocalizedString performedThreePoint;
+
         public override void Proceed() {
             LoadScene(BuiltScene.Tailgating);
         }
+
+        public override void OnPark() {
+            base.OnPark();
+            Session.checkpointController?.SaveCheckpoint(
+                new Checkpoint(Session.mode, BuiltScene.Tailgating)
+            );
+            gameOverUI?.ShowPassed(
+                performedThreePoint
+            );
+        }
+
+        // public override void OnObstacleHit() {
+        //     base.OnObstacleHit();
+        //     gameOverUI?.ShowFailed(
+        //         hitCar
+        //     );
+        // }
     }
 }

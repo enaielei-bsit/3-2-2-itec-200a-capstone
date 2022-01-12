@@ -34,6 +34,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
 
         [Header("Level")]
         public new CinemachineVirtualCamera camera;
+        public SAGameOverUI gameOverUI;
+        public MessageBoxUI messageBoxUI;
         public SABBInGameUI inGameUI;
         public BlowbagetsUI blowbagetsUI;
         public virtual CinemachineOrbitalTransposer transposer =>
@@ -74,13 +76,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
 
         protected bool _done;
 
+        [Space]
+        public LocalizedString message;
+        public LocalizedString inspectedAll;
+
         public override void Update() {
             base.Update();
             if(finished && (bool) !blowbagetsUI?.gameObject.activeSelf) {
                 if(!_done) {
                     _done = true;
                     inGameUI?.gameObject.SetActive(false);
-                    Invoke("Proceed", 3.0f);
+                    // Invoke("Proceed", 3.0f);
+                    Session.checkpointController?.SaveCheckpoint(
+                        new Checkpoint(Session.mode, BuiltScene.ParallelParking)
+                    );
+                    gameOverUI?.ShowPassed(
+                        inspectedAll
+                    );
                 }
             }
         }
@@ -93,6 +105,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
                 Session.sabbLevel.batteryFile, UpdateBlowbagetsInfo);
 
             _baseFollowOffset = transposer.m_FollowOffset;
+            messageBoxUI?.ShowMessage(message);
         }
         
         public virtual void Rotate(float factor) {

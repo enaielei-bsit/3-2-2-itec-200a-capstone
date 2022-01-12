@@ -94,8 +94,13 @@ namespace Ph.CoDe_A.Lakbay {
                 _qrText = Instantiate(_text, root.transform);
                 var button = Instantiate(_button, root.transform);
                 button.onClick.AddListener(() => {
-                    foreach(var question in Session.qrLevel.questions) {
-                        question.MarkAsCorrect();
+                    Session.qrLevel.Reset();
+                    var free = Session.qrLevel.free;
+                    while(free != null) {
+                        free.MarkAsCorrect();
+                        Session.qrLevel.spawned.Add(
+                            Session.qrLevel.questions.IndexOf(free));
+                        free = Session.qrLevel.free;
                     }
                     FindObjectOfType<QRPlayer>().Proceed();
                 });

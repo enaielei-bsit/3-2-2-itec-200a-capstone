@@ -1,232 +1,270 @@
 -
     content:
-        - >-
-            Your passenger told you to drive faster in order to meet their
-            appointment on time. What should you do in this situation?
+        -
+            image:
+                path: Assets/Game/Images/Stop.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: >-
-                I will drive fast but they must pay the violation if there is
-                any
-        -
             correct: true
-            text: >-
-                I will do my best to arrive at the destination safely and on
-                time
+            text: Stop, only if children are waiting to cross
         -
             correct: false
-            text: I will tell my passenger to get off the vehicle
+            text: Stop, only if you feel like to
+        -
+            correct: false
+            text: Stop and drive to the nearest intersection
 -
     content:
-        - 'A driver on a highway shall yield the right of way to:'
+        -
+            image:
+                path: Assets/Game/Images/NoLeftTurn.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: true
-            text: Police/ fire department vehicles and ambulance
+            text: No Left Turn
         -
             correct: false
-            text: Vehicles with special plates
+            text: No Right Turn
         -
             correct: false
-            text: Vehicles with government plates
+            text: Curve Left
 -
     content:
-        - 'In case of an accident, the first duty of the driver involved is:'
+        -
+            image:
+                path: Assets/Game/Images/BikelaneAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: true
-            text: Attend to the injured person and call for help
+            text: Bike Lane Ahead
         -
             correct: false
-            text: Report the accident to the nearest police station
+            text: Bike Lane Behind
         -
             correct: false
-            text: Report the accident to the hospital
+            text: Bike Lane at intersection
 -
     content:
-        - >-
-            What should you do if your passenger does not have enough money to
-            pay for your service?
+        -
+            image:
+                path: Assets/Game/Images/CurveLeft.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: >-
-                Get some valuable items from the passenger to compensate for the
-                fare
-        -
-            correct: false
-            text: >-
-                Let the passenger sign an agreement that they will pay the fare
-                on the following day
+            text: Curve Right
         -
             correct: true
-            text: >-
-                Accept whatever amount the passenger has and courteously advise
-                to bring enough money next time
+            text: Curve Left
+        -
+            correct: false
+            text: Right Turn
 -
     content:
-        - >-
-            What should you do if your boss called to you to hurry up going back
-            to his house while you are dropping your boss daughter into the gate
-            of the school?
+        -
+            image:
+                path: Assets/Game/Images/CurveRight.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: Drop the daughter at once and proceed to the house immediately
-        -
             correct: true
-            text: >-
-                Wait until the daughter safely entered the building compound
-                then go
+            text: Curve Right
         -
             correct: false
-            text: >-
-                Tell the daughter that his father called and need the car
-                immediately
+            text: Curve Left
+        -
+            correct: false
+            text: Right Turn
 -
     content:
-        - >-
-            This is a violation that endangers the safety or rights of any
-            person on a highway:
+        -
+            image:
+                path: Assets/Game/Images/DownhillSign.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: Listening to loud music while driving
+            text: Uphill Sign
         -
             correct: true
-            text: Reckless driving
+            text: Downhill Sign
         -
             correct: false
-            text: Not wearing proper uniform
+            text: Opening Bridge
 -
     content:
-        - >-
-            What is the prescribed standard color of uniform for jeepney
-            drivers?
+        -
+            image:
+                path: Assets/Game/Images/Giveway.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: Red
-        -
             correct: true
-            text: Light Blue
+            text: Giveway
         -
             correct: false
-            text: White
+            text: Give Away
+        -
+            correct: false
+            text: Reverse Way
 -
     content:
-        - >-
-            A public utility driver is not allowed to talk to passengers while
-            the vehicle is:
+        -
+            image:
+                path: Assets/Game/Images/OpeningBridge.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
+            correct: false
+            text: Closing Bridge
+        -
+            correct: false
+            text: Opening Road Ahead
+        -
             correct: true
-            text: In motion
-        -
-            correct: false
-            text: About to turn
-        -
-            correct: false
-            text: Parked
+            text: Opening Bridge
 -
     content:
-        - What should you do after turning right?
+        -
+            image:
+                path: Assets/Game/Images/NoEntry.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: Proceed to the inner lane at once
-        -
             correct: true
-            text: Stay on the outermost lane
+            text: No Entry
         -
             correct: false
-            text: Keep your turn signal light on
+            text: No Entry for All
+        -
+            correct: false
+            text: No Cars Allowed
 -
     content:
-        - >-
-            Blue,Green,Red,White and ____ are the officially recognized colors
-            for traffic rules and regulations
+        -
+            image:
+                path: Assets/Game/Images/NoEntryForAll.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
+            correct: false
+            text: No Entry
+        -
             correct: true
-            text: Yellow
+            text: No Entry for All
         -
             correct: false
-            text: Pink
-        -
-            correct: false
-            text: Violet
+            text: No Cars Allowed
 -
     content:
-        - >-
-            Your vehicle catches fire while driving through a tunnel. It is
-            still drivable. What should you do?
+        -
+            image:
+                path: Assets/Game/Images/ApproachToIntersection.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: true
-            text: >-
-                Use the fire extinguisher and drive it out of the tunnel if you
-                can do so
+            text: Approaching to Intersection
         -
             correct: false
-            text: Leave it where it is with the engine running
+            text: Traffic Lights Ahead
         -
             correct: false
-            text: Park it away from the highway
+            text: Roundabout Ahead
 -
     content:
-        - >-
-            There is a police car following you. The traffic enforcer flashes
-            the headlights and points to the right. What should you do?
+        -
+            image:
+                path: Assets/Game/Images/TrafficLightsAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: Stop immediately
+            text: Approaching to Intersection
         -
             correct: true
-            text: Move over to the right
+            text: Traffic Lights Ahead
         -
             correct: false
-            text: Pull up on the right
+            text: Roundabout Ahead
 -
     content:
-        - >-
-            Where should you point your front tires when parking uphill with a
-            curb?
+        -
+            image:
+                path: Assets/Game/Images/RoundaboutAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: Front tires must be parallel with the curb
-        -
-            correct: true
-            text: Front tires must be pointed away from the curb
+            text: Approaching to Intersection
         -
             correct: false
-            text: Front tires must be pointed towards the curb
+            text: Traffic Lights Ahead
+        -
+            correct: true
+            text: Roundabout Ahead
 -
     content:
-        - 'Why should water NOT be thrown on a gasoline, oil, or grease fire?'
+        -
+            image:
+                path: Assets/Game/Images/ReverseTurn.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
             correct: false
-            text: The water will surely cut off the fire
-        -
-            correct: true
-            text: 'The water will only spread the gasoline, oil, or grease'
+            text: Reverse Left
         -
             correct: false
-            text: 'The water has no effect on the gasoline, oil, or grease'
+            text: Reverse Right
+        -
+            correct: true
+            text: Reverse Turn
 -
     content:
-        - What is the traffic signal light that means you may proceed?
+        -
+            image:
+                path: Assets/Game/Images/SchoolChildrenCrossing.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - What Road Traffic Sign is shown?
     choices:
         -
-            correct: false
-            text: Steady Red light
-        -
             correct: true
-            text: Steady Green light
+            text: School Children Crossing
         -
             correct: false
-            text: Flashing Red light
+            text: PWD Crossing
+        -
+            correct: false
+            text: Pedestrians

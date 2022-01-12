@@ -17,6 +17,7 @@ using UnityEngine.UI;
 namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
     using Cinemachine;
     using Core;
+    using UnityEngine.Localization;
 
     public class SAROWPlayer : SASteppedVehiclePlayer {
         protected bool _failed = false;
@@ -34,6 +35,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
         
         [Space]
         public List<Pedestrian> pedestrians = new List<Pedestrian>();
+
+        [Header("Messages")]
+        public LocalizedString didntHitPedestrian;
+        public LocalizedString usedSignalLight;
+        public LocalizedString hitPedestrian;
+        public LocalizedString noSignalLight;
 
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
@@ -66,7 +73,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
                 if(tr) tr.gameObject.SetActive(false);
                 _failed = true;
                 Reset();
-                gameOverUI?.gameObject.SetActive(true);
+                // gameOverUI?.gameObject.SetActive(true);
+                gameOverUI?.ShowFailed(noSignalLight);
             }
         }
 
@@ -103,6 +111,22 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
 
         public override void Update() {
             base.Update();
+        }
+
+        public override void OnObstacleHit() {
+            base.OnObstacleHit();
+            Reset();
+            gameOverUI?.ShowFailed(hitPedestrian);
+        }
+
+        public override void OnPark() {
+            base.OnPark();
+            Session.checkpointController?.SaveCheckpoint(
+                new Checkpoint(Session.mode, BuiltScene.TrafficSignalRules)
+            );
+            gameOverUI?.ShowPassed(
+                usedSignalLight, didntHitPedestrian
+            );
         }
     }
 }

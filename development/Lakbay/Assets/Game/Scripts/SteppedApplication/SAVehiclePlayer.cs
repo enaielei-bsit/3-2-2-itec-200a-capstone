@@ -34,7 +34,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         [Header("Level")]
         public SAVehicleInGameUI inGameUI;
-        public GameOverUI gameOverUI;
+        public SAGameOverUI gameOverUI;
 
         protected Vector3 _oldVelocity;
 

@@ -18,6 +18,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
     using Cinemachine;
     using Core;
     using TMPro;
+    using UnityEngine.Localization;
 
     public enum CameraView {Player, TrafficLight}
 
@@ -52,6 +53,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
         public string stateCountdownFormat = "00";
         public TextMeshPro stateCountdown;
 
+        [Header("Messages")]
+        public LocalizedString didSlowdown;
+        public LocalizedString didAccelerate;
+        public LocalizedString didBrake;
+        
+        public LocalizedString failedToSlowdown;
+        public LocalizedString failedToAccelerate;
+        public LocalizedString failedToBrakes;
+        public LocalizedString failedToFollowTrafficSignals;
+
         public override void OnTriggerEnter(Collider collider) {
             base.OnTriggerEnter(collider);
             var tltrigger = collider.GetTrigger<TrafficLightTrigger>();
@@ -60,6 +71,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
                 trafficLight?.ToggleState(
                     TrafficLight.State.Yellow, trafficLightYellowDuration);
                 Invoke("SetCameraToTrafficLight", 1.0f);
+                // Invoke("SetCameraToPlayer", 2.0f);
                 _checkStartTime = Time.time;
                 SetCamera(CameraView.TrafficLight);
             }
@@ -83,6 +95,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
                     || trafficLight.state == TrafficLight.State.Red) {
                     _failed = true;
                     TriggerGameOver();
+                    gameOverUI?.ShowFailed(failedToFollowTrafficSignals);
                 } else {
                     _done = true;
                 }
@@ -121,14 +134,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
                 && speed > slowdownMaxSpeed) {
                 _failed = true;
                 TriggerGameOver();
+                gameOverUI?.ShowFailed(
+                    failedToSlowdown
+                );
             } else if(trafficLight.state == TrafficLight.State.Red
                 && speed > fullStopMaxSpeed) {
                 _failed = true;
                 TriggerGameOver();
+                gameOverUI?.ShowFailed(
+                    failedToBrakes
+                );
             } else if(trafficLight.state == TrafficLight.State.Green
                 && speed < accelerateMinSpeed) {
                 _failed = true;
                 TriggerGameOver();
+                gameOverUI?.ShowFailed(
+                    failedToAccelerate
+                );
             }
         }
 
@@ -179,6 +201,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
                     ));
                 } else stateCountdown.gameObject.SetActive(false);
             }
+        }
+
+        public override void OnPark() {
+            base.OnPark();
+            Session.checkpointController.Clear();
+            gameOverUI?.ShowPassed(
+                didSlowdown, didBrake, didAccelerate
+            );
         }
     }
 }

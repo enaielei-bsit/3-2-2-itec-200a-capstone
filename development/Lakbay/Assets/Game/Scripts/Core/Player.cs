@@ -25,6 +25,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Build() {
             onBuild?.Invoke();
+            foreach(var level in Session.qrLevels) level.Reset();
         }
 
         public virtual void LoadScene(BuiltScene scene) {
