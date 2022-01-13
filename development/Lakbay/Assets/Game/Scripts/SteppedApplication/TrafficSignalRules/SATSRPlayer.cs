@@ -172,7 +172,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules {
                 if(playerCamera) playerCamera.Priority = 0;
             }
 
-            if(gizmoCamera) {
+            if(gizmoCamera && cam) {
                 gizmoCamera.fieldOfView = cam.m_Lens.FieldOfView;
             }
         }
