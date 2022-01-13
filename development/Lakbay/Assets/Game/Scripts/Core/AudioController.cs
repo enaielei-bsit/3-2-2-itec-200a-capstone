@@ -66,7 +66,7 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 foreach(var vol in volumes) {
                     if(!lastVolumes.ContainsKey(vol.name))
                         lastVolumes[vol.name] = 0.0f;
-                    SetVolume(vol.name, lastVolumes[vol.name] * masterVolume,
+                    SetVolume(vol.name, lastVolumes[vol.name],
                         false, vol.additionals, vol.onChange);
                 }
 
@@ -96,11 +96,12 @@ namespace Ph.CoDe_A.Lakbay.Core {
             bool asLastVolume,
             IEnumerable<AdditionalVolume> additionals,
             OnVolumeChange onValueChange) {
-            value = Mathf.Clamp(value, 0.0f, 1.0f);
+            // Clamp the values using the masterVolume.
+            value = Mathf.Clamp(value * masterVolume, 0.0f, 1.0f);
             float volume = GetVolume(name);
             if(volume == value) return;
             float old = volume;
-            printLog($"setting... {name} to {value}");
+            printLog($"Setting {name} to {value}...");
             mixer?.SetVolume(name, value);
             foreach(var additional in additionals) {
                 additional.Set(value);

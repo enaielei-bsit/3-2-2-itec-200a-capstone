@@ -160,14 +160,18 @@ namespace Ph.CoDe_A.Lakbay.Core {
             
             // Audio
             if(audio && settings.audio != null) {
-                audio.masterVolume = settings.audio.GetVolume("masterVolume");
+                float value = settings.audio.GetVolume("masterVolume");
+                if(value != audio.masterVolume)
+                    audio.masterVolume = value;
                 foreach(var vol in audio.volumes) {
                     float volume = settings.audio.GetVolume(vol.name);
-                    audio.SetVolume(
-                        vol.name,
-                        volume,
-                        true
-                    );
+                    if(volume != audio.GetVolume(vol.name)) {
+                        audio.SetVolume(
+                            vol.name,
+                            volume,
+                            true
+                        );
+                    }
                 }
             }
 

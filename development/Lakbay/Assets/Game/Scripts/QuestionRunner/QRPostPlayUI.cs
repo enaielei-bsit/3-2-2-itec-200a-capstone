@@ -75,6 +75,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                 _score = levels.Sum((l) => l.score);
                 _maxScore = levels.Sum((l) => l.maxScore);
+                foreach(var l in levels) printLog(
+                    l.score, l.maxScore, l.spawned.Count, l.questions.Count);
                 float part = maxScore / (float) maxRating;
                 for(int i = 0; i < maxRating; i++) {
                     if(score != 0 && score < (part * (i + 1))) {

@@ -157,7 +157,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
         public virtual void MarkAsCorrect() {
             ClearAnswers();
-            AddAnswer(choices.Where((c) => c.correct));
+            AddAnswer(solution);
         }
     }
 }

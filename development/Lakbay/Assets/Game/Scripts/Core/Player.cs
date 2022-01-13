@@ -25,7 +25,6 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Build() {
             onBuild?.Invoke();
-            foreach(var level in Session.qrLevels) level.Reset();
         }
 
         public virtual void LoadScene(BuiltScene scene) {
@@ -50,6 +49,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
             SetMode(mode ? 1 : 0);
 
         public virtual void Play(GameMode mode) {
+            Session.qrLevelIndex = -1;
+            foreach(var level in Session.qrLevels) level.Reset();
             SetMode(mode);
             LoadScene(BuiltScene.QuestionRunner);
         }

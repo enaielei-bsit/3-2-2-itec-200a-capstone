@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885974772820093256, guid: b90656c77d41abd4ab63503092a9959e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5885974772820093256, guid: b90656c77d41abd4ab63503092a9959e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,3 +145,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b90656c77d41abd4ab63503092a9959e, type: 3}
+--- !u!1 &100739384413184531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5885974772820093255, guid: b90656c77d41abd4ab63503092a9959e, type: 3}
+  m_PrefabInstance: {fileID: 5821688881053748052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4688951113270582232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100739384413184531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
