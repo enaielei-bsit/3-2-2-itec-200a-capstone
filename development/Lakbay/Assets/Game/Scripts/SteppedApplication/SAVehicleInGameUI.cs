@@ -5,20 +5,15 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication
+{
     using TMPro;
-    using Utilities;
 
-    public class SAVehicleInGameUI : SAInGameUI {
+    public class SAVehicleInGameUI : SAInGameUI
+    {
         [Space]
         public SAVehiclePlayer player;
 
@@ -45,9 +40,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public Toggle leftSignalLight;
         public Toggle rightSignalLight;
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(player) {
+            if (player)
+            {
                 speed?.SetText(player.vehicle.Speed.ToString(speedFormat));
                 SetGear(player.currentGear);
                 SetIgnition(player.isEngineRunning);
@@ -58,17 +55,19 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             }
         }
 
-        public virtual void SetGear(GearBox gear) {
-            if(gear == GearBox.Drive && driveGear)
+        public virtual void SetGear(GearBox gear)
+        {
+            if (gear == GearBox.Drive && driveGear)
                 driveGear.SetIsOnWithoutNotify(true);
-            if(gear == GearBox.Neutral && neutralGear)
+            if (gear == GearBox.Neutral && neutralGear)
                 neutralGear.SetIsOnWithoutNotify(true);
-            if(gear == GearBox.Reverse && reverseGear)
+            if (gear == GearBox.Reverse && reverseGear)
                 reverseGear.SetIsOnWithoutNotify(true);
         }
 
-        public virtual void SetIgnition(bool value) {
-            if(ignitionSwitch) ignitionSwitch.SetIsOnWithoutNotify(value);
+        public virtual void SetIgnition(bool value)
+        {
+            if (ignitionSwitch) ignitionSwitch.SetIsOnWithoutNotify(value);
         }
 
         // public virtual void SetGear(int gear) {
@@ -78,32 +77,39 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         //     SetGear(rgear);
         // }
 
-        public virtual void SetSignalLight(SignalLight light) {
+        public virtual void SetSignalLight(SignalLight light)
+        {
             var ll = leftSignalLight;
             var rl = rightSignalLight;
-            
-            if(ll) ll.SetIsOnWithoutNotify(false);
-            if(rl) rl.SetIsOnWithoutNotify(false);
 
-            if(light == SignalLight.Left) {
-                if(ll) ll.SetIsOnWithoutNotify(true);
-            } else if(light == SignalLight.Right) {
-                if(rl) rl.SetIsOnWithoutNotify(true);
+            if (ll) ll.SetIsOnWithoutNotify(false);
+            if (rl) rl.SetIsOnWithoutNotify(false);
+
+            if (light == SignalLight.Left)
+            {
+                if (ll) ll.SetIsOnWithoutNotify(true);
+            }
+            else if (light == SignalLight.Right)
+            {
+                if (rl) rl.SetIsOnWithoutNotify(true);
             }
         }
 
-        public virtual void Handbrake(float value) {
-            if(handbrake) handbrake.SetValueWithoutNotify(value);
+        public virtual void Handbrake(float value)
+        {
+            if (handbrake) handbrake.SetValueWithoutNotify(value);
         }
 
-        public virtual void Accelerate(float value) {
+        public virtual void Accelerate(float value)
+        {
             var hl = acceleratorHighlight;
-            hl?.gameObject.SetActive(value > 0.0f); 
+            hl?.gameObject.SetActive(value > 0.0f);
         }
 
-        public virtual void Brake(float value) {
+        public virtual void Brake(float value)
+        {
             var hl = brakeHighlight;
-            hl?.gameObject.SetActive(value > 0.0f); 
+            hl?.gameObject.SetActive(value > 0.0f);
         }
     }
 }

@@ -7,9 +7,6 @@
 /// 
 /// </summary>
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Pixelplacement
 {
@@ -20,7 +17,7 @@ namespace Pixelplacement
         public float currentCurvePercentage;
 
         //Constructor:
-        public CurveDetail (int currentCurve, float currentCurvePercentage)
+        public CurveDetail(int currentCurve, float currentCurvePercentage)
         {
             this.currentCurve = currentCurve;
             this.currentCurvePercentage = currentCurvePercentage;

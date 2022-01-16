@@ -6,19 +6,17 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
+namespace Ph.CoDe_A.Lakbay.Core
+{
     using Utilities;
 
     [Serializable]
-    public class Watchable {
+    public class Watchable
+    {
         public string url = "";
         public string thumbnail = "";
         public string time = "";
@@ -27,7 +25,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public string description = "";
     }
 
-    public class WatchableViewer : Controller {
+    public class WatchableViewer : Controller
+    {
         public TextMeshProUGUI url;
         public Image thumbnail;
         public TextMeshProUGUI time;
@@ -39,17 +38,19 @@ namespace Ph.CoDe_A.Lakbay.Core {
         [Space]
         public Watchable watchable = new Watchable();
 
-        public virtual void Build(Watchable watchable) {
+        public virtual void Build(Watchable watchable)
+        {
             this.watchable = watchable;
             url?.SetText(watchable.url);
             var sprite = Session.database.Get<Sprite>(watchable.thumbnail);
-            if(sprite && thumbnail) thumbnail.sprite = sprite;
+            if (sprite && thumbnail) thumbnail.sprite = sprite;
             time?.SetText(watchable.time);
             label?.SetText(watchable.label);
             author?.SetText(watchable.author);
             description?.SetText(watchable.description);
 
-            if(imageViewer) {
+            if (imageViewer)
+            {
                 var btn = thumbnail.gameObject.EnsureComponent<Button>();
                 btn.onClick.AddListener(() => imageViewer.Show(sprite));
             }
@@ -57,8 +58,10 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Build() => Build(watchable);
 
-        public virtual void PlayOnline() {
-            if(!string.IsNullOrEmpty(watchable.url)) {
+        public virtual void PlayOnline()
+        {
+            if (!string.IsNullOrEmpty(watchable.url))
+            {
                 Application.OpenURL(watchable.url);
             }
         }

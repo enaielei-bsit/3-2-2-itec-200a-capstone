@@ -5,20 +5,15 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay
+{
     [RequireComponent(typeof(CinemachinePathFollower))]
-    public class Pedestrian : Core.Controller {
+    public class Pedestrian : Core.Controller
+    {
         protected Coroutine _walk;
 
         public virtual CinemachinePathFollower follower =>
@@ -27,20 +22,24 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
         public float walkTimeScale = 1.0f;
         public Animator animator;
 
-        public override void Awake() {
+        public override void Awake()
+        {
             StopWalking();
         }
 
-        public virtual void StartWalking(float duration) {
+        public virtual void StartWalking(float duration)
+        {
             StopWalking();
-            if(animator) animator.enabled = true;
+            if (animator) animator.enabled = true;
             _walk = this.Run(
                 duration,
-                onProgress: (d, e) => {
+                onProgress: (d, e) =>
+                {
                     follower.value = e / d;
                     return Time.deltaTime * walkTimeScale;
                 },
-                onFinish: (d, e) => {
+                onFinish: (d, e) =>
+                {
                     follower.value = 1.0f;
                     StopWalking();
                 },
@@ -50,9 +49,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
 
         public virtual void StartWalking() => StartWalking(walkDuration);
 
-        public virtual void StopWalking() {
-            if(animator) animator.enabled = false;
-            if(_walk != null) {
+        public virtual void StopWalking()
+        {
+            if (animator) animator.enabled = false;
+            if (_walk != null)
+            {
                 StopCoroutine(_walk);
                 _walk = null;
             }

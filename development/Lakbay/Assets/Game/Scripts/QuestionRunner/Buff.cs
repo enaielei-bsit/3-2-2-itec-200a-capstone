@@ -5,17 +5,10 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    public abstract class Buff : Core.Controller {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
+    public abstract class Buff : Core.Controller
+    {
         protected float _progress = 0.0f;
         public virtual float progress => _progress;
 
@@ -24,7 +17,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             float duration);
         public virtual void OnLinger(
             Caster caster, Buffable target, Skill skill,
-            float duration, float elapsedTime) {
+            float duration, float elapsedTime)
+        {
             _progress = duration > 0.0f ? elapsedTime / duration : 0.0f;
         }
         public abstract void OnRemove(

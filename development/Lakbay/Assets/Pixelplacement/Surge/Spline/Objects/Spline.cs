@@ -7,9 +7,9 @@
 /// 
 /// </summary>
 
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Pixelplacement
 {
@@ -257,7 +257,7 @@ namespace Pixelplacement
             int totalSlices = (Anchors.Length - 1) * _slicesPerCurve;
             Length = 0;
             _splineReparams.Clear();
-            
+
             //initial entries:
             _splineReparams.Add(new SplineReparam(0, 0));
 
@@ -279,7 +279,7 @@ namespace Pixelplacement
                 //reparameterization cache:
                 _splineReparams.Add(new SplineReparam(Length, percent));
             }
-            
+
             _lengthDirty = false;
             return;
         }
@@ -404,7 +404,7 @@ namespace Pixelplacement
 
             return closestPercentage;
         }
-        
+
         /// <summary>
         /// Makes a spline longer.
         /// </summary>

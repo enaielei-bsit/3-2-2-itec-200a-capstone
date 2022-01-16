@@ -8,7 +8,6 @@
 /// </summary>
 
 using UnityEngine;
-using System.Collections;
 
 namespace Pixelplacement
 {
@@ -25,12 +24,15 @@ namespace Pixelplacement
         {
             get
             {
-                if (percentage != _previousPercentage || faceDirection != _previousFaceDirection) {
+                if (percentage != _previousPercentage || faceDirection != _previousFaceDirection)
+                {
                     _previousPercentage = percentage;
                     _previousFaceDirection = faceDirection;
                     return true;
-                } else {
-                    return false;	
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
@@ -41,25 +43,27 @@ namespace Pixelplacement
         bool _detached;
 
         //Public Methods:
-        public void UpdateOrientation (Spline spline)
+        public void UpdateOrientation(Spline spline)
         {
             if (target == null) return;
 
             //clamp percentage:
-            if (!spline.loop) percentage = Mathf.Clamp01 (percentage);
+            if (!spline.loop) percentage = Mathf.Clamp01(percentage);
 
             //look in direction of spline?
             if (faceDirection)
             {
                 if (spline.direction == SplineDirection.Forward)
                 {
-                    target.LookAt (target.position + spline.GetDirection (percentage));
-                }else{
-                    target.LookAt (target.position - spline.GetDirection (percentage));
+                    target.LookAt(target.position + spline.GetDirection(percentage));
+                }
+                else
+                {
+                    target.LookAt(target.position - spline.GetDirection(percentage));
                 }
             }
 
-            target.position = spline.GetPosition (percentage);
+            target.position = spline.GetPosition(percentage);
         }
     }
 }

@@ -6,84 +6,90 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
-using CommandLine;
+using Utilities;
 using YamlDotNet.Serialization;
 
-using Utilities;
-
-namespace Ph.CoDe_A.Lakbay.Core {
+namespace Ph.CoDe_A.Lakbay.Core
+{
     [Serializable]
-    public abstract class EntryValue {
+    public abstract class EntryValue
+    {
 
     }
 
     [Serializable]
-    public class EntryText : EntryValue {
+    public class EntryText : EntryValue
+    {
         public string value = "";
 
-        public EntryText() {}
+        public EntryText() { }
 
-        public EntryText(string value="") {
+        public EntryText(string value = "")
+        {
             this.value = value;
         }
 
-        public static implicit operator EntryText(string str) {
+        public static implicit operator EntryText(string str)
+        {
             return new EntryText(str);
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return value;
         }
     }
 
     [Serializable]
     public abstract class EntryAsset<T> : EntryValue
-        where T : UnityEngine.Object {
+        where T : UnityEngine.Object
+    {
         public string path = "";
 
-        public EntryAsset() {}
+        public EntryAsset() { }
 
-        public EntryAsset(string path="") {
+        public EntryAsset(string path = "")
+        {
             this.path = path;
         }
 
-        public virtual T Get(Database database) {
+        public virtual T Get(Database database)
+        {
             return database?.Get<T>(path);
         }
 
         public virtual T Get() => Get(Session.database);
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return path;
         }
     }
 
     [Serializable]
-    public class EntryImage : EntryAsset<Sprite> {
+    public class EntryImage : EntryAsset<Sprite>
+    {
         public string description = "";
         public string source = "";
 
-        public EntryImage() {}
+        public EntryImage() { }
 
-        public EntryImage(string path="", string description="", string source="")
-            : base(path) {
+        public EntryImage(string path = "", string description = "", string source = "")
+            : base(path)
+        {
             this.description = description;
             this.source = source;
         }
 
-        public static implicit operator EntryImage(string path) {
+        public static implicit operator EntryImage(string path)
+        {
             return new EntryImage(path);
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return new string[] {
                 base.ToString(), description, source
             }.Join(";");
@@ -96,23 +102,31 @@ namespace Ph.CoDe_A.Lakbay.Core {
     // }
 
     [Serializable]
-    public class Entry {
-        public enum Type {
+    public class Entry
+    {
+        public enum Type
+        {
             Text, Document, Image, Audio, Video
         }
 
         [YamlIgnore]
-        public virtual Type type {
-            get {
-                if(text != null) return Type.Text;
-                else if(image != null) return Type.Image;
+        public virtual Type type
+        {
+            get
+            {
+                if (text != null) return Type.Text;
+                else if (image != null) return Type.Image;
                 return Type.Text;
             }
-            set {
-                if(value == Type.Text) {
+            set
+            {
+                if (value == Type.Text)
+                {
                     _text = "";
                     _image = null;
-                } else if(value == Type.Image) {
+                }
+                else if (value == Type.Image)
+                {
                     _text = null;
                     _image = "";
                 }
@@ -120,54 +134,64 @@ namespace Ph.CoDe_A.Lakbay.Core {
         }
 
         protected EntryText _text;
-        public EntryText text {
+        public EntryText text
+        {
             get => _text;
-            set {
+            set
+            {
                 type = Type.Text;
                 _text = value;
             }
         }
         protected EntryImage _image;
-        public EntryImage image {
+        public EntryImage image
+        {
             get => _image;
-            set {
+            set
+            {
                 type = Type.Image;
                 _image = value;
             }
         }
 
-        public Entry() : this(Type.Text) {}
+        public Entry() : this(Type.Text) { }
 
-        public Entry(Type type=Type.Text) {
+        public Entry(Type type = Type.Text)
+        {
             this.type = type;
         }
 
-        public Entry(string text) : this((EntryText) text) {}
+        public Entry(string text) : this((EntryText)text) { }
 
-        public Entry(EntryText text) : this(Type.Text) {
+        public Entry(EntryText text) : this(Type.Text)
+        {
             this.text = text;
         }
 
-        public Entry(EntryImage image) : this(Type.Image) {
+        public Entry(EntryImage image) : this(Type.Image)
+        {
             this.image = image;
         }
-        
+
         public virtual T GetAsset<T>(Database database)
-            where T : UnityEngine.Object {
-            if(type == Type.Image) return image?.Get(database) as T;
+            where T : UnityEngine.Object
+        {
+            if (type == Type.Image) return image?.Get(database) as T;
             return default;
         }
 
-        public virtual T GetAsset<T>() 
+        public virtual T GetAsset<T>()
             where T : UnityEngine.Object => GetAsset<T>(Session.database);
 
-        public static implicit operator Entry(string str) {
+        public static implicit operator Entry(string str)
+        {
             return new Entry(str);
         }
 
-        public override string ToString() {
-            if(type == Type.Text) return text?.ToString();
-            else if(type == Type.Image) return image?.ToString();
+        public override string ToString()
+        {
+            if (type == Type.Text) return text?.ToString();
+            else if (type == Type.Image) return image?.ToString();
             return text?.ToString();
         }
     }

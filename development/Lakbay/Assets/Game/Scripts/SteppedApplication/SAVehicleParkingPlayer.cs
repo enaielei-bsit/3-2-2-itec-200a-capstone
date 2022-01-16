@@ -5,21 +5,15 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication
+{
     using Core;
     using UnityEngine.Animations;
-    using Utilities;
 
-    public class SAVehicleParkingPlayer : SAVehiclePlayer {
+    public class SAVehicleParkingPlayer : SAVehiclePlayer
+    {
         protected bool _hitObstacle = false;
         public virtual bool hitObstacle => _hitObstacle;
         protected bool _doneParking = false;
@@ -32,36 +26,44 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public float targetRotationOffset = 5.0f;
         public LookAtConstraint arrowGuide;
 
-        public virtual void Proceed() {
+        public virtual void Proceed()
+        {
             LoadScene();
         }
 
-        public override void OnCollisionEnter(Collision collision) {
+        public override void OnCollisionEnter(Collision collision)
+        {
             base.OnCollisionEnter(collision);
             var collider = collision.collider;
             var obstacle = collider.GetTrigger<ObstacleTrigger>();
-            if(obstacle) {
-                if(!hitObstacle && !doneParking) {
+            if (obstacle)
+            {
+                if (!hitObstacle && !doneParking)
+                {
                     _hitObstacle = true;
-                    if(vehicle) Reset();
+                    if (vehicle) Reset();
                     // gameOverUI?.gameObject.SetActive(true);
                     OnObstacleHit();
                 }
             }
         }
 
-        public virtual void OnObstacleHit() {
+        public virtual void OnObstacleHit()
+        {
 
         }
 
-        public override void OnTriggerEnter(Collider collider) {
+        public override void OnTriggerEnter(Collider collider)
+        {
             base.OnTriggerEnter(collider);
         }
 
-        public override void OnTriggerStay(Collider collider) {
+        public override void OnTriggerStay(Collider collider)
+        {
             base.OnTriggerStay(collider);
             var target = collider.GetTrigger<TargetTrigger>();
-            if(target && !hitObstacle) {
+            if (target && !hitObstacle)
+            {
                 var parked = ParkedProperly(
                     transform, target.transform,
                     targetPositionOffset, targetRotationOffset,
@@ -69,7 +71,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                 );
 
                 printLog($"Parked: {parked}");
-                if(parked && !doneParking && Mathf.Floor(vehicle.Speed) == 0.0f) {
+                if (parked && !doneParking && Mathf.Floor(vehicle.Speed) == 0.0f)
+                {
                     _doneParking = true;
                     Reset();
                     inGameUI?.gameObject.SetActive(false);
@@ -79,21 +82,24 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             }
         }
 
-        public override void OnTriggerExit(Collider collider) {
+        public override void OnTriggerExit(Collider collider)
+        {
             base.OnTriggerExit(collider);
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
         }
 
         public static bool ParkedProperly(
             Transform vehicle,
             Transform location,
-            float positionOffset=0.0f,
-            float rotationOffset=0.0f,
-            bool bothWays=true
-        ) {
+            float positionOffset = 0.0f,
+            float rotationOffset = 0.0f,
+            bool bothWays = true
+        )
+        {
             return PositionedProperly(
                 vehicle.position, location.position, positionOffset)
                 && RotatedProperly(
@@ -104,8 +110,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public static bool PositionedProperly(
             Vector3 vehicle,
             Vector3 location,
-            float offset=0.0f
-        ) {
+            float offset = 0.0f
+        )
+        {
             offset = Mathf.Abs(offset);
             float distance =
                 Mathf.Abs(Vector3.Distance(vehicle, location));
@@ -115,14 +122,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public static bool RotatedProperly(
             Quaternion vehicle,
             Quaternion location,
-            float offset=0.0f,
-            bool bothWays=true
-        ) {
+            float offset = 0.0f,
+            bool bothWays = true
+        )
+        {
             offset = Mathf.Abs(offset);
             float angle =
                 Mathf.Abs(Quaternion.Angle(vehicle, location));
             bool ok = angle <= offset;
-            if(!ok && bothWays) {
+            if (!ok && bothWays)
+            {
                 // Check the 180deg version of the location
                 // if the vehicle is parked that way.
                 var rlocation = location * Quaternion.Euler(0.0f, 180.0f, 0.0f);
@@ -133,17 +142,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             return ok;
         }
 
-        public virtual void SetGuide(Transform transform) {
-            if(arrowGuide) {
-                if(arrowGuide.sourceCount != 0) arrowGuide.RemoveSource(0);
-                arrowGuide.AddSource(new ConstraintSource() {
+        public virtual void SetGuide(Transform transform)
+        {
+            if (arrowGuide)
+            {
+                if (arrowGuide.sourceCount != 0) arrowGuide.RemoveSource(0);
+                arrowGuide.AddSource(new ConstraintSource()
+                {
                     sourceTransform = transform,
                     weight = 1,
                 });
             }
         }
 
-        public virtual void OnPark() {
+        public virtual void OnPark()
+        {
 
         }
     }

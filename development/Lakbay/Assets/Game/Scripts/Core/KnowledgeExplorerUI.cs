@@ -5,8 +5,6 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,11 +12,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
+namespace Ph.CoDe_A.Lakbay.Core
+{
     using TMPro;
     using Utilities;
 
-    public class KnowledgeExplorerUI : Controller {
+    public class KnowledgeExplorerUI : Controller
+    {
         protected Path _current;
         public virtual Path current => _current;
 
@@ -41,19 +41,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public Button path;
         public RectTransform pathSeparator;
 
-        public virtual void Build(Path path) {
-            if(!path) return;
+        public virtual void Build(Path path)
+        {
+            if (!path) return;
             root = path;
             _current = path;
             path.ResolveParent();
-            if(paths) {
+            if (paths)
+            {
                 this.paths.transform.DestroyChildren();
                 var paths = GetFullPath(path);
-                foreach(var p in paths) {
-                    if(p == paths.First()) {
+                foreach (var p in paths)
+                {
+                    if (p == paths.First())
+                    {
                         var sep = Instantiate(rootSeparator, this.paths.transform);
                         sep.onClick.AddListener(OnPathClick(p));
-                        if(p == paths.Last())
+                        if (p == paths.Last())
                             sep.image.color = selectedPath;
                         continue;
                     }
@@ -63,18 +67,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     var text = bpath.GetComponentInChildren<TextMeshProUGUI>();
                     text?.SetText(p.parsedName);
 
-                    if(p != paths.Last()) {
+                    if (p != paths.Last())
+                    {
                         Instantiate(pathSeparator, this.paths.transform);
-                    } else {
+                    }
+                    else
+                    {
                         bpath.image.color = selectedPath;
                     }
                 }
             }
 
-            if(contents) {
+            if (contents)
+            {
                 contents.transform.DestroyChildren();
                 var npaths = path.paths.OrderBy((p) => p.parsedName);
-                foreach(var p in npaths) {
+                foreach (var p in npaths)
+                {
                     var folder = Instantiate(folderEntry, contents.transform);
                     var text = folder.GetComponentInChildren<TextMeshProUGUI>();
                     text?.SetText(p.parsedName);
@@ -83,11 +92,12 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
                 var files = path.files.OrderBy((f) => f.name);
                 var btn = readableEntry;
-                if(path.type == Path.Type.Readable)
+                if (path.type == Path.Type.Readable)
                     btn = readableEntry;
                 else if (path.type == Path.Type.Watchable)
                     btn = watchableEntry;
-                foreach(var file in files) {
+                foreach (var file in files)
+                {
                     var nfile = Instantiate(btn, contents.transform);
                     var text = nfile.GetComponentInChildren<TextMeshProUGUI>();
                     // file.name.GetLocale(null, out string name);
@@ -98,18 +108,23 @@ namespace Ph.CoDe_A.Lakbay.Core {
             }
         }
 
-        public virtual UnityAction OnFileClick(Path.Type type, TextAsset file) {
-            return () => {
+        public virtual UnityAction OnFileClick(Path.Type type, TextAsset file)
+        {
+            return () =>
+            {
                 // content.gameObject.SetActive(false);
                 // watchableViewer.gameObject.SetActive(false);
 
-                if(type == Path.Type.Readable) {
-                    if(!content) return;
+                if (type == Path.Type.Readable)
+                {
+                    if (!content) return;
                     watchableViewer?.gameObject.SetActive(false);
                     content?.gameObject.SetActive(true);
                     content?.Build(file.text.DeserializeAsYaml<List<Entry>>());
-                } else if(type == Path.Type.Watchable) {
-                    if(!watchableViewer) return;
+                }
+                else if (type == Path.Type.Watchable)
+                {
+                    if (!watchableViewer) return;
                     content?.gameObject.SetActive(false);
                     watchableViewer?.gameObject.SetActive(true);
                     watchableViewer?.Build(file.text.DeserializeAsYaml<Watchable>());
@@ -118,13 +133,16 @@ namespace Ph.CoDe_A.Lakbay.Core {
             };
         }
 
-        public virtual UnityAction OnPathClick(Path path) {
+        public virtual UnityAction OnPathClick(Path path)
+        {
             return () => Build(path);
         }
 
-        public static Path[] GetFullPath(Path path) {
+        public static Path[] GetFullPath(Path path)
+        {
             var paths = new List<Path>();
-            while(path != null) {
+            while (path != null)
+            {
                 paths.Add(path);
                 path = path.parent;
             }
@@ -133,8 +151,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
             return paths.ToArray();
         }
 
-        public virtual void GoToParent() {
-            if(current && current.parent) Build(current.parent);
+        public virtual void GoToParent()
+        {
+            if (current && current.parent) Build(current.parent);
         }
 
         public virtual void Build() => Build(root);

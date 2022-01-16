@@ -11,7 +11,6 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Pixelplacement
 {
@@ -105,7 +104,7 @@ namespace Pixelplacement
             if (cursor != null) cursor.gameObject.SetActive(false);
             if (lineRenderer != null) lineRenderer.enabled = false;
         }
-        
+
         //Gizmos:
         private void OnDrawGizmosSelected()
         {
@@ -401,7 +400,7 @@ namespace Pixelplacement
             }
 
             //line renderer:
-            if (cursor != null && cursor.gameObject.activeSelf && lineRenderer != null )
+            if (cursor != null && cursor.gameObject.activeSelf && lineRenderer != null)
             {
                 if (lineRenderer.positionCount != 2) lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, source.position);

@@ -5,31 +5,30 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns
+{
     using Core;
 
-    public class ObstacleSpawn : QRSpawn {
+    public class ObstacleSpawn : QRSpawn
+    {
         public bool collided = false;
         public UnityEvent onTrigger = new UnityEvent();
         public UnityEvent onBreak = new UnityEvent();
 
-        public override void OnCollisionEnter(Collision collision) {
+        public override void OnCollisionEnter(Collision collision)
+        {
             base.OnCollisionEnter(collision);
-            if(!collided) {
+            if (!collided)
+            {
                 var player = collision.gameObject.GetComponentInParent<QRPlayer>();
 
-                if(player && collision.collider.GetTrigger<SpawnTrigger>()) {
+                if (player && collision.collider.GetTrigger<SpawnTrigger>())
+                {
                     collided = true;
                     onTrigger?.Invoke();
                     OnCollision(player);
@@ -38,31 +37,38 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public override bool OnSpawnCheck(
-            Spawner spawner, Transform[] locations, Transform location) {
-            if(base.OnSpawnCheck(spawner, locations, location)) {
+            Spawner spawner, Transform[] locations, Transform location)
+        {
+            if (base.OnSpawnCheck(spawner, locations, location))
+            {
                 return !Session.qrLevel.done;
             }
 
             return false;
         }
 
-        public virtual void OnCollision(QRPlayer player) {
-            if(player.lives > 0) {
+        public virtual void OnCollision(QRPlayer player)
+        {
+            if (player.lives > 0)
+            {
                 player.lives--;
                 printLog($"Player took damage! Current Lives: {player.lives}");
             }
 
-            if(player.lives <= 0) {
+            if (player.lives <= 0)
+            {
                 player.gameOverUI?.gameObject.SetActive(true);
                 player.Pause();
             }
-            
+
             Break();
         }
 
-        public virtual void Break() {
+        public virtual void Break()
+        {
             onBreak?.Invoke();
-            foreach(var collider in GetComponentsInChildren<Collider>()) {
+            foreach (var collider in GetComponentsInChildren<Collider>())
+            {
                 var rb = collider.gameObject.EnsureComponent<Rigidbody>();
             };
         }

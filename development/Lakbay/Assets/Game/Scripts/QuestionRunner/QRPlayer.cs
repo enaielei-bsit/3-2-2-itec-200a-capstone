@@ -5,32 +5,30 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
+using Cinemachine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cinemachine;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using Core;
     using UnityEngine.Localization;
-    using UnityEngine.Localization.Settings;
 
     [Serializable]
-    public struct TimeSkybox {
+    public struct TimeSkybox
+    {
         public TimeOfDay time;
         public Material skybox;
         public Light sun;
     }
 
-    public class QRPlayer : Player {
+    public class QRPlayer : Player
+    {
         protected readonly List<float> _timeScales = new List<float>();
-        
+
         public virtual int level => Session.qrLevel
             ? Session.qrLevelIndex + 1 : 0;
         public virtual int levels => Session.qrLevels.Count();
@@ -71,32 +69,39 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [Space]
         public LocalizedString intro;
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
         }
 
-        public virtual void InitializeLevels() {
+        public virtual void InitializeLevels()
+        {
             var levels = Session.database.Get<QRLevel>().Values
                 .Where((l) => l.category == Session.mode)
                 .OrderBy((l) => l.index);
             Session.qrLevels.Clear();
             Session.qrLevels.AddRange(levels);
-            foreach(var level in Session.qrLevels) {
+            foreach (var level in Session.qrLevels)
+            {
                 level.LoadQuestions(level.questionsFile?.LoadAsset());
             }
             Session.qrLevelIndex = 0;
         }
 
-        public override void Build() {
+        public override void Build()
+        {
             base.Build();
-            if(initial) {
-                if(Session.qrLevelIndex == -1) InitializeLevels();
+            if (initial)
+            {
+                if (Session.qrLevelIndex == -1) InitializeLevels();
 
-                if(Session.qrLevel) {
+                if (Session.qrLevel)
+                {
                     ResetLevel();
                     Session.qrLevel.player = this;
 
@@ -117,13 +122,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
 
                     SetTime(Session.qrLevel.time);
                     prePlayUI?.Show();
-                    if(Session.qrLevelIndex == 0)
+                    if (Session.qrLevelIndex == 0)
                         messageBoxUI?.ShowMessage(intro);
                 }
             }
         }
 
-        protected virtual void _Save() {
+        protected virtual void _Save()
+        {
             _timeScales.Clear();
             _timeScales.AddRange(new float[] {
                 caster.timeScale,
@@ -133,7 +139,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             });
         }
 
-        public override void Pause() {
+        public override void Pause()
+        {
             _Save();
             caster.timeScale = 0.0f;
             buffable.timeScale = 0.0f;
@@ -141,18 +148,23 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             slide.timeScale = 0.0f;
         }
 
-        public virtual void Pause(bool screen) {
+        public virtual void Pause(bool screen)
+        {
             gameMenuUI?.gameObject.SetActive(screen);
             Pause();
         }
 
-        public override void Resume() {
-            try {
+        public override void Resume()
+        {
+            try
+            {
                 caster.timeScale = _timeScales.Pop();
                 buffable.timeScale = _timeScales.Pop();
                 travel.timeScale = _timeScales.Pop();
                 slide.timeScale = _timeScales.Pop();
-            } catch {
+            }
+            catch
+            {
                 caster.timeScale = 1.0f;
                 buffable.timeScale = 1.0f;
                 travel.timeScale = 1.0f;
@@ -160,62 +172,81 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Resume(bool screen) {
+        public virtual void Resume(bool screen)
+        {
             gameMenuUI?.gameObject.SetActive(screen);
             Resume();
         }
 
-        public virtual void Proceed() {
-            if(Session.qrLevelIndex != Session.qrLevels.Count - 1) {
+        public virtual void Proceed()
+        {
+            if (Session.qrLevelIndex != Session.qrLevels.Count - 1)
+            {
                 Session.qrLevelIndex++;
                 LoadScene();
-            } else {
+            }
+            else
+            {
                 LoadScene(BuiltScene.Blowbagets);
             }
         }
 
-        public virtual void ResetLevel(int index) {
-            if(index.Within(0, Session.qrLevels.Count - 1))
+        public virtual void ResetLevel(int index)
+        {
+            if (index.Within(0, Session.qrLevels.Count - 1))
                 Session.qrLevels[index].Reset();
         }
 
         public virtual void ResetLevel() => ResetLevel(Session.qrLevelIndex);
 
-        public virtual void Play(bool screen) {
+        public virtual void Play(bool screen)
+        {
             prePlayUI?.gameObject.SetActive(screen);
             travel?.Perform(true);
         }
 
-        public virtual void Restart(bool current) {
-            if(current) {
+        public virtual void Restart(bool current)
+        {
+            if (current)
+            {
                 ResetLevel();
-            } else {
+            }
+            else
+            {
                 Session.qrLevelIndex = 0;
-                foreach(int level in Session.qrLevels.Select((l, i) => i))
+                foreach (int level in Session.qrLevels.Select((l, i) => i))
                     ResetLevel(level);
             }
             Restart();
         }
 
-        public override void End() {
+        public override void End()
+        {
             Session.qrLevels.Clear();
             base.End();
         }
 
-        public virtual void UpdateQuestionUI(TextAsset asset) {
-            if(questionUI) {
-                if(questionUI.gameObject.activeSelf) {
+        public virtual void UpdateQuestionUI(TextAsset asset)
+        {
+            if (questionUI)
+            {
+                if (questionUI.gameObject.activeSelf)
+                {
                     questionUI.Build();
                 }
             }
         }
 
-        public virtual void SetTime(TimeOfDay time) {
+        public virtual void SetTime(TimeOfDay time)
+        {
             var ftime = times.Find((t) => t.time == time);
-            if(ftime.skybox) {
+            if (ftime.skybox)
+            {
                 var sun = RenderSettings.sun;
-                if(sun) {
-                    if(ftime.sun) {
+                if (sun)
+                {
+                    if (ftime.sun)
+                    {
                         Destroy(sun.gameObject);
                         Instantiate(ftime.sun);
                     }

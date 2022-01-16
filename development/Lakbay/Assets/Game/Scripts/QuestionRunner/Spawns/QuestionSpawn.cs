@@ -5,25 +5,17 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
-using Pixelplacement;
-
-using Utilities;
-using Ph.CoDe_A.Lakbay.Core;
-
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns
+{
     using Core;
     using UnityEngine.Localization;
 
     [RequireComponent(typeof(Collider))]
-    public class QuestionSpawn : QRSpawn {
+    public class QuestionSpawn : QRSpawn
+    {
         public float progressUpdateDuration = 0.5f;
         public float delayBeforeResuming = 2f;
         public Question question;
@@ -42,22 +34,28 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         [Space]
         public UnityEvent onTrigger = new UnityEvent();
 
-        public override void OnTriggerEnter(Collider collider) {
+        public override void OnTriggerEnter(Collider collider)
+        {
             base.OnTriggerEnter(collider);
             var player = collider.GetComponentInParent<QRPlayer>();
-            
-            if(player && collider.GetTrigger<SpawnTrigger>()) { 
-                if(!triggered) {
+
+            if (player && collider.GetTrigger<SpawnTrigger>())
+            {
+                if (!triggered)
+                {
                     triggered = true;
                     OnTrigger(player);
                 }
             }
         }
 
-        public virtual void OnTrigger(QRPlayer trigger) {
-            if(question != null) {
+        public virtual void OnTrigger(QRPlayer trigger)
+        {
+            if (question != null)
+            {
                 onTrigger?.Invoke();
-                if(_sound) {
+                if (_sound)
+                {
                     var sound = Instantiate(_sound, transform.parent);
                     sound.Play();
                 }
@@ -66,14 +64,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             gameObject.SetActive(false);
         }
 
-        public virtual void Handle(QuestionUI ui, QRPlayer player) {
-            if(ui && !ui.gameObject.activeSelf) {
+        public virtual void Handle(QuestionUI ui, QRPlayer player)
+        {
+            if (ui && !ui.gameObject.activeSelf)
+            {
                 handled = true;
                 // Take note of the last count for playerStop
                 Session.qrLevel.lastStop = player.repeaterHandler.repeated;
 
                 player?.Pause();
-                ui.Show(question, (qw, c) => {
+                ui.Show(question, (qw, c) =>
+                {
                     player.qrInGameUI.SetProgress(
                         Session.qrLevel.progress,
                         progressUpdateDuration
@@ -86,12 +87,14 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
                         correct ? correctMessage : wrongMessage,
                         autoDismiss: dismiss
                     );
-                    if(notif) notif.message.color =
-                        correct ? correctColor : wrongColor;
+                    if (notif) notif.message.color =
+                         correct ? correctColor : wrongColor;
                     AudioSource sound = null;
-                    if(correct) {
+                    if (correct)
+                    {
                         sound = Instantiate(correctSound, player.transform);
-                    } else sound = Instantiate(wrongSound, player.transform);
+                    }
+                    else sound = Instantiate(wrongSound, player.transform);
                     sound.Play();
                     Destroy(sound.gameObject, dismiss);
 
@@ -102,33 +105,40 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
             }
         }
 
-        public virtual void Handle(QRPlayer player) {
+        public virtual void Handle(QRPlayer player)
+        {
             Handle(player.questionUI, player);
         }
 
         public override bool OnSpawnCheck(
-            Spawner spawner, Transform[] locations, Transform location) {
-            if(base.OnSpawnCheck(spawner, locations, location)) {
+            Spawner spawner, Transform[] locations, Transform location)
+        {
+            if (base.OnSpawnCheck(spawner, locations, location))
+            {
                 return Session.qrLevel.free != null;
             }
 
             return false;
         }
 
-        public override void OnSpawn(Spawner spawner) {
+        public override void OnSpawn(Spawner spawner)
+        {
             base.OnSpawn(spawner);
             var question = Session.qrLevel.free;
-            if(question != null) {
+            if (question != null)
+            {
                 var questions = Session.qrLevel.questions;
                 Session.qrLevel.spawned.Add(questions.IndexOf(question));
                 this.question = question;
             }
         }
 
-        public override void OnDestroy() {
+        public override void OnDestroy()
+        {
             base.OnDestroy();
-            if(!handled) {
-                if(!Session.qrLevel || !Session.qrLevel.questions.Contains(question)) return;
+            if (!handled)
+            {
+                if (!Session.qrLevel || !Session.qrLevel.questions.Contains(question)) return;
                 Session.qrLevel.spawned.Remove(
                     Session.qrLevel.questions.IndexOf(question)
                 );

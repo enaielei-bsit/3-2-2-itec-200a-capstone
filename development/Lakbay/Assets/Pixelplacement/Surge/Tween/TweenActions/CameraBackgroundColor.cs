@@ -4,10 +4,8 @@
 /// Email: bobb@pixelplacement.com
 /// </summary>
 
-using UnityEngine;
 using System;
-using UnityEngine.UI;
-using Pixelplacement;
+using UnityEngine;
 
 namespace Pixelplacement.TweenSystem
 {

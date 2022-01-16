@@ -4,26 +4,25 @@
 /// Email: bobb@pixelplacement.com 
 /// </summary>
 
-using UnityEngine;
 using System;
-using Pixelplacement;
+using UnityEngine;
 
 namespace Pixelplacement.TweenSystem
 {
     class ValueInt : TweenBase
     {
         //Public Properties:
-        public float EndValue {get; private set;}
+        public float EndValue { get; private set; }
 
         //Private Variables:
         Action<int> _valueUpdatedCallback;
         float _start;
 
         //Constructor:
-        public ValueInt (int startValue, int endValue, Action<int> valueUpdatedCallback, float duration, float delay, bool obeyTimescale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
+        public ValueInt(int startValue, int endValue, Action<int> valueUpdatedCallback, float duration, float delay, bool obeyTimescale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
         {
             //set essential properties:
-            SetEssentials (Tween.TweenType.Value, -1, duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
+            SetEssentials(Tween.TweenType.Value, -1, duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
 
             //catalog custom properties:
             _valueUpdatedCallback = valueUpdatedCallback;
@@ -32,26 +31,26 @@ namespace Pixelplacement.TweenSystem
         }
 
         //Processes:
-        protected override bool SetStartValue ()
+        protected override bool SetStartValue()
         {
             return true;
         }
 
-        protected override void Operation (float percentage)
+        protected override void Operation(float percentage)
         {
-            float calculatedValue = TweenUtilities.LinearInterpolate (_start, EndValue, percentage);
-            _valueUpdatedCallback ((int)calculatedValue);
+            float calculatedValue = TweenUtilities.LinearInterpolate(_start, EndValue, percentage);
+            _valueUpdatedCallback((int)calculatedValue);
         }
 
         //Loops:
-        public override void Loop ()
+        public override void Loop()
         {
-            ResetStartTime ();
+            ResetStartTime();
         }
 
-        public override void PingPong ()
+        public override void PingPong()
         {
-            ResetStartTime ();
+            ResetStartTime();
             float temp = _start;
             _start = EndValue;
             EndValue = temp;

@@ -5,21 +5,18 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication
+{
     using UnityEngine.Localization;
     using UnityEngine.Localization.Components;
     using Utilities;
 
-    public class SAGameOverUI : Core.GameMenuUI {
+    public class SAGameOverUI : Core.GameMenuUI
+    {
         [Header("Buttons")]
         public Button proceed;
         public Button retry;
@@ -35,7 +32,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public TextMeshProUGUI failed;
 
 
-        public virtual void Show() {
+        public virtual void Show()
+        {
             gameObject.SetActive(true);
             pointers?.transform.DestroyChildren();
             passed?.gameObject.SetActive(false);
@@ -46,22 +44,26 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             end?.gameObject.SetActive(true);
         }
 
-        public virtual void ShowPassed(params LocalizedString[] pointers) {
+        public virtual void ShowPassed(params LocalizedString[] pointers)
+        {
             Show();
             passed?.gameObject.SetActive(true);
             proceed?.gameObject.SetActive(true);
             ShowPointers(true, pointers);
         }
 
-        public virtual void ShowFailed(params LocalizedString[] pointers) {
+        public virtual void ShowFailed(params LocalizedString[] pointers)
+        {
             Show();
             failed?.gameObject.SetActive(true);
             retry?.gameObject.SetActive(true);
             ShowPointers(false, pointers);
         }
 
-        public virtual void ShowPointers(bool correct, params LocalizedString[] pointers) {
-            foreach(var pointer in pointers) {
+        public virtual void ShowPointers(bool correct, params LocalizedString[] pointers)
+        {
+            foreach (var pointer in pointers)
+            {
                 var npointer = Instantiate(
                     correct ? correctPointer : wrongPointer,
                     this.pointers.transform);

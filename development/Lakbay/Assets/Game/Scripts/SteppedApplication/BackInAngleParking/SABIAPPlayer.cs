@@ -5,30 +5,27 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking
+{
     using Core;
     using UnityEngine.Localization;
 
-    public class SABIAPPlayer : SAVehicleParkingPlayer {
+    public class SABIAPPlayer : SAVehicleParkingPlayer
+    {
         [Header("Messages")]
         public LocalizedString parkedCorrectly;
         public LocalizedString didntHitCar;
         public LocalizedString hitCar;
-        
-        public override void Proceed() {
+
+        public override void Proceed()
+        {
             LoadScene(BuiltScene.ThreePointTurn);
         }
 
-        public override void OnPark() {
+        public override void OnPark()
+        {
             base.OnPark();
             Session.checkpointController?.SaveCheckpoint(
                 new Checkpoint(Session.mode, BuiltScene.ThreePointTurn)
@@ -38,7 +35,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking {
             );
         }
 
-        public override void OnObstacleHit() {
+        public override void OnObstacleHit()
+        {
             base.OnObstacleHit();
             gameOverUI?.ShowFailed(
                 hitCar

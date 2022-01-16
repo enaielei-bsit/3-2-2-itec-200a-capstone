@@ -8,19 +8,18 @@
 /// </summary>
 
 using UnityEngine;
-using System.Collections;
 
 namespace Pixelplacement
 {
     [ExecuteInEditMode]
-    [RequireComponent (typeof (LineRenderer))]
-    [RequireComponent (typeof (Spline))]
+    [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(Spline))]
     public class SplineRenderer : MonoBehaviour
     {
         //Public Variables:
         public int segmentsPerCurve = 25;
-        [Range (0,1)] public float startPercentage;
-        [Range (0,1)] public float endPercentage = 1;
+        [Range(0, 1)] public float startPercentage;
+        [Range(0, 1)] public float endPercentage = 1;
 
         //Private Variables:
         LineRenderer _lineRenderer;
@@ -33,9 +32,9 @@ namespace Pixelplacement
         float _previousEnd;
 
         //Init:
-        void Reset ()
+        void Reset()
         {
-            _lineRenderer = GetComponent<LineRenderer> ();
+            _lineRenderer = GetComponent<LineRenderer>();
 
             _initialized = false;
 
@@ -48,18 +47,18 @@ namespace Pixelplacement
         }
 
         //Loop:
-        void Update ()
+        void Update()
         {
             //initialize:
             if (!_initialized)
             {
                 //refs:
-                _lineRenderer = GetComponent<LineRenderer> ();
-                _spline = GetComponent<Spline> ();
+                _lineRenderer = GetComponent<LineRenderer>();
+                _spline = GetComponent<Spline>();
 
                 //initial setup:
-                ConfigureLineRenderer ();
-                UpdateLineRenderer ();
+                ConfigureLineRenderer();
+                UpdateLineRenderer();
 
                 _initialized = true;
             }
@@ -67,8 +66,8 @@ namespace Pixelplacement
             //configure line renderer:
             if (segmentsPerCurve != _previousSegmentsPerCurve || _previousAnchorsLength != _spline.Anchors.Length)
             {
-                ConfigureLineRenderer ();
-                UpdateLineRenderer ();
+                ConfigureLineRenderer();
+                UpdateLineRenderer();
             }
 
             if (_spline.Anchors.Length <= 1)
@@ -83,14 +82,14 @@ namespace Pixelplacement
                 if (item.RenderingChange)
                 {
                     item.RenderingChange = false;
-                    UpdateLineRenderer ();
+                    UpdateLineRenderer();
                 }
             }
 
             //if the range has changed, update:
             if (startPercentage != _previousStart || endPercentage != _previousEnd)
             {
-                UpdateLineRenderer ();
+                UpdateLineRenderer();
 
                 //reset:
                 _previousStart = startPercentage;
@@ -99,22 +98,22 @@ namespace Pixelplacement
         }
 
         //Private Methods:
-        void UpdateLineRenderer ()
+        void UpdateLineRenderer()
         {
             if (_spline.Anchors.Length < 2) return;
             for (int i = 0; i < _vertexCount; i++)
             {
-                float percentage = i/(float)(_vertexCount - 1);
-                float sample = Mathf.Lerp (startPercentage, endPercentage, percentage);
-                _lineRenderer.SetPosition (i, _spline.GetPosition(sample, false));
+                float percentage = i / (float)(_vertexCount - 1);
+                float sample = Mathf.Lerp(startPercentage, endPercentage, percentage);
+                _lineRenderer.SetPosition(i, _spline.GetPosition(sample, false));
             }
         }
 
-        void ConfigureLineRenderer ()
+        void ConfigureLineRenderer()
         {
-            segmentsPerCurve = Mathf.Max (0, segmentsPerCurve);
+            segmentsPerCurve = Mathf.Max(0, segmentsPerCurve);
             _vertexCount = (segmentsPerCurve * (_spline.Anchors.Length - 1)) + 2;
-            if (Mathf.Sign (_vertexCount) == 1) _lineRenderer.positionCount = _vertexCount;
+            if (Mathf.Sign(_vertexCount) == 1) _lineRenderer.positionCount = _vertexCount;
             _previousSegmentsPerCurve = segmentsPerCurve;
             _previousAnchorsLength = _spline.Anchors.Length;
         }

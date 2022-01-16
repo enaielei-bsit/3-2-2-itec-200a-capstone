@@ -5,21 +5,17 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Utilities {
+namespace Utilities
+{
     [RequireComponent(typeof(SpriteRenderer))]
-    public class GizmoSpriteRenderer : MonoBehaviour, IGizmoObject {
+    public class GizmoSpriteRenderer : MonoBehaviour, IGizmoObject
+    {
         public virtual SpriteRenderer sprite => GetComponent<SpriteRenderer>();
 
-        public void SetValue(float value) {
+        public void SetValue(float value)
+        {
             var color = sprite.color;
             color.a = value;
             sprite.color = color;

@@ -5,25 +5,29 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
-namespace Utilities {
+namespace Utilities
+{
     public class LocalizeAssetEvent<T> :
         LocalizedAssetEvent<
-        T, LocalizedAsset<T>, UnityEvent<T>> where T : UnityEngine.Object {
+        T, LocalizedAsset<T>, UnityEvent<T>> where T : UnityEngine.Object
+    {
         public virtual void Subscribe(
             LocalizedAsset<T> reference,
-            params UnityAction<T>[] actions) {
+            params UnityAction<T>[] actions)
+        {
             AssetReference = reference;
             OnUpdateAsset.RemoveAllListeners();
             Subscribe(actions);
         }
 
-        public virtual void Subscribe(params UnityAction<T>[] actions) {
-            foreach(var action in actions) {
+        public virtual void Subscribe(params UnityAction<T>[] actions)
+        {
+            foreach (var action in actions)
+            {
                 OnUpdateAsset.AddListener(action);
             }
         }

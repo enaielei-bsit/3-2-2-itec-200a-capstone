@@ -6,24 +6,23 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace Utilities {
+namespace Utilities
+{
     // [ExecuteInEditMode]
-    public class Gizmo : MonoBehaviour {
+    public class Gizmo : MonoBehaviour
+    {
         [Serializable]
-        public struct Value {
+        public struct Value
+        {
             public float min;
             public float max;
 
-            public Value(float min, float max) {
+            public Value(float min, float max)
+            {
                 this.min = min;
                 this.max = max;
             }
@@ -38,8 +37,10 @@ namespace Utilities {
         public Transform target;
         public UnityEvent<float> onValueChange = new UnityEvent<float>();
 
-        public virtual void Update() {
-            if(active && onValueChange != null && target) {
+        public virtual void Update()
+        {
+            if (active && onValueChange != null && target)
+            {
                 float distance = Mathf.Abs(
                     Vector3.Distance(
                         transform.position, target.position));

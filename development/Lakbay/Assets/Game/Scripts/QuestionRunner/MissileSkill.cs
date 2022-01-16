@@ -5,21 +5,16 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     [CreateAssetMenu(
-        fileName="MissileSkill",
-        menuName="Game/Question Runner/MissileSkill"
+        fileName = "MissileSkill",
+        menuName = "Game/Question Runner/MissileSkill"
     )]
-    public class MissileSkill : Skill {
+    public class MissileSkill : Skill
+    {
         public float travelDistance = 200.0f;
     }
 }

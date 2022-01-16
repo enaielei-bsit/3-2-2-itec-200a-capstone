@@ -7,12 +7,12 @@
 /// 
 /// </summary>
 
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace Pixelplacement
 {
-    public class State : MonoBehaviour 
+    public class State : MonoBehaviour
     {
         //Public Properties:
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pixelplacement
         {
             get
             {
-                return transform.GetSiblingIndex () == 0;
+                return transform.GetSiblingIndex() == 0;
             }
         }
 
@@ -33,7 +33,7 @@ namespace Pixelplacement
         {
             get
             {
-                return transform.GetSiblingIndex () == transform.parent.childCount - 1;
+                return transform.GetSiblingIndex() == transform.parent.childCount - 1;
             }
         }
 
@@ -73,43 +73,43 @@ namespace Pixelplacement
         /// <summary>
         /// Changes the state.
         /// </summary>
-        public void ChangeState (GameObject state)
+        public void ChangeState(GameObject state)
         {
-            StateMachine.ChangeState (state.name);
+            StateMachine.ChangeState(state.name);
         }
 
         /// <summary>
         /// Changes the state.
         /// </summary>
-        public void ChangeState (string state)
+        public void ChangeState(string state)
         {
-            StateMachine.ChangeState (state);
+            StateMachine.ChangeState(state);
         }
 
         /// <summary>
         /// Change to the next state if possible.
         /// </summary>
-        public GameObject Next (bool exitIfLast = false)
+        public GameObject Next(bool exitIfLast = false)
         {
-            return StateMachine.Next (exitIfLast);
+            return StateMachine.Next(exitIfLast);
         }
 
         /// <summary>
         /// Change to the previous state if possible.
         /// </summary>
-        public GameObject Previous (bool exitIfFirst = false)
+        public GameObject Previous(bool exitIfFirst = false)
         {
-            return StateMachine.Previous (exitIfFirst);
+            return StateMachine.Previous(exitIfFirst);
         }
 
         /// <summary>
         /// Exit the current state.
         /// </summary>
-        public void Exit ()
+        public void Exit()
         {
-            StateMachine.Exit ();
+            StateMachine.Exit();
         }
-        
+
         protected Coroutine StartCoroutineIfActive(IEnumerator coroutine)
         {
             if (gameObject.activeInHierarchy)

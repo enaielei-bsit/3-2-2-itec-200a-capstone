@@ -5,41 +5,37 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    using Utilities;
-    using TMPro;
-    using UnityEngine.Localization;
-    using UnityEngine.Localization.Components;
-
-    public class PrePlayUI : Controller {
+namespace Ph.CoDe_A.Lakbay.Core
+{
+    public class PrePlayUI : Controller
+    {
         public RectTransform nonProLabel;
         public RectTransform proLabel;
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
         }
 
-        public virtual void Show() {
+        public virtual void Show()
+        {
             gameObject.SetActive(true);
         }
 
         public virtual void Hide() => gameObject.SetActive(false);
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(Session.mode == GameMode.NonPro) {
+            if (Session.mode == GameMode.NonPro)
+            {
                 nonProLabel?.gameObject.SetActive(true);
                 proLabel?.gameObject.SetActive(false);
-            } else if(Session.mode == GameMode.Pro) {
+            }
+            else if (Session.mode == GameMode.Pro)
+            {
                 nonProLabel?.gameObject.SetActive(false);
                 proLabel?.gameObject.SetActive(true);
             }

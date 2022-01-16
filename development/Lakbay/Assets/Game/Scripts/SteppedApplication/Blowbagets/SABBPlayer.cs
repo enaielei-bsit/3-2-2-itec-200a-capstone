@@ -6,22 +6,21 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
+{
     using Cinemachine;
     using Core;
     using UnityEngine.Localization;
     using Utilities;
 
     [Serializable]
-    public class BlowbagetsInfo {
+    public class BlowbagetsInfo
+    {
         public string title = "";
         public string image = "";
         public string description = "";
@@ -29,7 +28,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public List<Entry> content = new List<Entry>();
     }
 
-    public class SABBPlayer : SAPlayer {
+    public class SABBPlayer : SAPlayer
+    {
         protected Vector3 _baseFollowOffset;
 
         [Header("Level")]
@@ -44,7 +44,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         [Header("Gameplay")]
         public float maxScale = 1.0f;
         public float maxRotation = 360.0f;
-        
+
         [Space]
         public bool battery = false;
         [Min(0)]
@@ -64,8 +64,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public int tiresCount = 0;
         public virtual bool tires => tiresCount >= maxTiresCount;
         public bool self = false;
-        public virtual bool finished {
-            get {
+        public virtual bool finished
+        {
+            get
+            {
                 return new bool[] {
                     battery, lights, oil, water,
                     brakes, air, gas, engine,
@@ -80,10 +82,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public LocalizedString message;
         public LocalizedString inspectedAll;
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(finished && (bool) !blowbagetsUI?.gameObject.activeSelf) {
-                if(!_done) {
+            if (finished && (bool)!blowbagetsUI?.gameObject.activeSelf)
+            {
+                if (!_done)
+                {
                     _done = true;
                     inGameUI?.gameObject.SetActive(false);
                     // Invoke("Proceed", 3.0f);
@@ -97,7 +102,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             }
         }
 
-        public override void Build() {
+        public override void Build()
+        {
             base.Build();
             Session.sabbLevel = Session.database.Get<SABBLevel>().First().Value;
             Session.sabbLevel?.Load();
@@ -107,98 +113,120 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             _baseFollowOffset = transposer.m_FollowOffset;
             messageBoxUI?.ShowMessage(message);
         }
-        
-        public virtual void Rotate(float factor) {
-            if(camera) {
+
+        public virtual void Rotate(float factor)
+        {
+            if (camera)
+            {
                 transposer.m_XAxis.Value = maxRotation * factor;
                 printLog($"Rotating: {transposer.m_XAxis.Value}");
             }
         }
 
-        public virtual void Scale(float factor) {
-            if(camera) {
+        public virtual void Scale(float factor)
+        {
+            if (camera)
+            {
                 transposer.m_FollowOffset = _baseFollowOffset + (Vector3.forward * (maxScale * factor));
                 printLog($"Scaling: {transposer.m_FollowOffset.z}");
             }
         }
 
-        public virtual void ShowBattery() {
+        public virtual void ShowBattery()
+        {
             battery = true;
             ShowInfo(Session.sabbLevel.battery);
         }
 
-        public virtual void ShowLights() {
+        public virtual void ShowLights()
+        {
             lightsCount = Mathf.Clamp(lightsCount + 1, 0, maxLightsCount);
             ShowInfo(Session.sabbLevel.lights);
         }
 
-        public virtual void ShowOil() {
+        public virtual void ShowOil()
+        {
             oil = true;
             ShowInfo(Session.sabbLevel.oil);
         }
 
-        public virtual void ShowWater() {
+        public virtual void ShowWater()
+        {
             water = true;
             ShowInfo(Session.sabbLevel.water);
         }
 
-        public virtual void ShowBrakes() {
+        public virtual void ShowBrakes()
+        {
             brakes = true;
             ShowInfo(Session.sabbLevel.brakes);
         }
 
-        public virtual void ShowAir() {
+        public virtual void ShowAir()
+        {
             air = true;
             ShowInfo(Session.sabbLevel.air);
         }
 
-        public virtual void ShowGas() {
+        public virtual void ShowGas()
+        {
             gas = true;
             ShowInfo(Session.sabbLevel.gas);
         }
 
-        public virtual void ShowEngine() {
+        public virtual void ShowEngine()
+        {
             engine = true;
             ShowInfo(Session.sabbLevel.engine);
         }
 
-        public virtual void ShowTires() {
+        public virtual void ShowTires()
+        {
             tiresCount = Mathf.Clamp(tiresCount + 1, 0, maxTiresCount);
             ShowInfo(Session.sabbLevel.tires);
         }
 
-        public virtual void ShowSelf() {
+        public virtual void ShowSelf()
+        {
             self = true;
             ShowInfo(Session.sabbLevel.self);
         }
 
-        public virtual void ShowInfo(TextAsset asset) {
-            if(asset) ShowInfo(asset.ToString().DeserializeAsYaml<BlowbagetsInfo>());
+        public virtual void ShowInfo(TextAsset asset)
+        {
+            if (asset) ShowInfo(asset.ToString().DeserializeAsYaml<BlowbagetsInfo>());
         }
 
-        public virtual void ShowInfo(BlowbagetsInfo info) {
-            if(blowbagetsUI) {
+        public virtual void ShowInfo(BlowbagetsInfo info)
+        {
+            if (blowbagetsUI)
+            {
                 blowbagetsUI.Build(info);
             }
         }
 
-        public virtual void UpdateBlowbagetsInfo(TextAsset info) {
-            if(info && blowbagetsUI && blowbagetsUI.gameObject.activeSelf) {
+        public virtual void UpdateBlowbagetsInfo(TextAsset info)
+        {
+            if (info && blowbagetsUI && blowbagetsUI.gameObject.activeSelf)
+            {
                 blowbagetsUI.Build();
             }
         }
 
-        public virtual void Proceed() {
+        public virtual void Proceed()
+        {
             LoadScene(BuiltScene.ParallelParking);
         }
 
-        public override void End() {
+        public override void End()
+        {
             Session.qrLevelIndex = -1;
             Session.qrLevels.Clear();
             base.End();
         }
 
-        public override void Restart() {
+        public override void Restart()
+        {
             base.Restart();
         }
     }

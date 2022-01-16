@@ -6,47 +6,46 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
-using YamlDotNet.Serialization;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    using CommandLine;
-    using Core;
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using YamlDotNet.Serialization;
     using Content = List<Core.Entry>;
 
     [Serializable]
-    public class Choice {
+    public class Choice
+    {
         public bool correct = false;
         public string text = "";
 
-        public Choice() {}
+        public Choice() { }
 
-        public Choice(string text, bool correct=false) {
+        public Choice(string text, bool correct = false)
+        {
             this.text = text;
             this.correct = correct;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return text.ToString();
         }
     }
 
     [Serializable]
-    public class Question {
+    public class Question
+    {
         public static float AdditionalTime = 20.0f;
-        
+
         protected float _elapsedTime = 0.0f;
-        public virtual float elapsedTime {
+        public virtual float elapsedTime
+        {
             get => _elapsedTime;
             set => _elapsedTime = Mathf.Clamp(value, 0.0f, time);
         }
@@ -62,9 +61,11 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [YamlIgnore]
         public virtual int[] answers => _answers.ToArray();
         [YamlIgnore]
-        public virtual bool correct {
-            get {
-                if(_answers.Count == 0) return false;
+        public virtual bool correct
+        {
+            get
+            {
+                if (_answers.Count == 0) return false;
                 return _answers.All(
                     (a) => a.Within(0, choices.Count - 1) && choices[a].correct);
             }
@@ -75,87 +76,100 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [YamlIgnore]
         public virtual bool answered => _answers.Count != 0;
 
-        public Question() {}
+        public Question() { }
 
-        public Question(Content content, params Choice[] choices) {
+        public Question(Content content, params Choice[] choices)
+        {
             this.content = content;
             this.choices.AddRange(choices);
         }
 
-        public virtual bool Check(int index, ref Choice choice) {
-            if(choices.Count == 0) return false;
+        public virtual bool Check(int index, ref Choice choice)
+        {
+            if (choices.Count == 0) return false;
             choice = choices.Find(
                 (c) => choices.IndexOf(c) == index && c.correct);
             return choice != null;
         }
 
-        public virtual bool Check(int index) {
+        public virtual bool Check(int index)
+        {
             Choice choice = default;
             return Check(index, ref choice);
         }
 
-        public virtual void Answer(int index) => Answer(new int[] {index});
+        public virtual void Answer(int index) => Answer(new int[] { index });
 
-        public virtual void Answer(IEnumerable<int> indices) {
+        public virtual void Answer(IEnumerable<int> indices)
+        {
             Answer(indices.Where((i) => i.Within(0, choices.Count - 1))
                 .Select((i) => choices[i]).ToArray());
         }
 
         public virtual void Answer(Choice choice) =>
-            Answer(new Choice[] {choice});
+            Answer(new Choice[] { choice });
 
-        public virtual void Answer(IEnumerable<Choice> choices) {
+        public virtual void Answer(IEnumerable<Choice> choices)
+        {
             _answers.Clear();
             AddAnswer(choices);
         }
 
         public virtual void AddAnswer(Choice choice) => AddAnswer(
-            new Choice[] {choice}
+            new Choice[] { choice }
         );
-        
+
         public virtual void AddAnswer(int index) =>
-            AddAnswer(new int[] {index});
-        
-        public virtual void AddAnswer(IEnumerable<int> indices) {
+            AddAnswer(new int[] { index });
+
+        public virtual void AddAnswer(IEnumerable<int> indices)
+        {
             AddAnswer(indices.Where((i) => i.Within(0, choices.Count - 1))
                 .Select((i) => choices[i]).ToArray());
         }
 
-        public virtual void AddAnswer(IEnumerable<Choice> choices) {
-            foreach(var choice in choices) {
-                if(choices.Contains(choice)) _answers.Add(
-                    this.choices.IndexOf(choice));
+        public virtual void AddAnswer(IEnumerable<Choice> choices)
+        {
+            foreach (var choice in choices)
+            {
+                if (choices.Contains(choice)) _answers.Add(
+                     this.choices.IndexOf(choice));
             }
         }
-        
+
         public virtual void RemoveAnswer(int index) =>
-            RemoveAnswer(new int[] {index});
-        
-        public virtual void RemoveAnswer(IEnumerable<int> indices) {
+            RemoveAnswer(new int[] { index });
+
+        public virtual void RemoveAnswer(IEnumerable<int> indices)
+        {
             RemoveAnswer(indices.Where((i) => i.Within(0, choices.Count - 1))
                 .Select((i) => choices[i]).ToArray());
         }
 
         public virtual void RemoveAnswer(Choice choice) => RemoveAnswer(
-            new Choice[] {choice}
+            new Choice[] { choice }
         );
-        
-        public virtual void RemoveAnswer(IEnumerable<Choice> choices) {
-            foreach(var choice in choices) {
+
+        public virtual void RemoveAnswer(IEnumerable<Choice> choices)
+        {
+            foreach (var choice in choices)
+            {
                 int index = this.choices.IndexOf(choice);
-                while(_answers.Contains(index))
+                while (_answers.Contains(index))
                     _answers.Remove(index);
             }
         }
 
         public virtual void ClearAnswers() => RemoveAnswer(answers);
 
-        public override string ToString() {
-            return new string[] {content.ToString(), choices.Join("\n")}
+        public override string ToString()
+        {
+            return new string[] { content.ToString(), choices.Join("\n") }
                 .Join("\n");
         }
 
-        public virtual void MarkAsCorrect() {
+        public virtual void MarkAsCorrect()
+        {
             ClearAnswers();
             AddAnswer(solution);
         }

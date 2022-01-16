@@ -4,27 +4,26 @@
 /// Email: bobb@pixelplacement.com
 /// </summary>
 
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.UI;
-using Pixelplacement;
 
 namespace Pixelplacement.TweenSystem
 {
     class RawImageColor : TweenBase
     {
         //Public Properties:
-        public Color EndValue {get; private set;}
+        public Color EndValue { get; private set; }
 
         //Private Variables:
         RawImage _target;
         Color _start;
 
         //Constructor:
-        public RawImageColor (RawImage target, Color endValue, float duration, float delay, bool obeyTimescale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
+        public RawImageColor(RawImage target, Color endValue, float duration, float delay, bool obeyTimescale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
         {
             //set essential properties:
-            SetEssentials (Tween.TweenType.RawImageColor, target.GetInstanceID (), duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
+            SetEssentials(Tween.TweenType.RawImageColor, target.GetInstanceID(), duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
 
             //catalog custom properties:
             _target = target;
@@ -32,29 +31,29 @@ namespace Pixelplacement.TweenSystem
         }
 
         //Processes:
-        protected override bool SetStartValue ()
+        protected override bool SetStartValue()
         {
             if (_target == null) return false;
             _start = _target.color;
             return true;
         }
 
-        protected override void Operation (float percentage)
+        protected override void Operation(float percentage)
         {
-            Color calculatedValue = TweenUtilities.LinearInterpolate (_start, EndValue, percentage);
+            Color calculatedValue = TweenUtilities.LinearInterpolate(_start, EndValue, percentage);
             _target.color = calculatedValue;
         }
 
         //Loops:
-        public override void Loop ()
+        public override void Loop()
         {
-            ResetStartTime ();
+            ResetStartTime();
             _target.color = _start;
         }
 
-        public override void PingPong ()
+        public override void PingPong()
         {
-            ResetStartTime ();
+            ResetStartTime();
             _target.color = EndValue;
             EndValue = _start;
             _start = _target.color;

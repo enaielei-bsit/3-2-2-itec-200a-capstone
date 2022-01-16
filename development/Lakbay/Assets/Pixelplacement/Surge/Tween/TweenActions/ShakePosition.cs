@@ -4,42 +4,41 @@
 /// Email: bobb@pixelplacement.com
 /// </summary>
 
-using UnityEngine;
 using System;
-using Pixelplacement;
+using UnityEngine;
 
 namespace Pixelplacement.TweenSystem
 {
     class ShakePosition : TweenBase
     {
         //Public Properties:
-        public Vector3 EndValue {get; private set;}
-        
+        public Vector3 EndValue { get; private set; }
+
         //Private Variables:
         Transform _target;
         Vector3 _initialPosition;
         Vector3 _intensity;
-        
+
         //Constructor:
-        public ShakePosition (Transform target, Vector3 initialPosition, Vector3 intensity, float duration, float delay, AnimationCurve curve, Action startCallback, Action completeCallback, Tween.LoopType loop, bool obeyTimescale)
+        public ShakePosition(Transform target, Vector3 initialPosition, Vector3 intensity, float duration, float delay, AnimationCurve curve, Action startCallback, Action completeCallback, Tween.LoopType loop, bool obeyTimescale)
         {
             //set essential properties:
-            SetEssentials (Tween.TweenType.Position, target.GetInstanceID (), duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
-            
+            SetEssentials(Tween.TweenType.Position, target.GetInstanceID(), duration, delay, obeyTimescale, curve, loop, startCallback, completeCallback);
+
             //catalog custom properties:
             _target = target;
             _initialPosition = initialPosition;
             _intensity = intensity;
         }
-        
+
         //Processes:
-        protected override bool SetStartValue ()
+        protected override bool SetStartValue()
         {
             if (_target == null) return false;
             return true;
         }
-        
-        protected override void Operation (float percentage)
+
+        protected override void Operation(float percentage)
         {
             if (percentage == 0)
             {
@@ -50,22 +49,22 @@ namespace Pixelplacement.TweenSystem
 
             //create diminishing shake offset:
             Vector3 amount = _intensity * percentage;
-            amount.x = UnityEngine.Random.Range (-amount.x, amount.x);
-            amount.y = UnityEngine.Random.Range (-amount.y, amount.y);
-            amount.z = UnityEngine.Random.Range (-amount.z, amount.z);
+            amount.x = UnityEngine.Random.Range(-amount.x, amount.x);
+            amount.y = UnityEngine.Random.Range(-amount.y, amount.y);
+            amount.z = UnityEngine.Random.Range(-amount.z, amount.z);
 
             //apply:
             _target.localPosition = _initialPosition + amount;
         }
-        
+
         //Loops:
-        public override void Loop ()
+        public override void Loop()
         {
-            ResetStartTime ();
+            ResetStartTime();
             _target.localPosition = _initialPosition;
         }
-        
-        public override void PingPong ()
+
+        public override void PingPong()
         {
         }
     }

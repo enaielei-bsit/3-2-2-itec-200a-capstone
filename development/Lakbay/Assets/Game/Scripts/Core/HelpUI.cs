@@ -5,23 +5,21 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    using Utilities;
-    using Core;
+namespace Ph.CoDe_A.Lakbay.Core
+{
     using UnityEngine.Localization;
-    using UnityEngine.Video;
     using UnityEngine.Localization.Settings;
+    using UnityEngine.Video;
+    using Utilities;
 
-    public class HelpUI : Controller {
+    public class HelpUI : Controller
+    {
         [Header("Files")]
         public LocalizedAsset<TextAsset> modesFile = new LocalizedAsset<TextAsset>();
         public LocalizedAsset<TextAsset> questionRunnerFile = new LocalizedAsset<TextAsset>();
@@ -78,77 +76,95 @@ namespace Ph.CoDe_A.Lakbay.Core {
         [Space]
         public VideoViewer videoViewer;
 
-        public virtual void OnLocaleChange(Locale locale) {
+        public virtual void OnLocaleChange(Locale locale)
+        {
             var active = controlGroup.GetFirstActiveToggle();
-            if(active && gameObject.activeSelf) {
+            if (active && gameObject.activeSelf)
+            {
                 var clip = video?.clip;
                 active.onValueChanged.Invoke(active.isOn);
-                if(clip) {
+                if (clip)
+                {
                     video.transform.parent.gameObject.SetActive(true);
                     video.clip = clip;
                 }
             }
         }
 
-        public new virtual IEnumerator Start() {
+        public new virtual IEnumerator Start()
+        {
             yield return new WaitUntil(() => Initialization.finished);
             LocalizationSettings.SelectedLocaleChanged -= OnLocaleChange;
             LocalizationSettings.SelectedLocaleChanged += OnLocaleChange;
         }
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
-            modes?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            modes?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(modesFile.LoadAsset(), modesVideo);
             });
-            steppedApplication?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            steppedApplication?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(steppedApplicationFile.LoadAsset(), steppedApplicationVideo);
             });
-            questionRunner?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            questionRunner?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(questionRunnerFile.LoadAsset(), questionRunnerVideo);
             });
-            
-            blowbagets?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+
+            blowbagets?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(blowbagetsFile.LoadAsset(), blowbagetsVideo);
             });
-            parallelParking?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            parallelParking?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(parallelParkingFile.LoadAsset(), parallelParkingVideo);
             });
-            perpendicularParking?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            perpendicularParking?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(perpendicularParkingFile.LoadAsset(), perpendicularParkingVideo);
             });
-            backInAngleParking?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            backInAngleParking?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(backInAngleParkingFile.LoadAsset(), backInAngleParkingVideo);
             });
-            threePointTurn?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            threePointTurn?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(threePointTurnFile.LoadAsset(), threePointTurnVideo);
             });
-            tailgating?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            tailgating?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(tailgatingFile.LoadAsset(), tailgatingVideo);
             });
-            rightOfWay?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            rightOfWay?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(rightOfWayFile.LoadAsset(), rightOfWayVideo);
             });
-            trafficSignalRules?.onValueChanged.AddListener((v) => {
-                if(!v) return;
+            trafficSignalRules?.onValueChanged.AddListener((v) =>
+            {
+                if (!v) return;
                 Build(trafficSignalRulesFile.LoadAsset(), trafficSignalRulesVideo);
             });
         }
 
-        public virtual void Build(TextAsset asset, VideoClip clip=null,
-            bool hideVideoIfNull=true) {
+        public virtual void Build(TextAsset asset, VideoClip clip = null,
+            bool hideVideoIfNull = true)
+        {
             root?.gameObject.SetActive(true);
-            if(video && clip) {
+            if (video && clip)
+            {
                 video.transform.parent.gameObject.SetActive(true);
                 video.clip = clip;
                 var button = video.gameObject.EnsureComponent<Button>();
@@ -156,25 +172,30 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 button.onClick.AddListener(() => videoViewer?.Show(
                     clip, null, null
                 ));
-            } else if(hideVideoIfNull)
+            }
+            else if (hideVideoIfNull)
                 video.transform.parent.gameObject.SetActive(false);
-            if(content && asset) content?.Build(
-                asset.text.DeserializeAsYaml<List<Entry>>());
+            if (content && asset) content?.Build(
+                 asset.text.DeserializeAsYaml<List<Entry>>());
         }
 
-        public virtual void ClearSelected() {
+        public virtual void ClearSelected()
+        {
             controlGroup?.SetAllTogglesOff();
         }
 
-        public virtual void BackToMenu() {
+        public virtual void BackToMenu()
+        {
             root?.gameObject.SetActive(false);
             ClearSelected();
         }
 
-        public virtual void LaunchCurrent() {
+        public virtual void LaunchCurrent()
+        {
             var current = SceneController.GetCurrent();
             Toggle toggle = null;
-            switch(current) {
+            switch (current)
+            {
                 case BuiltScene.QuestionRunner:
                     toggle = questionRunner;
                     break;
@@ -203,9 +224,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     toggle = trafficSignalRules;
                     break;
             }
-            
+
             gameObject.SetActive(true);
-            if(toggle) toggle.isOn = true;
+            if (toggle) toggle.isOn = true;
         }
     }
 }

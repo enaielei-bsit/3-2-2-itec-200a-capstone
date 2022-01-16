@@ -5,57 +5,54 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    public abstract class Controller : MonoBehaviour {
-        public virtual void Awake() {}
+namespace Ph.CoDe_A.Lakbay.Core
+{
+    public abstract class Controller : MonoBehaviour
+    {
+        public virtual void Awake() { }
 
-        public virtual void Start() {}
+        public virtual void Start() { }
 
-        public virtual void Update() {}
+        public virtual void Update() { }
 
-        public virtual void FixedUpdate() {}
+        public virtual void FixedUpdate() { }
 
-        public virtual void LateUpdate() {}
+        public virtual void LateUpdate() { }
 
-        public virtual void OnGUI() {}
+        public virtual void OnGUI() { }
 
-        public virtual void OnDisable() {}
+        public virtual void OnDisable() { }
 
-        public virtual void OnEnable() {}
+        public virtual void OnEnable() { }
 
-        public virtual void OnBecameInvisible() {}
+        public virtual void OnBecameInvisible() { }
 
-        public virtual void OnBecameVisible() {}
+        public virtual void OnBecameVisible() { }
 
-        public virtual void OnCollisionEnter(Collision collision) {}
+        public virtual void OnCollisionEnter(Collision collision) { }
 
-        public virtual void OnCollisionExit(Collision collision) {}
+        public virtual void OnCollisionExit(Collision collision) { }
 
-        public virtual void OnTriggerEnter(Collider collider) {}
+        public virtual void OnTriggerEnter(Collider collider) { }
 
-        public virtual void OnTriggerStay(Collider collider) {}
+        public virtual void OnTriggerStay(Collider collider) { }
 
-        public virtual void OnTriggerExit(Collider collider) {}
+        public virtual void OnTriggerExit(Collider collider) { }
 
-        public virtual void OnValidate() {}
+        public virtual void OnValidate() { }
 
-        public virtual void OnDestroy() {}
+        public virtual void OnDestroy() { }
 
-        public static void print(params object[] objs) {
+        public static void print(params object[] objs)
+        {
             MonoBehaviour.print(string.Join(", ", objs));
         }
 
-        public void printLog(params object[] objs) {
-            if(objs.Length == 0) return;
+        public void printLog(params object[] objs)
+        {
+            if (objs.Length == 0) return;
             string label = name == GetType().Name ? name
                 : $"{name}.{GetType().Name}";
             objs[0] = $"[{label}]: "

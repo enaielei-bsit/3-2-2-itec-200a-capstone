@@ -6,18 +6,16 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    public class DirectionalMovement : Controller {
+namespace Ph.CoDe_A.Lakbay.Core
+{
+    public class DirectionalMovement : Controller
+    {
         [Serializable]
-        public struct Axis {
+        public struct Axis
+        {
             // Meter per Second
             public bool active;
             public float speed;
@@ -33,23 +31,27 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public Axis yAxis;
         public Axis zAxis;
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
         }
 
-        public override void FixedUpdate() {
+        public override void FixedUpdate()
+        {
             base.FixedUpdate();
-            if(performing) {
-                if(xAxis.active) _Perform(0, xAxis.direction, xAxis.speed);
-                if(yAxis.active) _Perform(1, yAxis.direction, yAxis.speed);
-                if(zAxis.active) _Perform(2, zAxis.direction, zAxis.speed);
+            if (performing)
+            {
+                if (xAxis.active) _Perform(0, xAxis.direction, xAxis.speed);
+                if (yAxis.active) _Perform(1, yAxis.direction, yAxis.speed);
+                if (zAxis.active) _Perform(2, zAxis.direction, zAxis.speed);
             }
         }
 
         public virtual void Perform(bool toggle) => _performing = toggle;
 
         protected virtual void _Perform(
-            int axis, int direction, float speed) {
+            int axis, int direction, float speed)
+        {
             var offset = speed * timeScale
                 * Time.deltaTime;
             var vec = Vector3.zero;

@@ -6,34 +6,35 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Utilities {
+namespace Utilities
+{
     [Serializable]
-    public class MaterialReference {
+    public class MaterialReference
+    {
         public int index;
         public Renderer renderer;
 
-        public Material material {
+        public Material material
+        {
             get => materials[index];
-            set {
+            set
+            {
                 var materials = this.materials;
                 materials[index] = value;
                 this.materials = materials;
             }
         }
-        public Material[] materials {
+        public Material[] materials
+        {
             get => renderer.materials;
             set => renderer.materials = value;
         }
 
-        public Material this[int index] {
+        public Material this[int index]
+        {
             get => materials[index];
             set => materials[index] = value;
         }

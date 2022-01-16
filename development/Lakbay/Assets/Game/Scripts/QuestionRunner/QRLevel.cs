@@ -5,26 +5,24 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using Core;
     using UnityEngine.Localization;
 
     [CreateAssetMenu(
-        fileName="QRLevel",
-        menuName="Game/Question Runner/Level"
+        fileName = "QRLevel",
+        menuName = "Game/Question Runner/Level"
     )]
-    public class QRLevel : Asset, ILocalizable {
+    public class QRLevel : Asset, ILocalizable
+    {
         protected LocalizeTextAssetEvent _questionsFileEvent;
 
         public int index = 0;
@@ -43,49 +41,60 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public LocalizedAsset<TextAsset> questionsFile;
         public List<Question> questions = new List<Question>();
         public virtual bool done => questions.All((q) => q.answered);
-        public virtual Question free {
-            get {
-                var free = questions.Shuffle() .FirstOrDefault(
+        public virtual Question free
+        {
+            get
+            {
+                var free = questions.Shuffle().FirstOrDefault(
                     (q) => !q.answered && !spawned.Contains(questions.IndexOf(q)));
                 return !questions.Contains(free) ? null : free;
             }
         }
         public virtual float progress => questions.Count((q) => q.answered)
-            / (float) questions.Count;
+            / (float)questions.Count;
         public virtual int score => questions.Count((q) => q.correct);
         public virtual int maxScore => questions.Count;
         public virtual int passingScore => Mathf.Min(
             Mathf.CeilToInt(maxScore * passingScorePercentage), maxScore
         );
-        public virtual bool passed => score >= passingScore; 
+        public virtual bool passed => score >= passingScore;
         [HideInInspector]
         public int lastStop = 0;
         [HideInInspector]
         public QRPlayer player;
         public readonly List<int> spawned = new List<int>();
 
-        public virtual void LoadQuestions(bool update=true) =>
+        public virtual void LoadQuestions(bool update = true) =>
             LoadQuestions(questionsFile.LoadAsset(), update);
 
         public virtual void LoadQuestions(TextAsset asset) =>
             LoadQuestions(asset, true);
 
-        public virtual void LoadQuestions(TextAsset asset, bool update) {
+        public virtual void LoadQuestions(TextAsset asset, bool update)
+        {
             var questions = asset.text.DeserializeAsYaml<List<Question>>();
 
-            if(!update) {
+            if (!update)
+            {
                 this.questions.Clear();
                 this.questions.AddRange(questions);
-            } else {
-                if(this.questions.Count != questions.Count) {
+            }
+            else
+            {
+                if (this.questions.Count != questions.Count)
+                {
                     LoadQuestions(asset, false);
                     return;
-                } else {
-                    foreach(var nquestion in questions.Enumerate()) {
+                }
+                else
+                {
+                    foreach (var nquestion in questions.Enumerate())
+                    {
                         var oquestion = this.questions[nquestion.Key];
 
                         oquestion.content = nquestion.Value.content;
-                        foreach(var nchoice in nquestion.Value.choices.Enumerate()) {
+                        foreach (var nchoice in nquestion.Value.choices.Enumerate())
+                        {
                             oquestion.choices[nchoice.Key].text = nchoice.Value.text;
                         }
                     }
@@ -93,13 +102,16 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Localize(Localizer localizer) {
+        public virtual void Localize(Localizer localizer)
+        {
             localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
                 questionsFile, LoadQuestions);
         }
 
-        public virtual void Reset() {
-            foreach(var question in questions) {
+        public virtual void Reset()
+        {
+            foreach (var question in questions)
+            {
                 question.ClearAnswers();
             }
             spawned.Clear();

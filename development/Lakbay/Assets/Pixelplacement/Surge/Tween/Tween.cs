@@ -7,10 +7,9 @@
 /// 
 /// </summary>
 
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Pixelplacement
@@ -400,7 +399,7 @@ namespace Pixelplacement
             target.localScale = startValue;
             return LocalScale(target, endValue, duration, delay, easeCurve, loop, startCallback, completeCallback, obeyTimescale);
         }
-        
+
         /// <summary>
         /// Changes the color of graphic.
         /// </summary>
@@ -418,8 +417,8 @@ namespace Pixelplacement
         {
             target.color = startValue;
             return Color(target, endValue, duration, delay, easeCurve, loop, startCallback, completeCallback, obeyTimescale);
-        }        
-        
+        }
+
         /// <summary>
         /// Changes the color of a light.
         /// </summary>
@@ -775,7 +774,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeIn == null) _easeIn = new AnimationCurve(new Keyframe(0, 0, 0, 0), new Keyframe(1, 1, 1, 0));
+                if (_easeIn == null) _easeIn = new AnimationCurve(new Keyframe(0, 0, 0, 0), new Keyframe(1, 1, 1, 0));
                 return _easeIn;
             }
         }
@@ -811,7 +810,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeOutStrong == null) _easeOutStrong = new AnimationCurve(new Keyframe(0, 0, 13.80198f, 13.80198f), new Keyframe(0.04670785f, 0.3973127f, 5.873408f, 5.873408f), new Keyframe(0.1421811f, 0.7066917f, 2.313627f, 2.313627f), new Keyframe(0.2483539f, 0.8539293f, 0.9141542f, 0.9141542f), new Keyframe(0.4751028f, 0.954047f, 0.264541f, 0.264541f), new Keyframe(1, 1, .03f, .03f));
+                if (_easeOutStrong == null) _easeOutStrong = new AnimationCurve(new Keyframe(0, 0, 13.80198f, 13.80198f), new Keyframe(0.04670785f, 0.3973127f, 5.873408f, 5.873408f), new Keyframe(0.1421811f, 0.7066917f, 2.313627f, 2.313627f), new Keyframe(0.2483539f, 0.8539293f, 0.9141542f, 0.9141542f), new Keyframe(0.4751028f, 0.954047f, 0.264541f, 0.264541f), new Keyframe(1, 1, .03f, .03f));
                 return _easeOutStrong;
             }
         }
@@ -823,7 +822,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeInOut == null) _easeInOut = AnimationCurve.EaseInOut(0, 0, 1, 1);
+                if (_easeInOut == null) _easeInOut = AnimationCurve.EaseInOut(0, 0, 1, 1);
                 return _easeInOut;
             }
         }
@@ -835,7 +834,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeInOutStrong == null) _easeInOutStrong = new AnimationCurve(new Keyframe(0, 0, 0.03f, 0.03f), new Keyframe(0.5f, 0.5f, 3.257158f, 3.257158f), new Keyframe(1, 1, .03f, .03f));
+                if (_easeInOutStrong == null) _easeInOutStrong = new AnimationCurve(new Keyframe(0, 0, 0.03f, 0.03f), new Keyframe(0.5f, 0.5f, 3.257158f, 3.257158f), new Keyframe(1, 1, .03f, .03f));
                 return _easeInOutStrong;
             }
         }
@@ -847,7 +846,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeInBack == null) _easeInBack = new AnimationCurve(new Keyframe(0, 0, -1.1095f, -1.1095f), new Keyframe(1, 1, 2, 2));
+                if (_easeInBack == null) _easeInBack = new AnimationCurve(new Keyframe(0, 0, -1.1095f, -1.1095f), new Keyframe(1, 1, 2, 2));
                 return _easeInBack;
             }
         }
@@ -871,7 +870,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeInOutBack == null) _easeInOutBack = new AnimationCurve(new Keyframe(1, 1, -1.754543f, -1.754543f), new Keyframe(0, 0, -1.754543f, -1.754543f));
+                if (_easeInOutBack == null) _easeInOutBack = new AnimationCurve(new Keyframe(1, 1, -1.754543f, -1.754543f), new Keyframe(0, 0, -1.754543f, -1.754543f));
                 return _easeInOutBack;
             }
         }
@@ -883,7 +882,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeSpring == null) _easeSpring = new AnimationCurve(new Keyframe(0f, -0.0003805831f, 8.990726f, 8.990726f), new Keyframe(0.35f, 1f, -4.303913f, -4.303913f), new Keyframe(0.55f, 1f, 1.554695f, 1.554695f), new Keyframe(0.7730452f, 1f, -2.007816f, -2.007816f), new Keyframe(1f, 1f, -1.23451f, -1.23451f));
+                if (_easeSpring == null) _easeSpring = new AnimationCurve(new Keyframe(0f, -0.0003805831f, 8.990726f, 8.990726f), new Keyframe(0.35f, 1f, -4.303913f, -4.303913f), new Keyframe(0.55f, 1f, 1.554695f, 1.554695f), new Keyframe(0.7730452f, 1f, -2.007816f, -2.007816f), new Keyframe(1f, 1f, -1.23451f, -1.23451f));
                 return _easeSpring;
             }
         }
@@ -895,7 +894,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeBounce == null) _easeBounce = new AnimationCurve(new Keyframe(0, 0, 0, 0), new Keyframe(0.25f, 1, 11.73749f, -5.336508f), new Keyframe(0.4f, 0.6f, -0.1904764f, -0.1904764f), new Keyframe(0.575f, 1, 5.074602f, -3.89f), new Keyframe(0.7f, 0.75f, 0.001192093f, 0.001192093f), new Keyframe(0.825f, 1, 4.18469f, -2.657566f), new Keyframe(0.895f, 0.9f, 0, 0), new Keyframe(0.95f, 1, 3.196362f, -2.028364f), new Keyframe(1, 1, 2.258884f, 0.5f));
+                if (_easeBounce == null) _easeBounce = new AnimationCurve(new Keyframe(0, 0, 0, 0), new Keyframe(0.25f, 1, 11.73749f, -5.336508f), new Keyframe(0.4f, 0.6f, -0.1904764f, -0.1904764f), new Keyframe(0.575f, 1, 5.074602f, -3.89f), new Keyframe(0.7f, 0.75f, 0.001192093f, 0.001192093f), new Keyframe(0.825f, 1, 4.18469f, -2.657566f), new Keyframe(0.895f, 0.9f, 0, 0), new Keyframe(0.95f, 1, 3.196362f, -2.028364f), new Keyframe(1, 1, 2.258884f, 0.5f));
                 return _easeBounce;
             }
         }
@@ -907,7 +906,7 @@ namespace Pixelplacement
         {
             get
             {
-                if(_easeWobble == null) _easeWobble = new AnimationCurve(new Keyframe(0f, 0f, 11.01978f, 30.76278f), new Keyframe(0.08054394f, 1f, 0f, 0f), new Keyframe(0.3153235f, -0.75f, 0f, 0f), new Keyframe(0.5614113f, 0.5f, 0f, 0f), new Keyframe(0.75f, -0.25f, 0f, 0f), new Keyframe(0.9086903f, 0.1361611f, 0f, 0f), new Keyframe(1f, 0f, -4.159244f, -1.351373f));
+                if (_easeWobble == null) _easeWobble = new AnimationCurve(new Keyframe(0f, 0f, 11.01978f, 30.76278f), new Keyframe(0.08054394f, 1f, 0f, 0f), new Keyframe(0.3153235f, -0.75f, 0f, 0f), new Keyframe(0.5614113f, 0.5f, 0f, 0f), new Keyframe(0.75f, -0.25f, 0f, 0f), new Keyframe(0.9086903f, 0.1361611f, 0f, 0f), new Keyframe(1f, 0f, -4.159244f, -1.351373f));
                 return _easeWobble;
             }
         }
@@ -961,7 +960,7 @@ namespace Pixelplacement
 
         static void SendTweenForProcessing(TweenSystem.TweenBase tween, bool interrupt = false)
         {
-            if (!Application.isPlaying) 
+            if (!Application.isPlaying)
             {
                 //Tween can not be called in edit mode!
                 return;

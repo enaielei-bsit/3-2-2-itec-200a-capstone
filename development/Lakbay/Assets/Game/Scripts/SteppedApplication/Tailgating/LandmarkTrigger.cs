@@ -5,25 +5,27 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
+{
     using Core;
+    using Utilities;
 
-    public class LandmarkTrigger : Trigger {
-        public virtual bool triggered {
-            get {
+    public class LandmarkTrigger : Trigger
+    {
+        public virtual bool triggered
+        {
+            get
+            {
                 return GetComponentsInChildren<Collider>().All((c) => !c.enabled);
-            } set {
-                foreach(var col in GetComponentsInChildren<Collider>()) {
+            }
+            set
+            {
+                foreach (var col in GetComponentsInChildren<Collider>())
+                {
                     col.enabled = value;
                 }
             }

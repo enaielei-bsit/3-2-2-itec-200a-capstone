@@ -5,32 +5,31 @@
 //------------------------------------------------------------------------------------------------
 
 using UnityEngine;
-using System.Collections;
 
 namespace EVP
 {
 
-[RequireComponent(typeof(Rigidbody))]
-public class RigidbodyImpulse : MonoBehaviour
-	{
-	public float velocity = 6.0f;
-	public Vector3 direction = Vector3.up;
-	public KeyCode key = KeyCode.E;
+    [RequireComponent(typeof(Rigidbody))]
+    public class RigidbodyImpulse : MonoBehaviour
+    {
+        public float velocity = 6.0f;
+        public Vector3 direction = Vector3.up;
+        public KeyCode key = KeyCode.E;
 
-	Rigidbody m_rigidbody;
-
-
-	void OnEnable ()
-		{
-		m_rigidbody = GetComponent<Rigidbody>();
-		}
+        Rigidbody m_rigidbody;
 
 
-	void Update ()
-		{
-		if (Input.GetKeyDown(key))
-			m_rigidbody.AddForce(direction.normalized * velocity, ForceMode.VelocityChange);
-		}
-	}
+        void OnEnable()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+        }
+
+
+        void Update()
+        {
+            if (Input.GetKeyDown(key))
+                m_rigidbody.AddForce(direction.normalized * velocity, ForceMode.VelocityChange);
+        }
+    }
 
 }

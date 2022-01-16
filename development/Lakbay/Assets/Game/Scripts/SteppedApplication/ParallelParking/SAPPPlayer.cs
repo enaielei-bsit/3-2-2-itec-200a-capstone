@@ -5,33 +5,28 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking
+{
     using Core;
-    using EVP;
     using UnityEngine.Localization;
 
     [AddComponentMenu("SA Parallel Parking Player")]
-    public class SAPPPlayer : SAVehicleParkingPlayer {
+    public class SAPPPlayer : SAVehicleParkingPlayer
+    {
         [Header("Messages")]
         public LocalizedString parkedCorrectly;
         public LocalizedString didntHitCar;
         public LocalizedString hitCar;
 
-        public override void Proceed() {
+        public override void Proceed()
+        {
             LoadScene(BuiltScene.PerpendicularParking);
         }
 
-        public override void OnPark() {
+        public override void OnPark()
+        {
             base.OnPark();
             Session.checkpointController?.SaveCheckpoint(
                 new Checkpoint(Session.mode, BuiltScene.PerpendicularParking)
@@ -41,7 +36,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking {
             );
         }
 
-        public override void OnObstacleHit() {
+        public override void OnObstacleHit()
+        {
             base.OnObstacleHit();
             gameOverUI?.ShowFailed(
                 hitCar

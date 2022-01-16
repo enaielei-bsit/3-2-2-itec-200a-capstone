@@ -8,7 +8,6 @@
 /// </summary>
 
 #if UNITY_EDITOR
-using UnityEngine;
 using UnityEditor;
 
 namespace Pixelplacement
@@ -20,9 +19,9 @@ namespace Pixelplacement
         /// Global error for the Editor.
         /// </summary>
         /// <param name="errorMessage">Error message.</param>
-        public static void Error (string errorMessage)
+        public static void Error(string errorMessage)
         {
-            EditorUtility.DisplayDialog ("Framework Error", errorMessage, "OK");
+            EditorUtility.DisplayDialog("Framework Error", errorMessage, "OK");
         }
     }
 }

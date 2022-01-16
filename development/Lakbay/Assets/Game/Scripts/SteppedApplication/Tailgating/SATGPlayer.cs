@@ -5,22 +5,17 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Cinemachine;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
+{
     using Core;
     using UnityEngine.Localization;
+    using Utilities;
 
-    public class SATGPlayer : SAVehiclePlayer {
+    public class SATGPlayer : SAVehiclePlayer
+    {
         protected bool _failed = false;
         public virtual bool failed => _failed;
         protected bool _done = false;
@@ -41,20 +36,24 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public LocalizedString followedProperly;
         public LocalizedString didntFollow;
 
-        public override void OnCollisionEnter(Collision collision) {
+        public override void OnCollisionEnter(Collision collision)
+        {
             base.OnCollisionEnter(collision);
             var trigger = collision.collider.GetTrigger<ObstacleTrigger>();
-            if(trigger && !failed && !done) {
+            if (trigger && !failed && !done)
+            {
                 _failed = true;
                 TriggerGameOver();
                 gameOverUI?.ShowFailed(hitLeading);
             }
         }
 
-        public override void OnTriggerEnter(Collider collider) {
+        public override void OnTriggerEnter(Collider collider)
+        {
             base.OnTriggerEnter(collider);
             var trigger = collider.GetTrigger<DangerZoneTrigger>();
-            if(trigger && !failed && !done) {
+            if (trigger && !failed && !done)
+            {
                 _failed = true;
                 TriggerGameOver();
                 gameOverUI?.ShowFailed(
@@ -62,12 +61,15 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
                 );
             }
 
-            if(!failed) {
+            if (!failed)
+            {
                 var stop = collider.GetTrigger<StopTrigger>();
-                if(stop && !done) {
+                if (stop && !done)
+                {
                     _done = true;
                     inGameUI?.gameObject.SetActive(false);
-                    if(cameraLock) {
+                    if (cameraLock)
+                    {
                         cameraLock.xPosition.Lock(cameraLock.transform.position.x);
                         cameraLock.yPosition.Lock(cameraLock.transform.position.y);
                         cameraLock.zPosition.Lock(cameraLock.transform.position.z);
@@ -85,22 +87,27 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             }
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(frontVehicle) {
-                if(isEngineRunning && currentGear == GearBox.Drive
+            if (frontVehicle)
+            {
+                if (isEngineRunning && currentGear == GearBox.Drive
                     && vehicle.input.Throttle > 0.0f
-                    && !frontVehicle.travelling) {
+                    && !frontVehicle.travelling)
+                {
                     frontVehicle.StartTravel();
                 }
 
-                if(hasMaintainingDistance) {
+                if (hasMaintainingDistance)
+                {
                     float max = Mathf.Abs(maintainingDistance);
                     float distance = Mathf.Abs(Vector3.Distance(
                         transform.position, frontVehicle.transform.position
                     ));
 
-                    if(distance > max && !failed && !done) {
+                    if (distance > max && !failed && !done)
+                    {
                         _failed = true;
                         TriggerGameOver();
                         gameOverUI?.ShowFailed(
@@ -111,7 +118,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             }
         }
 
-        public virtual void TriggerGameOver(bool screen) {
+        public virtual void TriggerGameOver(bool screen)
+        {
             frontVehicle.StopTravel();
             frontVehicle.StopCountdown();
             Reset();
@@ -120,7 +128,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
 
         public virtual void TriggerGameOver() => TriggerGameOver(true);
 
-        public virtual void Proceed() {
+        public virtual void Proceed()
+        {
             LoadScene(BuiltScene.RightOfWay);
         }
     }

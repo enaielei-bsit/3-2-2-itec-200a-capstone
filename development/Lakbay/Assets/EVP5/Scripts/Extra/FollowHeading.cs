@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using EVP;
+﻿using EVP;
+using UnityEngine;
 
 
 // Execution order must be:
@@ -10,24 +10,24 @@ using EVP;
 
 
 public class FollowHeading : MonoBehaviour
-	{
-	[Range(-180, 180)]
-	public float heading = 0.0f;			// Degrees, 0 = "north" (World +Z)
+{
+    [Range(-180, 180)]
+    public float heading = 0.0f;            // Degrees, 0 = "north" (World +Z)
 
-	VehicleController m_vehicle;
-
-
-	void OnEnable ()
-		{
-		m_vehicle = GetComponent<VehicleController>();
-		}
+    VehicleController m_vehicle;
 
 
-	void FixedUpdate ()
-		{
-		float deltaAngle = Mathf.DeltaAngle(transform.eulerAngles.y, heading);
-		float targetSteer = Mathf.Clamp(deltaAngle / m_vehicle.maxSteerAngle, -1.0f, +1.0f);
+    void OnEnable()
+    {
+        m_vehicle = GetComponent<VehicleController>();
+    }
 
-		m_vehicle.steerInput += targetSteer;
-		}
-	}
+
+    void FixedUpdate()
+    {
+        float deltaAngle = Mathf.DeltaAngle(transform.eulerAngles.y, heading);
+        float targetSteer = Mathf.Clamp(deltaAngle / m_vehicle.maxSteerAngle, -1.0f, +1.0f);
+
+        m_vehicle.steerInput += targetSteer;
+    }
+}

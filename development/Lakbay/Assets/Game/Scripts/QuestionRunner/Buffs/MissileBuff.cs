@@ -5,24 +5,20 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
-    public class MissileBuff : Buff {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs
+{
+    public class MissileBuff : Buff
+    {
         protected Missile _missile;
         public Missile missile;
 
         public override void OnAdd(
             Caster caster, Buffable target, Skill skill,
-            float duration) {
-            if(!missile) return;
+            float duration)
+        {
+            if (!missile) return;
             float travelDistance = (skill as MissileSkill).travelDistance;
             _missile = Instantiate(missile);
             _missile.transform.position = transform.position;
@@ -32,14 +28,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Buffs {
 
         public override void OnLinger(
             Caster caster, Buffable target, Skill skill,
-            float duration, float elapsedTime) {
+            float duration, float elapsedTime)
+        {
             base.OnLinger(caster, target, skill, duration, elapsedTime);
-            if(_missile) _missile.travel.timeScale = target.timeScale;
+            if (_missile) _missile.travel.timeScale = target.timeScale;
         }
 
         public override void OnRemove(
-            Caster caster, Buffable target, Skill skill) {
-            if(_missile) {
+            Caster caster, Buffable target, Skill skill)
+        {
+            if (_missile)
+            {
                 _missile.travel.Perform(false);
                 Destroy(_missile.gameObject);
             }

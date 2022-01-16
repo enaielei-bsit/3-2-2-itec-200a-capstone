@@ -5,31 +5,27 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using NWH.VehiclePhysics2;
-using NWH.VehiclePhysics2.Powertrain;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication
+{
     using Utilities;
-    using Core;
 
-    public enum SignalLight {
+    public enum SignalLight
+    {
         Left = -1, None, Right
     }
 
-    public enum GearBox {
+    public enum GearBox
+    {
         Reverse = -1, Neutral, Drive
     }
 
     [RequireComponent(typeof(VehicleController))]
-    public class SAVehiclePlayer : SAPlayer {
+    public class SAVehiclePlayer : SAPlayer
+    {
         public bool debug = false;
 
         [Header("Level")]
@@ -38,13 +34,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         protected Vector3 _oldVelocity;
 
-        public GearBox currentGear {
-            get {
-                if(vehicle) {
+        public GearBox currentGear
+        {
+            get
+            {
+                if (vehicle)
+                {
                     int rgear = vehicle.powertrain.transmission.Gear;
-                    if(rgear >= (int) GearBox.Drive)
+                    if (rgear >= (int)GearBox.Drive)
                         return GearBox.Drive;
-                    var gear = (GearBox) rgear;
+                    var gear = (GearBox)rgear;
                     return gear;
                 }
 
@@ -53,26 +52,31 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         }
         protected SignalLight _staticSignalLight = SignalLight.None;
         public virtual SignalLight staticSignalLight => _staticSignalLight;
-        public virtual SignalLight signalLight {
-            get {
-                if(!vehicle) return SignalLight.None;
+        public virtual SignalLight signalLight
+        {
+            get
+            {
+                if (!vehicle) return SignalLight.None;
                 var lights = vehicle.effectsManager.lightsManager;
-                if(lights.leftBlinkers.On) return SignalLight.Left;
-                if(lights.rightBlinkers.On) return SignalLight.Right;
+                if (lights.leftBlinkers.On) return SignalLight.Left;
+                if (lights.rightBlinkers.On) return SignalLight.Right;
                 return SignalLight.None;
             }
         }
-        public bool isEngineRunning {
-            get {
-                if(!vehicle) return false;
+        public bool isEngineRunning
+        {
+            get
+            {
+                if (!vehicle) return false;
                 return vehicle.powertrain.engine.IsRunning;
             }
         }
         public virtual VehicleController vehicle =>
             GetComponent<VehicleController>();
 
-        public virtual void Accelerate(float value) {
-            if(!vehicle) return;
+        public virtual void Accelerate(float value)
+        {
+            if (!vehicle) return;
             // int currentGear = vehicle.powertrain.transmission.Gear;
             // if(currentGear != (int) this.currentGear) {
             //     SetGear(this.currentGear);
@@ -80,164 +84,215 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             vehicle.input.Throttle = value;
         }
 
-        public virtual void Accelerate(BaseEventData data) {
+        public virtual void Accelerate(BaseEventData data)
+        {
             var ndata = data as PointerEventData;
             // Accelerate(ndata.GetPressure());
             Accelerate(1.0f);
             printLog($"Accelerating: {vehicle.input.Throttle}");
         }
 
-        public virtual void Brake(float value) {
-            if(!vehicle) return;
+        public virtual void Brake(float value)
+        {
+            if (!vehicle) return;
             vehicle.input.Brakes = value;
         }
 
-        public virtual void Brake(BaseEventData data) {
+        public virtual void Brake(BaseEventData data)
+        {
             var ndata = data as PointerEventData;
             // Brake(ndata.GetPressure());
             Brake(1.0f);
             printLog($"Braking: {vehicle.input.Brakes}");
         }
 
-        public virtual void SetGear(GearBox gear) {
-            if(!vehicle) return;
-            vehicle.powertrain.transmission.ShiftInto((int) gear);
+        public virtual void SetGear(GearBox gear)
+        {
+            if (!vehicle) return;
+            vehicle.powertrain.transmission.ShiftInto((int)gear);
             // _currentGear = gear;
         }
 
-        public virtual void SetGear(int gear) => SetGear((GearBox) gear);
+        public virtual void SetGear(int gear) => SetGear((GearBox)gear);
 
-        public virtual void SetIgnition(bool value) {
-            if(vehicle) {
-                if(value) {
+        public virtual void SetIgnition(bool value)
+        {
+            if (vehicle)
+            {
+                if (value)
+                {
                     vehicle.effectsManager.lightsManager.IsOn = true;
                     vehicle.powertrain.engine.Start();
-                } else {
+                }
+                else
+                {
                     vehicle.effectsManager.lightsManager.IsOn = false;
                     vehicle.powertrain.engine.Stop();
                 }
             }
         }
 
-        public virtual void ToggleIgnition() {
-            if(vehicle) {
+        public virtual void ToggleIgnition()
+        {
+            if (vehicle)
+            {
                 SetIgnition(!isEngineRunning);
             }
         }
 
-        public virtual void Steer(float value) {
-            if(vehicle) {
+        public virtual void Steer(float value)
+        {
+            if (vehicle)
+            {
                 vehicle.input.Steering = value;
             }
         }
 
-        public virtual void Handbrake(float value) {
-            if(!vehicle) return;
+        public virtual void Handbrake(float value)
+        {
+            if (!vehicle) return;
             vehicle.input.Handbrake = value;
         }
 
-        public virtual void Handbrake(BaseEventData data) {
+        public virtual void Handbrake(BaseEventData data)
+        {
             var ndata = data as PointerEventData;
             Handbrake(ndata.GetPressure());
             printLog($"Handbraking: {vehicle.input.Handbrake}");
         }
 
-        public virtual void SetSignalLight(SignalLight light) {
-            if(!vehicle || !isEngineRunning) return;
+        public virtual void SetSignalLight(SignalLight light)
+        {
+            if (!vehicle || !isEngineRunning) return;
             _staticSignalLight = light;
             var input = vehicle.input;
 
-            if(light == SignalLight.Left) {
+            if (light == SignalLight.Left)
+            {
                 input.LeftBlinker = true;
-            } else if(light == SignalLight.Right) {
+            }
+            else if (light == SignalLight.Right)
+            {
                 input.RightBlinker = true;
-            } else {
-                if(signalLight == SignalLight.Left) {
+            }
+            else
+            {
+                if (signalLight == SignalLight.Left)
+                {
                     input.LeftBlinker = true;
-                } else if(signalLight == SignalLight.Right) {
+                }
+                else if (signalLight == SignalLight.Right)
+                {
                     input.RightBlinker = true;
                 }
             }
         }
 
-        public virtual void ToggleSignalLight(SignalLight light) {
-            if(signalLight == light) {
+        public virtual void ToggleSignalLight(SignalLight light)
+        {
+            if (signalLight == light)
+            {
                 SetSignalLight(SignalLight.None);
-            } else SetSignalLight(light);
+            }
+            else SetSignalLight(light);
         }
 
         public virtual void ToggleSignalLight(int light) =>
-            ToggleSignalLight((SignalLight) light);
+            ToggleSignalLight((SignalLight)light);
 
         public virtual void SetSignalLight(int light) =>
-            SetSignalLight((SignalLight) light);
+            SetSignalLight((SignalLight)light);
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
 
-            if(vehicle.input.LeftBlinker) printLog("left");
-            if(vehicle.input.RightBlinker) printLog("right");
+            if (vehicle.input.LeftBlinker) printLog("left");
+            if (vehicle.input.RightBlinker) printLog("right");
 
-            if(Debug.isDebugBuild && !Input.touchSupported && debug) {
+            if (Debug.isDebugBuild && !Input.touchSupported && debug)
+            {
                 var kb = IInput.keyboard;
-                if(kb.leftArrowKey.isPressed) {
+                if (kb.leftArrowKey.isPressed)
+                {
                     Steer(-1.0f);
-                } else if(kb.rightArrowKey.isPressed) {
+                }
+                else if (kb.rightArrowKey.isPressed)
+                {
                     Steer(1.0f);
                 }
 
-                if(kb.upArrowKey.isPressed) {
+                if (kb.upArrowKey.isPressed)
+                {
                     Accelerate(1.0f);
-                } else Accelerate(0.0f);
+                }
+                else Accelerate(0.0f);
 
-                if(kb.downArrowKey.isPressed) {
+                if (kb.downArrowKey.isPressed)
+                {
                     Brake(1.0f);
-                } else Brake(0.0f);
+                }
+                else Brake(0.0f);
 
-                if(kb.spaceKey.isPressed) {
+                if (kb.spaceKey.isPressed)
+                {
                     Handbrake(1.0f);
-                } else Handbrake(0.0f);
+                }
+                else Handbrake(0.0f);
 
-                if(kb.digit1Key.isPressed) {
+                if (kb.digit1Key.isPressed)
+                {
                     SetGear(GearBox.Drive);
-                } else if(kb.digit2Key.isPressed) {
+                }
+                else if (kb.digit2Key.isPressed)
+                {
                     SetGear(GearBox.Neutral);
-                } else if(kb.digit3Key.isPressed) {
+                }
+                else if (kb.digit3Key.isPressed)
+                {
                     SetGear(GearBox.Reverse);
                 }
 
-                if(kb.zKey.wasPressedThisFrame) {
+                if (kb.zKey.wasPressedThisFrame)
+                {
                     ToggleSignalLight(SignalLight.Left);
-                } else if(kb.xKey.wasPressedThisFrame) {
+                }
+                else if (kb.xKey.wasPressedThisFrame)
+                {
                     ToggleSignalLight(SignalLight.Right);
                 }
 
-                if(kb.iKey.wasPressedThisFrame) {
+                if (kb.iKey.wasPressedThisFrame)
+                {
                     ToggleIgnition();
                 }
             }
         }
 
-        public override void Build() {
+        public override void Build()
+        {
             base.Build();
-            if(vehicle) Reset();
+            if (vehicle) Reset();
         }
 
-        public virtual void Reset() {
+        public virtual void Reset()
+        {
             SetGear(GearBox.Neutral);
             SetSignalLight(SignalLight.None);
             Handbrake(1.0f);
             SetIgnition(false);
         }
 
-        public override void Pause() {
+        public override void Pause()
+        {
             base.Pause();
             var rb = GetComponent<Rigidbody>();
             _oldVelocity = rb.velocity;
             rb.velocity = Vector3.zero;
         }
 
-        public override void Resume() {
+        public override void Resume()
+        {
             base.Resume();
             var rb = GetComponent<Rigidbody>();
             rb.velocity = _oldVelocity;

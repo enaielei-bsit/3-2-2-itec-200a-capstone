@@ -7,9 +7,8 @@
 /// 
 /// </summary>
 
-using UnityEngine;
 using System;
-using Pixelplacement;
+using UnityEngine;
 
 #pragma warning disable 0168
 
@@ -22,16 +21,16 @@ namespace Pixelplacement.TweenSystem
         public Tween.TweenType tweenType;
 
         //Public Properties:
-        public Tween.TweenStatus Status {get; private set;}
-        public float Duration {get; private set;}
-        public AnimationCurve Curve {get; private set;}
+        public Tween.TweenStatus Status { get; private set; }
+        public float Duration { get; private set; }
+        public AnimationCurve Curve { get; private set; }
         public Keyframe[] CurveKeys { get; private set; }
-        public bool ObeyTimescale {get; private set;}
-        public Action StartCallback {get; private set;}
-        public Action CompleteCallback {get; private set;}
-        public float Delay {get; private set;}
-        public Tween.LoopType LoopType {get; private set;}
-        public float Percentage {get; private set; }
+        public bool ObeyTimescale { get; private set; }
+        public Action StartCallback { get; private set; }
+        public Action CompleteCallback { get; private set; }
+        public float Delay { get; private set; }
+        public Tween.LoopType LoopType { get; private set; }
+        public float Percentage { get; private set; }
 
         //Protected Variables:
         protected float elapsedTime = 0.0f;
@@ -40,24 +39,24 @@ namespace Pixelplacement.TweenSystem
         /// <summary>
         /// Stop/pauses the tween.
         /// </summary>
-        public void Stop ()
+        public void Stop()
         {
             Status = Tween.TweenStatus.Stopped;
-            Tick ();
+            Tick();
         }
 
         /// <summary>
         /// Starts or restarts a tween - interrupts a delay and allows a canceled or finished tween to restart.
         /// </summary>
-        public void Start ()
+        public void Start()
         {
             elapsedTime = 0.0f;
 
             if (Status == Tween.TweenStatus.Canceled || Status == Tween.TweenStatus.Finished || Status == Tween.TweenStatus.Stopped)
             {
                 Status = Tween.TweenStatus.Running;
-                Operation (0);
-                Tween.Instance.ExecuteTween (this);
+                Operation(0);
+                Tween.Instance.ExecuteTween(this);
             }
         }
 
@@ -67,7 +66,7 @@ namespace Pixelplacement.TweenSystem
         public void Resume()
         {
             if (Status != Tween.TweenStatus.Stopped) return;
-            
+
             if (Status == Tween.TweenStatus.Stopped)
             {
                 Status = Tween.TweenStatus.Running;
@@ -78,37 +77,37 @@ namespace Pixelplacement.TweenSystem
         /// <summary>
         /// Rewind the tween.
         /// </summary>
-        public void Rewind ()
+        public void Rewind()
         {
-            Cancel ();
-            Operation (0);
+            Cancel();
+            Operation(0);
         }
 
         /// <summary>
         /// Rewind the tween and stop.
         /// </summary>
-        public void Cancel ()
+        public void Cancel()
         {
             Status = Tween.TweenStatus.Canceled;
-            Tick ();
+            Tick();
         }
 
         /// <summary>
         /// Fast forward the tween and stop.
         /// </summary>
-        public void Finish ()
+        public void Finish()
         {
             Status = Tween.TweenStatus.Finished;
-            Tick ();
+            Tick();
         }
 
         /// <summary>
         /// Used internally to update the tween and report status to the main system.
         /// </summary>
-        public void Tick ()
+        public void Tick()
         {
             //stop where we are:
-            if (Status == Tween.TweenStatus.Stopped) 
+            if (Status == Tween.TweenStatus.Stopped)
             {
                 CleanUp();
                 return;
@@ -117,47 +116,51 @@ namespace Pixelplacement.TweenSystem
             //rewind operation and stop:
             if (Status == Tween.TweenStatus.Canceled)
             {
-                Operation (0);
+                Operation(0);
                 Percentage = 0;
                 CleanUp();
                 return;
             }
 
             //fast forward operation and stop:
-            if (Status == Tween.TweenStatus.Finished) 
+            if (Status == Tween.TweenStatus.Finished)
             {
-                Operation (1);
+                Operation(1);
                 Percentage = 1;
-                if (CompleteCallback != null) CompleteCallback ();
+                if (CompleteCallback != null) CompleteCallback();
                 CleanUp();
                 return;
             }
 
             float progress = 0.0f;
-            
+
             //calculate:
-            if (ObeyTimescale) 
+            if (ObeyTimescale)
             {
                 elapsedTime += Time.deltaTime;
-            }else{
+            }
+            else
+            {
                 elapsedTime += Time.unscaledDeltaTime;
             }
             progress = Math.Max(elapsedTime, 0f);
 
             //percentage:
             float percentage = Mathf.Min(progress / Duration, 1);
-  
+
             //delayed?
             if (percentage == 0 && Status != Tween.TweenStatus.Delayed) Status = Tween.TweenStatus.Delayed;
 
             //running?
-            if (percentage > 0 && Status == Tween.TweenStatus.Delayed) 
+            if (percentage > 0 && Status == Tween.TweenStatus.Delayed)
             {
-                if (SetStartValue ())
+                if (SetStartValue())
                 {
-                    if (StartCallback != null) StartCallback ();
-                    Status = Tween.TweenStatus.Running;	
-                }else{
+                    if (StartCallback != null) StartCallback();
+                    Status = Tween.TweenStatus.Running;
+                }
+                else
+                {
                     CleanUp();
                     return;
                 }
@@ -167,15 +170,18 @@ namespace Pixelplacement.TweenSystem
             float curveValue = percentage;
 
             //using a curve?
-            if (Curve != null && CurveKeys.Length > 0) curveValue = TweenUtilities.EvaluateCurve (Curve, percentage);
-        
+            if (Curve != null && CurveKeys.Length > 0) curveValue = TweenUtilities.EvaluateCurve(Curve, percentage);
+
             //perform operation with minimal overhead of a try/catch to account for anything that has been destroyed while tweening:
-            if (Status == Tween.TweenStatus.Running) 
+            if (Status == Tween.TweenStatus.Running)
             {
-                try {
-                    Operation (curveValue);
+                try
+                {
+                    Operation(curveValue);
                     Percentage = curveValue;
-                } catch (Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     CleanUp();
                     return;
                 }
@@ -189,24 +195,24 @@ namespace Pixelplacement.TweenSystem
                     CompleteCallback();
                 }
 
-                switch (LoopType) 
+                switch (LoopType)
                 {
-                case Tween.LoopType.Loop:
-                    Loop ();
-                    break;
+                    case Tween.LoopType.Loop:
+                        Loop();
+                        break;
 
-                case Tween.LoopType.PingPong:
-                    PingPong ();
-                    break;
+                    case Tween.LoopType.PingPong:
+                        PingPong();
+                        break;
 
-                default:
-                    Status = Tween.TweenStatus.Finished;
-                    CleanUp();
-                    return;
+                    default:
+                        Status = Tween.TweenStatus.Finished;
+                        CleanUp();
+                        return;
                 }
             }
         }
-        
+
         //Private Methods:
         private void CleanUp()
         {
@@ -220,7 +226,7 @@ namespace Pixelplacement.TweenSystem
         /// <summary>
         /// Resets the start time.
         /// </summary>
-        protected void ResetStartTime ()
+        protected void ResetStartTime()
         {
             elapsedTime = -Delay;
         }
@@ -228,7 +234,7 @@ namespace Pixelplacement.TweenSystem
         /// <summary>
         /// Sets the essential properties that all tweens need and should be called from their constructor. If targetInstanceID is -1 then this tween won't interrupt tweens of the same type on the same target.
         /// </summary>
-        protected void SetEssentials (Tween.TweenType tweenType, int targetInstanceID, float duration, float delay, bool obeyTimeScale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
+        protected void SetEssentials(Tween.TweenType tweenType, int targetInstanceID, float duration, float delay, bool obeyTimeScale, AnimationCurve curve, Tween.LoopType loop, Action startCallback, Action completeCallback)
         {
             this.tweenType = tweenType;
             this.targetInstanceID = targetInstanceID;
@@ -246,28 +252,28 @@ namespace Pixelplacement.TweenSystem
             LoopType = loop;
             ObeyTimescale = obeyTimeScale;
 
-            ResetStartTime ();
+            ResetStartTime();
         }
 
         //Abstract Methods:
         /// <summary>
         /// Override this method to carry out the initialization required for the tween.
         /// </summary>
-        protected abstract bool SetStartValue ();
+        protected abstract bool SetStartValue();
 
         /// <summary>
         /// Override this method to carry out the processing required for the tween.
         /// </summary>
-        protected abstract void Operation (float percentage);
+        protected abstract void Operation(float percentage);
 
         /// <summary>
         /// Override this method to carry out a standard loop.
         /// </summary>
-        public abstract void Loop ();
+        public abstract void Loop();
 
         /// <summary>
         /// Override this method to carry out a ping pong loop.
         /// </summary>
-        public abstract void PingPong ();
+        public abstract void PingPong();
     }
 }

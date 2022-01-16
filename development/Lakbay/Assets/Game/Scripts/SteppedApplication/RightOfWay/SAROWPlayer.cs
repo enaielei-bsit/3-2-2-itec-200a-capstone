@@ -5,21 +5,18 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay
+{
     using Cinemachine;
     using Core;
     using UnityEngine.Localization;
 
-    public class SAROWPlayer : SASteppedVehiclePlayer {
+    public class SAROWPlayer : SASteppedVehiclePlayer
+    {
         protected bool _failed = false;
         public virtual bool failed => _failed;
         protected bool _pedestriansStartedWalking = false;
@@ -32,7 +29,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
 
         public virtual bool pedestriansStartedWalking =>
             _pedestriansStartedWalking;
-        
+
         [Space]
         public List<Pedestrian> pedestrians = new List<Pedestrian>();
 
@@ -42,22 +39,27 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
         public LocalizedString hitPedestrian;
         public LocalizedString noSignalLight;
 
-        public override void OnTriggerEnter(Collider collider) {
+        public override void OnTriggerEnter(Collider collider)
+        {
             base.OnTriggerEnter(collider);
             var ptrigger = collider.GetTrigger<PedestrianTrigger>();
-            if(ptrigger) {
+            if (ptrigger)
+            {
                 _staying = true;
-                if(!pedestriansStartedWalking) {
+                if (!pedestriansStartedWalking)
+                {
                     WalkPedestrians();
                 }
 
-                if(playerCamera && pedestrianCamera) {
+                if (playerCamera && pedestrianCamera)
+                {
                     int playerPrio = playerCamera.Priority;
                     int pedestrianPrio = pedestrianCamera.Priority;
 
-                    if(pedestrianPrio <= playerPrio) {
+                    if (pedestrianPrio <= playerPrio)
+                    {
                         pedestrianCamera.Priority = playerPrio + 1;
-                        if(gizmoCamera)
+                        if (gizmoCamera)
                             gizmoCamera.fieldOfView =
                                 pedestrianCamera.m_Lens.FieldOfView;
                     }
@@ -66,11 +68,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
 
             var tl = collider.GetTrigger<TurnLeftTrigger>();
             var tr = collider.GetTrigger<TurnRightTrigger>();
-            if(((tl && staticSignalLight != SignalLight.Left)
+            if (((tl && staticSignalLight != SignalLight.Left)
                 || (tr && staticSignalLight != SignalLight.Right))
-                && !failed) {
-                if(tl) tl.gameObject.SetActive(false);
-                if(tr) tr.gameObject.SetActive(false);
+                && !failed)
+            {
+                if (tl) tl.gameObject.SetActive(false);
+                if (tr) tr.gameObject.SetActive(false);
                 _failed = true;
                 Reset();
                 // gameOverUI?.gameObject.SetActive(true);
@@ -78,19 +81,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
             }
         }
 
-        public override void OnTriggerExit(Collider collider) {
+        public override void OnTriggerExit(Collider collider)
+        {
             base.OnTriggerExit(collider);
             var ptrigger = collider.GetTrigger<PedestrianTrigger>();
-            if(ptrigger) {
+            if (ptrigger)
+            {
                 _staying = false;
 
-                if(playerCamera && pedestrianCamera) {
+                if (playerCamera && pedestrianCamera)
+                {
                     int playerPrio = playerCamera.Priority;
                     int pedestrianPrio = pedestrianCamera.Priority;
 
-                    if(playerPrio <= pedestrianPrio) {
+                    if (playerPrio <= pedestrianPrio)
+                    {
                         playerCamera.Priority = pedestrianPrio + 1;
-                        if(gizmoCamera)
+                        if (gizmoCamera)
                             gizmoCamera.fieldOfView =
                                 playerCamera.m_Lens.FieldOfView;
                     }
@@ -98,28 +105,34 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay {
             }
         }
 
-        public override void Proceed() {
+        public override void Proceed()
+        {
             LoadScene(BuiltScene.TrafficSignalRules);
         }
 
-        public virtual void WalkPedestrians() {
+        public virtual void WalkPedestrians()
+        {
             _pedestriansStartedWalking = true;
-            foreach(var pedestrian in pedestrians) {
+            foreach (var pedestrian in pedestrians)
+            {
                 pedestrian.StartWalking();
             }
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
         }
 
-        public override void OnObstacleHit() {
+        public override void OnObstacleHit()
+        {
             base.OnObstacleHit();
             Reset();
             gameOverUI?.ShowFailed(hitPedestrian);
         }
 
-        public override void OnPark() {
+        public override void OnPark()
+        {
             base.OnPark();
             Session.checkpointController?.SaveCheckpoint(
                 new Checkpoint(Session.mode, BuiltScene.TrafficSignalRules)

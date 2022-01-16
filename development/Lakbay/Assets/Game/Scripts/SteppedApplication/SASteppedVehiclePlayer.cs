@@ -6,20 +6,17 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication
+{
     using Core;
 
     [Serializable]
-    public struct Point {
+    public struct Point
+    {
         public PointTrigger trigger;
         public List<Transform> obstacles;
 
@@ -27,15 +24,18 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
 
         public void Show() => SetVisibility(true);
 
-        public void SetVisibility(bool value) {
+        public void SetVisibility(bool value)
+        {
             trigger?.gameObject.SetActive(value);
-            foreach(var obs in obstacles) {
+            foreach (var obs in obstacles)
+            {
                 obs?.gameObject.SetActive(value);
             }
         }
     }
 
-    public class SASteppedVehiclePlayer : SAVehicleParkingPlayer {
+    public class SASteppedVehiclePlayer : SAVehicleParkingPlayer
+    {
         [Space]
         public TargetTrigger target;
         public List<Point> points = new List<Point>();
@@ -45,11 +45,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
         public virtual Point nextPoint => current != points.Count - 1
             ? points[current + 1] : default;
 
-        public override void OnTriggerStay(Collider collider) {
+        public override void OnTriggerStay(Collider collider)
+        {
             base.OnTriggerStay(collider);
-            if(!doneParking && !hitObstacle) {
+            if (!doneParking && !hitObstacle)
+            {
                 var point = collider.GetTrigger<PointTrigger>();
-                if(point) {
+                if (point)
+                {
                     float posOffset = Mathf.Abs(targetPositionOffset);
                     float rotOffset = Mathf.Abs(targetRotationOffset);
                     bool bothWays = targetRotationIsBothWays;
@@ -57,15 +60,20 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
                         transform, point.transform,
                         posOffset, rotOffset, bothWays
                     );
-                    if(point == currentPoint.trigger) {
-                        if(parked) {
+                    if (point == currentPoint.trigger)
+                    {
+                        if (parked)
+                        {
                             currentPoint.Hide();
                             arrowGuide?.gameObject.SetActive(true);
-                            if(nextPoint.trigger) {
+                            if (nextPoint.trigger)
+                            {
                                 nextPoint.Show();
                                 SetGuide(nextPoint);
                                 _current++;
-                            } else {
+                            }
+                            else
+                            {
                                 SetGuide(target.transform);
                             }
                         }
@@ -74,28 +82,35 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication {
             }
         }
 
-        public override void OnTriggerExit(Collider collider) {
+        public override void OnTriggerExit(Collider collider)
+        {
             base.OnTriggerExit(collider);
             var point = collider.GetTrigger<PointTrigger>();
         }
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
-            foreach(var point in points) point.Hide();
+            foreach (var point in points) point.Hide();
         }
 
-        public override void Build() {
+        public override void Build()
+        {
             base.Build();
-            if(points.Count != 0) {
+            if (points.Count != 0)
+            {
                 currentPoint.Show();
                 SetGuide(currentPoint);
-            } else {
+            }
+            else
+            {
                 SetGuide(target.transform);
             }
         }
 
-        public virtual void SetGuide(Point point) {
-            if(point.trigger) SetGuide(point.trigger.transform);
+        public virtual void SetGuide(Point point)
+        {
+            if (point.trigger) SetGuide(point.trigger.transform);
         }
     }
 }

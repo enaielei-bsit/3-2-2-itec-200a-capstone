@@ -5,22 +5,21 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using UnityEngine.UI;
 
 using YamlDotNet.Serialization;
 
-namespace Utilities {
-    public static class Helper {
+namespace Utilities
+{
+    public static class Helper
+    {
         public static readonly ISerializer YamlSerializer =
             new SerializerBuilder()
             .Build();
@@ -29,14 +28,19 @@ namespace Utilities {
             .Build();
         public static Locale[] locales =>
             LocalizationSettings.AvailableLocales.Locales.ToArray();
-        public static Vector3[] inputPositions {
-            get {
+        public static Vector3[] inputPositions
+        {
+            get
+            {
                 var position = new List<Vector3>();
-                if(Input.touchSupported) {
+                if (Input.touchSupported)
+                {
                     return Input.touches.Select((t) => t.position)
-                    .Select((p) => (Vector3) p).ToArray();
-                } else {
-                    return new Vector3[] {Input.mousePosition};
+                    .Select((p) => (Vector3)p).ToArray();
+                }
+                else
+                {
+                    return new Vector3[] { Input.mousePosition };
                 }
             }
         }
@@ -55,18 +59,20 @@ namespace Utilities {
             float duration, float elapsedTime);
         public delegate void TimedRunOnFinish(float duration, float elapsedTime);
         public static IEnumerator Run(
-            ConditionalRunCondition condition=default,
-            ConditionalRunOnStart onStart=default,
-            ConditionalRunOnProgress onProgress=default,
-            ConditionalRunOnFinish onFinish=default,
-            bool fixedUpdate=false
-        ) {
+            ConditionalRunCondition condition = default,
+            ConditionalRunOnStart onStart = default,
+            ConditionalRunOnProgress onProgress = default,
+            ConditionalRunOnFinish onFinish = default,
+            bool fixedUpdate = false
+        )
+        {
             float elapsedTime = 0.0f;
             onStart?.Invoke(elapsedTime);
-            while(condition == null || condition(elapsedTime)) {
+            while (condition == null || condition(elapsedTime))
+            {
                 float deltaTime = onProgress != null
                     ? onProgress(elapsedTime) : Time.deltaTime;
-                if(fixedUpdate) yield return new WaitForFixedUpdate();
+                if (fixedUpdate) yield return new WaitForFixedUpdate();
                 else yield return new WaitForEndOfFrame();
                 elapsedTime += deltaTime;
             }
@@ -75,11 +81,12 @@ namespace Utilities {
 
         public static IEnumerator Run(
             float duration,
-            TimedRunOnStart onStart=default,
-            TimedRunOnProgress onProgress=default,
-            TimedRunOnFinish onFinish=default,
-            bool fixedUpdate=false
-        ) {
+            TimedRunOnStart onStart = default,
+            TimedRunOnProgress onProgress = default,
+            TimedRunOnFinish onFinish = default,
+            bool fixedUpdate = false
+        )
+        {
             return Run(
                 (e) => e < duration,
                 (e) => onStart?.Invoke(duration, e),
@@ -91,10 +98,11 @@ namespace Utilities {
         }
 
         public static IEnumerator Run(
-            ConditionalRunOnStart onStart=default,
-            ConditionalRunOnProgress onProgress=default,
-            bool fixedUpdate=false
-        ) {
+            ConditionalRunOnStart onStart = default,
+            ConditionalRunOnProgress onProgress = default,
+            bool fixedUpdate = false
+        )
+        {
             return Run(
                 (e) => true,
                 onStart,
@@ -104,24 +112,28 @@ namespace Utilities {
             );
         }
 
-        public static float GetExpectedReadTime(string str) {
+        public static float GetExpectedReadTime(string str)
+        {
             return GetExpectedReadTime(str, AverageReadSpeed);
-        } 
+        }
 
-        public static float GetExpectedReadTime(string str, float readSpeed) {
+        public static float GetExpectedReadTime(string str, float readSpeed)
+        {
             return 60 * (str.Split(' ').Length / readSpeed);
         }
 
-        public static void TriggerLocaleChange() {
-            if(!LocalizationSettings.InitializationOperation.IsDone) return;
+        public static void TriggerLocaleChange()
+        {
+            if (!LocalizationSettings.InitializationOperation.IsDone) return;
             var value = LocalizationSettings.SelectedLocale;
-            LocalizationSettings.SelectedLocale = 
+            LocalizationSettings.SelectedLocale =
                 LocalizationSettings.AvailableLocales.Locales.Find(
                     (l) => l != value);
             LocalizationSettings.SelectedLocale = value;
         }
 
-        public static string GetClipboard() {
+        public static string GetClipboard()
+        {
             return GUIUtility.systemCopyBuffer;
         }
 
@@ -130,7 +142,8 @@ namespace Utilities {
             string content,
             bool append,
             Encoding encoding
-        ) {
+        )
+        {
             var writer = new StreamWriter(path, append, encoding);
             writer.Write(content);
             writer.Close();
@@ -138,15 +151,17 @@ namespace Utilities {
 
         public static void WriteFile(
             string path, string content,
-            bool append=false
-        ) {
+            bool append = false
+        )
+        {
             WriteFile(path, content, append, Encoding.UTF8);
         }
 
         public static string ReadFile(
-            string path, Encoding encoding, bool create=true
-        ) {
-            if(!File.Exists(path) && create)
+            string path, Encoding encoding, bool create = true
+        )
+        {
+            if (!File.Exists(path) && create)
                 WriteFile(path, "", false, encoding);
             var reader = new StreamReader(path, encoding);
             string content = reader.ReadToEnd();
@@ -154,7 +169,7 @@ namespace Utilities {
             return content;
         }
 
-        public static string ReadFile(string path, bool create=true) =>
+        public static string ReadFile(string path, bool create = true) =>
             ReadFile(path, Encoding.UTF8, create);
     }
 }

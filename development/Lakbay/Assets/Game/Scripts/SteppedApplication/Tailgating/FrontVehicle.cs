@@ -5,22 +5,17 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
+{
     using Core;
     using TMPro;
+    using Utilities;
 
     [RequireComponent(typeof(CinemachinePathFollower))]
-    public class FrontVehicle : Controller {
+    public class FrontVehicle : Controller
+    {
         protected Coroutine _countdown;
         protected Coroutine _travel;
 
@@ -46,18 +41,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public DangerZoneTrigger dangerZoneTrigger;
         public TextMeshPro countdownText;
 
-        public virtual void StartCountdown() {
+        public virtual void StartCountdown()
+        {
             StopCountdown();
             travelTimeScale *= travelSlowdown;
             countdownText?.gameObject.SetActive(true);
             dangerZoneTrigger?.gameObject.SetActive(true);
             _countdown = this.Run(
                 countdown,
-                onProgress: (d, e) => {
+                onProgress: (d, e) =>
+                {
                     countdownText?.SetText((d - e).ToString(countdownFormat));
                     return Time.deltaTime * countdownTimeScale;
                 },
-                onFinish: (d, e) => {
+                onFinish: (d, e) =>
+                {
                     countdownText?.SetText(0.ToString(countdownFormat));
                     countdownText?.gameObject.SetActive(false);
 
@@ -68,18 +66,23 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             );
         }
 
-        public virtual void StopCountdown() {
-            if(_countdown != null) {
+        public virtual void StopCountdown()
+        {
+            if (_countdown != null)
+            {
                 travelTimeScale /= travelSlowdown;
                 StopCoroutine(_countdown);
                 _countdown = null;
             }
         }
 
-        public virtual void SetDangerZoneColliders(bool enabled) {
+        public virtual void SetDangerZoneColliders(bool enabled)
+        {
             var trigger = dangerZoneTrigger;
-            if(trigger) {
-                foreach(var collider in trigger.GetComponentsInChildren<Collider>()) {
+            if (trigger)
+            {
+                foreach (var collider in trigger.GetComponentsInChildren<Collider>())
+                {
                     collider.enabled = enabled;
                 }
             }
@@ -91,22 +94,26 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
         public virtual void DisableDangerZoneColliders() =>
             SetDangerZoneColliders(false);
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
             Reset();
         }
 
-        public virtual void Reset() {
+        public virtual void Reset()
+        {
             dangerZoneTrigger?.gameObject.SetActive(false);
             DisableDangerZoneColliders();
             countdownText?.gameObject.SetActive(false);
         }
 
-        public virtual void StartTravel() {
+        public virtual void StartTravel()
+        {
             StopTravel();
             _travel = this.Run(
                 travelDuration,
-                onProgress: (d, e) => {
+                onProgress: (d, e) =>
+                {
                     follower.value = e / d;
                     return Time.deltaTime * travelTimeScale;
                 },
@@ -114,17 +121,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating {
             );
         }
 
-        public virtual void StopTravel() {
-            if(_travel != null) {
+        public virtual void StopTravel()
+        {
+            if (_travel != null)
+            {
                 StopCoroutine(_travel);
                 _travel = null;
             }
         }
 
-        public override void OnTriggerExit(Collider collider) {
+        public override void OnTriggerExit(Collider collider)
+        {
             base.OnTriggerExit(collider);
             var trigger = collider.GetTrigger<LandmarkTrigger>();
-            if(trigger && !trigger.triggered) {
+            if (trigger && !trigger.triggered)
+            {
                 trigger.triggered = true;
                 StartCountdown();
             }

@@ -7,34 +7,30 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay
+{
     using Core;
     using QuestionRunner;
     using SteppedApplication.Blowbagets;
-    using UnityEngine.Localization;
-    using UnityEngine.Localization.Components;
     using UnityEngine.Localization.Settings;
     using UnityEngine.SceneManagement;
+    using Utilities;
 
     // [AddComponentMenu("Init")]
-    public class Initialization : Controller {
+    public class Initialization : Controller
+    {
         protected static bool _finished = false;
         public static bool finished => _finished;
 
         [SerializeField]
-        protected LoadingScreen _loadingScreen; 
+        protected LoadingScreen _loadingScreen;
         [SerializeField]
-        protected Database _database; 
+        protected Database _database;
         [SerializeField]
-        protected Localizer _localizer; 
+        protected Localizer _localizer;
         [SerializeField]
         protected SceneController _sceneController;
         [SerializeField]
@@ -46,17 +42,20 @@ namespace Ph.CoDe_A.Lakbay {
         [SerializeField]
         protected CheatEngine _cheatEngine;
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
         }
 
-        public new virtual IEnumerator Start() {
-            if(finished) yield break;
+        public new virtual IEnumerator Start()
+        {
+            if (finished) yield break;
             SceneManager.sceneLoaded += ResetTimeScale;
 
             Session.loadingScreen =
                 _loadingScreen ? _loadingScreen.EnsureInstance() : default;
-            if(Session.loadingScreen) {
+            if (Session.loadingScreen)
+            {
                 Session.loadingScreen.gameObject.MakePersistent();
                 Session.loadingScreen.Show();
             }
@@ -67,7 +66,8 @@ namespace Ph.CoDe_A.Lakbay {
             // Proceed with loading Game related stuffs...
             Session.database =
                 _database ? _database.EnsureInstance() : default;
-            if(Session.database) {
+            if (Session.database)
+            {
                 Session.database.gameObject.MakePersistent();
 
                 Session.database.Load<Sprite>();
@@ -86,32 +86,37 @@ namespace Ph.CoDe_A.Lakbay {
                 yield return new WaitWhile(() => Session.database.loading);
             }
 
-            Session.localizer = 
+            Session.localizer =
                 _localizer ? _localizer.EnsureInstance() : default;
-            if(Session.localizer && Session.database) {
+            if (Session.localizer && Session.database)
+            {
                 Session.localizer.gameObject.MakePersistent();
 
                 var localizables = Session.database.Get<ILocalizable>();
-                foreach(var localizable in localizables) {
+                foreach (var localizable in localizables)
+                {
                     localizable.Value.Localize(Session.localizer);
                 }
             }
 
             Session.sceneController =
                 _sceneController ? _sceneController.EnsureInstance() : default;
-            if(Session.sceneController) {
+            if (Session.sceneController)
+            {
                 Session.sceneController.gameObject.MakePersistent();
             }
 
             Session.audioController =
                 _audioController ? _audioController.EnsureInstance() : default;
-            if(Session.audioController) {
+            if (Session.audioController)
+            {
                 Session.audioController.gameObject.MakePersistent();
             }
 
             Session.settingsController =
                 _settingsController ? _settingsController.EnsureInstance() : default;
-            if(Session.settingsController) {
+            if (Session.settingsController)
+            {
                 Session.settingsController.gameObject.MakePersistent();
                 Session.settingsController.Load();
                 SceneManager.sceneUnloaded += SaveSettings;
@@ -119,7 +124,8 @@ namespace Ph.CoDe_A.Lakbay {
 
             Session.checkpointController =
                 _checkpointController ? _checkpointController.EnsureInstance() : default;
-            if(Session.checkpointController) {
+            if (Session.checkpointController)
+            {
                 Session.checkpointController.gameObject.MakePersistent();
                 Session.checkpointController.Load();
                 // SceneManager.sceneUnloaded += Savecheckpoint;
@@ -127,7 +133,8 @@ namespace Ph.CoDe_A.Lakbay {
 
             Session.cheatEngine =
                 _cheatEngine ? _cheatEngine.EnsureInstance() : default;
-            if(Session.cheatEngine) {
+            if (Session.cheatEngine)
+            {
                 Session.cheatEngine.gameObject.MakePersistent();
             }
 
@@ -136,17 +143,21 @@ namespace Ph.CoDe_A.Lakbay {
             // Destroy(gameObject);
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(Session.loadingScreen && Session.loadingScreen.showing) {
-                if(!LocalizationSettings.InitializationOperation.IsDone) {
+            if (Session.loadingScreen && Session.loadingScreen.showing)
+            {
+                if (!LocalizationSettings.InitializationOperation.IsDone)
+                {
                     Session.loadingScreen.Show(
                         "Localization",
                         LocalizationSettings.InitializationOperation.PercentComplete
                     );
                 }
 
-                if(Session.database && Session.database.currentLocation != null) {
+                if (Session.database && Session.database.currentLocation != null)
+                {
                     Session.loadingScreen.Show(
                         Session.database.currentLocation.PrimaryKey,
                         Mathf.Clamp(Session.database.loadingProgress, 0.0f, 1.0f)
@@ -155,15 +166,18 @@ namespace Ph.CoDe_A.Lakbay {
             }
         }
 
-        protected static Action<QRLevel> OnQRLevelChange(int index) {
-            return (l) =>  Session.qrLevels[index] = l;
+        protected static Action<QRLevel> OnQRLevelChange(int index)
+        {
+            return (l) => Session.qrLevels[index] = l;
         }
 
-        public virtual void ResetTimeScale(Scene scene, LoadSceneMode mode) {
+        public virtual void ResetTimeScale(Scene scene, LoadSceneMode mode)
+        {
             Time.timeScale = 1.0f;
         }
 
-        public virtual void SaveSettings(Scene scene) {
+        public virtual void SaveSettings(Scene scene)
+        {
             // if(Session.settingsController)
             //     Session.settingsController.UpdateSettings();
             //     Session.settingsController.Save();

@@ -5,19 +5,15 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using static Cinemachine.CinemachinePathBase;
 
-namespace Utilities {
+namespace Utilities
+{
     [ExecuteInEditMode]
-    public class CinemachinePathFollower : MonoBehaviour {
+    public class CinemachinePathFollower : MonoBehaviour
+    {
         public bool position = true;
         public bool rotation = true;
         public PositionUnits unit = PositionUnits.Normalized;
@@ -25,22 +21,30 @@ namespace Utilities {
         public CinemachinePath path;
         public CinemachineSmoothPath smoothPath;
 
-        public virtual void Update() {
-            if(path) {
-                if(position) {
+        public virtual void Update()
+        {
+            if (path)
+            {
+                if (position)
+                {
                     transform.position =
                         path.EvaluatePositionAtUnit(value, unit);
                 }
-                if(rotation) {
+                if (rotation)
+                {
                     transform.rotation =
                         path.EvaluateOrientationAtUnit(value, unit);
                 }
-            } else if(smoothPath) {
-                if(position) {
+            }
+            else if (smoothPath)
+            {
+                if (position)
+                {
                     transform.position =
                         smoothPath.EvaluatePositionAtUnit(value, unit);
                 }
-                if(rotation) {
+                if (rotation)
+                {
                     transform.rotation =
                         smoothPath.EvaluateOrientationAtUnit(value, unit);
                 }

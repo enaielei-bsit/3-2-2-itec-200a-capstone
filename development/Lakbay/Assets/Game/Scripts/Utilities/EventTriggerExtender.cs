@@ -5,23 +5,18 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace Utilities {
-    using Event = EventTrigger.TriggerEvent;
+namespace Utilities
+{
     using ET = EventTriggerType;
-    
+    using Event = EventTrigger.TriggerEvent;
+
     [RequireComponent(typeof(EventTrigger))]
     [ExecuteInEditMode]
-    public class EventTriggerExtender : MonoBehaviour {
+    public class EventTriggerExtender : MonoBehaviour
+    {
         public EventTrigger trigger => GetComponent<EventTrigger>();
         public Event onPointerHold = new Event();
 
@@ -31,24 +26,30 @@ namespace Utilities {
             trigger?.EnsureEntry(ET.PointerUp).callback;
 
         protected BaseEventData _onPointerHoldData = null;
-        
-        public virtual void Awake() {
-            if(trigger) {
+
+        public virtual void Awake()
+        {
+            if (trigger)
+            {
                 pointerDown.AddListener(_OnPointerHoldBegin);
                 pointerUp.AddListener(_OnPointerHoldEnd);
             }
         }
 
-        protected virtual void _OnPointerHoldBegin(BaseEventData data) {
+        protected virtual void _OnPointerHoldBegin(BaseEventData data)
+        {
             _onPointerHoldData = data;
         }
 
-        protected virtual void _OnPointerHoldEnd(BaseEventData data) {
+        protected virtual void _OnPointerHoldEnd(BaseEventData data)
+        {
             _onPointerHoldData = null;
         }
 
-        public virtual void Update() {
-            if(_onPointerHoldData != null) {
+        public virtual void Update()
+        {
+            if (_onPointerHoldData != null)
+            {
                 var data = _onPointerHoldData;
                 onPointerHold?.Invoke(data);
             }

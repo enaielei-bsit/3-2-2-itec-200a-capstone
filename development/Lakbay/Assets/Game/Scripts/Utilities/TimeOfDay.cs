@@ -5,16 +5,8 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
-namespace Utilities {
+namespace Utilities
+{
     // Source: https://urduesl.com/parts-of-the-day/
-    public enum TimeOfDay {Morning, Noon, Evening, Night}
+    public enum TimeOfDay { Morning, Noon, Evening, Night }
 }

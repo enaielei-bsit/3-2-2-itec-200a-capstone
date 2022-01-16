@@ -6,26 +6,24 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
-using Pixelplacement;
-using TMPro;
-
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using Core;
     using Widgets;
 
-    public class QuestionUI : Controller {
+    public class QuestionUI : Controller
+    {
         [Serializable]
-        public struct TimeTextColor {
+        public struct TimeTextColor
+        {
             public float progress;
             public Color color;
         }
@@ -62,29 +60,34 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             new UnityEvent<QuestionUI, IEnumerable<Choice>>();
 
         [ContextMenu("Clear")]
-        public virtual void Clear() {
+        public virtual void Clear()
+        {
             questionContent.Clear();
             time?.SetText("99.99");
-            if(Application.isPlaying) this.choices.DestroyChildren();
+            if (Application.isPlaying) this.choices.DestroyChildren();
             else this.choices.DestroyChildrenImmediately();
         }
 
         [ContextMenu("Build")]
-        public virtual void Build() {
+        public virtual void Build()
+        {
             Build(question);
         }
 
-        public virtual void Build(Question question) {
-            if(question != null) {
+        public virtual void Build(Question question)
+        {
+            if (question != null)
+            {
                 Clear();
                 this.question = question;
                 questionContent.Build(question.content);
-                if(!_choice || !this.choices) return;
+                if (!_choice || !this.choices) return;
 
                 List<Choice> choices = question.choices.ToList();
-                if(shuffledChoices) choices = choices.Shuffle().ToList();
+                if (shuffledChoices) choices = choices.Shuffle().ToList();
 
-                foreach(var choice in choices) {
+                foreach (var choice in choices)
+                {
                     var choiceWidget = Instantiate(
                         this._choice, this.choices.transform);
                     choiceWidget.Build(this, choice, readOnly);
@@ -92,88 +95,103 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Show() {
+        public virtual void Show()
+        {
             gameObject.SetActive(true);
-            if(!tweenable) return;
+            if (!tweenable) return;
         }
 
         public virtual void Show(
             Question question,
-            UnityAction<QuestionUI,IEnumerable<Choice>> onAnswer=null,
-            bool readOnly=false) {
+            UnityAction<QuestionUI, IEnumerable<Choice>> onAnswer = null,
+            bool readOnly = false)
+        {
             this.readOnly = readOnly;
             Show();
             Build(question);
             this.onAnswer.RemoveAllListeners();
-            if(onAnswer != null) this.onAnswer.AddListener(onAnswer);
+            if (onAnswer != null) this.onAnswer.AddListener(onAnswer);
 
             legend?.gameObject.SetActive(readOnly);
             dismiss?.gameObject.SetActive(readOnly);
-            if(!readOnly) Run();
+            if (!readOnly) Run();
         }
 
-        public virtual void Hide() {
+        public virtual void Hide()
+        {
             gameObject.SetActive(false);
         }
 
-        public virtual void Answer(params Choice[] choices) {
-            if(question == null) return;
+        public virtual void Answer(params Choice[] choices)
+        {
+            if (question == null) return;
             question.Answer(choices);
-            if(_timer != null) StopCoroutine(_timer);
+            if (_timer != null) StopCoroutine(_timer);
             onAnswer?.Invoke(this, choices);
             Hide();
             FindObjectOfType<ImageViewer>()?.Hide();
         }
 
-        public virtual void Answer(params int[] indices) {
-            Answer(indices.Select((i) => 
+        public virtual void Answer(params int[] indices)
+        {
+            Answer(indices.Select((i) =>
                 i > 0 && i < indices.Length ? question.choices[i]
                 : null).ToArray());
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(_timer != null && time) {
-                if(!time.gameObject.activeSelf)
+            if (_timer != null && time)
+            {
+                if (!time.gameObject.activeSelf)
                     time.gameObject.SetActive(true);
-                
+
                 time.SetText(
                     Mathf.Min(
                         question.time - question.elapsedTime,
                         99.99f
                     ).ToString(timeFormat)
                 );
-                if(timeProgress) timeProgress.value = 1.0f - question.progress;
+                if (timeProgress) timeProgress.value = 1.0f - question.progress;
 
                 float progress = question.elapsedTime / question.time;
-                if(timeColors != null && timeColors.Count > 0) {
+                if (timeColors != null && timeColors.Count > 0)
+                {
                     var ttc = timeColors.Find(
                         (ttc) => progress <= ttc.progress);
                     time.color = ttc.color;
                     var fill = timeProgress.fillRect?.GetComponent<Image>();
-                    if(fill) fill.color = ttc.color;
+                    if (fill) fill.color = ttc.color;
                 }
 
-                if(progress == 1.0f) {
+                if (progress == 1.0f)
+                {
                     // No answer...
                     Answer(-1);
                 }
-            } else {
-                if(time.gameObject.activeSelf) time.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (time.gameObject.activeSelf) time.gameObject.SetActive(false);
             }
         }
 
         [ContextMenu("Run Question")]
         public virtual void Run() => Run(0.0f);
 
-        public virtual void Run(float duration) {
-            if(time && question != null) {
-                if(question.time > 0.0f) {
-                    if(_timer != null) StopCoroutine(_timer);
+        public virtual void Run(float duration)
+        {
+            if (time && question != null)
+            {
+                if (question.time > 0.0f)
+                {
+                    if (_timer != null) StopCoroutine(_timer);
 
                     _timer = this.Run(
                         duration <= 0.0f ? question.time : duration,
-                        onProgress: (d, e) => {
+                        onProgress: (d, e) =>
+                        {
                             question.elapsedTime = e;
                             return Time.deltaTime * timeScale;
                         },

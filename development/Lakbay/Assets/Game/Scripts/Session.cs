@@ -5,23 +5,20 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay
+{
     using Core;
     using QuestionRunner;
     using SteppedApplication.Blowbagets;
-    using UnityEngine.Localization;
+    using Utilities;
 
-    public class Session : Controller {
+    public class Session : Controller
+    {
         public static Database database;
         public static Localizer localizer;
         public static LoadingScreen loadingScreen;
@@ -36,7 +33,8 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();
         private static int _qrLevelIndex = 0;
-        public static int qrLevelIndex {
+        public static int qrLevelIndex
+        {
             get => qrLevels.Count > 0 ? _qrLevelIndex : -1;
             set => _qrLevelIndex = Mathf.Clamp(value, 0, qrLevels.Count - 1);
         }
@@ -50,6 +48,6 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static SABBLevel sabbLevel;
 
-        public static void SetMode(int value) => mode = (GameMode) value;
+        public static void SetMode(int value) => mode = (GameMode)value;
     }
 }

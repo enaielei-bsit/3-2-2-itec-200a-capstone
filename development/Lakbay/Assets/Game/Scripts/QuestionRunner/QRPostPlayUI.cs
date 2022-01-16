@@ -5,21 +5,19 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using TMPro;
     using UnityEngine.Localization.Components;
     using Utilities;
 
-    public class QRPostPlayUI : Core.PostPlayUI {
+    public class QRPostPlayUI : Core.PostPlayUI
+    {
         [Space]
         public QRPlayer player;
 
@@ -46,15 +44,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         public Button summary;
         public Button overallSummary;
         public LocalizeStringEvent message;
-        
+
         protected int _score = 0;
         public virtual int score => _score;
-        
+
         protected int _maxScore = 0;
         public virtual int maxScore => _maxScore;
 
-        public virtual void Show() {
-            if(!gameObject.activeSelf) {
+        public virtual void Show()
+        {
+            if (!gameObject.activeSelf)
+            {
                 summary?.gameObject.SetActive(false);
                 overallSummary?.gameObject.SetActive(false);
                 BuildSummary();
@@ -62,39 +62,49 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void Hide() {
-            if(gameObject.activeSelf) {
+        public virtual void Hide()
+        {
+            if (gameObject.activeSelf)
+            {
                 gameObject.SetActive(false);
             }
         }
 
-        public virtual void Build(params QRLevel[] levels) {
-            if(ratings && _filledRating && _emptyRating) {
-                if(Application.isPlaying) ratings.transform.DestroyChildren();
+        public virtual void Build(params QRLevel[] levels)
+        {
+            if (ratings && _filledRating && _emptyRating)
+            {
+                if (Application.isPlaying) ratings.transform.DestroyChildren();
                 else ratings.transform.DestroyChildrenImmediately();
 
                 _score = levels.Sum((l) => l.score);
                 _maxScore = levels.Sum((l) => l.maxScore);
-                foreach(var l in levels) printLog(
-                    l.score, l.maxScore, l.spawned.Count, l.questions.Count);
-                float part = maxScore / (float) maxRating;
-                for(int i = 0; i < maxRating; i++) {
-                    if(score != 0 && score < (part * (i + 1))) {
+                foreach (var l in levels) printLog(
+                     l.score, l.maxScore, l.spawned.Count, l.questions.Count);
+                float part = maxScore / (float)maxRating;
+                for (int i = 0; i < maxRating; i++)
+                {
+                    if (score != 0 && score < (part * (i + 1)))
+                    {
                         Instantiate(_emptyRating, ratings);
-                    } else Instantiate(_filledRating, ratings);
+                    }
+                    else Instantiate(_filledRating, ratings);
                 }
             }
 
-            if(reviews && _correctReview && player) {
-                if(Application.isPlaying) reviews.transform.DestroyChildren();
+            if (reviews && _correctReview && player)
+            {
+                if (Application.isPlaying) reviews.transform.DestroyChildren();
                 else reviews.transform.DestroyChildrenImmediately();
 
                 var levels_ = levels.Select(
                     (l) => l.spawned.Select((s) => l.questions[s]));
-                
+
                 int count = 0;
-                foreach(var level in levels_) {
-                    foreach(var question in level) {
+                foreach (var level in levels_)
+                {
+                    foreach (var question in level)
+                    {
                         count++;
                         var _review = question.correct
                             ? _correctReview : _wrongReview;
@@ -118,22 +128,25 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             retry?.gameObject.SetActive(!passed);
         }
 
-        public virtual void BuildSummary() {
+        public virtual void BuildSummary()
+        {
             Build(Session.qrLevel);
             summary?.gameObject.SetActive(
                 Session.qrLevelIndex == Session.qrLevels.Count - 1);
-            overallSummary?.gameObject.SetActive(false); 
+            overallSummary?.gameObject.SetActive(false);
             message?.RefreshString();
         }
 
-        public virtual void BuildOverallSummary() {
+        public virtual void BuildOverallSummary()
+        {
             Build(Session.qrLevels.ToArray());
             summary?.gameObject.SetActive(false);
             overallSummary?.gameObject.SetActive(true);
             message?.RefreshString();
         }
 
-        public virtual void Restart() {
+        public virtual void Restart()
+        {
             player?.Restart(
                 Session.qrLevelIndex != Session.qrLevels.Count() - 1);
         }

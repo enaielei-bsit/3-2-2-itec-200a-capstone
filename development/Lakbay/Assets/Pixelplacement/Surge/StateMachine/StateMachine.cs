@@ -11,15 +11,12 @@
 #pragma warning disable 168
 
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine.Events;
 
 namespace Pixelplacement
 {
-    [RequireComponent (typeof (Initialization))]
-    public class StateMachine : MonoBehaviour 
+    [RequireComponent(typeof(Initialization))]
+    public class StateMachine : MonoBehaviour
     {
         //Public Variables:
         public GameObject defaultState;
@@ -56,10 +53,10 @@ namespace Pixelplacement
         /// <summary>
         /// Internal flag used to determine if the StateMachine is set up properly.
         /// </summary>
-        public bool CleanSetup 
-        { 
-            get; 
-            private set; 
+        public bool CleanSetup
+        {
+            get;
+            private set;
         }
 
         /// <summary>
@@ -77,10 +74,12 @@ namespace Pixelplacement
                 if (_atFirst)
                 {
                     _atFirst = false;
-                    if (OnFirstStateExited != null) OnFirstStateExited.Invoke ();
-                } else {
+                    if (OnFirstStateExited != null) OnFirstStateExited.Invoke();
+                }
+                else
+                {
                     _atFirst = true;
-                    if (OnFirstStateEntered != null) OnFirstStateEntered.Invoke ();
+                    if (OnFirstStateEntered != null) OnFirstStateEntered.Invoke();
                 }
             }
         }
@@ -100,10 +99,12 @@ namespace Pixelplacement
                 if (_atLast)
                 {
                     _atLast = false;
-                    if (OnLastStateExited != null) OnLastStateExited.Invoke ();
-                } else {
+                    if (OnLastStateExited != null) OnLastStateExited.Invoke();
+                }
+                else
+                {
                     _atLast = true;
-                    if (OnLastStateEntered != null) OnLastStateEntered.Invoke ();
+                    if (OnLastStateEntered != null) OnLastStateEntered.Invoke();
                 }
             }
         }
@@ -117,9 +118,9 @@ namespace Pixelplacement
         /// <summary>
         /// Change to the next state if possible.
         /// </summary>
-        public GameObject Next (bool exitIfLast = false)
+        public GameObject Next(bool exitIfLast = false)
         {
-            if (currentState == null) return ChangeState (0);
+            if (currentState == null) return ChangeState(0);
             int currentIndex = currentState.transform.GetSiblingIndex();
             if (currentIndex == transform.childCount - 1)
             {
@@ -130,17 +131,19 @@ namespace Pixelplacement
                 }
                 else
                 {
-                    return currentState;	
+                    return currentState;
                 }
-            }else{
-                return ChangeState (++currentIndex);
+            }
+            else
+            {
+                return ChangeState(++currentIndex);
             }
         }
 
         /// <summary>
         /// Change to the previous state if possible.
         /// </summary>
-        public GameObject Previous (bool exitIfFirst = false)
+        public GameObject Previous(bool exitIfFirst = false)
         {
             if (currentState == null) return ChangeState(0);
             int currentIndex = currentState.transform.GetSiblingIndex();
@@ -156,7 +159,8 @@ namespace Pixelplacement
                     return currentState;
                 }
             }
-            else{
+            else
+            {
                 return ChangeState(--currentIndex);
             }
         }
@@ -164,29 +168,29 @@ namespace Pixelplacement
         /// <summary>
         /// Exit the current state.
         /// </summary>
-        public void Exit ()
+        public void Exit()
         {
             if (currentState == null) return;
-            Log ("(-) " + name + " EXITED state: " + currentState.name);
-            int currentIndex = currentState.transform.GetSiblingIndex ();
+            Log("(-) " + name + " EXITED state: " + currentState.name);
+            int currentIndex = currentState.transform.GetSiblingIndex();
 
             //no longer at first:
             if (currentIndex == 0) AtFirst = false;
 
             //no longer at last:
-            if (currentIndex == transform.childCount - 1) AtLast = false;	
+            if (currentIndex == transform.childCount - 1) AtLast = false;
 
-            if (OnStateExited != null) OnStateExited.Invoke (currentState);
-            currentState.SetActive (false);
+            if (OnStateExited != null) OnStateExited.Invoke(currentState);
+            currentState.SetActive(false);
             currentState = null;
         }
 
         /// <summary>
         /// Changes the state.
         /// </summary>
-        public GameObject ChangeState (int childIndex)
+        public GameObject ChangeState(int childIndex)
         {
-            if (childIndex > transform.childCount-1)
+            if (childIndex > transform.childCount - 1)
             {
                 Log("Index is greater than the amount of states in the StateMachine \"" + gameObject.name + "\" please verify the index you are trying to change to.");
                 return null;
@@ -198,7 +202,7 @@ namespace Pixelplacement
         /// <summary>
         /// Changes the state.
         /// </summary>
-        public GameObject ChangeState (GameObject state)
+        public GameObject ChangeState(GameObject state)
         {
             if (currentState != null)
             {
@@ -224,7 +228,7 @@ namespace Pixelplacement
         /// <summary>
         /// Changes the state.
         /// </summary>
-        public GameObject ChangeState (string state)
+        public GameObject ChangeState(string state)
         {
             Transform found = transform.Find(state);
             if (!found)
@@ -247,21 +251,21 @@ namespace Pixelplacement
                 transform.GetChild(i).gameObject.SetActive(false);
             }
         }
-        
+
         /// <summary>
         /// Internally used within the framework to auto start the state machine.
         /// </summary>
-        public void StartMachine ()
+        public void StartMachine()
         {
             //start the machine:
-            if (Application.isPlaying && defaultState != null) ChangeState (defaultState.name);
+            if (Application.isPlaying && defaultState != null) ChangeState(defaultState.name);
         }
 
         //Private Methods:
-        void Enter (GameObject state)
+        void Enter(GameObject state)
         {
             currentState = state;
-            int index = currentState.transform.GetSiblingIndex ();
+            int index = currentState.transform.GetSiblingIndex();
 
             //entering first:
             if (index == 0)
@@ -272,18 +276,18 @@ namespace Pixelplacement
             //entering last:
             if (index == transform.childCount - 1)
             {
-                AtLast = true;	
+                AtLast = true;
             }
 
-            Log( "(+) " + name + " ENTERED state: " + state.name);
-            if (OnStateEntered != null) OnStateEntered.Invoke (currentState);
-            currentState.SetActive (true);
+            Log("(+) " + name + " ENTERED state: " + state.name);
+            if (OnStateEntered != null) OnStateEntered.Invoke(currentState);
+            currentState.SetActive(true);
         }
 
-        void Log (string message)
+        void Log(string message)
         {
             if (!verbose) return;
-            Debug.Log (message, gameObject);
+            Debug.Log(message, gameObject);
         }
     }
 }

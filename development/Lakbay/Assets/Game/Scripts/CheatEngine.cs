@@ -7,26 +7,23 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay
+{
     using Core;
     using QuestionRunner;
     using QuestionRunner.Widgets;
-    using SteppedApplication.Blowbagets;
-    using UnityEngine.Localization;
-    using UnityEngine.Localization.Components;
-    using UnityEngine.Localization.Settings;
-    using UnityEngine.SceneManagement;
     using TMPro;
+    using UnityEngine.Localization;
+    using UnityEngine.Localization.Settings;
+    using Utilities;
 
-    public class CheatEngine : Controller {
+    public class CheatEngine : Controller
+    {
         protected BuiltScene _lastScene = BuiltScene.None;
 
         public CanvasGroup group;
@@ -47,31 +44,38 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static BuiltScene[] allScenes =>
             Enum.GetValues(typeof(BuiltScene)).Cast<BuiltScene>()
-            .Where((s) => (int) s > (int) BuiltScene.None).ToArray();
+            .Where((s) => (int)s > (int)BuiltScene.None).ToArray();
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
-            if(!Debug.isDebugBuild) gameObject.SetActive(false);
+            if (!Debug.isDebugBuild) gameObject.SetActive(false);
         }
 
-        public new virtual IEnumerator Start() {
+        public new virtual IEnumerator Start()
+        {
             yield return LocalizationSettings.InitializationOperation;
             _ready = true;
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(!_ready) return;
+            if (!_ready) return;
             // group.blocksRaycasts = false;
-            if(!Debug.isDebugBuild) {
+            if (!Debug.isDebugBuild)
+            {
                 group.alpha = 0.0f;
                 group.interactable = false;
-            } else {
+            }
+            else
+            {
                 group.alpha = 1.0f;
                 group.interactable = true;
 
                 var current = SceneController.GetCurrent();
-                if(current != _lastScene) {
+                if (current != _lastScene)
+                {
                     Build(current);
                     _lastScene = current;
                 }
@@ -80,9 +84,11 @@ namespace Ph.CoDe_A.Lakbay {
             }
         }
 
-        public virtual void Build(BuiltScene scene) {
-            if(!root) return;
-            if(toggleLanguage) {
+        public virtual void Build(BuiltScene scene)
+        {
+            if (!root) return;
+            if (toggleLanguage)
+            {
                 var text = toggleLanguageText;
                 text?.SetText(LocalizationSettings.SelectedLocale.name);
                 toggleLanguage.onClick.RemoveAllListeners();
@@ -90,13 +96,16 @@ namespace Ph.CoDe_A.Lakbay {
             }
 
             root.transform.DestroyChildren();
-            if(scene == BuiltScene.QuestionRunner) {
+            if (scene == BuiltScene.QuestionRunner)
+            {
                 _qrText = Instantiate(_text, root.transform);
                 var button = Instantiate(_button, root.transform);
-                button.onClick.AddListener(() => {
+                button.onClick.AddListener(() =>
+                {
                     Session.qrLevel.Reset();
                     var free = Session.qrLevel.free;
-                    while(free != null) {
+                    while (free != null)
+                    {
                         free.MarkAsCorrect();
                         Session.qrLevel.spawned.Add(
                             Session.qrLevel.questions.IndexOf(free));
@@ -106,15 +115,19 @@ namespace Ph.CoDe_A.Lakbay {
                 });
                 var text = button.GetComponentInChildren<TextMeshProUGUI>();
                 text?.SetText("Advance to next level");
-            } else if(scene == BuiltScene.Blowbagets) {
-                
             }
-                    
-            if(this.scenes) {
+            else if (scene == BuiltScene.Blowbagets)
+            {
+
+            }
+
+            if (this.scenes)
+            {
                 this.scenes.ClearOptions();
                 this.scenes.onValueChanged.RemoveAllListeners();
                 var scenes = allScenes;
-                foreach(var sc in scenes) {
+                foreach (var sc in scenes)
+                {
                     this.scenes.options.Add(new TMP_Dropdown.OptionData(sc.ToString()));
                     var option = this.scenes.options.Last();
                 }
@@ -124,32 +137,40 @@ namespace Ph.CoDe_A.Lakbay {
             }
         }
 
-        public virtual void Update(BuiltScene scene) {
-            if(scene == BuiltScene.QuestionRunner) {
+        public virtual void Update(BuiltScene scene)
+        {
+            if (scene == BuiltScene.QuestionRunner)
+            {
                 _qrText?.SetText("Waiting for a Question...");
                 var player = FindObjectOfType<QRPlayer>();
-                if(player) {
-                    if(player.questionUI.gameObject.activeSelf) {
+                if (player)
+                {
+                    if (player.questionUI.gameObject.activeSelf)
+                    {
                         var ui = player.questionUI;
                         var choices = ui.choices.GetComponentsInChildren<ChoiceWidget>();
                         var correct = (from c in choices
-                            where c.choice.correct
-                            select Array.IndexOf(choices, c)).Join(", "); 
+                                       where c.choice.correct
+                                       select Array.IndexOf(choices, c)).Join(", ");
                         _qrText?.SetText($"Correct Answer(s): {correct}");
                     }
                 }
-            } else if(scene == BuiltScene.Blowbagets) {
-                
+            }
+            else if (scene == BuiltScene.Blowbagets)
+            {
+
             }
         }
 
-        public virtual void ToggleLanguage() {
+        public virtual void ToggleLanguage()
+        {
             var next = GetNextLocale();
             LocalizationSettings.SelectedLocale = next;
             toggleLanguageText?.SetText(LocalizationSettings.SelectedLocale.name);
         }
 
-        public static Locale GetNextLocale(Locale locale) {
+        public static Locale GetNextLocale(Locale locale)
+        {
             var locales = LocalizationSettings.AvailableLocales.Locales;
             var current = LocalizationSettings.SelectedLocale;
             int index = locales.IndexOf(current);
@@ -161,9 +182,11 @@ namespace Ph.CoDe_A.Lakbay {
 
         public static Locale GetNextLocale() =>
             GetNextLocale(LocalizationSettings.SelectedLocale);
-        
-        public static void LoadScene(int scene) {
-            if(scene.Within(0, allScenes.Length - 1)) {
+
+        public static void LoadScene(int scene)
+        {
+            if (scene.Within(0, allScenes.Length - 1))
+            {
                 FindObjectOfType<Player>()?.LoadScene(allScenes[scene]);
             }
         }

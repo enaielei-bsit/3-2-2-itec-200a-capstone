@@ -5,18 +5,16 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    public class PlaySelectionUI : Controller {
+namespace Ph.CoDe_A.Lakbay.Core
+{
+    public class PlaySelectionUI : Controller
+    {
         public Player player;
         public MessageBoxUI message;
         public ToggleGroup group;
@@ -24,14 +22,17 @@ namespace Ph.CoDe_A.Lakbay.Core {
         [Space]
         public LocalizedString useCheckpoint;
 
-        public new virtual IEnumerator Start() {
+        public new virtual IEnumerator Start()
+        {
             base.Start();
             yield return new WaitUntil(() => Initialization.finished);
             group?.GetFirstActiveToggle().onValueChanged.Invoke(true);
         }
 
-        public virtual void Play() {
-            if(Session.checkpointController.IsCheckpointValid()) {
+        public virtual void Play()
+        {
+            if (Session.checkpointController.IsCheckpointValid())
+            {
                 message?.ShowConfirmation(
                     useCheckpoint,
                     onYes: () => Session.checkpointController.LoadCheckpoint(
@@ -39,7 +40,9 @@ namespace Ph.CoDe_A.Lakbay.Core {
                     ),
                     onNo: () => player?.Play()
                 );
-            } else {
+            }
+            else
+            {
                 player?.Play();
             }
         }

@@ -7,13 +7,11 @@
 /// 
 /// </summary>
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Pixelplacement;
+using UnityEngine;
 
 [ExecuteInEditMode]
-[RequireComponent (typeof (Spline))]
+[RequireComponent(typeof(Spline))]
 public class SplineControlledParticleSystem : MonoBehaviour
 {
     //Public Variables:
@@ -27,19 +25,19 @@ public class SplineControlledParticleSystem : MonoBehaviour
     const float _previousDiff = .01f;
 
     //Init:
-    void Awake ()
+    void Awake()
     {
-        _spline = GetComponent<Spline> ();
+        _spline = GetComponent<Spline>();
     }
 
     //Loops:
-    void LateUpdate ()
+    void LateUpdate()
     {
         if (_particleSystem == null) return;
 
         if (_particles == null) _particles = new ParticleSystem.Particle[_particleSystem.main.maxParticles];
 
-        int aliveParticlesCount = _particleSystem.GetParticles (_particles);
+        int aliveParticlesCount = _particleSystem.GetParticles(_particles);
 
         for (int i = 0; i < aliveParticlesCount; i++)
         {
@@ -91,6 +89,6 @@ public class SplineControlledParticleSystem : MonoBehaviour
         }
 
         //apply the particle changes back to the system:
-        _particleSystem.SetParticles (_particles, _particles.Length);
+        _particleSystem.SetParticles(_particles, _particles.Length);
     }
 }

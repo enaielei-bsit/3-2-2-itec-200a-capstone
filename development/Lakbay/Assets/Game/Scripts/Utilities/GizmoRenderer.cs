@@ -5,23 +5,22 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Utilities {
+namespace Utilities
+{
     [RequireComponent(typeof(Renderer))]
-    public class GizmoRenderer : MonoBehaviour, IGizmoObject {
+    public class GizmoRenderer : MonoBehaviour, IGizmoObject
+    {
         public virtual new Renderer renderer => GetComponent<Renderer>();
-        public List<int> materialIndices = new List<int>() {0};
+        public List<int> materialIndices = new List<int>() { 0 };
 
-        public void SetValue(float value) {
-            foreach(var index in materialIndices) {
+        public void SetValue(float value)
+        {
+            foreach (var index in materialIndices)
+            {
                 var mat = renderer.materials[index];
                 var color = mat.color;
                 color.a = value;

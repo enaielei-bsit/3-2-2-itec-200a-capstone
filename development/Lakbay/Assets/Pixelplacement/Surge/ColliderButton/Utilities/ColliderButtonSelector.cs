@@ -7,10 +7,8 @@
 /// 
 /// </summary>
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Pixelplacement;
+using UnityEngine;
 
 public class ColliderButtonSelector : MonoBehaviour
 {
@@ -48,7 +46,7 @@ public class ColliderButtonSelector : MonoBehaviour
     {
         _index++;
 
-        if (_index > colliderButtons.Length-1)
+        if (_index > colliderButtons.Length - 1)
         {
             if (loopAround)
             {
@@ -59,7 +57,7 @@ public class ColliderButtonSelector : MonoBehaviour
                 _index = colliderButtons.Length - 1;
             }
         }
-    
+
         chooser.transform.LookAt(colliderButtons[_index].transform);
     }
 

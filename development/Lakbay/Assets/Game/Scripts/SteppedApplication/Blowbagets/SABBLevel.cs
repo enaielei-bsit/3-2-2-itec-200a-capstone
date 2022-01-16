@@ -5,16 +5,10 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
+{
     using Core;
     using UnityEngine.Localization;
     using Utilities;
@@ -23,7 +17,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         fileName = "BlowbagetsLevel",
         menuName = "Game/Stepped Application/Blowbagets Level"
     )]
-    public class SABBLevel : Asset, ILocalizable {
+    public class SABBLevel : Asset, ILocalizable
+    {
         public LocalizedAsset<TextAsset> batteryFile;
         public BlowbagetsInfo battery;
         public LocalizedAsset<TextAsset> lightsFile;
@@ -45,7 +40,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public LocalizedAsset<TextAsset> selfFile;
         public BlowbagetsInfo self;
 
-        public virtual void Localize(Localizer localizer) {
+        public virtual void Localize(Localizer localizer)
+        {
             localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
                 batteryFile, (a) => LoadBlowbagetsInfo(ref battery, a));
             localizer.Subscribe<TextAsset, LocalizeTextAssetEvent>(
@@ -68,30 +64,39 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
                 selfFile, (a) => LoadBlowbagetsInfo(ref self, a));
         }
 
-        public virtual BlowbagetsInfo LoadBlowbagetsInfo(TextAsset asset) {
+        public virtual BlowbagetsInfo LoadBlowbagetsInfo(TextAsset asset)
+        {
             return asset?.text.DeserializeAsYaml<BlowbagetsInfo>();
         }
 
-        public virtual void LoadBlowbagetsInfo(ref BlowbagetsInfo info, TextAsset asset) {
-            if(info != null && asset != null) {
+        public virtual void LoadBlowbagetsInfo(ref BlowbagetsInfo info, TextAsset asset)
+        {
+            if (info != null && asset != null)
+            {
                 var newInfo = LoadBlowbagetsInfo(asset);
                 info.title = newInfo.title;
                 info.image = newInfo.image;
-                
-                if(info.content != null && info.content.Count == newInfo.content.Count) {
-                    foreach(var entry in newInfo.content.Enumerate()) {
+
+                if (info.content != null && info.content.Count == newInfo.content.Count)
+                {
+                    foreach (var entry in newInfo.content.Enumerate())
+                    {
                         info.content[entry.Key] = entry.Value;
                     }
-                } else info.content = newInfo.content;
+                }
+                else info.content = newInfo.content;
 
                 info.description = newInfo.description;
                 info.source = newInfo.source;
-            } else if(info == null && asset) {
+            }
+            else if (info == null && asset)
+            {
                 info = LoadBlowbagetsInfo(asset);
             }
         }
 
-        public virtual void Load() {
+        public virtual void Load()
+        {
             LoadBlowbagetsInfo(ref battery, batteryFile.LoadAsset());
             LoadBlowbagetsInfo(ref lights, lightsFile.LoadAsset());
             LoadBlowbagetsInfo(ref oil, oilFile.LoadAsset());
@@ -103,5 +108,5 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
             LoadBlowbagetsInfo(ref tires, tiresFile.LoadAsset());
             LoadBlowbagetsInfo(ref self, selfFile.LoadAsset());
         }
-     }
+    }
 }

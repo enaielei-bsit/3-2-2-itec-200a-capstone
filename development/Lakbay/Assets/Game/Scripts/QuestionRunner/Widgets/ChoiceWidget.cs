@@ -5,22 +5,18 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-
+using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-using TMPro;
-
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
+namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets
+{
     using Core;
 
     [RequireComponent(typeof(Button))]
-    public class ChoiceWidget : Controller {
+    public class ChoiceWidget : Controller
+    {
         protected string _oldValue;
         protected string _value => choice.text;
 
@@ -36,52 +32,62 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Widgets {
         public Choice choice;
         protected Question _question;
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
-            if(automatic) {
-                if(_oldValue != _value) {
+            if (automatic)
+            {
+                if (_oldValue != _value)
+                {
                     _oldValue = _value;
                     Build(choice.text);
                 }
             }
 
-            if(background && choice != null) {
+            if (background && choice != null)
+            {
                 background.color = backgroundIdle;
-                if(readOnly && choice.correct) {
+                if (readOnly && choice.correct)
+                {
                     background.color = backgroundCorrect;
                 }
             }
 
-            if(_question != null) {
+            if (_question != null)
+            {
                 int index = _question.choices.IndexOf(choice);
                 bool answered = _question.answers.Contains(index);
-                if(text) {
-                    if(answered) text.color = textChosen;
+                if (text)
+                {
+                    if (answered) text.color = textChosen;
                     else text.color = textIdle;
                 }
             }
         }
 
         public virtual void Build(
-            QuestionUI questionInterface, Choice choice, bool readOnly=false) {
-            if(choice == null) return;
+            QuestionUI questionInterface, Choice choice, bool readOnly = false)
+        {
+            if (choice == null) return;
             _question = questionInterface.question;
             this.choice = choice;
             this.readOnly = readOnly;
             Build(choice.text);
 
-            if(button && !readOnly) {
+            if (button && !readOnly)
+            {
                 button.onClick.RemoveAllListeners();
-                if(Application.isPlaying) button.onClick.AddListener(
-                    () => questionInterface.Answer(choice)
-                );
+                if (Application.isPlaying) button.onClick.AddListener(
+                     () => questionInterface.Answer(choice)
+                 );
             }
 
-            if(readOnly) button.interactable = false;
+            if (readOnly) button.interactable = false;
         }
 
-        public virtual void Build(string text) {
-            if(this.text) this.text.SetText(text);
+        public virtual void Build(string text)
+        {
+            if (this.text) this.text.SetText(text);
         }
     }
 }

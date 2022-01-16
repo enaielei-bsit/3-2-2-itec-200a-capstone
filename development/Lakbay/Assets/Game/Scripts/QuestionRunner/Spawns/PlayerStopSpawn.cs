@@ -5,38 +5,39 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Ph.CoDe_A.Lakbay.Core;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
-    
+namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns
+{
+
     [RequireComponent(typeof(Collider))]
-    public class PlayerStopSpawn : QRSpawn {
+    public class PlayerStopSpawn : QRSpawn
+    {
         public bool triggered = false;
         [Min(0)]
         public float delay = 3.0f;
         [Min(0)]
         public int offset = 5;
 
-        public override void OnTriggerEnter(Collider collider) {
+        public override void OnTriggerEnter(Collider collider)
+        {
             base.OnTriggerEnter(collider);
             var player = collider.GetComponentInParent<QRPlayer>();
-            
-            if(player && collider.GetTrigger<SpawnTrigger>()) { 
-                if(!triggered) {
+
+            if (player && collider.GetTrigger<SpawnTrigger>())
+            {
+                if (!triggered)
+                {
                     triggered = true;
-                    if(player.camera) {
+                    if (player.camera)
+                    {
                         var lck = player.camera.GetComponent<CinemachineLock>();
-                        if(!lck.zPosition.locked) {
-                            if(Session.qrPassed)
+                        if (!lck.zPosition.locked)
+                        {
+                            if (Session.qrPassed)
                                 Session.checkpointController?.SaveCheckpoint(
                                     new Checkpoint(
                                         Session.mode, BuiltScene.Blowbagets)
@@ -49,8 +50,9 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
 
                     player.qrInGameUI?.gameObject.SetActive(false);
 
-                    if(player.repeaterHandler
-                        && player.repeaterHandler.maxRepeat != 0) {
+                    if (player.repeaterHandler
+                        && player.repeaterHandler.maxRepeat != 0)
+                    {
                         player.repeaterHandler.maxRepeat = 0;
                     }
                 }
@@ -58,8 +60,10 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns {
         }
 
         public override bool OnSpawnCheck(
-            Spawner spawner, Transform[] locations, Transform location) {
-            if(base.OnSpawnCheck(spawner, locations, location)) {
+            Spawner spawner, Transform[] locations, Transform location)
+        {
+            if (base.OnSpawnCheck(spawner, locations, location))
+            {
                 int count = Session.qrLevel.repeaterHandler.repeated;
                 int target = Session.qrLevel.lastStop + offset;
                 return Session.qrLevel.done

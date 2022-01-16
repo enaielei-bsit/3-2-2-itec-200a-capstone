@@ -5,21 +5,17 @@
  * Copyright © 2022 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-
+using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-using TMPro;
-
-namespace Ph.CoDe_A.Lakbay.Core {
+namespace Ph.CoDe_A.Lakbay.Core
+{
     using Utilities;
 
-    public class ContentTester : Controller {
+    public class ContentTester : Controller
+    {
         public Color idle = Color.white;
         public Color succeeded = Color.green;
         public Color failed = Color.red;
@@ -29,32 +25,41 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public TMP_InputField input;
         public Content output;
 
-        public virtual void Copy() {
+        public virtual void Copy()
+        {
             input?.text?.CopyToClipboard();
         }
 
-        public virtual void Paste() {
+        public virtual void Paste()
+        {
             Clear();
             string data = Helper.GetClipboard();
-            if(data != null && input) {
+            if (data != null && input)
+            {
                 input.text = data;
             }
         }
 
-        public virtual void Clear() {
-            if(input) input.text = "";
+        public virtual void Clear()
+        {
+            if (input) input.text = "";
         }
 
-        public virtual void Test() {
-            if(input && output) {
+        public virtual void Test()
+        {
+            if (input && output)
+            {
                 output.Clear();
-                try {
+                try
+                {
                     var content = input.text != null
                         ? input.text.DeserializeAsYaml<List<Entry>>()
-                        : new List<Entry>() {};
+                        : new List<Entry>() { };
                     output.Build(content);
                     SetTestColor(succeeded);
-                } catch {
+                }
+                catch
+                {
                     printLog("Something is wrong with the input!");
                     SetTestColor(failed);
                 }
@@ -62,11 +67,13 @@ namespace Ph.CoDe_A.Lakbay.Core {
             }
         }
 
-        public virtual void SetTestColor(Color color) {
-            if(test) {
+        public virtual void SetTestColor(Color color)
+        {
+            if (test)
+            {
                 test.image.color = color;
                 var text = test.GetComponentInChildren<TextMeshProUGUI>();
-                if(text) text.color = color.Invert();
+                if (text) text.color = color.Invert();
             }
         }
 

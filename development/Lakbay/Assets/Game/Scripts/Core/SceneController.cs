@@ -7,18 +7,17 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    public enum BuiltScene {
+namespace Ph.CoDe_A.Lakbay.Core
+{
+    public enum BuiltScene
+    {
         None = -1,
         MainMenu,
         QuestionRunner,
@@ -33,7 +32,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
         ContentTester
     }
 
-    public class SceneController : Controller, LoadingScreen.IMonitored {
+    public class SceneController : Controller, LoadingScreen.IMonitored
+    {
         public static Scene current => SceneManager.GetActiveScene();
 
         protected string _currentLoadPath;
@@ -43,31 +43,36 @@ namespace Ph.CoDe_A.Lakbay.Core {
         public virtual AsyncOperation operation => _operation;
         protected Coroutine _coroutine;
 
-        public virtual void Load(BuiltScene scene) => Load((int) scene);
+        public virtual void Load(BuiltScene scene) => Load((int)scene);
 
         public virtual void Load(int sceneBuildIndex) =>
             Load(sceneBuildIndex, null);
 
         public virtual void Load(
             int sceneBuildIndex,
-            Action<AsyncOperation> onStart=null,
-            Action<AsyncOperation> onProgress=null,
-            Action<AsyncOperation> onFinish=null,
-            bool allowSceneActivation=true) {
-            if(_coroutine == null) {
+            Action<AsyncOperation> onStart = null,
+            Action<AsyncOperation> onProgress = null,
+            Action<AsyncOperation> onFinish = null,
+            bool allowSceneActivation = true)
+        {
+            if (_coroutine == null)
+            {
                 _coroutine = StartCoroutine(
                     LoadEnumerator(
                         sceneBuildIndex,
-                        (o) => {
+                        (o) =>
+                        {
                             _currentLoadPath =
                                 SceneUtility.GetScenePathByBuildIndex(sceneBuildIndex);
                             _operation = o;
                             onStart?.Invoke(o);
                         },
-                        (o) => {
+                        (o) =>
+                        {
                             onProgress?.Invoke(o);
                         },
-                        (o) => {
+                        (o) =>
+                        {
                             _currentLoadPath = default;
                             _operation = null;
                             _coroutine = null;
@@ -79,10 +84,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual void Load(
             string scenePath,
-            Action<AsyncOperation> onStart=null,
-            Action<AsyncOperation> onProgress=null,
-            Action<AsyncOperation> onFinish=null,
-            bool allowSceneActivation=true) {
+            Action<AsyncOperation> onStart = null,
+            Action<AsyncOperation> onProgress = null,
+            Action<AsyncOperation> onFinish = null,
+            bool allowSceneActivation = true)
+        {
             Load(
                 SceneUtility.GetBuildIndexByScenePath(scenePath),
                 onStart, onProgress, onFinish, allowSceneActivation);
@@ -90,13 +96,15 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public static IEnumerator LoadEnumerator(
             int sceneBuildIndex,
-            Action<AsyncOperation> onStart=null,
-            Action<AsyncOperation> onProgress=null,
-            Action<AsyncOperation> onFinish=null,
-            bool allowSceneActivation=true) {
+            Action<AsyncOperation> onStart = null,
+            Action<AsyncOperation> onProgress = null,
+            Action<AsyncOperation> onFinish = null,
+            bool allowSceneActivation = true)
+        {
             bool valid = sceneBuildIndex.Within(
                 0, SceneManager.sceneCountInBuildSettings - 1);
-            if(!valid) {
+            if (!valid)
+            {
                 onStart?.Invoke(null);
                 onFinish?.Invoke(null);
                 yield break;
@@ -108,7 +116,8 @@ namespace Ph.CoDe_A.Lakbay.Core {
             var operation = SceneManager.LoadSceneAsync(path);
             operation.allowSceneActivation = allowSceneActivation;
             onStart?.Invoke(operation);
-            while(!operation.isDone) {
+            while (!operation.isDone)
+            {
                 onProgress?.Invoke(operation);
                 yield return null;
             }
@@ -117,17 +126,20 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public static IEnumerator LoadEnumerator(
             string scenePath,
-            Action<AsyncOperation> onStart=null,
-            Action<AsyncOperation> onProgress=null,
-            Action<AsyncOperation> onFinish=null,
-            bool allowSceneActivation=true) {
+            Action<AsyncOperation> onStart = null,
+            Action<AsyncOperation> onProgress = null,
+            Action<AsyncOperation> onFinish = null,
+            bool allowSceneActivation = true)
+        {
             return LoadEnumerator(
                 SceneUtility.GetBuildIndexByScenePath(scenePath),
                 onStart, onProgress, onFinish, allowSceneActivation);
         }
 
-        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen) {
-            if(_operation != null) {
+        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen)
+        {
+            if (_operation != null)
+            {
                 return new LoadingScreen.MonitorInfo(
                     currentLoadName,
                     _operation.progress
@@ -137,17 +149,20 @@ namespace Ph.CoDe_A.Lakbay.Core {
             return default;
         }
 
-        public static string GetSceneName(string path) {
+        public static string GetSceneName(string path)
+        {
             return path.Split('/').Last().TrimEnd(".unity");
         }
 
-        public static bool IsCurrent(BuiltScene scene) {
-            return current.buildIndex == (int) scene;
+        public static bool IsCurrent(BuiltScene scene)
+        {
+            return current.buildIndex == (int)scene;
         }
 
-        public static BuiltScene GetCurrent() => (BuiltScene) current.buildIndex;
+        public static BuiltScene GetCurrent() => (BuiltScene)current.buildIndex;
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
         }
     }

@@ -5,21 +5,20 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
-    using Utilities;
+namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
+{
     using Core;
     using TMPro;
+    using Utilities;
 
-    public class BlowbagetsUI : Controller {
+    public class BlowbagetsUI : Controller
+    {
         public TextMeshProUGUI title;
         public Image image;
         public ImageViewer viewer;
@@ -28,13 +27,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         public BlowbagetsInfo info;
 
         public virtual void Build(string title, Sprite image,
-            IEnumerable<Entry> content, string description="", string source="") {
+            IEnumerable<Entry> content, string description = "", string source = "")
+        {
             gameObject.SetActive(true);
             this.title?.SetText(title);
             this.content?.Build(content);
-            if(this.image) {
+            if (this.image)
+            {
                 this.image.sprite = image;
-                if(viewer) {
+                if (viewer)
+                {
                     var button = this.image.gameObject.EnsureComponent<Button>();
                     button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(
@@ -44,18 +46,21 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets {
         }
 
         public virtual void Build(string title, Sprite image,
-            IEnumerable<string> content, string description="", string source="") {
-            Build(title, image, content.Select((c) => (Entry) c),
+            IEnumerable<string> content, string description = "", string source = "")
+        {
+            Build(title, image, content.Select((c) => (Entry)c),
                 description, source);
         }
 
         public virtual void Build(string title, Sprite image,
-            string description="", string source="",
-            params string[] content) {
+            string description = "", string source = "",
+            params string[] content)
+        {
             Build(title, image, content.AsEnumerable(), description, source);
         }
 
-        public virtual void Build(BlowbagetsInfo info) {
+        public virtual void Build(BlowbagetsInfo info)
+        {
             this.info = info;
             // Load image from the database.
             var image = Session.database.Get<Sprite>(info.image);

@@ -11,16 +11,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace Ph.CoDe_A.Lakbay.Core {
-    using QuestionRunner;
+namespace Ph.CoDe_A.Lakbay.Core
+{
     using UnityEngine.AddressableAssets;
     using UnityEngine.ResourceManagement.AsyncOperations;
     using UnityEngine.ResourceManagement.ResourceLocations;
 
-    public class Database : Core.Controller, LoadingScreen.IMonitored {
+    public class Database : Core.Controller, LoadingScreen.IMonitored
+    {
         public delegate void LoadOnPreAndPost(IResourceLocation[] locations);
         public delegate void LoadOnProgress<T>(
             IResourceLocation[] locations,
@@ -38,22 +37,27 @@ namespace Ph.CoDe_A.Lakbay.Core {
             => _currentLocation;
         public virtual AsyncOperationHandle currentHandle
             => _currentHandle;
-        public virtual float loadingProgress {
-            get {
+        public virtual float loadingProgress
+        {
+            get
+            {
                 float value = 0.0f;
-                if(_currentLocations != null
-                    && _currentLocations.Contains(currentLocation)) {
+                if (_currentLocations != null
+                    && _currentLocations.Contains(currentLocation))
+                {
                     value = (Array.IndexOf(currentLocations, currentLocation) + 1)
-                        / (float) _currentLocations.Length;
+                        / (float)_currentLocations.Length;
                 }
 
                 return Mathf.Clamp(value, 0.0f, 1.0f);
             }
         }
-        public virtual float assetLoadingProgress {
-            get {
-                try {return currentHandle.PercentComplete;}
-                catch {} 
+        public virtual float assetLoadingProgress
+        {
+            get
+            {
+                try { return currentHandle.PercentComplete; }
+                catch { }
                 return 0.0f;
             }
         }
@@ -63,10 +67,11 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual IEnumerator LoadEnumerator<T>(
             object key,
-            LoadOnPreAndPost onStart=default,
-            LoadOnProgress<T> onProgress=default,
-            LoadOnPreAndPost onFinish=default,
-            bool ignoreExisting=true) {
+            LoadOnPreAndPost onStart = default,
+            LoadOnProgress<T> onProgress = default,
+            LoadOnPreAndPost onFinish = default,
+            bool ignoreExisting = true)
+        {
             _loading = true;
 
             // yield return new WaitUntil(() => Addressables.InitializationOperation.IsDone);
@@ -76,15 +81,16 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 key, typeof(T));
             yield return locationsHandle;
             // while(!locationsHandle.IsDone) yield return new WaitForEndOfFrame();
-            
+
             var locations = (from location in locationsHandle.Result
-                where !ignoreExisting || !Has(location.PrimaryKey)
-                select location).ToArray();
+                             where !ignoreExisting || !Has(location.PrimaryKey)
+                             select location).ToArray();
             // var locations = locationsHandle.Result.ToArray();
             _currentLocations = locations;
 
             onStart?.Invoke(locations);
-            foreach(var location in locations) {
+            foreach (var location in locations)
+            {
                 var handle = Addressables.LoadAssetAsync<T>(location);
                 _currentLocation = location;
                 _currentHandle = handle;
@@ -92,28 +98,30 @@ namespace Ph.CoDe_A.Lakbay.Core {
                 yield return handle;
                 // while(!handle.IsDone) yield return new WaitForEndOfFrame();
 
-                if(Has(location.PrimaryKey)) {
+                if (Has(location.PrimaryKey))
+                {
                     Addressables.Release(_assets[location.PrimaryKey]);
                 }
                 _assets[location.PrimaryKey] = handle.Result;
-                if(debug) printLog($"Loading: {location.PrimaryKey}");
+                if (debug) printLog($"Loading: {location.PrimaryKey}");
             }
             _currentLocations = default;
             _currentLocation = default;
             _currentHandle = default;
             onFinish?.Invoke(locations);
-            
+
             Addressables.Release(locationsHandle);
             _loading = false;
-            if(debug) printLog($"Done loading {locations.Length} Asset(s).");
+            if (debug) printLog($"Done loading {locations.Length} Asset(s).");
         }
 
         public virtual IEnumerator LoadEnumerator<T>(
-            LoadOnPreAndPost onStart=default,
-            LoadOnProgress<T> onProgress=default,
-            LoadOnPreAndPost onFinish=default,
-            bool ignoreExisting=true
-        ) {
+            LoadOnPreAndPost onStart = default,
+            LoadOnProgress<T> onProgress = default,
+            LoadOnPreAndPost onFinish = default,
+            bool ignoreExisting = true
+        )
+        {
             return LoadEnumerator(
                 typeof(T).Name, onStart, onProgress, onFinish, ignoreExisting
             );
@@ -121,45 +129,52 @@ namespace Ph.CoDe_A.Lakbay.Core {
 
         public virtual Coroutine Load<T>(
             object key,
-            LoadOnPreAndPost onStart=default,
-            LoadOnProgress<T> onProgress=default,
-            LoadOnPreAndPost onFinish=default,
-            bool ignoreExisting=true) {
+            LoadOnPreAndPost onStart = default,
+            LoadOnProgress<T> onProgress = default,
+            LoadOnPreAndPost onFinish = default,
+            bool ignoreExisting = true)
+        {
             return StartCoroutine(LoadEnumerator(
                 key, onStart, onProgress, onFinish, ignoreExisting
             ));
         }
 
         public virtual Coroutine Load<T>(
-            LoadOnPreAndPost onStart=default,
-            LoadOnProgress<T> onProgress=default,
-            LoadOnPreAndPost onFinish=default,
-            bool ignoreExisting=true) {
+            LoadOnPreAndPost onStart = default,
+            LoadOnProgress<T> onProgress = default,
+            LoadOnPreAndPost onFinish = default,
+            bool ignoreExisting = true)
+        {
             return Load(
                 typeof(T).Name, onStart, onProgress, onFinish, ignoreExisting);
         }
 
         public virtual bool Has(string key) => Get(key, out object asset);
 
-        public virtual bool Get<T>(string key, out T asset) {
+        public virtual bool Get<T>(string key, out T asset)
+        {
             asset = default;
-            if(_assets.ContainsKey(key)) asset = (T) _assets[key];
+            if (_assets.ContainsKey(key)) asset = (T)_assets[key];
             return asset != null;
         }
 
-        public virtual T Get<T>(string key) {
+        public virtual T Get<T>(string key)
+        {
             Get(key, out T asset);
             return asset;
         }
 
-        public virtual Dictionary<string, object> Get(Type type) {
+        public virtual Dictionary<string, object> Get(Type type)
+        {
             var dict = new Dictionary<string, object>();
-            foreach(var asset in _assets) {
-                if(asset.Value != null
+            foreach (var asset in _assets)
+            {
+                if (asset.Value != null
                     && (asset.Value.GetType() == type
                         || asset.Value.GetType().IsSubclassOf(type))
                         || asset.Value.GetType().GetInterfaces().Contains(type)
-                        || asset.Value.GetType().IsInstanceOfType(type)) {
+                        || asset.Value.GetType().IsInstanceOfType(type))
+                {
                     dict.Add(asset.Key, asset.Value);
                 }
             }
@@ -167,22 +182,27 @@ namespace Ph.CoDe_A.Lakbay.Core {
             return dict;
         }
 
-        public virtual Dictionary<string, T> Get<T>() {
+        public virtual Dictionary<string, T> Get<T>()
+        {
             var dict = new Dictionary<string, T>();
             var rdict = Get(typeof(T));
-            foreach(var p in rdict) {
-                dict.Add(p.Key, (T) p.Value);
+            foreach (var p in rdict)
+            {
+                dict.Add(p.Key, (T)p.Value);
             }
-            
+
             return dict;
         }
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
         }
 
-        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen) {
-            if(currentLocation != null) {
+        public LoadingScreen.MonitorInfo OnMonitor(LoadingScreen loadingScreen)
+        {
+            if (currentLocation != null)
+            {
                 return new LoadingScreen.MonitorInfo(
                     currentLocation.PrimaryKey, loadingProgress);
             }

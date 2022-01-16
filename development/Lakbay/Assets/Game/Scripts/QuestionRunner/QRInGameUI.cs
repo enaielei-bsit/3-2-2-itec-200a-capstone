@@ -5,24 +5,20 @@
  * Copyright © 2021 CoDe_A. All Rights Reserved.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 using Utilities;
 
-namespace Ph.CoDe_A.Lakbay.QuestionRunner {
-    using Pixelplacement;
-    using Pixelplacement.TweenSystem;
+namespace Ph.CoDe_A.Lakbay.QuestionRunner
+{
     using UnityEngine.Localization.Components;
     using Widgets;
 
-    public class QRInGameUI : Core.InGameUI {
+    public class QRInGameUI : Core.InGameUI
+    {
         protected LTDescr _setGoal;
 
         public QRPlayer player;
@@ -45,41 +41,48 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
         [Space]
         public Slider progress;
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
-            if(!player) player = FindObjectOfType<QRPlayer>();
+            if (!player) player = FindObjectOfType<QRPlayer>();
         }
 
-        public override void Start() {
+        public override void Start()
+        {
             base.Start();
             // Build();
         }
 
         [ContextMenu("Build")]
-        public virtual void Build() {
+        public virtual void Build()
+        {
             BuildSkills();
             BuildLives();
             SetProgress(Session.qrLevel.progress, 0.0f);
             level?.RefreshString();
         }
 
-        public virtual void BuildSkills() {
-            if(!skills || !player) return;
-            if(Application.isPlaying) skills.DestroyChildren();
+        public virtual void BuildSkills()
+        {
+            if (!skills || !player) return;
+            if (Application.isPlaying) skills.DestroyChildren();
             else skills.DestroyChildrenImmediately();
-            foreach(var skill in player.caster.skills) {
+            foreach (var skill in player.caster.skills)
+            {
                 var skillWidget = Instantiate(_skill, skills.transform);
                 skillWidget.Set(player.caster, player.buffable, skill);
             }
         }
 
-        public virtual void BuildLives() {
-            if(!lives || !player) return;
-            if(Application.isPlaying) lives.DestroyChildren();
+        public virtual void BuildLives()
+        {
+            if (!lives || !player) return;
+            if (Application.isPlaying) lives.DestroyChildren();
             else lives.DestroyChildrenImmediately();
 
             float flives = player.lives;
-            foreach(int i in Enumerable.Range(0, player.maxLives)) {
+            foreach (int i in Enumerable.Range(0, player.maxLives))
+            {
                 var life = Instantiate(_life, lives.transform);
                 Color.RGBToHSV(life.color, out float h, out float s, out float v);
                 float offset = lifeMinColorValueOffset;
@@ -90,10 +93,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void UpdateLives() {
-            if(!lives || !player) return;
-            foreach(var img in lives.GetComponentsInChildren<Image>(
-                includeSelf: false).Enumerate()) {
+        public virtual void UpdateLives()
+        {
+            if (!lives || !player) return;
+            foreach (var img in lives.GetComponentsInChildren<Image>(
+                includeSelf: false).Enumerate())
+            {
                 // img.Value.enabled = img.Key <= player.lives;
                 var color = img.Value.color;
                 color.a = img.Key < player.lives
@@ -102,10 +107,12 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public virtual void SetProgress(float value, float duration=0.35f, float delay=0.0f) {
-            if(progress) {
+        public virtual void SetProgress(float value, float duration = 0.35f, float delay = 0.0f)
+        {
+            if (progress)
+            {
                 value = Mathf.Clamp(value, 0.0f, 1.0f);
-                if(_setGoal != null) LeanTween.cancel(_setGoal.id);
+                if (_setGoal != null) LeanTween.cancel(_setGoal.id);
                 _setGoal = LeanTween.value(progress.value, value, duration);
                 _setGoal.setDelay(delay);
                 _setGoal.setOnUpdate((v) => progress.value = v);
@@ -113,7 +120,8 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner {
             }
         }
 
-        public override void Update() {
+        public override void Update()
+        {
             base.Update();
             UpdateLives();
         }
