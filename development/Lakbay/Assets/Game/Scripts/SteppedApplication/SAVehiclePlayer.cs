@@ -20,7 +20,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
 
     public enum GearBox
     {
-        Reverse = -1, Neutral, Drive
+        Reverse = -1, Neutral, Drive, Two, Three, Four, Five
     }
 
     [RequireComponent(typeof(VehicleController))]
@@ -41,10 +41,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
                 if (vehicle)
                 {
                     int rgear = vehicle.powertrain.transmission.Gear;
-                    if (rgear >= (int)GearBox.Drive)
-                        return GearBox.Drive;
-                    var gear = (GearBox)rgear;
-                    return gear;
+                    // if (rgear >= (int)GearBox.Drive)
+                    //     return GearBox.Drive;
+                    // var gear = (GearBox)rgear;
+                    return (GearBox) rgear;
                 }
 
                 return GearBox.Neutral;
@@ -104,6 +104,20 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
             // Brake(ndata.GetPressure());
             Brake(1.0f);
             printLog($"Braking: {vehicle.input.Brakes}");
+        }
+
+        public virtual void Clutch(float value)
+        {
+            if (!vehicle) return;
+            vehicle.input.Clutch = value;
+        }
+
+        public virtual void Clutch(BaseEventData data)
+        {
+            var ndata = data as PointerEventData;
+            // Brake(ndata.GetPressure());
+            Clutch(1.0f);
+            printLog($"Braking: {vehicle.input.Clutch}");
         }
 
         public virtual void SetGear(GearBox gear)

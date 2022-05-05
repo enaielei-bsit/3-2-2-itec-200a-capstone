@@ -30,8 +30,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         [Header("Pedals")]
         public Image acceleratorHighlight;
         public Image brakeHighlight;
+        public Image clutchHighlight;
 
         [Header("Gears")]
+        public Toggle fiveGear;
+        public Toggle fourGear;
+        public Toggle threeGear;
+        public Toggle twoGear;
         public Toggle driveGear;
         public Toggle neutralGear;
         public Toggle reverseGear;
@@ -52,11 +57,20 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
                 Handbrake(player.vehicle.input.Handbrake);
                 Accelerate(player.vehicle.input.Throttle);
                 Brake(player.vehicle.input.Brakes);
+                Clutch(player.vehicle.input.Clutch);
             }
         }
 
         public virtual void SetGear(GearBox gear)
         {
+            if (gear == GearBox.Five && fiveGear)
+                fiveGear.SetIsOnWithoutNotify(true);
+            if (gear == GearBox.Four && fourGear)
+                fourGear.SetIsOnWithoutNotify(true);
+            if (gear == GearBox.Three && threeGear)
+                threeGear.SetIsOnWithoutNotify(true);
+            if (gear == GearBox.Two && twoGear)
+                twoGear.SetIsOnWithoutNotify(true);
             if (gear == GearBox.Drive && driveGear)
                 driveGear.SetIsOnWithoutNotify(true);
             if (gear == GearBox.Neutral && neutralGear)
@@ -109,6 +123,11 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public virtual void Brake(float value)
         {
             var hl = brakeHighlight;
+            hl?.gameObject.SetActive(value > 0.0f);
+        }
+
+        public virtual void Clutch(float value) {
+            var hl = clutchHighlight;
             hl?.gameObject.SetActive(value > 0.0f);
         }
     }
