@@ -90,7 +90,9 @@ namespace Ph.CoDe_A.Lakbay.Core
                     folder.onClick.AddListener(OnPathClick(p));
                 }
 
-                var files = path.files.OrderBy((f) => f.name);
+                var files = path.files;
+                if(path.order == Path.Order.Alphabetical)
+                    files = files.OrderBy((f) => f.name).ToList();
                 var btn = readableEntry;
                 if (path.type == Path.Type.Readable)
                     btn = readableEntry;

@@ -19,11 +19,14 @@ namespace Ph.CoDe_A.Lakbay.Core
     )]
     public class Path : Asset
     {
+        public enum Order { None, Alphabetical }
+
         public enum Type { Readable, Watchable }
 
         public virtual string parsedName =>
             name.Split('_').Last();
         public Type type = Type.Readable;
+        public Order order = Order.Alphabetical;
         public Path parent;
         public List<Path> paths = new List<Path>();
         public List<TextAsset> files =
