@@ -1649,7 +1649,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1350270
+  m_Name: pb_Mesh-354448
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1813,7 +1813,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1350234
+  m_Name: pb_Mesh-354412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3448,7 +3448,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1348898
+  m_Name: pb_Mesh-352890
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5630,11 +5630,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_SizeDelta.y
@@ -5646,7 +5646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663937, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -640.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5456030470892663938, guid: f03f7b0f2eb92c843b94b335991c1052, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5963,6 +5963,14 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1234587171014277808, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 51788161390694400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234587171014277808, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:ff40c731577d4e04382e02c9cf803db7
+      objectReference: {fileID: 0}
     - target: {fileID: 1234874333270163132, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6263,6 +6271,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -134.89
       objectReference: {fileID: 0}
+    - target: {fileID: 3598263338244382832, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598263338244382835, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4064125328036236199, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_SizeDelta.y
       value: -4.4300003
@@ -6285,7 +6301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4128527036671226213, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 462.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4128527036671226213, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6413,7 +6429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4663088358311183238, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4663088358311183238, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7017,7 +7033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9208289493091950483, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 525
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9208289493091950483, guid: c62ed3173056643449f727bbc70f2ceb, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7170,6 +7186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrafficSignal
       objectReference: {fileID: 0}
+    - target: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
 --- !u!1 &1574109791 stripped
@@ -7214,7 +7234,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1347558
+  m_Name: pb_Mesh-351550
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
