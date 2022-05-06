@@ -43,10 +43,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
         public GameMenuUI gameMenuUI;
         public GameOverUI gameOverUI;
         public PrePlayUI prePlayUI;
+        public HelpUI helpUI;
         public QRPostPlayUI qrPostPlayUI;
         public QRInGameUI qrInGameUI;
         public QuestionUI questionUI;
         public Transform initial;
+
+        [Space]
+        public GameObject inGameUIPanel = null;
+
         [HideInInspector]
         public RepeaterHandler repeaterHandler;
 
@@ -202,7 +207,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
         public virtual void Play(bool screen)
         {
             prePlayUI?.gameObject.SetActive(screen);
-            travel?.Perform(true);
+            if(!screen) {
+                if(Session.qrLevelIndex == 0)
+                    helpUI?.LaunchCurrent(() => {
+                        inGameUIPanel?.SetActive(true);
+                        travel?.Perform(true);
+                    });
+                else {
+                    inGameUIPanel?.SetActive(true);
+                    travel?.Perform(true);
+                }
+            }
         }
 
         public virtual void Restart(bool current)

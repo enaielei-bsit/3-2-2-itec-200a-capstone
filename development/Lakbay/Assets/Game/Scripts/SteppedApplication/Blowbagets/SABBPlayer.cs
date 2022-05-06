@@ -38,6 +38,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
         public MessageBoxUI messageBoxUI;
         public SABBInGameUI inGameUI;
         public BlowbagetsUI blowbagetsUI;
+        
+        [Space]
+        public GameObject inGameUIPanel = null;
+
         public virtual CinemachineOrbitalTransposer transposer =>
             camera?.GetCinemachineComponent<CinemachineOrbitalTransposer>();
 
@@ -228,6 +232,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
         public override void Restart()
         {
             base.Restart();
+        }
+
+        public override void Play(bool screen) {
+            prePlayUI?.gameObject.SetActive(screen);
+            if(!screen) {
+                helpUI?.LaunchCurrent(() => inGameUIPanel?.SetActive(true));
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         [Header("Level")]
         public PrePlayUI prePlayUI;
         public GameMenuUI gameMenuUI;
+        public HelpUI helpUI;
 
         public override void Build()
         {
@@ -38,6 +39,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public virtual void Play(bool screen)
         {
             prePlayUI?.gameObject.SetActive(screen);
+            if(!screen) {
+                helpUI?.LaunchCurrent();
+            }
         }
     }
 }

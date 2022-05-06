@@ -13,6 +13,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.Core
 {
+    using UnityEngine.Events;
     using UnityEngine.Localization;
     using UnityEngine.Localization.Settings;
     using UnityEngine.Video;
@@ -20,6 +21,8 @@ namespace Ph.CoDe_A.Lakbay.Core
 
     public class HelpUI : Controller
     {
+        protected UnityAction _onClose = null;
+
         [Header("Files")]
         public LocalizedAsset<TextAsset> modesFile = new LocalizedAsset<TextAsset>();
         public LocalizedAsset<TextAsset> questionRunnerFile = new LocalizedAsset<TextAsset>();
@@ -190,7 +193,9 @@ namespace Ph.CoDe_A.Lakbay.Core
             ClearSelected();
         }
 
-        public virtual void LaunchCurrent()
+        public virtual void LaunchCurrent() => LaunchCurrent(null);
+
+        public virtual void LaunchCurrent(UnityAction onClose=null)
         {
             var current = SceneController.GetCurrent();
             Toggle toggle = null;
@@ -227,6 +232,15 @@ namespace Ph.CoDe_A.Lakbay.Core
 
             gameObject.SetActive(true);
             if (toggle) toggle.isOn = true;
+
+            _onClose = onClose;
+        }
+
+        public virtual void Hide() {
+            gameObject.SetActive(false);
+            var onClose = _onClose;
+            _onClose = null;
+            onClose?.Invoke();
         }
     }
 }

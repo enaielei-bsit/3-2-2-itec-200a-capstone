@@ -357,14 +357,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
---- !u!224 &1699376082615709964 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
-  m_PrefabInstance: {fileID: 311809208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1699376082615709967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1699376082925348279, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
+  m_PrefabInstance: {fileID: 311809208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1699376082615709964 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
   m_PrefabInstance: {fileID: 311809208}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &160573546
@@ -1638,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1632025381771974824, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1632025381771974826, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -1738,19 +1742,14 @@ PrefabInstance:
     - {fileID: 7098272822022733699, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
     - {fileID: 6921225226937985683, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
---- !u!224 &403669838491965531 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3103868700164128706, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
+--- !u!1 &403669838491965528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3103868700164128705, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
   m_PrefabInstance: {fileID: 3353272657065158553}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &4048500524966133554 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1632025381771974827, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
-  m_PrefabInstance: {fileID: 3353272657065158553}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &403669838491965528 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3103868700164128705, guid: 09dfb536ab8c6a94aa6aac1a2fb4cc44, type: 3}
   m_PrefabInstance: {fileID: 3353272657065158553}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3062745019173302613 stripped
@@ -2609,7 +2608,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 403669838491965531}
+    m_TransformParent: {fileID: 4048500524966133554}
     m_Modifications:
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_Pivot.x
@@ -2621,7 +2620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2665,15 +2664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1699376082925348276, guid: 3b58a2fbe29715740b8994d9b50a727c, type: 3}
       propertyPath: m_AnchoredPosition.x
