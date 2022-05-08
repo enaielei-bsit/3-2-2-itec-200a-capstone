@@ -92,7 +92,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
             base.Update();
             if (frontVehicle)
             {
-                if (isEngineRunning && currentGear == GearBox.Drive
+                if (isEngineRunning && (int) currentGear >= (int) GearBox.Drive
                     && vehicle.input.Throttle > 0.0f
                     && !frontVehicle.travelling)
                 {
