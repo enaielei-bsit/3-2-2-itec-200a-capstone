@@ -1,48 +1,18 @@
-- |-
-    Stepped Application 
+- >-
+    "<b>STEPPED APPLICATION PHASE"
+-
+    image:
+        path: "Assets/Game/Images/SteppedApplicationPhase.png"
+        description: "Stepped Application Phase"
+        source: "Code_A (2022)"
+- >-
+    NOTE: CLICK THE IMAGE FOR BETTER GUIDE OF INSTRUCTIONS.
 
-    
     Is the last phase of the game that is playable in both the professional and non-professional modes of the game where the player is be given seven (7) missions to be completed.
-
-    ENTITIES
-        Any object in the game that is visible to the player.
-        Vehicle- the vehicle is the main entity of the game and is controllable by the player.
-        Pedestrians- are the persons on the game that plays an important role in the player's missions.
-        Environment-  the setting of the game. This includes the aesthetics, The road, trees, buildings, street lights, and other vehicles.
-
-    CONTROLS
-        Are the interactable interfaces that can be navigated by the player.
-        Play Button – begins the game and resumes when paused.  
-        Pause Button- temporarily halts the progression of the game and summons the main menu for more settings of the game. 
-        Main Menu Button-  summons the settings, restart, help, and end button.
-        Restart Button- replays the game from the start.
-        Settings- summons the settings
-        Help Button- summons help settings
-        End Button- ends the game and brings the player to the main menu
-        Zoom Button-  zooms in and out the screen to give the player a better view of the display
-        Hide/Show Button- is applicable in the Pre- driving Check-up. Shows and hide the content of the BLOWBAGETS mnemonics 
-        Rotation Button- rotates the display of the screen
-        Handbrake Button- hand-operated brake used to stop the vehicle temporarily
-        Brake Button-stops the vehicle temporarily
-        Accelerate Button- drives forward and backward the vehicle
-        Drive Button- drives the vehicle forward
-        Neutral Button- stops the motion of the vehicle
-        Reverse Button- drives the vehicle backward
-        Key Button- starts and stops the engine. The vehicle will and will not move when the key button is pressed 
-        Steering Wheel Button- is the navigation of the vehicle's direction
-        Lights Button- is for safe driving and parking.
-
-    Indicators
-        Are meant to be viewed for status/progress update.
-        Speedometer- indicates the speed of the car.
-        Green Arrow- indicates the direction that the vehicle needs to take.
-        Green Rectangle- indicates the next stop of the vehicle.
-        Parking Indicator- indicates the area of parking.
-        Loading Bar/Next Mission - - tells the player that the mission was a success.
-
+    
     Mechanics Of The Game
         The following are the things to be considered in the stepped application.
-        1. There are seven (7) missions on this phase that has to be completed.
+        1. There are seven (8) missions on this phase that has to be completed.
         2. Each mission is a prerequisite of the next mission.
         3. Before proceeding to the missions, the player needs to perform the pre-diving check-up which is 10% of the total score.
         4. The player needs to check the BLOWBAGETS: The battery, lights, oil, water, brakes, air, gas, engine, tires, and the self.
@@ -51,4 +21,23 @@
         7. There is one life in every mission.
         8. The player must avoid bumping into other parked vehicles and pedestrians to preserve life.
         9. After completing the mission, the player is going to be redirected to the next mission automatically.
-        10. Once the missions are successfully cleared, the player's result will be assessed. The player must reach the passing rate of  70% for him/her to pass. If the player passes he/she will be rewarded with a Driver's License (representation only) but if the player fails, he will need to redo the missions.
+        10. Once the missions are successfully cleared, a display will be seen that the missions are successfully completed.
+
+    CONTROLS and INDICATORS
+        Are the interactable interfaces that can be navigated by the player.
+
+        Signal Lights – Signal for turning right or left for safe driving and parking.
+        Steering Wheel - Navigation of the vehicle's direction.
+        Key - Is required to start and can stop the engine.
+        Handbrake - Hand-operated brake.
+        1st Gear - The least possibility for speed gain.
+        2nd Gear - Increases speed on ordinary roads after 1st gear. 
+        3rd Gear - Increases the speed further from 2nd gear. 	
+        4th Gear - Increases the speed from 3rd gear. 
+        5th Gear - Allows the least pulling power and a great range of speed.
+        Reverse Button - Drives the vehicle backwards.
+        Neutral Button - Stops the motion of the vehicle.
+        Clutch Pedal - Allows the driver to shift gears smoothly. 
+        Brake Pedal - Stops the vehicle temporarily.
+        Accelerator - Drives the vehicle forward.
+        Speedometer - Indicates the speed of the vehicle

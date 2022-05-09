@@ -1,57 +1,39 @@
-- |-
-    Stepped Application Phase
+- >-
+    "<b>STEPPED APPLICATION PHASE"
+-
+    image:
+        path: "Assets/Game/Images/SteppedApplicationPhase.png"
+        description: "Stepped Application Phase"
+        source: "Code_A (2022)"
+- >-
+    NOTE: I-"CLICK" ANG IMAHE PARA SA MAS MADALING PAG-INTINDI NG LARO.
+
+        Ang yugto ng larong ito ay maaaring laruin sa parehong Propesyonal at Hindi Propesyonal na uri kung saan ang manlalaro ay bibigyan ng misyon na kailangan niyang makumpleto. Ang mga misyon ay kailangang gawin ayon sa pagkasunod-sunod nito.
     
-    
-    Ay ang huling yugto ng laro na maaaring laruin sa parehong propesyonal at hindi propesyonal na mga mode ng laro kung saan ang manlalaro ay bibigyan ng pitong (7) misyon upang makumpleto.
+    "<b>Mekaniks ng laro:"
+        1. May pitong (8) misyon na dapat kompletuhin ang manlalaro.2. Ang bawat misyon ay kinakailangan matapos base sa pagkasunod-sunod para makausad sa susunod na misyon.
+        3. Bago makapagmaneho ay kinakailangan munang masuri ang sasakyan. 
+        4. Kailangang masuri ng manlalaro ang BLOWBAGETS.
+        5. Kailangang mag-seatbelt ang manlalaro bago magsimula sa kanyang misyon.
+        6. Kailangang makontrol ng maayos ang mga controls para matapos ang mga misyon
+        7. Isa lang ang buhay sa bawat misyon.
+        8. Upang mapanatili ang buhay ay kinakailangang iwasan ang mga tumatawid at ang ang ibang nakaparadang sasakyan.
+        9. Matapos kompletuhin ang mga misyon ay kusang malilipat ang manlalaro sa susunod na misyon.
+        10.Matapos ang mga misyon, magpapakita ng anunsyo ang laro na matagumpay na natapos ang Stepped Application.
 
-    Mga Entidad
-        Anumang bagay na nakikita ng manlalaro.
-
-        Sasakyan- ang sasakyan ang pangunahing entity ng laro at nakokontrol ng manlalaro.
-        Mga Pedestrian- ay ang mga taong nasa laro na gumaganap ng mahalagang papel sa mga misyon ng manlalaro.
-        Kapaligiran- ang setting ng laro. Kabilang dito ang mga aesthetics, Ang kalsada, mga puno, mga gusali, mga ilaw sa kalye, at iba pang mga sasakyan.
-
-    Mga Kontrol
-        Ang mga interakable na interface na maaaring i-navigate ng manlalaro.
-
-        Play Button – magsisimula ng laro at ang magpapatuloy kapag naka-pause.
-        Pause Button- pansamantalang itinitigil ang pag-usad ng laro at pinapatawag ang pangunahing menu para sa higit pang mga setting ng laro.
-        Main Menu- tinatatawag ang mga setting, restart, tulong, at end button.
-        Restart Button- inuulit ang laro mula sa simula.
-        Mga Setting- tinatawag ang mga setting
-        Mga Tulong- tinatawag ng mga setting ng tulong
-        End Button- tinatapos ang laro at dinadala ang player sa main menu
-        Zoom Button- nag-zoom in at out sa screen upang bigyan ang player ng mas magandang view ng display
-        Hide/Show Button- ay naaangkop sa Pre- driving Check-up. Ipinapakita at itago ang nilalaman ng BLOWBAGETS mnemonics
-        Rotation Button- pinaipakot ang screen
-        Handbrake Button-preno na ginagamitan ng kamay upang pansamantalang ihinto ang sasakyan
-        Brake Button-pansamantalang itinitigil ang sasakyan
-        Accelerate Button- nagmamaneho pasulong at paatras ng sasakyan
-        Drive Button- pinaandar ang sasakyan pasulong
-        Neutral Button- pinipigilan ang galaw ng sasakyan
-        Reverse Button- pinapaatras ang sasakyan
-        Susi- sinisimulan at ihihinto ang makina. Makakapag-maneho o maititigil ang sasakyan kapag pinindot ang susi
-        Manibela- ay ang nabigasyon ng direksyon ng sasakyan
-        Mga Ilaw- ay para sa ligtas na pagmamaneho at paradahan.
-
-    Mga Tagapagpahiwatig
-        Ay nagsasad/nagpapakita ng progreso/indikasyon ng laro.
-        Speedometer- nagsasaad ng bilis ng sasakyan.
-        Luntiang Palaso- nagsasaad ng direksyon na kailangang tahakin ng sasakyan.
-        Luntiang Parihaba- nagsasaad ng susunod na hintuan ng sasakyan.
-        Indikasyon ng Pagparada- nagsasaad ng lugar ng paradahan.
-        Loading Bar/Next Mission - nagsasabi sa manlalaro na ang misyon ay isang tagumpay.
-
-    Mga Mechanics Ng Laro
-        Ang mga sumusunod ay ang mga bagay na dapat isaalang-alang sa stepped application.
-        
-        1. Mayroong pitong (7) misyon sa yugtong ito na kailangang tapusin.
-        2. Ang bawat misyon ay kinakailangang matapos para sa susunod na misyon.
-        3. Bago magpatuloy sa mga misyon, kailangang gawin ng manlalaro ang pre-diving check-up na 10% ng kabuuang iskor.
-        4. Kailangang suriin ng manlalaro ang BLOWBAGETS: Ang baterya, ilaw, langis, tubig, preno, hangin, gas, makina, gulong, at sarili.
-        5. Sa simula ng bawat misyon, ang manlalaro ay dapat buckle up.
-        6. Ang manlalaro ay dapat mag-navigate nang maayos sa mga kontrol upang magawa ang mga misyon nang mahusay.
-        7. May isang buhay lamang sa bawat misyon.
-        8. Dapat iwasan ng manlalaro na mabangga ang iba pang nakaparadang mga sasakyan at pedestrian upang mapanatili ang buhay.
-        9. Pagkatapos makumpleto ang misyon, awtomatikong dadalhin ang manlalaro sa susunod na misyon.
-        10. Kapag ang mga misyon ay matagumpay na na-tapos, ang resulta ng manlalaro ay i-tatally. Dapat maabot ng manlalaro ang 70% na marka para siya ay  makapasa. Kung makapasa ang manlalaro, siya ay gagantimpalaan ng Driver's License (representasyon lamang) ngunit kung siya ay mabigo, kakailanganin niyang gawing muli ang mga misyon.
+    "<b>MGA KONTROLS AT TAGAPAGPAHIWATIG"
+        Speedometer - nagsasaad ng bilis ng sasakyan.
+        Signal Lights – senyas sa pagliko para sa ligtas na pagmamaneho at pagpaparada.
+    	Steering Wheel – nagbibigay ng kontrol sa direksyon ng sasakyan
+        Key - sinisimulan at ihihinto ang makina. Makakapag-maneho o maititigil ang sasakyan kapag pinindot ang susi.
+        Handbrake - preno na ginagamitan ng kamay upang pansamantalang ihinto ang sasakyan.
+        1st Gear – unang gear sa bilis ng pagpapatakbo ng sasakyan.
+        2nd Gear - tinataas ang bilis mula sa unang gear. 
+        3rd Gear - tinataas ang bilis mula sa pangalawang gear. 
+        4th Gear - tinataas ang bilis mula sa pangatlong gear. 
+        5th Gear – huling gear at pinapataas ang bilis ng sasakyan.
+        Reverse Button - pinapaatras ang sasakyan.
+        Neutral Button - pinipigilan ang galaw ng sasakyan.
+        Clutch Pedal - nagpapahintulot sa driver na maayos na ilipat ang mga gears.
+        Brake Pedal - pansamantalang itinitigil ang sasakyan.
+        Accelerator - nagmamaneho pasulong at paatras ng sasakyan.
