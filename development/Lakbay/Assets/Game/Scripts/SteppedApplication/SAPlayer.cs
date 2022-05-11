@@ -17,6 +17,10 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public PrePlayUI prePlayUI;
         public GameMenuUI gameMenuUI;
         public HelpUI helpUI;
+        public Slideshow tutorialUI;
+
+        [Space]
+        public GameObject inGameUIPanel = null;
 
         public override void Build()
         {
@@ -40,7 +44,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         {
             prePlayUI?.gameObject.SetActive(screen);
             if(!screen) {
-                helpUI?.LaunchCurrent();
+                if(tutorialUI) {
+                    inGameUIPanel?.SetActive(true);
+                    tutorialUI.Show();
+                    tutorialUI.onFinish.AddListener(() => inGameUIPanel?.SetActive(false));
+                }
+                // helpUI?.LaunchCurrent();
             }
         }
     }

@@ -47,6 +47,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
         public QRPostPlayUI qrPostPlayUI;
         public QRInGameUI qrInGameUI;
         public QuestionUI questionUI;
+        public Slideshow tutorialUI;
         public Transform initial;
 
         [Space]
@@ -208,11 +209,15 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
         {
             prePlayUI?.gameObject.SetActive(screen);
             if(!screen) {
-                if(Session.qrLevelIndex == 0)
-                    helpUI?.LaunchCurrent(() => {
-                        inGameUIPanel?.SetActive(true);
-                        travel?.Perform(true);
-                    });
+                if(Session.qrLevelIndex == 0) {
+                    inGameUIPanel?.SetActive(true);
+                    tutorialUI?.Show();
+                    tutorialUI.onFinish.AddListener(() => travel.Perform(true));
+                    // helpUI?.LaunchCurrent(() => {
+                    //     inGameUIPanel?.SetActive(true);
+                    //     travel?.Perform(true);
+                    // });
+                }
                 else {
                     inGameUIPanel?.SetActive(true);
                     travel?.Perform(true);
