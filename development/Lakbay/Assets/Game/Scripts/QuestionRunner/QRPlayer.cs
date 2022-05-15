@@ -74,6 +74,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
 
         [Space]
         public LocalizedString intro;
+        public LocalizedString showTutorial;
 
         public override void Awake()
         {
@@ -210,9 +211,17 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
             prePlayUI?.gameObject.SetActive(screen);
             if(!screen) {
                 if(Session.qrLevelIndex == 0) {
-                    inGameUIPanel?.SetActive(true);
-                    tutorialUI?.Show();
-                    tutorialUI.onFinish.AddListener(() => travel.Perform(true));
+                    messageBoxUI?.ShowConfirmation(showTutorial,
+                        onYes: () => {
+                            inGameUIPanel?.SetActive(true);
+                            tutorialUI?.Show();
+                            tutorialUI.onFinish.AddListener(() => travel.Perform(true));
+                        },
+                        onNo: () => {
+                            inGameUIPanel?.SetActive(true);
+                            travel.Perform(true);
+                        }
+                    );
                     // helpUI?.LaunchCurrent(() => {
                     //     inGameUIPanel?.SetActive(true);
                     //     travel?.Perform(true);

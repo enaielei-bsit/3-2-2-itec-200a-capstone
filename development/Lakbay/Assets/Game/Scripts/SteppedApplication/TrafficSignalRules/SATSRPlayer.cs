@@ -208,11 +208,12 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules
 
         public override void Proceed()
         {
-            if (gameFinishedUI)
-            {
-                gameFinishedUI.gameObject.SetActive(true);
-            }
-            else LoadScene(BuiltScene.MainMenu);
+            // if (gameFinishedUI)
+            // {
+            //     gameFinishedUI.gameObject.SetActive(true);
+            // }
+            // else LoadScene(BuiltScene.MainMenu);
+            LoadNextScene();
         }
 
         public override void Update()

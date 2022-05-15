@@ -10,6 +10,7 @@ using UnityEngine;
 namespace Ph.CoDe_A.Lakbay.SteppedApplication
 {
     using Core;
+    using UnityEngine.Localization;
 
     public class SAPlayer : Player
     {
@@ -18,9 +19,13 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public GameMenuUI gameMenuUI;
         public HelpUI helpUI;
         public Slideshow tutorialUI;
+        public MessageBoxUI messageBoxUI;
 
         [Space]
         public GameObject inGameUIPanel = null;
+
+        [Space]
+        public LocalizedString showTutorial;
 
         public override void Build()
         {
@@ -45,9 +50,18 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
             prePlayUI?.gameObject.SetActive(screen);
             if(!screen) {
                 if(tutorialUI) {
-                    inGameUIPanel?.SetActive(true);
-                    tutorialUI.Show();
-                    tutorialUI.onFinish.AddListener(() => inGameUIPanel?.SetActive(false));
+                    messageBoxUI?.ShowConfirmation(showTutorial,
+                        onYes: () => {
+                            inGameUIPanel?.SetActive(true);
+                            tutorialUI?.Show();
+                            tutorialUI.onFinish.AddListener(() => inGameUIPanel?.SetActive(false));
+                        },
+                        onNo: () => inGameUIPanel?.SetActive(false)
+                    );
+
+                    // inGameUIPanel?.SetActive(true);
+                    // tutorialUI.Show();
+                    // tutorialUI.onFinish.AddListener(() => inGameUIPanel?.SetActive(false));
                 }
                 // helpUI?.LaunchCurrent();
             }

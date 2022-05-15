@@ -39,7 +39,7 @@ MonoBehaviour:
       - id: 0
       - id: 1
   - m_Id: 1211624883916800
-    m_Localized: Pick up {0.goal} {0.goal:Question|Questions}.
+    m_Localized: Answer {0.goal} {0.goal:Question|Questions}.
     m_Metadata:
       m_Items:
       - id: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 53842258494246912
-    m_Localized: This is the seatbelt. Press this to buckle up.
+    m_Localized: This is the seatbelt. Press this to buckle up and start the game.
     m_Metadata:
       m_Items: []
   - m_Id: 53849990823694336
@@ -727,6 +727,169 @@ MonoBehaviour:
     m_Localized: These are the controls. The top bar allows you to zoom in/out the
       scene. The bottom bar allows you to rotate the scene. Slide these bars left
       and right to activate them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55285668079882240
+    m_Localized: While the car is moving, you'll eventually encounter an obstacle.
+      Hitting an obstacle means losing a life so watch out for those.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55293003217129472
+    m_Localized: A question is something that you should pick up along the way. Collecting
+      all the questions will progress you to the next level.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55293580776984576
+    m_Localized: A shield is a power-up that you can pick up to grant you invulnerability
+      from obstacles when activated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55294165903364096
+    m_Localized: A missile is a power-up that you can pick up to launch a missile
+      forward that destroys obstacles along the way when activated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55294852930359296
+    m_Localized: A stopwatch is a power-up that you can pick up to slow down the
+      acceleration of the car when activated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55306554677809152
+    m_Localized: This is the location guide. Follow this to proceed to the instructed
+      location. This changes direction depending on the next instructed location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55307454737698816
+    m_Localized: This is a location. This is an instructed location being pointed
+      by the location guide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55307977578663936
+    m_Localized: This is a parking location. This is an instructed location where
+      you can park your car. For most of the game, you'll stop your car in this location
+      to finish the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55308913613099008
+    m_Localized: For this game, when the light turns green, drive and follow the
+      location pointed out by the location guide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55309546986557440
+    m_Localized: When the light turns yellow, follow the instruction and slow down
+      and watch out for your speed while reaching for the target location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55310037653016576
+    m_Localized: When the light turns red, follow the instruction and make a full
+      stop at the target location.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55317425009348608
+    m_Localized: For this game, when you reach the intersection, make a full stop
+      and wait for the pedestrians to cross.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55318107997229056
+    m_Localized: These are the pedestrians. Wait for them to finish crossing the
+      road before driving to the guided location. Hitting a pedestrian means losing
+      the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55318734663995392
+    m_Localized: After the successful crossing of the pedestrians, use proper turn
+      signals while driving to the locations.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55323200498847744
+    m_Localized: Drive the car and turn the steering wheel to the left and ease to
+      the guided location for the first point.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55323284544311296
+    m_Localized: Shift to reverse and turn the steering wheel to the right and ease
+      into the guided location for the second point.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55323301661265920
+    m_Localized: Shift to 1st gear and turn the steering wheel to the left and ease
+      into the guided location for the third-point turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55328523708157952
+    m_Localized: For this game, you will need to follow the car in front of you.
+      Hitting the car means losing the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55329020204699648
+    m_Localized: While following, observe landmarks and check if the back of the
+      car you're following passes it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55329737065779200
+    m_Localized: A failgating zone will appear then. Do not cross the failgating
+      zone and maintain proper distance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55335415092236288
+    m_Localized: For this game, your goal is to park to the parking location without
+      hitting obstacles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55335792130805760
+    m_Localized: These are the obstacles. Hitting a car while parking means losing
+      the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55336093516713984
+    m_Localized: "Align your front lamp with the front right corner of the parked
+      car\u2019s bumper."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55336461407506432
+    m_Localized: Turn the steering wheel full lock backwards to the direction you
+      are parking.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55336561701703680
+    m_Localized: Shift into reverse and ease into the parking slot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55338874382209024
+    m_Localized: Position your car aligned to the parking slot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55339121569320960
+    m_Localized: Begin turning your steering wheel to the right.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55339208575963136
+    m_Localized: Shift to reverse and turn the steering wheel to the left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55339292092944384
+    m_Localized: Start driving to the front and turn the steering wheel to the right
+      towards the parking slot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55342179023998976
+    m_Localized: Position your car aligned with the car in the front.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55342262163492864
+    m_Localized: Shift your gear to reverse and start backing up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55342327795961856
+    m_Localized: Straighten the steering wheel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55342443323871232
+    m_Localized: Begin turning your steering wheel to the left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55354534873157632
+    m_Localized: Do you want to see the tutorial first before playing?
     m_Metadata:
       m_Items: []
   references:

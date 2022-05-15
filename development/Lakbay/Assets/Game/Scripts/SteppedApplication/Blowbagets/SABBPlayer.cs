@@ -35,7 +35,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
         [Header("Level")]
         public new CinemachineVirtualCamera camera;
         public SAGameOverUI gameOverUI;
-        public MessageBoxUI messageBoxUI;
+        // public MessageBoxUI messageBoxUI;
         public SABBInGameUI inGameUI;
         public BlowbagetsUI blowbagetsUI;
 
@@ -235,8 +235,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
             prePlayUI?.gameObject.SetActive(screen);
             if(!screen) {
                 if(tutorialUI) {
-                    inGameUIPanel?.SetActive(true);
-                    tutorialUI.Show();
+                    messageBoxUI?.ShowConfirmation(showTutorial,
+                        onYes: () => {
+                            inGameUIPanel?.SetActive(true);
+                            tutorialUI?.Show();
+                        },
+                        onNo: () => inGameUIPanel?.SetActive(true)
+                    );
+
+                    // inGameUIPanel?.SetActive(true);
+                    // tutorialUI.Show();
                 }
                 // helpUI?.LaunchCurrent(() => inGameUIPanel?.SetActive(true));
             }

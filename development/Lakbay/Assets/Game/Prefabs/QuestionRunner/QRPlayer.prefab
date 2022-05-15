@@ -611,14 +611,18 @@ MonoBehaviour:
   onBuild:
     m_PersistentCalls:
       m_Calls: []
+  notification: {fileID: 0}
   messageBoxUI: {fileID: 0}
   gameMenuUI: {fileID: 0}
   gameOverUI: {fileID: 0}
   prePlayUI: {fileID: 0}
+  helpUI: {fileID: 0}
   qrPostPlayUI: {fileID: 0}
   qrInGameUI: {fileID: 0}
   questionUI: {fileID: 0}
+  tutorialUI: {fileID: 0}
   initial: {fileID: 0}
+  inGameUIPanel: {fileID: 0}
   repeaterHandler: {fileID: 0}
   questionsEvent: {fileID: 3851126413827426663}
   travel: {fileID: 846142435481946402}
@@ -640,9 +644,18 @@ MonoBehaviour:
     sun: {fileID: 3634633042474695910, guid: 5595781ab60198845973ae6dda1ec870, type: 3}
   intro:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:ff40c731577d4e04382e02c9cf803db7
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 10129897862987776
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  showTutorial:
+    m_TableReference:
+      m_TableCollectionName: GUID:ff40c731577d4e04382e02c9cf803db7
+    m_TableEntryReference:
+      m_KeyId: 55354534873157632
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

@@ -385,19 +385,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 67bd3fea3c5393b46858a6f03f14ff23, type: 2}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.right.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.forward.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -31.346401
+      value: -17.053598
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650102439089, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -88.27644
+      value: -25.783558
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650200283600, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -405,19 +405,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.right.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.forward.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -32.8336
+      value: -15.5664
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650388154228, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -90.60705
+      value: -23.452955
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650437521317, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: m_IsActive
@@ -425,35 +425,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.right.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.forward.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -31.346401
+      value: -17.053598
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650825097715, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -90.60705
+      value: -23.452955
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.right.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.forward.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.x
-      value: -32.8336
+      value: -15.566401
       objectReference: {fileID: 0}
     - target: {fileID: 8831050650876096797, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
       propertyPath: wheel.worldPosition.z
-      value: -88.27644
+      value: -25.78356
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a4f1fc2934c974a82433b9c96e679f, type: 3}
@@ -479,11 +479,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a227f6f8ac4e9429530f5485e64cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuild:
+    m_PersistentCalls:
+      m_Calls: []
   prePlayUI: {fileID: 0}
   gameMenuUI: {fileID: 0}
+  helpUI: {fileID: 0}
+  tutorialUI: {fileID: 0}
+  messageBoxUI: {fileID: 0}
+  inGameUIPanel: {fileID: 0}
+  showTutorial:
+    m_TableReference:
+      m_TableCollectionName: GUID:ff40c731577d4e04382e02c9cf803db7
+    m_TableEntryReference:
+      m_KeyId: 55354534873157632
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   debug: 0
   inGameUI: {fileID: 0}
   gameOverUI: {fileID: 0}
+  references:
+    version: 1
 --- !u!1001 &6261789815727808735
 PrefabInstance:
   m_ObjectHideFlags: 0

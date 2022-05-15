@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication
 {
+    using System.Linq;
     using Utilities;
 
     public enum SignalLight
@@ -123,6 +124,18 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public virtual void SetGear(GearBox gear)
         {
             if (!vehicle) return;
+            int tg = (int) gear;
+            int cg = (int) currentGear;
+
+            if(tg == cg) return;
+
+            if(Enumerable.Range(1, 5).Contains(tg)) {
+                if(cg < tg - 1 || cg > tg + 1) {
+                    Debug.Log("cant");
+                    return;
+                }
+            }
+
             vehicle.powertrain.transmission.ShiftInto((int)gear);
             // _currentGear = gear;
         }
