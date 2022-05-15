@@ -77,8 +77,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
                     frontVehicle.StopTravel();
                     frontVehicle.StopCountdown();
                     // Invoke("Proceed", 3.0f);
-                    Session.checkpointController?.SaveCheckpoint(
-                        new Checkpoint(Session.mode, BuiltScene.RightOfWay)
+                    Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                        Session.mode, SceneController.GetNext())
                     );
                     gameOverUI?.ShowPassed(
                         followedProperly
@@ -130,7 +130,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
 
         public virtual void Proceed()
         {
-            LoadScene(BuiltScene.RightOfWay);
+            LoadNextScene();
         }
     }
 }

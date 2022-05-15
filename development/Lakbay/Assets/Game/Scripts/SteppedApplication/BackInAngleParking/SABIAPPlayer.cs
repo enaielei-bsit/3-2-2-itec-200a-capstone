@@ -21,14 +21,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.BackInAngleParking
 
         public override void Proceed()
         {
-            LoadScene(BuiltScene.ThreePointTurn);
+            LoadNextScene();
         }
 
         public override void OnPark()
         {
             base.OnPark();
-            Session.checkpointController?.SaveCheckpoint(
-                new Checkpoint(Session.mode, BuiltScene.ThreePointTurn)
+            Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                Session.mode, SceneController.GetNext())
             );
             gameOverUI?.ShowPassed(
                 parkedCorrectly, didntHitCar

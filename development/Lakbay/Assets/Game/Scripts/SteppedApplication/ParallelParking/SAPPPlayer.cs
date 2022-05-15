@@ -20,17 +20,24 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ParallelParking
         public LocalizedString didntHitCar;
         public LocalizedString hitCar;
 
+        [Space]
+        public RectTransform gameFinishedUI;
+
         public override void Proceed()
         {
-            LoadScene(BuiltScene.PerpendicularParking);
+            // LoadNextScene();
+            if (gameFinishedUI)
+            {
+                gameFinishedUI.gameObject.SetActive(true);
+            }
+            else LoadScene(BuiltScene.MainMenu);
         }
 
         public override void OnPark()
         {
             base.OnPark();
-            Session.checkpointController?.SaveCheckpoint(
-                new Checkpoint(Session.mode, BuiltScene.PerpendicularParking)
-            );
+            Session.checkpointController.Clear();
+            Session.checkpointController.Save();
             gameOverUI?.ShowPassed(
                 parkedCorrectly, didntHitCar
             );

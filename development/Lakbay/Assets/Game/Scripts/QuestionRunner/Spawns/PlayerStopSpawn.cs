@@ -40,7 +40,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner.Spawns
                             if (Session.qrPassed)
                                 Session.checkpointController?.SaveCheckpoint(
                                     new Checkpoint(
-                                        Session.mode, BuiltScene.Blowbagets)
+                                        Session.mode, SceneController.GetNext())
                                 );
                             player.qrPostPlayUI?.Invoke("Show", delay);
                             player.travel?.Invoke("StopPerforming", delay);

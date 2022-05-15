@@ -236,7 +236,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules
         public override void OnPark()
         {
             base.OnPark();
-            Session.checkpointController.Clear();
+            Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                Session.mode, SceneController.GetNext())
+            );
             gameOverUI?.ShowPassed(
                 didSlowdown, didBrake, didAccelerate
             );

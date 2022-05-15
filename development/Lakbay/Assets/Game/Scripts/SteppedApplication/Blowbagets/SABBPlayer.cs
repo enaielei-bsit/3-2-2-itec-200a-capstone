@@ -93,8 +93,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
                     _done = true;
                     inGameUI?.gameObject.SetActive(false);
                     // Invoke("Proceed", 3.0f);
-                    Session.checkpointController?.SaveCheckpoint(
-                        new Checkpoint(Session.mode, BuiltScene.ParallelParking)
+                    Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                        Session.mode, SceneController.GetNext())
                     );
                     gameOverUI?.ShowPassed(
                         inspectedAll
@@ -216,7 +216,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
 
         public virtual void Proceed()
         {
-            LoadScene(BuiltScene.ParallelParking);
+            LoadNextScene();
         }
 
         public override void End()

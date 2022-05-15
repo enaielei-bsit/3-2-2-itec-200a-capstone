@@ -193,7 +193,7 @@ namespace Ph.CoDe_A.Lakbay.QuestionRunner
             }
             else
             {
-                LoadScene(BuiltScene.Blowbagets);
+                LoadNextScene();
             }
         }
 

@@ -107,7 +107,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay
 
         public override void Proceed()
         {
-            LoadScene(BuiltScene.TrafficSignalRules);
+            LoadNextScene();
         }
 
         public virtual void WalkPedestrians()
@@ -134,8 +134,8 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.RightOfWay
         public override void OnPark()
         {
             base.OnPark();
-            Session.checkpointController?.SaveCheckpoint(
-                new Checkpoint(Session.mode, BuiltScene.TrafficSignalRules)
+            Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                Session.mode, SceneController.GetNext())
             );
             gameOverUI?.ShowPassed(
                 usedSignalLight, didntHitPedestrian

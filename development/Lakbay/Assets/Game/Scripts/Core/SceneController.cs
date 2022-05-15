@@ -22,13 +22,13 @@ namespace Ph.CoDe_A.Lakbay.Core
         MainMenu,
         QuestionRunner,
         Blowbagets,
-        ParallelParking,
-        PerpendicularParking,
-        BackInAngleParking,
+        TrafficSignalRules,
+        RightOfWay,
         ThreePointTurn,
         Tailgating,
-        RightOfWay,
-        TrafficSignalRules,
+        PerpendicularParking,
+        BackInAngleParking,
+        ParallelParking,
         ContentTester
     }
 
@@ -160,6 +160,8 @@ namespace Ph.CoDe_A.Lakbay.Core
         }
 
         public static BuiltScene GetCurrent() => (BuiltScene)current.buildIndex;
+
+        public static BuiltScene GetNext() => (BuiltScene) ((int) GetCurrent() + 1);
 
         public override void Update()
         {

@@ -36,6 +36,8 @@ namespace Ph.CoDe_A.Lakbay.Core
 
         public virtual void LoadScene(int scene) => LoadScene((BuiltScene)scene);
 
+        public virtual void LoadNextScene() => LoadScene(((int) SceneController.GetCurrent()) + 1);
+
         public virtual void LoadScene() => LoadScene(
             SceneController.current.buildIndex);
 

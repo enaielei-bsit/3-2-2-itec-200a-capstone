@@ -7,6 +7,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using Utilities;
 
@@ -86,18 +87,14 @@ namespace Ph.CoDe_A.Lakbay.Core
         public virtual bool IsCheckpointValid()
         {
             Load();
-            int scene = (int)checkpoint.scene;
-            if (scene <= (int)BuiltScene.MainMenu)
-            {
-                return false;
-            }
-            else if (scene > (int)BuiltScene.MainMenu
-              && scene <= (int)BuiltScene.TrafficSignalRules)
-            {
-                return true;
-            }
 
-            return false;
+            // QuestionRunner
+            var minScene = 1;
+            // ParallelParking
+            var maxScene = 9;
+            int scene = (int)checkpoint.scene;
+
+            return scene >= minScene && scene <= maxScene;
         }
 
         public static Checkpoint GetDefault()

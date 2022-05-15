@@ -19,14 +19,14 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.ThreePointTurn
 
         public override void Proceed()
         {
-            LoadScene(BuiltScene.Tailgating);
+            LoadNextScene();
         }
 
         public override void OnPark()
         {
             base.OnPark();
-            Session.checkpointController?.SaveCheckpoint(
-                new Checkpoint(Session.mode, BuiltScene.Tailgating)
+            Session.checkpointController?.SaveCheckpoint(new Checkpoint(
+                Session.mode, SceneController.GetNext())
             );
             gameOverUI?.ShowPassed(
                 performedThreePoint
