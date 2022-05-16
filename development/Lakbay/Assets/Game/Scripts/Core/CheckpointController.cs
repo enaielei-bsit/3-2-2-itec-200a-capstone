@@ -17,15 +17,19 @@ namespace Ph.CoDe_A.Lakbay.Core
     public class Checkpoint
     {
         public GameMode mode;
+        public Transmission transmission;
         public BuiltScene scene;
 
         public Checkpoint() { }
 
         public Checkpoint(
             GameMode mode,
-            BuiltScene scene)
+            Transmission transmission,
+            BuiltScene scene
+        )
         {
             this.mode = mode;
+            this.transmission = transmission;
             this.scene = scene;
         }
 
@@ -33,6 +37,7 @@ namespace Ph.CoDe_A.Lakbay.Core
         {
             var cp = new Checkpoint();
             cp.mode = Session.mode;
+            cp.transmission = Session.transmission;
             cp.scene = SceneController.GetCurrent();
             return cp;
         }
@@ -99,7 +104,7 @@ namespace Ph.CoDe_A.Lakbay.Core
 
         public static Checkpoint GetDefault()
         {
-            return new Checkpoint(GameMode.NonPro, BuiltScene.MainMenu);
+            return new Checkpoint(GameMode.NonPro, Transmission.Automatic, BuiltScene.MainMenu);
         }
 
         public virtual void LoadCheckpoint(Player player)
@@ -107,6 +112,7 @@ namespace Ph.CoDe_A.Lakbay.Core
             if (IsCheckpointValid())
             {
                 player.SetMode(checkpoint.mode);
+                player.SetTransmission(checkpoint.transmission);
                 player.LoadScene(checkpoint.scene);
             }
         }

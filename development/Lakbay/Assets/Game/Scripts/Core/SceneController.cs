@@ -29,7 +29,8 @@ namespace Ph.CoDe_A.Lakbay.Core
         PerpendicularParking,
         BackInAngleParking,
         ParallelParking,
-        ContentTester
+        ContentTester,
+        TestingGround
     }
 
     public class SceneController : Controller, LoadingScreen.IMonitored

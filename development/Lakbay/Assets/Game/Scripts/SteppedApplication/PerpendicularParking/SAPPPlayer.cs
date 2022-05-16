@@ -29,7 +29,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.PerpendicularParking
         {
             base.OnPark();
             Session.checkpointController?.SaveCheckpoint(new Checkpoint(
-                Session.mode, SceneController.GetNext())
+                Session.mode,
+                Session.transmission,
+                SceneController.GetNext())
             );
             gameOverUI?.ShowPassed(
                 parkedCorrectly, didntHitCar

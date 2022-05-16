@@ -47,6 +47,15 @@ namespace Ph.CoDe_A.Lakbay.Core
             Debug.Log($"Mode selected: {Session.mode}");
         }
 
+        public virtual void SetTransmission(Transmission transmission)
+        {
+            Session.transmission = transmission;
+            Debug.Log($"Transmission selected: {Session.transmission}");
+        }
+
+        public virtual void SetTransmission(int transmission) =>
+            SetTransmission((Transmission) transmission);
+
         public virtual void SetMode(int mode) => SetMode((GameMode)mode);
 
         public virtual void SetMode(bool mode) =>

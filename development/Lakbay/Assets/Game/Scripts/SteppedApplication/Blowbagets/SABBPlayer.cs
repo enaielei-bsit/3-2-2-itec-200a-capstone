@@ -82,6 +82,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
         [Space]
         public LocalizedString message;
         public LocalizedString inspectedAll;
+        public LocalizedString chooseTransmission;
 
         public override void Update()
         {
@@ -94,7 +95,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
                     inGameUI?.gameObject.SetActive(false);
                     // Invoke("Proceed", 3.0f);
                     Session.checkpointController?.SaveCheckpoint(new Checkpoint(
-                        Session.mode, SceneController.GetNext())
+                        Session.mode,
+                        Session.transmission,
+                        SceneController.GetNext())
                     );
                     gameOverUI?.ShowPassed(
                         inspectedAll
@@ -112,7 +115,16 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
                 Session.sabbLevel.batteryFile, UpdateBlowbagetsInfo);
 
             _baseFollowOffset = transposer.m_FollowOffset;
-            messageBoxUI?.ShowMessage(message);
+            messageBoxUI?.ShowMessage(
+                message,
+                onOkay: () => {
+                    messageBoxUI.ShowConfirmation(
+                        chooseTransmission,
+                        onYes: () => this.SetTransmission(Transmission.Automatic),
+                        onNo: () => this.SetTransmission(Transmission.Manual)
+                    );
+                }
+            );
         }
 
         public virtual void Rotate(float factor)

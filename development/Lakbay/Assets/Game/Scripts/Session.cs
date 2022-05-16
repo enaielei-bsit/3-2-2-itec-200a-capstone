@@ -29,6 +29,7 @@ namespace Ph.CoDe_A.Lakbay
         public static CheatEngine cheatEngine;
 
         public static GameMode mode = GameMode.NonPro;
+        public static Transmission transmission = Transmission.Automatic;
 
 
         public static readonly List<QRLevel> qrLevels = new List<QRLevel>();

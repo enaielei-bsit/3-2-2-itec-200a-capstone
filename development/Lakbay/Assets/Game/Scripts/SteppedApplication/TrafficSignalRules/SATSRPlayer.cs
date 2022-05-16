@@ -238,7 +238,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.TrafficSignalRules
         {
             base.OnPark();
             Session.checkpointController?.SaveCheckpoint(new Checkpoint(
-                Session.mode, SceneController.GetNext())
+                Session.mode,
+                Session.transmission,
+                SceneController.GetNext())
             );
             gameOverUI?.ShowPassed(
                 didSlowdown, didBrake, didAccelerate

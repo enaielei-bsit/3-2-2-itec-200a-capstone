@@ -78,7 +78,9 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Tailgating
                     frontVehicle.StopCountdown();
                     // Invoke("Proceed", 3.0f);
                     Session.checkpointController?.SaveCheckpoint(new Checkpoint(
-                        Session.mode, SceneController.GetNext())
+                        Session.mode,
+                        Session.transmission,
+                        SceneController.GetNext())
                     );
                     gameOverUI?.ShowPassed(
                         followedProperly

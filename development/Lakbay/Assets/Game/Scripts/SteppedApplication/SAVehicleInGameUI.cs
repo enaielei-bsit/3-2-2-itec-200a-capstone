@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 namespace Ph.CoDe_A.Lakbay.SteppedApplication
 {
+    using System.Collections.Generic;
     using TMPro;
 
     public class SAVehicleInGameUI : SAInGameUI
@@ -31,6 +32,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
         public Image acceleratorHighlight;
         public Image brakeHighlight;
         public Image clutchHighlight;
+        public CanvasGroup clutch;
 
         [Header("Gears")]
         public Toggle fiveGear;
@@ -50,6 +52,41 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication
             base.Update();
             if (player)
             {
+                var manualGears = new List<Toggle> {twoGear, threeGear, fourGear, fiveGear};
+                if(Session.transmission == Core.Transmission.Automatic) {
+                    var txt = driveGear.GetComponentInChildren<TextMeshProUGUI>();
+                    txt?.SetText("D");
+
+                    manualGears.ForEach((e) => {
+                        var cg = e?.GetComponentInChildren<CanvasGroup>();
+                        if(cg) {
+                            cg.alpha = 0.0f;
+                            cg.interactable = false;
+                        }
+                    });
+
+                    if(clutch) {
+                        clutch.alpha = 0.0f;
+                        clutch.interactable = false;
+                    }
+                } else {
+                    var txt = driveGear.GetComponentInChildren<TextMeshProUGUI>();
+                    txt?.SetText("1");
+
+                    manualGears.ForEach((e) => {
+                        var cg = e?.GetComponentInChildren<CanvasGroup>();
+                        if(cg) {
+                            cg.alpha = 1.0f;
+                            cg.interactable = true;
+                        }
+                    });
+
+                    if(clutch) {
+                        clutch.alpha = 1.0f;
+                        clutch.interactable = true;
+                    }
+                }
+
                 speed?.SetText(player.vehicle.Speed.ToString(speedFormat));
                 SetGear(player.currentGear);
                 SetIgnition(player.isEngineRunning);

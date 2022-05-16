@@ -169,8 +169,8 @@ namespace Ph.CoDe_A.Lakbay.Core
         {
             button?.gameObject.SetActive(true);
             button.onClick.RemoveAllListeners();
-            if (action != null) button.onClick.AddListener(action);
             button.onClick.AddListener(OnButtonPress);
+            if (action != null) button.onClick.AddListener(action);
         }
 
         public virtual void SetButtons(
