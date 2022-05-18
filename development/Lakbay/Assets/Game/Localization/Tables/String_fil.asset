@@ -708,8 +708,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 53841492413009920
-    m_Localized: Ito ang mga pedals. Ang una ay ang clutch, brakes ang pangalawa,
-      at accelerator ang panghuli. Pindutin ang pedal upang ito'y mapagana.
+    m_Localized: Ito ang mga pedals. Para sa awtomatikong transmisyon, makikita mo
+      rito ang brakes at accelerator pedals, at ang clutch kung naka manual transmisyon.
+      Pindutin ang pedal upang ito'y mapagana.
     m_Metadata:
       m_Items: []
   - m_Id: 53842258494246912
@@ -897,8 +898,30 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 55513787848085504
-    m_Localized: Para sa kabuuan ng Stepped Application, gusto mo bang gumamit ng
-      Automatic Transmission sa iyong paglalaro?
+    m_Localized: Para sa kabuuan ng Stepped Application, piliin ang uri ng transmisyon
+      na gusto mong gamitin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56057847359029248
+    m_Localized: Awtomatiko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56057923246571520
+    m_Localized: Manwal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56060752124264448
+    m_Localized: Sa Automatic na transmission, makikita dito ang Drive (D) na atomatikong
+      saklaw ang lahat ng gear, Neutral (N) para sa mas steady/neutral na posisyon
+      ng sasakyan, at Reverse (R) para sa pag-atras.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56061262344568832
+    m_Localized: Para sa 5-speed na manual transmission, makikita dito ang limang
+      gears. Kada gear ay may saklaw na bilis na takbo. Sa 1st gear-mas mababa sa
+      10kph, 2nd gear-10-20kph, 3rd gear-20-35kph, 4th gear-25-50kph, at 5th gear-mas
+      mataas sa 50kph. Ang ibang controls tulad ng Neutral (N) ay ginagamit para
+      sa mas steady/neutral na posisyon at Reverse (R) para sa pag-atras ng sasakyan.
     m_Metadata:
       m_Items: []
   references:

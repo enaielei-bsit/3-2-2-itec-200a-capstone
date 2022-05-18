@@ -703,9 +703,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 53841492413009920
-    m_Localized: These are the pedals. The first one is the clutch, the second is
-      the brakes, and the last one is the accelerator. Press a pedal to activate
-      it.
+    m_Localized: These are the pedals. For automatic transmission, you'll see here
+      the brakes and accelerator pedals, and an additional clutch pedal for manual
+      transmission. Press a pedal to activate it.
     m_Metadata:
       m_Items: []
   - m_Id: 53842258494246912
@@ -893,8 +893,30 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 55513787848085504
-    m_Localized: For the entirety of the Stepped Application, do you want to use
-      Automatic Transmission for your gameplay?
+    m_Localized: For the entirety of the Stepped Application, choose the type of
+      transmission you'd like to use.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56057847359029248
+    m_Localized: Automatic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56057923246571520
+    m_Localized: Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56060752124264448
+    m_Localized: For automatic transmission, you will see here the Drive (D) which
+      automatically brackets the overall gears of the car, Neutral (N) for a steady/neutral
+      position of the car, and Reverse (R) for backing up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56061262344568832
+    m_Localized: For a 5-speed manual transmission, you will see here 5 gears with
+      each gear bracketing a certain speed. For 1st gear-less than 10kph, 2nd gear-10-20kph,
+      3rd gear-20-35kph, 4th gear-25-50kph, and 5th gear-more than 50kph. Other controls
+      like Neutral (N) are used for a steady/neutral position and Reverse (R) for
+      reversing or backing the car.
     m_Metadata:
       m_Items: []
   references:

@@ -38,6 +38,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
         // public MessageBoxUI messageBoxUI;
         public SABBInGameUI inGameUI;
         public BlowbagetsUI blowbagetsUI;
+        public MessageBoxUI altMessageBoxUI;
 
         public virtual CinemachineOrbitalTransposer transposer =>
             camera?.GetCinemachineComponent<CinemachineOrbitalTransposer>();
@@ -118,7 +119,7 @@ namespace Ph.CoDe_A.Lakbay.SteppedApplication.Blowbagets
             messageBoxUI?.ShowMessage(
                 message,
                 onOkay: () => {
-                    messageBoxUI.ShowConfirmation(
+                    altMessageBoxUI.ShowConfirmation(
                         chooseTransmission,
                         onYes: () => this.SetTransmission(Transmission.Automatic),
                         onNo: () => this.SetTransmission(Transmission.Manual)
