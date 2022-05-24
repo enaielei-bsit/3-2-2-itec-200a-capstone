@@ -1,135 +1,5 @@
 -
     content:
-        - Ang ibig sabihin ng luntiang ilaw ng trapiko ay?
-    choices:
-        -
-            correct: true
-            text: Ang mga sasakyang lumiliko sa direksyong iyon ay magpapatuloy.
-        -
-            correct: false
-            text: Dapat huminto ang sasakyan.
-        -
-            correct: false
-            text: Dapat bumagal ang sasakyan.
--
-    content:
-        - Anong mga sasakyan ang pinapayagang gumamit ng pula at asul na kumikislap na ilaw (blinker)?
-    choices:
-        -
-            correct: true
-            text: Ang mga pulis ay nagpapatrol at awtorisadong sasakyan ng Traffic Enforcer.
-        -
-            correct: false
-            text: Sasakyang pang-gobyerno.
-        -
-            correct: false
-            text: Pribadong sasakyan.
--
-    content:
-        - Kung ang isang driver ay nagpapatakbo ng isang de-motor na sasakyan na may kumikislap/nagpapatakbo/nagkislap na ilaw ng preno siya ay huhulihin para sa?
-    choices:
-        -
-            correct: true
-            text: Ilegal na pagbabago.
-        -
-            correct: false
-            text: Legal na pagbabago.
-        -
-            correct: false
-            text: Pagnanakaw.
--
-    content:
-        - Ipinapakita nito ang engine revolution per minute (RPM).
-    choices:
-        -
-            correct: true
-            text: Takometer
-        -
-            correct: false
-            text: Speedometer
-        -
-            correct: false
-            text: Gas
--
-    content:
-        - Huwag kailanman pumarada o huminto sa gilid ng kalsada sa loob ng _______ mula sa isang fire hydrant.
-    choices:
-        -
-            correct: true
-            text: 4 na metro
-        -
-            correct: false
-            text: 7 na metro
-        -
-            correct: false
-            text: 12 na metro
--
-    content:
-        - Ito ay isa sa mga kinakailangan sa pagpapatakbo ng taxi?
-    choices:
-        -
-            correct: true
-            text: Inaprubahan ng LTFRB ang metro ng taxi na may selyo.
-        -
-            correct: false
-            text: Sense of Humor.
-        -
-            correct: false
-            text: Mabuting kalusugan.
--
-    content:
-        - Ano ang mga pangunahing bahagi ng sistema ng pagpipiloto??
-    choices:
-        -
-            correct: true
-            text: Tie rod, box, pump, at mga linkage.
-        -
-            correct: false
-            text: Mga screwdriver at bolts.
-        -
-            correct: false
-            text: Martilyo at pako.
--
-    content:
-        - Ano ang layunin ng mata ng pusa sa kalsada??
-    choices:
-        -
-            correct: true
-            text: Naka-install bilang kapalit sa mga sirang linya.
-        -
-            correct: false
-            text: Naka-install na kapalit sa mga tuwid na linya.
-        -
-            correct: false
-            text: Naka-install na kapalit sa mga kurbadong linya.
--
-    content:
-        - Kapag nagmamaneho sa loob ng school zone, ang maximum na pinapahintulutang bilis ay?
-    choices:
-        -
-            correct: true
-            text: 20 kph
-        -
-            correct: false
-            text: 40 kph
-        -
-            correct: false
-            text: 80 kph
--
-    content:
-        - Ano ang dapat mong gawin kung mali ang iyong pagliko sa isang one-way na kalsada?
-    choices:
-        -
-            correct: true
-            text:  I-back up kung maaari o ligtas na mag-U-turn.
-        -
-            correct: false
-            text: Bumaba agad ng sasakyan.
-        -
-            correct: false
-            text: Pumarada sa gitna ng kalsada.
--
-    content:
         -
             image:
                 path: Assets/Game/Images/NoParkingAnytime.png
@@ -157,13 +27,13 @@
     choices:
         -
             correct: true
-            text: Sharp Turn Left
+            text: Agarang liko pakaliwa.
         -
             correct: false
-            text: Sharp Turn Right
+            text: Agarang liko pakanan.
         -
             correct: false
-            text: Sharp Left Curve
+            text: Agarang kaliwang pagkurba/liko.
 -
     content:
         -
@@ -175,13 +45,13 @@
     choices:
         -
             correct: true
-            text: T Junction Ahead
+            text: Papalapit na T Junction.
         -
             correct: false
-            text: Y Junction Ahead
+            text: Papalapit na Y Junction.
         -
             correct: false
-            text: TY Junction Ahead
+            text: Papalapit na TY Junction.
 -
     content:
         -
@@ -193,13 +63,13 @@
     choices:
         -
             correct: false
-            text: T Junction Ahead
+            text: Papalapit na T Junction.
         -
             correct: true
-            text: Y Junction Ahead
+            text: Papalapit na Y Junction.
         -
             correct: false
-            text: TY Junction Ahead
+            text: Papalapit na TY Junction.
 -
     content:
         -
@@ -211,16 +81,13 @@
     choices:
         -
             correct: true
-            text: Uphill Sign
+            text: Paakyat.
         -
             correct: false
-            text: Downhill Sign
+            text: Pababa.
         -
             correct: false
-            text: TY Junction Ahead
-
-
-
+            text: Papalapit na TY Junction.
 -
     content:
         -
@@ -232,13 +99,13 @@
     choices:
         -
             correct: true
-            text: Green Signal Light
+            text: Berdeng ilaw ng signal-trapiko.
         -
             correct: false
-            text: Red Signal Light
+            text: Pulang ilaw ng signal-trapiko.
         -
             correct: false
-            text: Yellow Signal Light
+            text: Dilaw na ilaw ng signal-trapiko.
 -
     content:
         -
@@ -250,13 +117,13 @@
     choices:
         -
             correct: false
-            text: Green Signal Light
+            text: Berdeng ilaw ng signal-trapiko.
         -
             correct: true
-            text: Red Signal Light
+            text: Pulang ilaw ng signal-trapiko.
         -
             correct: false
-            text: Yellow Signal Light
+            text: Dilaw na ilaw ng signal-trapiko.
 -
     content:
         -
@@ -268,13 +135,13 @@
     choices:
         -
             correct: false
-            text: Green Signal Light
+            text: Berdeng ilaw ng signal-trapiko.
         -
             correct: false
-            text: Red Signal Light
+            text: Pulang ilaw ng signal-trapiko.
         -
             correct: true
-            text: Yellow Signal Light
+            text: Dilaw na ilaw ng signal-trapiko.
 -
     content:
         -
@@ -286,13 +153,13 @@
     choices:
         -
             correct: true
-            text: Slippery when wet
+            text: Madulas.
         -
             correct: false
-            text: Two-way Road Ahead
+            text: Interseksyon sa unahan.
         -
             correct: false
-            text: T-Junction Ahead
+            text: Papalapit na T-Junction.
 -
     content:
         -
@@ -304,75 +171,205 @@
     choices:
         -
             correct: false
-            text: Slippery when wet
+            text: Madulas.
         -
             correct: true
-            text: Two-way Road Ahead
+            text: Papalapit na dalawahang daanan.
         -
             correct: false
-            text: T-Junction Ahead
+            text: Papalapit na T-Junction.
 -
     content:
-        - Ano ang ipinahihiwatig ng kumikislap na pulang ilaw?
+        - Ano ang traffic light na senyales na dapat kang huminto sa isang interseksyon?
     choices:
         -
             correct: true
-            text:  Huminto, sumuko, at magpatuloy kapag ito ay ligtas.
+            text: Pulang ilaw-trapiko.
         -
             correct: false
-            text: Magmaneho sa limitadong bilis.
+            text: Dilaw na ilaw-trapiko.
         -
             correct: false
-            text: Pabagalin ang iyong sasakyan at maghandang huminto.
+            text: Berdeng ilaw-trapiko.
 -
     content:
-        - Sa isang pataas na kalsada, dapat mong paikutin ang mga gulong _________ kapag pumarada.
+        - Ano ang ilaw na senyales na papalapit na ang paglipat ng ilaw sa pulang traffic light?
     choices:
         -
             correct: true
-            text: Malayo sa gilid ng bangketa.
+            text: Dilaw na ilaw-trapiko.
         -
             correct: false
-            text: Manatili sa gilid ng bangketa.
+            text: Pulang ilaw-trapiko.
         -
             correct: false
-            text: Dahan-dahan at maging maingat.
+            text: Berdeng ilaw-trapiko.
 -
     content:
-        - Ang mga may hawak ng isang propesyonal na lisensya sa pagmamaneho para sa mga magaan na sasakyan ay pinapayagang magmaneho?
+        - Ang traffic signal na senyales na maaari ka ng umandar sa isang interseksyon ay?
     choices:
         -
             correct: true
-            text: Anumang sasakyang de-motor na lampas sa 5,000 kgs GVW.
+            text: Berdeng ilaw-trapiko.
         -
             correct: false
-            text: Anumang sasakyan na lampas sa 1,000 kgs GVW.
+            text: Dilaw na ilaw-trapiko.
         -
             correct: false
-            text: Anumang sasakyang lampas sa 15,000 kgs GVW.
+            text: Pulang ilaw-trapiko.
 -
     content:
-        - Kapag nagmamaneho sa mga expressway, maaari kang huminto upang dumalo o tumawag para sa isang emergency?
+        - Ano ang dapat gawin ng isang drayber kung siya ay papaliko pakaliwa?
     choices:
         -
             correct: true
-            text:  Sa lay-by.
+            text: Magbigay-daan sa mga papalapit na sasakyan.
         -
             correct: false
-            text: Sa parking lot.
+            text: Magmaneho sa normal na bilis.
         -
             correct: false
-            text: Sa tabi ng kalsada.
+            text: Patakbuhin ng matulin ang sasakyan.
 -
     content:
-        - Kapag nagsasama sa expressway, kailangan mong gamitin nang husto ang?
+        - Ang pagkakaroon ng tamang distansya ay maaaring makabawas sa aksidente at ang pagsunod sa?
     choices:
         -
             correct: true
-            text:  Acceleration Lane (continuity lane).
+            text: 2-segundong patakaran.
         -
             correct: false
-            text: Kanang Linya ng kalsada.
+            text: 4-segundong patakaran.
         -
             correct: false
-            text: Pedestrian Lane.
+            text: 6-segundong patakaran.
+-
+    content:
+        - Kung balak mong magmaneho ng mas mabagal sa ibang sasakyan, dapat mong gamitin ang?
+    choices:
+        -
+            correct: true
+            text: Pinakalabas na (kanan) linya.
+        -
+            correct: false
+            text: Pinakalabas na(kaliwa) linya.
+        -
+            correct: false
+            text: Pinakaloob (kanan) na linya.
+-
+    content:
+        - Sinu ang mga pasahero na mayroong bawas-pasahe?
+    choices:
+        -
+            correct: true
+            text: Senior Citizens, PWD at estudyante.
+        -
+            correct: false
+            text: Kaibigan, kapamilya, at mga kakilala.
+        -
+            correct: false
+            text: Wala sa nabanggit.
+-
+    content:
+        - Ano ang batas ang nagpaparusa sa taong nasa impluwensya ng alkohol, droga, at kaparehong bagay na maaaring maging sanhi ng aksidente sa kalsada?
+    choices:
+        -
+            correct: true
+            text: RA No. 1058
+        -
+            correct: false
+            text: RA No. 1055
+        -
+            correct: false
+            text: RA No. 1056
+-
+    content:
+        - Ang pulang krus (“X”) sa mga tollways ay nangangahulugang?
+    choices:
+        -
+            correct: true
+            text: HINDI maaaring magmaneho sa linyang ito.
+        -
+            correct: false
+            text: Maaari kang magmaneho sa linyang ito.
+        -
+            correct: false
+            text: Kahit ano sa nabanggit.
+-
+    content:
+        - Bago lumiko, sa anong distansya dapat na gumamit ng senyales sa pagliko ang isang drayber?
+    choices:
+        -
+            correct: true
+            text: 30 metro
+        -
+            correct: false
+            text: 20 metro
+        -
+            correct: false
+            text: 10 metro
+-
+    content:
+        - Ano maaaring makaapekto sa iyong paningin sa pagmamaneho sa gabi?
+    choices:
+        -
+            correct: true
+            text: Sira at maruming headlights.
+        -
+            correct: false
+            text: Malakas na radyo.
+        -
+            correct: false
+            text: Pagsusuot ng headphones.
+-
+    content:
+        - Ano ang dapat gawin bago pumasok sa interseksyon kapag may nakikitang trapiko sa kanan at kaliwa?
+    choices:
+        -
+            correct: true
+            text: Huminto ka.
+        -
+            correct: false
+            text: Maghintay at umandar.
+        -
+            correct: false
+            text: Magmaneho.
+-
+    content:
+        - Kung nag-aalinlangan habang nasa interseksyon, dapat kang?
+    choices:
+        -
+            correct: true
+            text: Magbigay-daan.
+        -
+            correct: false
+            text: Magmaneho agad.
+        -
+            correct: false
+            text: Maghintay at umandar.
+-
+    content:
+        - Kung ikaw ang unang nakarating sa isang aksidente sa kalsada, ano ang dapat mong gawin sa mga sumusunod?
+    choices:
+        -
+            correct: true
+            text: Magbigay ng anumang tulong na magagawa sa sitwasyon.
+        -
+            correct: false
+            text: Magmaneho at ipagwalang-bahala ang aksidente.
+        -
+            correct: false
+            text: Wala sa nabanggit.
+-
+    content:
+        - Kung may 2 sasakyan sa isang intersekyon na walang traffic lights, sinu ang dapat na magbigay-daan?
+    choices:
+        -
+            correct: true
+            text: Ang sasakyan sa kanan.
+        -
+            correct: false
+            text: Ang sasakyan sa kaliwa.
+        -
+            correct: false
+            text: Wala sa nabanggit.

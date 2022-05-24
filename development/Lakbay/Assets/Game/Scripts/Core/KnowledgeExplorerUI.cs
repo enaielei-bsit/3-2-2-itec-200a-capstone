@@ -22,6 +22,7 @@ namespace Ph.CoDe_A.Lakbay.Core
         protected Path _current;
         public virtual Path current => _current;
 
+        public LocalizedPathEvent rootEvent;
         public Path root;
         public Button rootSeparator;
 

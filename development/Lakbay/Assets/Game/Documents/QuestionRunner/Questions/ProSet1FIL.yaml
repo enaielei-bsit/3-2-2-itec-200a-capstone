@@ -5,107 +5,17 @@
                 path: Assets/Game/Images/Stop.png
                 description: ''
                 source: 'LTMS Portal (2021)'
-        - Ano ang gagawin mo kapag nakita mo ang babalang ito?
+        - Kilalanin ang signal-trapiko.
     choices:
         -
             correct: true
-            text: Tumigil, kung ang mga bata ay naghihintay na tumawid
+            text: Nagpapaalala sa mga drayber na kailangan nilang HUMINTO bago magpatuloy.
         -
             correct: false
-            text: Tumigil lamang kung gugustuhin mo
+            text: Nagpapaalala sa mga drayber na kailangan nilang MAGHINTAY bago magpatuloy.
         -
             correct: false
-            text: Tumigil at magmaneho sa pinakamalapit na interseksyon
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/NoLeftTurn.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang tawag sa babalang pantrapikong ito?
-    choices:
-        -
-            correct: true
-            text: No Left Turn
-        -
-            correct: false
-            text: No Right Turn
-        -
-            correct: false
-            text: Curve Left
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/BikelaneAhead.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang tawag sa babalang pantrapikong ito?
-    choices:
-        -
-            correct: true
-            text: Bike Lane sa unahan
-        -
-            correct: false
-            text: Bike Lane sa likuran
-        -
-            correct: false
-            text: Bike Lane sa interseksyon
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/CurveLeft.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang tawag sa babalang pantrapikong ito?
-    choices:
-        -
-            correct: false
-            text: Curve Right
-        -
-            correct: true
-            text: Curve Left
-        -
-            correct: false
-            text: Right Turn
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/CurveRight.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang tawag sa babalang pantrapikong ito?
-    choices:
-        -
-            correct: true
-            text: Curve Right
-        -
-            correct: false
-            text: Curve Left
-        -
-            correct: false
-            text: Right Turn
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/DownhillSign.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - Ano ang tawag sa babalang pantrapikong ito?
-    choices:
-        -
-            correct: false
-            text: Uphill Sign
-        -
-            correct: true
-            text: Downhill Sign
-        -
-            correct: false
-            text: Opening Bridge
+            text: Nagpapaalala sa mga drayber na maaari silang TUMAKBO nang matulin.
 -
     content:
         -
@@ -117,13 +27,103 @@
     choices:
         -
             correct: true
-            text: Giveway
+            text: Magbigay-daan.
         -
             correct: false
-            text: Give Away
+            text: Maghatid.
         -
             correct: false
-            text: Reverse Way
+            text: Pabalikwas na daan.
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/NoLeftTurn.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
+    choices:
+        -
+            correct: true
+            text: Walang liko pakaliwa
+        -
+            correct: false
+            text: Walang liko pakanan
+        -
+            correct: false
+            text: Kurbang pakaliwa
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/BikelaneAhead.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
+    choices:
+        -
+            correct: true
+            text: Papalapit na linya para sa bisikleta.
+        -
+            correct: false
+            text: Linya ng bisikleta sa likuran.
+        -
+            correct: false
+            text: Linya ng bisikleta sa intersekyon.
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/CurveLeft.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
+    choices:
+        -
+            correct: false
+            text: Kurba pakanan.
+        -
+            correct: true
+            text: Kurba pakaliwa.
+        -
+            correct: false
+            text: Kanang likuan.
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/CurveRight.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
+    choices:
+        -
+            correct: true
+            text: Kurba pakanan.
+        -
+            correct: false
+            text: Kurba pakaliwa.
+        -
+            correct: false
+            text: Liko pakanan.
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/DownhillSign.png
+                description: ''
+                source: 'LTMS Portal (2021)'
+        - Ano ang tawag sa babalang pantrapikong ito?
+    choices:
+        -
+            correct: false
+            text: Paakyat.
+        -
+            correct: true
+            text: Pababa.
+        -
+            correct: false
+            text: Pagbubukas ng tulay.
 -
     content:
         -
@@ -135,13 +135,13 @@
     choices:
         -
             correct: false
-            text: Closing Bridge
+            text: Pagsasara ng tulay.
         -
             correct: false
-            text: Opening Road Ahead
+            text: Pagbubukas ng kalsada.
         -
             correct: true
-            text: Opening Bridge
+            text: Pagbubukas ng tulay.
 -
     content:
         -
@@ -153,13 +153,13 @@
     choices:
         -
             correct: true
-            text: Bawal pumasok
+            text: Bawal pumasok.
         -
             correct: false
-            text: Bawal pumasok ang anumang sasakyan
+            text: Bawal pumasok ang sinoman.
         -
             correct: false
-            text: Bawal pumasok ang mga sasakyan
+            text: Bawal ang mga sasakyan.
 -
     content:
         -
@@ -171,13 +171,13 @@
     choices:
         -
             correct: false
-            text: Bawal pumasok
+            text: Bawal pumasok.
         -
             correct: true
-            text: Bawal pumasok ang anumang sasakyan
+            text: Bawal pumasok ang sinoman.
         -
             correct: false
-            text: Bawal pumasok ang mga sasakyan
+            text: Bawal ang mga sasakyan.
 -
     content:
         -
@@ -189,13 +189,13 @@
     choices:
         -
             correct: true
-            text: Papalapit na intersekyon
+            text: Papalapit sa intersekyon.
         -
             correct: false
-            text: Papalapit na Traffic Lights
+            text: Papalapit na ilaw-trapiko.
         -
             correct: false
-            text: Papalapit na rotonda
+            text: Papalapit na rotonda.
 -
     content:
         -
@@ -207,13 +207,13 @@
     choices:
         -
             correct: false
-            text: Papalapit na intersekyon
+            text: Papalapit sa intersekyon.
         -
             correct: true
-            text: Papalapit na Traffic Lights
+            text: Papalapit na ilaw-trapiko.
         -
             correct: false
-            text: Papalapit na rotonda
+            text: Papalapit na rotonda.
 -
     content:
         -
@@ -225,13 +225,13 @@
     choices:
         -
             correct: false
-            text: Papalapit na intersekyon
+            text: Papalapit sa intersekyon.
         -
             correct: false
-            text: Papalapit na Traffic Lights
+            text: Papalapit na ilaw-trapiko.
         -
             correct: true
-            text: Papalapit na rotonda
+            text: Papalapit na rotonda.
 -
     content:
         -
@@ -243,13 +243,13 @@
     choices:
         -
             correct: false
-            text: Reverse Left
+            text: Bumalikwas pakaliwa.
         -
             correct: false
-            text: Reverse Right
+            text: Bumalikwas pakanan.
         -
             correct: true
-            text: Reverse Turn
+            text: Bumalikwas paikot.
 -
     content:
         -
@@ -261,10 +261,10 @@
     choices:
         -
             correct: true
-            text: School Children Crossing
+            text: Pampaaralang tawiran ng mga bata.
         -
             correct: false
-            text: Papatawid na PWD
+            text: Tawiran ng PWD.
         -
             correct: false
-            text: Pedestrians
+            text: Tawiran ng mga tao.

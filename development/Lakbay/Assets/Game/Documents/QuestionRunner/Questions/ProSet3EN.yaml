@@ -1,135 +1,5 @@
 -
     content:
-        - A green arrow traffic light means?
-    choices:
-        -
-            correct: true
-            text: Vehicles turning in that direction shall proceed.
-        -
-            correct: false
-            text: The vehicle must stop.
-        -
-            correct: false
-            text: The vehicle must slow down.
--
-    content:
-        - What vehicles are allowed to use a red and blue flashing light (blinker)?
-    choices:
-        -
-            correct: true
-            text: Police patrols and authorized vehicles.
-        -
-            correct: false
-            text: Government cars.
-        -
-            correct: false
-            text: Private vehicles.
--
-    content:
-        - If a driver operates a motor vehicle with a blinking/running/flashing brake light, he/she will be apprehended for?
-    choices:
-        -
-            correct: true
-            text: Illegal modification.
-        -
-            correct: false
-            text: Legal modification.
-        -
-            correct: false
-            text: Theft.
--
-    content:
-        - It shows the engine revolution per minute (RPM).
-    choices:
-        -
-            correct: true
-            text: Tachometer
-        -
-            correct: false
-            text: Speedometer
-        -
-            correct: false
-            text: Gas Level
--
-    content:
-        - Never Park or stop at the side of the road within _______ from a fire hydrant.
-    choices:
-        -
-            correct: true
-            text: 4 meters
-        -
-            correct: false
-            text: 7 meters
-        -
-            correct: false
-            text: 12 meters
--
-    content:
-        - This is one of the requirements in operating a taxi?
-    choices:
-        -
-            correct: true
-            text: LTFRB approved taxi meter with seal.
-        -
-            correct: false
-            text: Sense of Humor.
-        -
-            correct: false
-            text: Good Health.
--
-    content:
-        - What are the main components of the steering system?
-    choices:
-        -
-            correct: true
-            text: Tie rod, box, pump, and linkages.
-        -
-            correct: false
-            text: Screwdrivers and bolts.
-        -
-            correct: false
-            text: Hammer and nails.
--
-    content:
-        - What is the purpose of a cats eye on the road?
-    choices:
-        -
-            correct: true
-            text: Installed as a substitute to broken lines.
-        -
-            correct: false
-            text: Installed substitute to straight lines.
-        -
-            correct: false
-            text: Installed substitute to curved lines.
--
-    content:
-        - When driving within the school zone, the maximum permitted speed is?
-    choices:
-        -
-            correct: true
-            text: 20 kph
-        -
-            correct: false
-            text: 40 kph
-        -
-            correct: false
-            text: 80 kph
--
-    content:
-        - What should you do if you make a wrong turn on a one-way road?
-    choices:
-        -
-            correct: true
-            text: Back up if possible or safely make a U-turn.
-        -
-            correct: false
-            text: Get out of the car immediately.
-        -
-            correct: false
-            text: Park in the middle of the road.
--
-    content:
         -
             image:
                 path: Assets/Game/Images/NoParkingAnytime.png
@@ -310,66 +180,196 @@
             text: T-Junction Ahead
 -
     content:
-        - What does a flashing red light indicate?
+        - The Traffic light or signal that tells you to stop before the intersection is?
     choices:
         -
             correct: true
-            text: Stop, yield, and proceed when it is safe.
+            text: Steady Red Light
         -
             correct: false
-            text: Drive at a limited speed.
+            text: Steady Yellow Light
         -
             correct: false
-            text: Slow down your car and prepare to stop.
+            text: Steady Green Light
 -
     content:
-        - In an uphill road, you must turn the wheels _________ when parking?
+        - A traffic signal light that warns you that the red light is about to turn on?
     choices:
         -
             correct: true
-            text: Away from the curb.
+            text: Steady Yellow Light
         -
             correct: false
-            text: Stay in the curb.
+            text: Steady Red Light
         -
             correct: false
-            text: Slow down and be cautious.
+            text: Steady Green Light
 -
     content:
-        - Holders of a professional driver’s license for light vehicles are allowed to drive?
+        - The traffic signal light that means you can go if the intersection is clear?
     choices:
         -
             correct: true
-            text: Any motor vehicle exceeding 5,000 kgs GVW.
+            text: Steady Green Light
         -
             correct: false
-            text: Any vehicle exceeding 1,000 kgs GVW.
+            text: Steady Yellow Light
         -
             correct: false
-            text: Any vehicle exceeding 15, 000 kgs GVW.
+            text: Steady Red Light
 -
     content:
-        - When driving on expressways, you may stop to attend or call for an emergency?
+        - If the driver is turning left, he must?
     choices:
         -
             correct: true
-            text: On the lay-by.
+            text: Yield to approaching vehicles
         -
             correct: false
-            text: In the parking lot.
+            text: Drive at a normal speed
         -
             correct: false
-            text: Beside the road.
+            text: Drive and accelerate
 -
     content:
-        - When merging on the expressway, you have to make full use of the?
+        - Keeping one's distance lessens the risk of accident. One good Rule is to leave a car length or?
     choices:
         -
             correct: true
-            text: Acceleration Lane (continuity lane).
+            text: 2-second rule
         -
             correct: false
-            text: Right Lane.
+            text: 4-second rule
         -
             correct: false
-            text: Pedestrian Lane.
+            text: 6-second rule
+-
+    content:
+        - When you intend to drive slower than the other vehicle, you should use the?
+    choices:
+        -
+            correct: true
+            text: Outermost (right) lane
+        -
+            correct: false
+            text: Outermost (left) lane
+        -
+            correct: false
+            text: Innermost (right) lane
+-
+    content:
+        - Who are entitled to fare discounts?
+    choices:
+        -
+            correct: true
+            text: Senior Citizens, PWD and students
+        -
+            correct: false
+            text: Friends, family and relatives
+        -
+            correct: false
+            text: None of the above
+-
+    content:
+        - It is an act penalizing person under the influence of alcohol, dangerous drugs, and similar substances, and for other purpose?
+    choices:
+        -
+            correct: true
+            text: RA No. 1058
+        -
+            correct: false
+            text: RA No. 1055
+        -
+            correct: false
+            text: RA No. 1056
+-
+    content:
+        - A steady red cross ("X") in tollways means?
+    choices:
+        -
+            correct: true
+            text: You CANNOT drive through this lane
+        -
+            correct: false
+            text: You CAN drive through this lane
+        -
+            correct: false
+            text: Either of the two
+-
+    content:
+        - Before making a turn, the driver should use the turn signal at what distance?
+    choices:
+        -
+            correct: true
+            text: 30 meters
+        -
+            correct: false
+            text: 20 meters
+        -
+            correct: false
+            text: 10 meters
+-
+    content:
+        - What affects your visibility while driving at night?
+    choices:
+        -
+            correct: true
+            text: Defective and dirty headlights
+        -
+            correct: false
+            text: Loud radios
+        -
+            correct: false
+            text: Wearing headphones
+-
+    content:
+        - Before entering any intersection and you can see traffic coming from your left and right, you should?
+    choices:
+        -
+            correct: true
+            text: Stop
+        -
+            correct: false
+            text: Wait and accelerate
+        -
+            correct: false
+            text: Drive
+-
+    content:
+        - If in doubt while at an intersection, one must?
+    choices:
+        -
+            correct: true
+            text: Yield to the right-of-way
+        -
+            correct: false
+            text: Drive away
+        -
+            correct: false
+            text: Wait and accelerate
+-
+    content:
+        - If you are the first to arrive at the scene of an accident, which of the following should you do?
+    choices:
+        -
+            correct: true
+            text: Offer all reasonable assistance
+        -
+            correct: false
+            text: Drive and don’t mind the accident
+        -
+            correct: false
+            text: None of the above
+-
+    content:
+        - At an intersection with no traffic signals, two cars approach at right angles to each other, which driver has the right-of-way?
+    choices:
+        -
+            correct: true
+            text: The car on the right
+        -
+            correct: false
+            text: The car on the left
+        -
+            correct: false
+            text: Either of the two

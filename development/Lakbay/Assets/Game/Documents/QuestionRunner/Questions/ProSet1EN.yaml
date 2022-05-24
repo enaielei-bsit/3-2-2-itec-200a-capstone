@@ -5,17 +5,35 @@
                 path: Assets/Game/Images/Stop.png
                 description: ''
                 source: 'LTMS Portal (2021)'
+        - Identify the traffic sign?
+    choices:
+        -
+            correct: true
+            text: A traffic sign to notify drivers that they must stop before proceeding
+        -
+            correct: false
+            text: A traffic sign to notify drivers that they must wait before proceeding
+        -
+            correct: false
+            text: A traffic sign to notify drivers that they can go and accelerate
+-
+    content:
+        -
+            image:
+                path: Assets/Game/Images/GiveWay.png
+                description: ''
+                source: 'LTMS Portal (2021)'
         - What Road Traffic Sign is shown?
     choices:
         -
             correct: true
-            text: Stop, only if children are waiting to cross
+            text: Giveway
         -
             correct: false
-            text: Stop, only if you feel like to
+            text: Give Away
         -
             correct: false
-            text: Stop and drive to the nearest intersection
+            text: Reverse Way
 -
     content:
         -
@@ -106,24 +124,6 @@
         -
             correct: false
             text: Opening Bridge
--
-    content:
-        -
-            image:
-                path: Assets/Game/Images/GiveWay.png
-                description: ''
-                source: 'LTMS Portal (2021)'
-        - What Road Traffic Sign is shown?
-    choices:
-        -
-            correct: true
-            text: Giveway
-        -
-            correct: false
-            text: Give Away
-        -
-            correct: false
-            text: Reverse Way
 -
     content:
         -

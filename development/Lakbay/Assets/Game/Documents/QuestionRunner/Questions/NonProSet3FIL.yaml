@@ -1,135 +1,5 @@
 -
     content:
-        - Ang ibig sabihin ng luntiang ilaw ng trapiko ay?
-    choices:
-        -
-            correct: true
-            text: Ang mga sasakyang lumiliko sa direksyong iyon ay magpapatuloy.
-        -
-            correct: false
-            text: Dapat huminto ang sasakyan.
-        -
-            correct: false
-            text: Dapat bumagal ang sasakyan.
--
-    content:
-        - Anong mga sasakyan ang pinapayagang gumamit ng pula at asul na kumikislap na ilaw (blinker)?
-    choices:
-        -
-            correct: true
-            text: Ang mga pulis ay nagpapatrol at awtorisadong sasakyan ng Traffic Enforcer.
-        -
-            correct: false
-            text: Sasakyang pang-gobyerno.
-        -
-            correct: false
-            text: Pribadong sasakyan.
--
-    content:
-        - Kung ang isang driver ay nagpapatakbo ng isang de-motor na sasakyan na may kumikislap/nagpapatakbo/nagkislap na ilaw ng preno siya ay huhulihin para sa?
-    choices:
-        -
-            correct: true
-            text: Ilegal na pagbabago.
-        -
-            correct: false
-            text: Legal na pagbabago.
-        -
-            correct: false
-            text: Pagnanakaw.
--
-    content:
-        - Ipinapakita nito ang engine revolution per minute (RPM).
-    choices:
-        -
-            correct: true
-            text: Takometer
-        -
-            correct: false
-            text: Speedometer
-        -
-            correct: false
-            text: Gas
--
-    content:
-        - Huwag kailanman pumarada o huminto sa gilid ng kalsada sa loob ng _______ mula sa isang fire hydrant.
-    choices:
-        -
-            correct: true
-            text: 4 na metro
-        -
-            correct: false
-            text: 7 na metro
-        -
-            correct: false
-            text: 12 na metro
--
-    content:
-        - Ito ay isa sa mga kinakailangan sa pagpapatakbo ng taxi?
-    choices:
-        -
-            correct: true
-            text: Inaprubahan ng LTFRB ang metro ng taxi na may selyo.
-        -
-            correct: false
-            text: Sense of Humor.
-        -
-            correct: false
-            text: Mabuting kalusugan.
--
-    content:
-        - Ano ang mga pangunahing bahagi ng sistema ng pagpipiloto??
-    choices:
-        -
-            correct: true
-            text: Tie rod, box, pump, at mga linkage.
-        -
-            correct: false
-            text: Mga screwdriver at bolts.
-        -
-            correct: false
-            text: Martilyo at pako.
--
-    content:
-        - Ano ang layunin ng mata ng pusa sa kalsada??
-    choices:
-        -
-            correct: true
-            text: Naka-install bilang kapalit sa mga sirang linya.
-        -
-            correct: false
-            text: Naka-install na kapalit sa mga tuwid na linya.
-        -
-            correct: false
-            text: Naka-install na kapalit sa mga kurbadong linya.
--
-    content:
-        - Kapag nagmamaneho sa loob ng school zone, ang maximum na pinapahintulutang bilis ay?
-    choices:
-        -
-            correct: true
-            text: 20 kph
-        -
-            correct: false
-            text: 40 kph
-        -
-            correct: false
-            text: 80 kph
--
-    content:
-        - Ano ang dapat mong gawin kung mali ang iyong pagliko sa isang one-way na kalsada?
-    choices:
-        -
-            correct: true
-            text:  I-back up kung maaari o ligtas na mag-U-turn.
-        -
-            correct: false
-            text: Bumaba agad ng sasakyan.
-        -
-            correct: false
-            text: Pumarada sa gitna ng kalsada.
--
-    content:
         -
             image:
                 path: Assets/Game/Images/NoParkingAnytime.png
@@ -157,13 +27,13 @@
     choices:
         -
             correct: true
-            text: Sharp Turn Left
+            text: Agarang liko pakaliwa.
         -
             correct: false
-            text: Sharp Turn Right
+            text: Agarang liko pakanan.
         -
             correct: false
-            text: Sharp Left Curve
+            text: Agarang kaliwang pagkurba/liko.
 -
     content:
         -
@@ -175,13 +45,13 @@
     choices:
         -
             correct: true
-            text: T Junction Ahead
+            text: Papalapit na T Junction.
         -
             correct: false
-            text: Y Junction Ahead
+            text: Papalapit na Y Junction.
         -
             correct: false
-            text: TY Junction Ahead
+            text: Papalapit na TY Junction.
 -
     content:
         -
@@ -193,13 +63,13 @@
     choices:
         -
             correct: false
-            text: T Junction Ahead
+            text: Papalapit na T Junction.
         -
             correct: true
-            text: Y Junction Ahead
+            text: Papalapit na Y Junction.
         -
             correct: false
-            text: TY Junction Ahead
+            text: Papalapit na TY Junction.
 -
     content:
         -
@@ -211,10 +81,140 @@
     choices:
         -
             correct: true
-            text: Uphill Sign
+            text: Paakyat.
         -
             correct: false
-            text: Downhill Sign
+            text: Pababa.
         -
             correct: false
-            text: TY Junction Ahead
+            text: Papalapit na TY Junction.
+-
+    content:
+        - Sa isang dalawahang-linya sa kalsada, ang pag “overtake” ay maari lamang gawin sa?
+    choices:
+        -
+            correct: true
+            text: Kanang linya
+        -
+            correct: false
+            text: Kaliwang linya
+        -
+            correct: false
+            text: Sa isang interseksyon
+-
+    content:
+        - Ang pagpaparada ay ipinagbabawal kung ang sasakyan ay?
+    choices:
+        -
+            correct: true
+            text: Magpaparada sa pasukan at labasan ng ospital o fire station
+        -
+            correct: false
+            text: Magpaparada sa tamang paradahan
+        -
+            correct: false
+            text: Magpaparada sa garahe
+-
+    content:
+        - Ang pagpaparada ay ipinagbabawal sa?
+    choices:
+        -
+            correct: true
+            text: Sa isang interseksyon
+        -
+            correct: false
+            text: Tamang paradahan
+        -
+            correct: false
+            text: Sa loob ng garahe
+-
+    content:
+        - Sa isang interseksyon, kung ang 2 sasakyan ay parehong nakapunta sa parehong oras, sinu ang nararapat na tumawid? 
+    choices:
+        -
+            correct: true
+            text: Ang sasakyan sa kanan
+        -
+            correct: false
+            text: Ang sasakyan sa kaliwa
+        -
+            correct: false
+            text: Kahit sino sa dalawang sasakyan
+-
+    content:
+        - Ano ang dapat mong gawin kapag nagmamaneho sa gabi?
+    choices:
+        -
+            correct: true
+            text: Palagiang paganahin ang headlights ng sasakyan
+        -
+            correct: false
+            text: Paganahin lamang ang headlights kung kinakailangan
+        -
+            correct: false
+            text: Huwag gamitin ang headlights
+-
+    content:
+        - Ano ang dapat gawin kapag papadaan sa isang binahang lugar?
+    choices:
+        -
+            correct: true
+            text: Maingat na dumaan sa pinakamabagal na takbo
+        -
+            correct: false
+            text: Dumaan sa normal na takbo
+        -
+            correct: false
+            text: Magmaneho at bilisan ang takbo
+-
+    content:
+        - Ano ang kahulugan ng solid na dilaw o puting linya sa kalsada?
+    choices:
+        -
+            correct: true
+            text: Ang pagdaan o pag-overtake ay IPINAGBABAWAL
+        -
+            correct: false
+            text: Ang pagdaan o pag-overtake ay PINAPAYAGAN
+        -
+            correct: false
+            text: Wala sa nabanggit
+-
+    content:
+        - Sa pagkuha ng lisensya sa pagmamaneho, ikaw ay dapat ay nasa?
+    choices:
+        -
+            correct: true
+            text: 18 taong gulang
+        -
+            correct: false
+            text: 18 taong gulang pababa
+        -
+            correct: false
+            text: Anumang edad ay maaaring maaring makakuha
+-
+    content:
+        - Sa masamang kondisyon ng panahon, ang 2 second rule ay tataasan sa ilang segundo?
+    choices:
+        -
+            correct: true
+            text: 4 na segundo
+        -
+            correct: false
+            text: 8 segundo
+        -
+            correct: false
+            text: 10 segundo
+-
+    content:
+        - Ano ang dapat gawin kung magbabago ng linya?
+    choices:
+        -
+            correct: true
+            text: Mag gumamit ng tamang signal 
+        -
+            correct: false
+            text: Bumusina 
+        -
+            correct: false
+            text: Magmaneho ng normal

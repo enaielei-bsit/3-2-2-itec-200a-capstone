@@ -6,39 +6,39 @@
         description: "Question Runner Phase"
         source: "Code_A (2022)"
 - >-
-    NOTE: I-CLICK ANG IMAHE PARA SA PAG-INTINDI NG MGA HAKBANG SA LARO.
+    NOTE: PINDUTIN ANG IMAHEN PARA SA PAG-INTINDI NG MGA HAKBANG SA LARO.
 
-    Ito ay mayroong tatlong antas kung saan, kinakailangang sagutan ng manlalaro ang mga tanong habang iniiwasan ang mga barikada.
+    Ito ay mayroong tatlong antas at kinakailangang sagutan ng manlalaro ang mga tanong habang iniiwasan ang mga barikada.
 
     <b>Mekaniks ng Laro</b>
         1. Mayroong tatlong antas ang yugtong ito, at ang bawat antas ay kinakailangan matapos para makausad sa susunod.
-        2. Mayroong tatlong buhay at isa sa kada power-ups ang manlalaro sa bawat antas.
+        2. Mayroong tatlong buhay at isa sa kada kagamitang-pantulong ang manlalaro sa bawat antas.
         3. Kailangang masagutan ang mga tanong habang iniiwasan ang barikada upang makompleto ang antas.
         4. Kailangang masagutan ng manlalaro ang mga tanong sa loob ng  inilaang oras.
         5. Gamitin ang kaliwa at kanang mga arrrow upang maiwasan ang mga barikada.
-        6. May mga power-ups na makikita sa daan at hinihikayat itong kunin.
-        7. Maaaring gamitin ng manlalaro ang mga power-ups upang panandaliang mas mapalakas ang kanyang kakayahan sa laro.
-        8. Automatikong mapupunta sa susunod na antas ang manlalaro matapos nitong kompletuhin ang antas.
-        9. Matapos kompletuhin ang lahat ng mga antas ay lalabas ang buod ng ginawang laro.
+        6. May mga kagamitang-pantulong na makikita sa daan at hinihikayat itong kunin.
+        7. Maaaring gamitin ng manlalaro ang mga kagamitang-pantulong upang panandaliang mas mapalakas ang kanyang kakayahan sa laro.
+        8. Agarang mapupunta sa susunod na antas ang manlalaro matapos nitong kompletuhin ang antas.
+        9. Matapos kumpletuhin ang lahat ng mga antas ay lalabas ang buod ng ginawang laro.
         10. Kailangang makuha ng manlalaro ang pasadong marka para makausad sa susunod na yugto ng laro(Stepped Application).
 
     <b>Entities</b>
-        <b>Vehicle</b> - Maaaring kontrolin ng manlalaro.
-        <b>Barricades</b> - Distraksyon sa daan na dapat maiwasan upang mapanatili ang bilang ng buhay.
-        <b>Environment</b> - Lugar o paligid na nag-iiba depende sa antas ng laro.
+        <b>Sasakyan</b> - Maaaring kontrolin ng manlalaro.
+        <b>Mga Barikada</b> - Distraksyon sa daan na dapat maiwasan upang mapanatili ang bilang ng buhay.
+        <b>Kapaligiran</b> - Lugar o paligid na nag-iiba depende sa antas ng laro.
 
-    <b>Controls</b>
+    <b>Mga Kontrol</b>
         <b>Pause Button</b> - Nagpapahinto ng laro at tinatawag ang main menu.
-        <b>Left and Right Arrow Button</b> - Iniliipat ang direksyon ng sasakyan mula kaliwa-kanan(vice-versa).
-        <b>Pop-up Questions</b> - Mga tanong na kailangang sagutin.
+        <b>Kaliwa't Kanang Arrow Button</b> - Iniliipat ang direksyon ng sasakyan mula kaliwa-kanan(vice-versa).
+        <b>Mga Lumilitaw na Katanungan</b> - Mga tanong na kailangang sagutin.
 
-    <b>Power-ups Buttons</b>
+    <b>Kagamitang-pantulong</b>
         <b>Rocket</b> - Tinatanggal ang mga barikada sa isang linya ng kalsada. 
         <b>Shield</b> - Saglit na pinoprotektahan ang sasakyan mula sa mga barikada.
-        <b>Time</b> - Pinapabagal ang takbo ng sasakyan upang bigyan ng oras na maiwasan ang mga barikada.
+        <b>Stopwatch</b> - Pinapabagal ang takbo ng sasakyan upang bigyan ng oras na maiwasan ang mga barikada.
 
-    <b>Indicators</b>
-        <b>Level Indicator Bar</b> - Ipinapakita ang kasalukuyang antas ng laro.
-        <b>Life Status Bar</b> - Ipinapakita ang bilang ng buhay ng manlalaro.
-        <b>Progress Indicator Bar</b> - Ipinapakita ang progreso ng laro.
-        <b>Summary</b> - Ipinapakita ang buod ng sinagutang mga tanong ng manlalaro.
+    <b>Mga Pahiwatig</b>
+        <b>Mga Antas na Pahiwatig</b> - Ipinapakita ang kasalukuyang antas ng laro.
+        <b>Katayuan ng Buhay</b> - Ipinapakita ang bilang ng buhay ng manlalaro.
+        <b>Pahiwatig na Progreso</b> - Ipinapakita ang progreso ng laro.
+        <b>Buod</b> - Ipinapakita ang buod ng sinagutang mga tanong ng manlalaro.
