@@ -109,6 +109,9 @@ namespace Ph.CoDe_A.Lakbay.Core
                     nfile.onClick.AddListener(OnFileClick(path.type, file));
                 }
             }
+
+            content?.gameObject.SetActive(false);
+            watchableViewer?.gameObject.SetActive(false);
         }
 
         public virtual UnityAction OnFileClick(Path.Type type, TextAsset file)
